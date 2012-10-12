@@ -20,7 +20,7 @@ class Dispatcher {
 		Registry::init();
 
 		//Registers a function to be executed when the process completes.
-		register_shutdown_function(cleanup);
+		register_shutdown_function('cleanup');
 	}
 	
 	//Performs housekeeping on completion of process.
@@ -30,13 +30,14 @@ class Dispatcher {
 	}
 	
 	//Service requests made by application. Dispatcher returns an object (result/data) to the caller upon completion.
-	function service($method,$data) {}
-	
-	//Dispatcher consults the registry to load the appropriate module.
-	function loadModule($module) {}
-
-	//Dispatcher invokes the controller of the module to execute the requested method.
-	function invokeController($module,$method) {}
+	function service($method,$data) {
+		$route=Registry::read($method);
+		Registry::load($route[0]);
+		$controllerName=$route[0].'Controller';
+		$control=new $controllerName();
+		$result=$control->invoke($route[1]);
+		return $result;
+	}
 	
 }
 
