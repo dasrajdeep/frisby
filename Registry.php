@@ -16,7 +16,9 @@ class Registry {
 	
 	//Reads a specific mapping from the registry.
 	static function read($method) {
-		return self::$map[$method];
+		$route=self::$map[$method];
+		if($route==null) ErrorHandler::fire('reg','Method does not exist.');
+		return $route;
 	}
 	
 	//Loads a specific module on demand.

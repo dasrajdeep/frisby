@@ -9,7 +9,8 @@ class ErrorHandler {
 	
 	//An array holding the types of error messages.
 	static $errtype=array(
-		'db'=>'DATABASE'
+		'db'=>'DATABASE',
+		'reg'=>'REGISTRY'
 	);
 	
 	//Adds an error trace to the error stack.
@@ -27,6 +28,12 @@ class ErrorHandler {
 	//Fetches error status.
 	static function hasErrors() {
 		return self::$error;
+	}
+	
+	//Resets errors that have occured.
+	static function reset() {
+		self::$error=false;
+		array_reduce(self::$tracelist,0);
 	}
 }
 

@@ -5,17 +5,17 @@
 	$database=array();
 	
 	//The hostname of the MySQL DBMS.
-	$database['host']='';
+	$database['host']='localhost';
 	
 	//The database username.
-	$database['username']='';
+	$database['username']='root';
 	
 	//The password for the database.
-	$database['password']='';
+	$database['password']='retro';
 	
 	//The name of the database to be used. Note that this is not the name of the DBMS.
-	$database['name']='';
+	$database['name']='frisby';
 	
 	//A prefix generally used to distinguish the tables used in the database. This is optional.
-	$database['prefix']='';
+	$database['prefix']='frisby_';
 ?>
