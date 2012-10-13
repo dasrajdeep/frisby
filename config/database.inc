@@ -11,7 +11,7 @@
 	$database['username']='root';
 	
 	//The password for the database.
-	$database['password']='retro';
+	$database['password']='toor';
 	
 	//The name of the database to be used. Note that this is not the name of the DBMS.
 	$database['name']='frisby';

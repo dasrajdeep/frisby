@@ -2,6 +2,12 @@
 
 class Dispatcher {
 	
+	//Performs housekeeping on completion of process.
+	static function cleanup() {
+		Database::disconnect();
+		Logger::shutdown();
+	}
+	
 	//Constructor to initialize the dispatcher.
 	function __construct() {
 		//Dispatcher first initializes the logger.
@@ -20,13 +26,7 @@ class Dispatcher {
 		Registry::init();
 
 		//Registers a function to be executed when the process completes.
-		register_shutdown_function('cleanup');
-	}
-	
-	//Performs housekeeping on completion of process.
-	static function cleanup() {
-		Database::disconnect();
-		Logger::shutdown();
+		register_shutdown_function('Dispatcher::cleanup');
 	}
 	
 	//Service requests made by application. Dispatcher returns an object (result/data) to the caller upon completion.

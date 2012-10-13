@@ -33,7 +33,7 @@ class ErrorHandler {
 	//Resets errors that have occured.
 	static function reset() {
 		self::$error=false;
-		array_reduce(self::$tracelist,0);
+		array_splice(self::$tracelist,0);
 	}
 }
 
