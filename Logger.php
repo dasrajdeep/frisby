@@ -7,7 +7,8 @@ class Logger {
 	//An array holding the types of log messages.
 	static $logtype=array(
 		'db'=>'DATABASE',
-		'reg'=>'REGISTRY'
+		'reg'=>'REGISTRY',
+		'evt'=>'EVENTS'
 	);
 	
 	//Performs a few basic housekeepings to initialize the logger.

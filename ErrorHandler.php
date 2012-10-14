@@ -10,7 +10,8 @@ class ErrorHandler {
 	//An array holding the types of error messages.
 	static $errtype=array(
 		'db'=>'DATABASE',
-		'reg'=>'REGISTRY'
+		'reg'=>'REGISTRY',
+		'evt'=>'EVENTS'
 	);
 	
 	//Adds an error trace to the error stack.
