@@ -11,7 +11,8 @@ class ErrorHandler {
 	static $errtype=array(
 		'db'=>'DATABASE',
 		'reg'=>'REGISTRY',
-		'evt'=>'EVENTS'
+		'evt'=>'EVENTS',
+		'int'=>'INTEGRITY'
 	);
 	
 	//Adds an error trace to the error stack.

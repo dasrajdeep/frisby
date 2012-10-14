@@ -35,12 +35,16 @@ class Dispatcher {
 	
 	//Service requests made by application. Dispatcher returns an object (result/data) to the caller upon completion.
 	function dispatch($method,$data) {
+		//Consults registry to obtain the appropriate route.
 		$route=Registry::read($method);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		
+		//Invokes the requested method.
+		require_once('Controller.php');
 		Registry::load($route[0]);
 		$controllerName=$route[0].'Controller';
 		$control=new $controllerName();
-		$result=$control->invoke($route[1]);
+		$result=$control->invoke($route[1],$data);
 		return $result;
 	}
 	

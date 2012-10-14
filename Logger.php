@@ -8,7 +8,8 @@ class Logger {
 	static $logtype=array(
 		'db'=>'DATABASE',
 		'reg'=>'REGISTRY',
-		'evt'=>'EVENTS'
+		'evt'=>'EVENTS',
+		'int'=>'INTEGRITY'
 	);
 	
 	//Performs a few basic housekeepings to initialize the logger.
