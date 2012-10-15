@@ -7,7 +7,7 @@
 	//The routes array.
 	$routes=array();
 	
-	//The mappings.
+	//The mappings for profile.
 	$map['createacc']=array('Profile','createAccount');
 	$map['deleteacc']=array('Profile','deleteAccount');
 	$map['setuid']=array('Profile','setUserID');
@@ -18,14 +18,17 @@
 	$map['setpriv']=array('Profile','setPrivacy');
 	$map['getpriv']=array('Profile','getPrivacy');
 	
+	//The mappings for user-relations.
 	$map['frndreq']=array('UserRelations','createRelation');
 	$map['frndaccpt']=array('UserRelations','confirmRelation');
 	
+	//The mappings for publish-subscribe.
 	$map['createpost']=array('PubSub','createPost');
 	$map['deletepost']=array('PubSub','deletePost');
 	$map['fetchposts']=array('PubSub','fetchPosts');
 	$map['getpost']=array('PubSub','getPost');
 	
+	//The mappings for groupings.
 	$map['creategrp']=array('Grouping','createGroup');
 	$map['deletegrp']=array('Grouping','deleteGroup');
 	$map['updategrp']=array('Grouping','updateGroup');
@@ -33,6 +36,7 @@
 	$map['deletemem']=array('Grouping','deleteMember');
 	$map['mempriv']=array('Grouping','updatePrivilege');
 	
+	//The mappings for messaging.
 	$map['sendmsg']=array('Messaging','sendMessage');
 	$map['savedraft']=array('Messaging','saveDraft');
 	$map['fwdmsg']=array('Messaging','forwardMessage');
@@ -43,6 +47,7 @@
 	$map['markread']=array('Messaging','markRead');
 	$map['deletinmsg']=array('Messaging','deleteInboxMessages');
 	
+	//The mappings for search.
 	$map['search']=array('Search','search');
 	$map['searchpeople']=array('Search','searchPeople');
 	$map['searchmem']=array('Search','searchMembers');

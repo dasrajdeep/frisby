@@ -19,10 +19,14 @@ class Frisby {
 	}
 	
 	//Boots up the engine and invokes the dispatcher.
-	function call($method,$data) {
+	function call($method) {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		if(!$this->setup->checkSetup()) $this->setup->run();
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		
+		//Dispatch via dispatcher.
+		$data=func_get_args();
+		$data=array_slice($data,1);
 		$result=$this->dispatcher->dispatch($method,$data);
 		return $result;
 	}

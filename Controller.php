@@ -24,6 +24,17 @@ class Controller {
 		//If all executes successfully.
 		return $submod;
 	}
+	
+	//The master method to invoke the appropriate method.
+	function invoke($method,$data) {
+		//Loads the sub-module if the method is registered with the controller.		
+		$submod=$this->loadSubModule($method);	
+		if($submod==null) return array(false,ErrorHandler::fetchTrace());
+		
+		//Invoke method of sub-module.
+		$result=call_user_func_array(array($submod,$method),$data);
+		return $result;
+	}
 }
 
 ?>

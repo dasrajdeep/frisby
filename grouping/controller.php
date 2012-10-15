@@ -15,14 +15,6 @@ class GroupingController extends Controller {
 		$this->loc['Group']='Group.php';
 		$this->loc['GroupMembers']='GroupMembers.php';
 	}
-	
-	//The master method to invoke the appropriate method.
-	function invoke($method,$data) {
-		//Loads the sub-module if the method is registered with the controller.		
-		if(!$this->loadSubModule($method)) return array(false,ErrorHandler::fetchTrace());
-		
-		//Invoke method of sub-module.
-	}
 }
 
 ?>

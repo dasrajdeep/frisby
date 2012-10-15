@@ -13,15 +13,6 @@ class PubSubController extends Controller {
 		$this->loc['Publish']='Publish.php';
 		$this->loc['Read']='Read.php';
 	}
-	
-	//The master method to invoke the appropriate method.
-	function invoke($method,$data) {
-		//Loads the sub-module if the method is registered with the controller.	
-		$submod=$this->loadSubModule($method);	
-		if($submod==null) return array(false,ErrorHandler::fetchTrace());
-		
-		//Invoke method of sub-module.
-	}
 }
 
 ?>

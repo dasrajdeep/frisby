@@ -19,14 +19,6 @@ class MessagingController extends Controller {
 		$this->loc['Outbox']='Outbox.php';
 		$this->loc['Inbox']='Inbox.php';
 	}
-	
-	//The master method to invoke the appropriate method.
-	function invoke($method,$data) {
-		//Loads the sub-module if the method is registered with the controller.		
-		if(!$this->loadSubModule($method)) return array(false,ErrorHandler::fetchTrace());
-		
-		//Invoke method of sub-module.
-	}
 }
 
 ?>
