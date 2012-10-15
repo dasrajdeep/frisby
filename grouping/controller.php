@@ -4,10 +4,16 @@ class GroupingController extends Controller {
 	
 	function __construct() {
 		//Method associations with sub-modules.
-		$this->assoc['']='';
+		$this->assoc['createGroup']='Group';
+		$this->assoc['deleteGroup']='Group';
+		$this->assoc['updateGroup']='Group';
+		$this->assoc['addMember']='GroupMembers';
+		$this->assoc['deleteMember']='GroupMembers';
+		$this->assoc['updatePrivilege']='GroupMembers';
 	
 		//Locations of the sub-modules.
-		$this->loc['']='';
+		$this->loc['Group']='Group.php';
+		$this->loc['GroupMembers']='GroupMembers.php';
 	}
 	
 	//The master method to invoke the appropriate method.

@@ -8,6 +8,12 @@ class UserRelations {
 	function __construct($ref) {
 		$this->ctrl=$ref;
 	}
+	
+	//Create a new user relation.
+	function createRelation($accno1,$accno2) {}
+	
+	//Confirm requested relation.
+	function confirmRelation($accno1,$accno2) {}
 }
 
 ?>

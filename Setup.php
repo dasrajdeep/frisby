@@ -21,10 +21,10 @@ class Setup {
 		"create table %sprofile (acc_no int not null,avatar int,firstname text,middlename text,lastname text,alias text,email text,sex varchar(10),dob date,location text,primary key (acc_no))",
 		"create table %sprivacy (acc_no int,infofield text,restriction tinyint)",
 		"create table %suser_relations (user1 int,user2 int,type tinyint,status int)",
-		"create table %sgroups (group_id int not null auto_increment,name varchar(200) not null,description text,creationdate date,primary key (group_id),unique (name))",
-		"create table %sposts (post_id int not null auto_increment,publisher int,textdata text,timestamp bigint,type tinyint,node int,mime int,mime_type tinyint,primary key (post_id))",
+		"create table %sgroups (group_id int not null auto_increment,name varchar(200) not null,description text,type tinyint,creationdate date,primary key (group_id),unique (name))",
+		"create table %sposts (post_id int not null auto_increment,publisher int,textdata text,timestamp bigint,thread int,type tinyint,node int,mime int,mime_type tinyint,primary key (post_id))",
 		"create table %sgroup_members (member_id int,group_id int,type tinyint,joindate date)",
-		"create table %smessages (msg_id int not null auto_increment,sender int,receiver int,textdata text,timestamp bigint,primary key (msg_id))",
+		"create table %smessages (msg_id int not null auto_increment,sender int,receiver int,status tinyint,textdata text,timestamp bigint,primary key (msg_id))",
 		"create table %sevents (event_id int not null auto_increment,type tinyint,timestamp bigint,description text,origin int,target int,primary key (event_id))",
 		"create table %simages (img_id int not null auto_increment,type varchar(100),size bigint,imgdata longblob,primary key (img_id))"
 	);
