@@ -12,6 +12,7 @@
 	$map['deleteacc']=array('Profile','deleteAccount');
 	$map['setuid']=array('Profile','setUserID');
 	$map['createprof']=array('Profile','createProfile');
+	$map['setavatar']=array('Profile','setAvatar');
 	$map['deleteprof']=array('Profile','deleteProfile');
 	$map['updateprof']=array('Profile','updateProfile');
 	$map['fetchprof']=array('Profile','fetchProfile');

@@ -54,8 +54,7 @@ class Database {
         $query=sprintf("INSERT INTO %s (%s) VALUES (%s)",$table,$fields,$data);
         $result=mysql_query($query,self::$con);
 		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error());
-        if(!$result) return FALSE;
-        return TRUE;
+        return $result;
     }
     
 	//Update data in the database.

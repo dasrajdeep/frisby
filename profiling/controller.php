@@ -8,6 +8,7 @@ class ProfileController extends Controller {
 		$this->assoc['deleteAccount']='Account';
 		$this->assoc['setUserID']='Account';
 		$this->assoc['createProfile']='Profile';
+		$this->assoc['setAvatar']='Profile';
 		$this->assoc['deleteProfile']='Profile';
 		$this->assoc['updateProfile']='Profile'; 
 		$this->assoc['fetchProfile']='Profile';
