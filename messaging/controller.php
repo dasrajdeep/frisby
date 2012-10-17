@@ -6,7 +6,6 @@ class MessagingController extends Controller {
 		//Method associations with sub-modules.
 		$this->assoc['sendMessage']='Message';
 		$this->assoc['saveDraft']='Message';
-		$this->assoc['forwardMessage']='Message';
 		$this->assoc['fetchOutbox']='Outbox';
 		$this->assoc['deleteOutboxMessages']='Outbox';
 		$this->assoc['fetchInbox']='Inbox';

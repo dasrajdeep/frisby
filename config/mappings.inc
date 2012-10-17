@@ -40,7 +40,6 @@
 	//The mappings for messaging.
 	$map['sendmsg']=array('Messaging','sendMessage');
 	$map['savedraft']=array('Messaging','saveDraft');
-	$map['fwdmsg']=array('Messaging','forwardMessage');
 	$map['fetchoutbox']=array('Messaging','fetchOutbox');
 	$map['deleteoutmsg']=array('Messaging','deleteOutboxMessages');
 	$map['fetchinbox']=array('Messaging','fetchInbox');
@@ -53,8 +52,7 @@
 	$map['searchpeople']=array('Search','searchPeople');
 	$map['searchmem']=array('Search','searchMembers');
 	$map['searchgrp']=array('Search','searchGroup');
-	$map['searchallposts']=array('Search','searchAllPosts');
-	$map['searchnodeposts']=array('Search','searchNode');
+	$map['searchposts']=array('Search','searchPosts');
 	
 	//The routes for the modules.
 	$routes['Profile']='profiling/controller.php';

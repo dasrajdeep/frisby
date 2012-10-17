@@ -8,8 +8,7 @@ class SearchController extends Controller {
 		$this->assoc['searchPeople']='PeopleSearch';
 		$this->assoc['searchMembers']='PeopleSearch';
 		$this->assoc['searchGroup']='GroupSearch';
-		$this->assoc['searchAllPosts']='PostSearch';
-		$this->assoc['searchNode']='PostSearch';
+		$this->assoc['searchPosts']='PostSearch';
 	
 		//Locations of the sub-modules.
 		$this->loc['Search']='Search.php';

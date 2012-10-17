@@ -10,13 +10,20 @@ class Message {
 	}
 	
 	//Creates a new message.
-	function sendMessage($sender,$receiver,$msg) {}
+	function sendMessage($sender,$receiver,$msg) {
+		ErrorHandler::reset();
+		Database::add('messages',array('sender','receiver','textdata','timestamp','status'),array($sender,$receiver,$msg,time(),1));
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,null);
+	}
 	
 	//Save message as draft.
-	function saveDraft($sender,$receiver,$msg) {}
-	
-	//Forwards messages.
-	function forwardMessage($msgid,$receiver) {}
+	function saveDraft($sender,$receiver,$msg) {
+		ErrorHandler::reset();
+		Database::add('messages',array('sender','receiver','textdata','timestamp','status'),array($sender,$receiver,$msg,time(),0));
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,null);
+	}
 }
 
 ?>
