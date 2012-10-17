@@ -10,10 +10,16 @@ class Read {
 	}
 	
 	//Fetches post(s) from the database.
-	function fetchPosts($node,$age) {}
+	function fetchPosts($node,$age) {
+		ErrorHandler::reset();
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+	}
 	
 	//Gets a specific post.
-	function getPost($postid) {}
+	function getPost($postid) {
+		ErrorHandler::reset();
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+	}
 }
 
 ?>
