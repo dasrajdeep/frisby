@@ -23,7 +23,12 @@ class Registry {
 	
 	//Loads a specific module on demand.
 	static function load($module) {
-		require_once(self::$modroute[$module]);
+		require_once(self::$modroute[$module].'/controller.php');
+	}
+	
+	//Fetches the module location.
+	static function getLocation($module) {
+		return self::$modroute[$module];
 	}
 }
 

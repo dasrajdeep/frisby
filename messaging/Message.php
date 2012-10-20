@@ -24,6 +24,22 @@ class Message {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
+	
+	//Edit draft.
+	function editDraft($msgid,$msg) {
+		ErrorHandler::reset();
+		Database::update('messages',array('textdata'),array($msg),"msg_id=".$msgid);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,null);
+	}
+	
+	//Send draft.
+	function sendDraft($msgid) {
+		ErrorHandler::reset();
+		Database::update('messages',array('status'),array(1),"msg_id=".$msgid);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,null);
+	}
 }
 
 ?>

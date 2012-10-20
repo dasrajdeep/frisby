@@ -44,6 +44,9 @@ class Dispatcher {
 		Registry::load($route[0]);
 		$controllerName=$route[0].'Controller';
 		$control=new $controllerName();
+		
+		//Changes the directory.
+		chdir(Registry::getLocation($route[0]));
 		$result=$control->invoke($route[1],$data);
 		return $result;
 	}

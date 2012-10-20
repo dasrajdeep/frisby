@@ -10,10 +10,10 @@ class Publish {
 	}
 	
 	//Creates a new post.
-	function createPost($accno,$node,$thread,$data) {
+	function createPost($accno,$nodetype,$node,$thread,$data,$type=0) {
 		ErrorHandler::reset();
 		$ref=$this->handleMIME($data['mime_type'],$data['mime']);
-		Database::add('posts',array('publisher','textdata','mime_type','mime','type','node','thread','timestamp'),array($accno,$data['text'],$data['mime_type'],$ref,0,$node,$thread,time()));
+		Database::add('posts',array('publisher','textdata','mime_type','mime','type','nodetype','node','thread','timestamp'),array($accno,$data['text'],$data['mime_type'],$ref,$type,$nodetype,$node,$thread,time()));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -38,7 +38,7 @@ class Publish {
 			$raw=file_get_contents($data[0]);
 			$formed=addslashes($raw);
 			$link=Database::add('images',array('type','size','imgdata'),array($data[1],$size,$formed));
-			$newid=mysql_insert_id($link);
+			$newid=mysql_insert_id();
 			return $newid;
 		}
 		//Handle other MIME content. Requires external plugins.

@@ -17,6 +17,7 @@ class Logger {
 		self::$file=file_exists('log.txt');
 		if(!self::$file) self::$file=fopen('log.txt','w');
 		else self::$file=fopen('log.txt','a+');
+		$permitted=@chmod('log.txt',0777);
 	}
 	
 	//Dumps a log message to a file.

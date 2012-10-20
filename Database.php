@@ -37,7 +37,7 @@ class Database {
         else $criterion="";
         $query=sprintf("SELECT %s FROM %s%s",$values,$table,$criterion);
         $result=mysql_query($query,self::$con);
-		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error());
+		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
         if(!$result) return NULL;
         $rows=array();
         while($row=mysql_fetch_assoc($result)) array_push($rows, $row); 
@@ -53,7 +53,7 @@ class Database {
         $data=implode(",", $data);
         $query=sprintf("INSERT INTO %s (%s) VALUES (%s)",$table,$fields,$data);
         $result=mysql_query($query,self::$con);
-		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error());
+		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
         return $result;
     }
     
@@ -66,7 +66,7 @@ class Database {
         $set=implode(",", $assignments);
         $query=sprintf("UPDATE %s SET %s WHERE %s",$table,$set,$criterion);
         $result=mysql_query($query,self::$con);
-		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error());
+		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
         if(!$result) return FALSE;
         return true;
     }
@@ -77,7 +77,7 @@ class Database {
         $table=self::$prefix.$table;
         $query=sprintf("DELETE FROM %s WHERE %s",$table,$match);
         $result=mysql_query($query,self::$con);
-		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error());
+		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
         if(!$result) return FALSE;
         return true;
     }
@@ -86,7 +86,7 @@ class Database {
     public static function query($query) {
         if(!self::$con) return false;
         $result=mysql_query($query,self::$con);
-		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error());
+		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
         if(!$result) return false;
         else return $result;
     }

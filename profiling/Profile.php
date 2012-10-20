@@ -18,7 +18,7 @@ class Profile {
 		array_push($keys,'acc_no');
 		array_push($values,$accno);
 		Database::add('profile',$keys,$values);
-		$attr=array('alias,email,sex,dob,location');
+		$attr=array('alias','email','sex','dob','location');
 		foreach($attr as $a) Database::add('privacy',array('acc_no','infofield','restriction'),array($accno,$a,0));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
@@ -43,7 +43,10 @@ class Profile {
 	//Removes a profile from the system.
 	function deleteProfile($accno) {
 		ErrorHandler::reset();
+		$ref=Database::get('profile','avatar',"acc_no=".$accno);
+		if($ref[0]['avatar']) Database::remove('images',"img_id=".$ref[0]['avatar']);
 		Database::remove('profile',"acc_no=".$accno);
+		Database::remove('privacy',"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

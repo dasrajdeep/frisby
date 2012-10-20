@@ -12,7 +12,7 @@ class Outbox {
 	//Fetches the current outbox.
 	function fetchOutbox($accno) {
 		ErrorHandler::reset();
-		$set=Database::get('messages','*',"sender=".$accno);
+		$set=Database::get('messages','*',"status <5 and sender=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$set);
 	}

@@ -8,20 +8,20 @@
 	$routes=array();
 	
 	//The mappings for profile.
-	$map['createacc']=array('Profile','createAccount');
-	$map['deleteacc']=array('Profile','deleteAccount');
-	$map['setuid']=array('Profile','setUserID');
-	$map['createprof']=array('Profile','createProfile');
+	$map['createaccount']=array('Profile','createAccount');
+	$map['deleteaccount']=array('Profile','deleteAccount');
+	$map['setuserid']=array('Profile','setUserID');
+	$map['createprofile']=array('Profile','createProfile');
 	$map['setavatar']=array('Profile','setAvatar');
-	$map['deleteprof']=array('Profile','deleteProfile');
-	$map['updateprof']=array('Profile','updateProfile');
-	$map['fetchprof']=array('Profile','fetchProfile');
-	$map['setpriv']=array('Profile','setPrivacy');
-	$map['getpriv']=array('Profile','getPrivacy');
+	$map['deleteprofile']=array('Profile','deleteProfile');
+	$map['updateprofile']=array('Profile','updateProfile');
+	$map['fetchprofile']=array('Profile','fetchProfile');
+	$map['setprivacy']=array('Profile','setPrivacy');
+	$map['getprivacy']=array('Profile','getPrivacy');
 	
 	//The mappings for user-relations.
-	$map['frndreq']=array('UserRelations','createRelation');
-	$map['frndaccpt']=array('UserRelations','confirmRelation');
+	$map['friendrequest']=array('UserRelations','createRelation');
+	$map['friendaccept']=array('UserRelations','confirmRelation');
 	
 	//The mappings for publish-subscribe.
 	$map['createpost']=array('PubSub','createPost');
@@ -30,33 +30,38 @@
 	$map['getpost']=array('PubSub','getPost');
 	
 	//The mappings for groupings.
-	$map['creategrp']=array('Grouping','createGroup');
-	$map['deletegrp']=array('Grouping','deleteGroup');
-	$map['updategrp']=array('Grouping','updateGroup');
-	$map['addmem']=array('Grouping','addMember');
-	$map['deletemem']=array('Grouping','deleteMember');
-	$map['mempriv']=array('Grouping','updatePrivilege');
+	$map['creategroup']=array('Grouping','createGroup');
+	$map['deletegroup']=array('Grouping','deleteGroup');
+	$map['updategroup']=array('Grouping','updateGroup');
+	$map['addmember']=array('Grouping','addMember');
+	$map['deletemember']=array('Grouping','deleteMember');
+	$map['updateprivilege']=array('Grouping','updatePrivilege');
 	
 	//The mappings for messaging.
-	$map['sendmsg']=array('Messaging','sendMessage');
+	$map['sendmessage']=array('Messaging','sendMessage');
 	$map['savedraft']=array('Messaging','saveDraft');
+	$map['editdraft']=array('Messaging','editDraft');
+	$map['senddraft']=array('Messaging','sendDraft');
 	$map['fetchoutbox']=array('Messaging','fetchOutbox');
-	$map['deleteoutmsg']=array('Messaging','deleteOutboxMessages');
+	$map['deleteoutbox']=array('Messaging','deleteOutboxMessages');
 	$map['fetchinbox']=array('Messaging','fetchInbox');
 	$map['fetchunread']=array('Messaging','fetchUnread');
 	$map['markread']=array('Messaging','markRead');
-	$map['deletinmsg']=array('Messaging','deleteInboxMessages');
+	$map['deleteinbox']=array('Messaging','deleteInboxMessages');
 	
 	//The mappings for search.
 	$map['search']=array('Search','search');
 	$map['searchpeople']=array('Search','searchPeople');
-	$map['searchmem']=array('Search','searchMembers');
-	$map['searchgrp']=array('Search','searchGroup');
+	$map['searchmembers']=array('Search','searchMembers');
+	$map['searchgroup']=array('Search','searchGroup');
 	$map['searchposts']=array('Search','searchPosts');
 	
 	//The routes for the modules.
-	$routes['Profile']='profiling/controller.php';
-	$routes['UserRelations']='user-relations/controller.php';
-	$routes['Pubsub']='pubsub/controller.php';
+	$routes['Profile']='profiling';
+	$routes['UserRelations']='user-relations';
+	$routes['PubSub']='pubsub';
+	$routes['Grouping']='grouping';
+	$routes['Messaging']='messaging';
+	$routes['Search']='search';
 
 ?>

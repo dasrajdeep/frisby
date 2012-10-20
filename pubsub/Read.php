@@ -12,9 +12,9 @@ class Read {
 	//Fetches post(s) from the database. Currently supports only images for MIME.
 	function fetchPosts($node,$age) {
 		ErrorHandler::reset();
-		$fields='posts.*,images.imgdata';
+		$fields='frisby_posts.*,frisby_images.imgdata';
 		$criterion=sprintf("node=%s and timestamp>=%s and mime=img_id",$node,$age);
-		$set=Database::get('posts,images',$fields,$criterion);
+		$set=Database::get('posts,frisby_images',$fields,$criterion);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$set);
 	}
@@ -22,9 +22,9 @@ class Read {
 	//Gets a specific post.
 	function getPost($postid) {
 		ErrorHandler::reset();
-		$fields='posts.*,images.imgdata';
+		$fields='frisby_posts.*,frisby_images.imgdata';
 		$criterion=sprintf("post_id=%s and mime=img_id",$postid);
-		$set=Database::get('posts,images',$fields,$criterion);
+		$set=Database::get('posts,frisby_images',$fields,$criterion);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$set);
 	}

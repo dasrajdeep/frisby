@@ -13,7 +13,7 @@ class Group {
 	function createGroup($creator,$name,$desc,$type=0) {
 		ErrorHandler::reset();
 		$ref=Database::add('groups',array('name','description','type','creationdate'),array($name,$desc,$type,date("Y-m-d")));
-		if($ref) $ref=mysql_insert_id($ref);
+		if($ref) $ref=mysql_insert_id();
 		Database::add('group_members',array('member_id','group_id','type','joindate'),array($creator,$ref,1,date("Y-m-d")));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);

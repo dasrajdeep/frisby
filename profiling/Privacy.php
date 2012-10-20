@@ -22,7 +22,8 @@ class Privacy {
 	function getPrivacy($accno,$infoset) {
 		ErrorHandler::reset();
 		$set=null;
-		if(count($infoset)>0) implode(',',$infoset);
+		for($i=0;$i<count($infoset);$i++) $infoset[$i]=sprintf("'%s'",$infoset[$i]);
+		if(count($infoset)>0) $set=implode(',',$infoset);
 		if($set) $result=Database::get('privacy','infofield,restriction',sprintf("acc_no=%s and infofield in (%s)",$accno,$set));
 		else $result=Database::get('privacy','infofield,restriction',"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
