@@ -16,15 +16,15 @@ class Search {
 		foreach($domain as $d) {
 			if($d=='people') {
 				$mod=$this->ctrl->loadSubModule('searchPeople');
-				$results['people']=$mod->searchPeople($querydata);
+				$results['people']=$mod->searchPeople(array('name'=>$querydata));
 			}
 			else if($d=='groups') {
 				$mod=$this->ctrl->loadSubModule('searchGroup');
-				$results['groups']=$mod->searchGroup($querydata);
+				$results['groups']=$mod->searchGroup(array('name'=>$querydata));
 			}
 			else if($d=='posts') {
 				$mod=$this->ctrl->loadSubModule('searchPosts');
-				$results['posts']=$mod->searchPosts($querydata);
+				$results['posts']=$mod->searchPosts(array('text'=>$querydata));
 			}
 		}
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());

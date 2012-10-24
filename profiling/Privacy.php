@@ -21,10 +21,13 @@ class Privacy {
 	//Gets privacy settings. A set of information attributes are provided to specify the requirement.
 	function getPrivacy($accno,$infoset) {
 		ErrorHandler::reset();
+		$cnt=func_num_args();
 		$set=null;
-		for($i=0;$i<count($infoset);$i++) $infoset[$i]=sprintf("'%s'",$infoset[$i]);
-		if(count($infoset)>0) $set=implode(',',$infoset);
-		if($set) $result=Database::get('privacy','infofield,restriction',sprintf("acc_no=%s and infofield in (%s)",$accno,$set));
+		if($cnt==2) {
+			for($i=0;$i<count($infoset);$i++) $infoset[$i]=sprintf("'%s'",$infoset[$i]);
+			$set=implode(',',$infoset);
+			$result=Database::get('privacy','infofield,restriction',sprintf("acc_no=%s and infofield in (%s)",$accno,$set));
+		} 
 		else $result=Database::get('privacy','infofield,restriction',"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$result);

@@ -12,7 +12,7 @@ class GroupMembers {
 	//Adds a member to a group.
 	function addMember($accno,$grpid,$type=0) {
 		ErrorHandler::reset();
-		Database::add('group_members',array('member_id','group_id','type','joindate'),array($accno,$grpid,$type,date('Y-m-d')));
+		Database::add('group_members',array('member_id','group_id','type'),array($accno,$grpid,$type));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

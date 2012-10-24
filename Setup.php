@@ -35,9 +35,9 @@ class Setup {
 		"create table %sprofile (
 			acc_no int not null,
 			avatar int default 1,
-			firstname text,
-			middlename text,
-			lastname text,
+			firstname text default '',
+			middlename text default '',
+			lastname text default '',
 			alias text,
 			email text,
 			sex varchar(10),
@@ -146,6 +146,27 @@ class Setup {
 			select count(img_id) into @flag from %simages where img_id=new.mime;
 			if @flag=0 then set new.node=null; end if;
 			end if;
+		 end",
+		 "create trigger %strg_e after delete on %saccounts
+		  for each row begin
+			delete from %sprofile where acc_no=old.acc_no;
+		 end",
+		 "create trigger %strg_f after delete on %sprofile
+		  for each row begin
+			delete from %simages where img_id=old.avatar and old.avatar>1;
+			delete from %sprivacy where acc_no=old.acc_no;
+			delete from %suser_relations where (user1=old.acc_no or user2=old.acc_no);
+			delete from %sposts where publisher=old.acc_no;
+			delete from %smessages where (sender=old.acc_no or receiver=old.acc_no);
+			delete from %sgroup_members where member_id=old.acc_no;
+		 end",
+		 "create trigger %strg_g before insert on %smessages
+		  for each row begin
+			if new.status not in (0,1) then set new.status=0; end if;
+		 end",
+		 "create trigger %strg_h before update on %smessages
+		  for each row begin
+			if new.status not in (0,1,3,5,7,9,11) then set new.status=old.status; end if;
 		 end"
 	);
 	
@@ -164,7 +185,11 @@ class Setup {
 		"drop trigger if exists %strg_a",
 		"drop trigger if exists %strg_b",
 		"drop trigger if exists %strg_c",
-		"drop trigger if exists %strg_d"
+		"drop trigger if exists %strg_d",
+		"drop trigger if exists %strg_e",
+		"drop trigger if exists %strg_f",
+		"drop trigger if exists %strg_g",
+		"drop trigger if exists %strg_h"
 	);
 	
 	//Checks the current setup.

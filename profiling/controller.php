@@ -6,7 +6,7 @@ class ProfileController extends Controller {
 		//Method associations with sub-modules.
 		$this->assoc['createAccount']='Account';
 		$this->assoc['deleteAccount']='Account';
-		$this->assoc['setUserID']='Account';
+		$this->assoc['updateAccount']='Account';
 		$this->assoc['createProfile']='Profile';
 		$this->assoc['setAvatar']='Profile';
 		$this->assoc['deleteProfile']='Profile';

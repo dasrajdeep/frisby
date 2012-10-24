@@ -10,9 +10,9 @@ class Account {
 	}
 	
 	//Creates a new account.
-	function createAccount($userid=null) {
+	function createAccount($userid=null,$status=0) {
 		ErrorHandler::reset();
-		Database::add('accounts',array('acc_id'),array($userid));
+		Database::add('accounts',array('acc_id','status'),array($userid,$status));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -26,9 +26,12 @@ class Account {
 	}
 	
 	//Sets an user ID explicitly.
-	function setUserID($accno,$userid) {
+	function updateAccount($accno,$data) {
 		ErrorHandler::reset();
-		Database::update('accounts',array('acc_id'),array($userid),"acc_no=".$accno);
+		$keys=array_keys($data);
+		$values=array();
+		foreach($keys as $k) array_push($values,$data[$k]);
+		Database::update('accounts',$keys,$values,"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

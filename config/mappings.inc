@@ -10,7 +10,7 @@
 	//The mappings for profile.
 	$map['createaccount']=array('Profile','createAccount');
 	$map['deleteaccount']=array('Profile','deleteAccount');
-	$map['setuserid']=array('Profile','setUserID');
+	$map['updateaccount']=array('Profile','updateAccount');
 	$map['createprofile']=array('Profile','createProfile');
 	$map['setavatar']=array('Profile','setAvatar');
 	$map['deleteprofile']=array('Profile','deleteProfile');
@@ -53,7 +53,7 @@
 	$map['search']=array('Search','search');
 	$map['searchpeople']=array('Search','searchPeople');
 	$map['searchmembers']=array('Search','searchMembers');
-	$map['searchgroup']=array('Search','searchGroup');
+	$map['searchgroups']=array('Search','searchGroup');
 	$map['searchposts']=array('Search','searchPosts');
 	
 	//The routes for the modules.

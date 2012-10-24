@@ -22,14 +22,19 @@
 
 		$frisby=new Frisby();
 		$data=array(
-			''
+			'text'=>'wrong'
 		);
-		$result=$frisby->call('setup_installDB');
+		$result=$frisby->call('search','eg',array('people','groups','posts'));
 
 		if($result[0]) {
 			echo '<div class="notify" style="color:#ffffff;background-color:#00cd00">SUCCESS</div>';
-			if($result[1]) {
-				echo '<img width="500px" src="data:image/png;base64,'.base64_encode($result[1][0]['imgdata']).'" />';
+			if($result[1]!=null) {
+				echo '<div>Data Set Received</div>';
+				//if(isset($result[1][0]['imgdata'])) echo '<img src="data:image/png;base64,'.base64_encode($result[1][0]['imgdata']).'" />';
+				//$keys=array_keys($result[1][0]);
+				//foreach($keys as $k) if($k!='imgdata') echo sprintf('<div>%s: %s</div>',$k,$result[1][0][$k]);
+				echo '<br/>';
+				print_r($result[1]);
 			}
 		}
 		else echo '<div class="notify" style="color:#ebedee;background-color:#cc0000">ERROR</div>';

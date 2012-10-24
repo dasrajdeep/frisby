@@ -8,7 +8,7 @@ class Controller {
 	protected $loc=array();
 	
 	//Loads the required sub-module for the child controller.
-	protected function loadSubModule($method) {
+	public function loadSubModule($method) {
 		//Check whether method is registered with the controller.
 		if(!array_key_exists($method,$this->assoc)) {
 			ErrorHandler::fire('int','Method not registered with controller.');

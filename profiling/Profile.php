@@ -25,16 +25,15 @@ class Profile {
 	}
 	
 	//Sets an avatar for the profile.
-	function setAvatar($accno,$img,$type) {
+	function setAvatar($accno,$img) {
 		ErrorHandler::reset();
-		$size=getimagesize($img);
-		$raw=file_get_contents($img);
-		$formed=addslashes($raw);
-		$link=Database::add('images',array('type','size','imgdata'),array($type,$size,$formed));
-		$newid=mysql_insert_id($link);
+		$iminfo=getimagesize($img);
+		$imgdata=addslashes(file_get_contents($img));
+		Database::add('images',array('type','imgdata','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
+		$newid=mysql_insert_id();
 		$old=Database::get('profile','avatar',"acc_no=".$accno);
 		if($old && $old[0]['avatar']) $old=$old[0]['avatar'];
-		if($old) Database::remove('images',"img_id=".$old);
+		if($old && $old>1) Database::remove('images',"img_id=".$old);
 		Database::update('profile',array('avatar'),array($newid),"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
@@ -43,10 +42,7 @@ class Profile {
 	//Removes a profile from the system.
 	function deleteProfile($accno) {
 		ErrorHandler::reset();
-		$ref=Database::get('profile','avatar',"acc_no=".$accno);
-		if($ref[0]['avatar']) Database::remove('images',"img_id=".$ref[0]['avatar']);
 		Database::remove('profile',"acc_no=".$accno);
-		Database::remove('privacy',"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -65,9 +61,13 @@ class Profile {
 	//Fetches profile information. The attributes provided fetch specific data. If nothing is provided, the entire profile is returned.
 	function fetchProfile($accno,$attrs) {
 		ErrorHandler::reset();
-		$cols='*';
-		if(count($attrs)>0) $cols=implode(',',$attrs);
-		$result=Database::get('profile',$cols,"acc_no=".$accno);
+		$cnt=func_num_args();
+		if($cnt==1) $result=Database::get('profile','*',"acc_no=".$accno);
+		else {
+			if(in_array('avatar',$attrs)) array_push($attrs,'imgdata');
+			$cols=implode(',',$attrs);
+			$result=Database::get(sprintf('profile,%simages',Database::getPrefix()),$cols,"avatar=img_id and acc_no=".$accno);
+		}
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,$result);
 	}

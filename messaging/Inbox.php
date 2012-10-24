@@ -9,12 +9,10 @@ class Inbox {
 		$this->ctrl=$ref;
 	}
 	
-	//Fetches messages from inbox. If no ids are specified, fetches entire inbox.
-	function fetchInbox($accno,$idlist) {
+	//Fetches messages from inbox.
+	function fetchInbox($accno) {
 		ErrorHandler::reset();
-		$idset=implode(',',$idlist);
-		if(count($idlist)>0) $set=Database::get('messages','*',sprintf("receiver=%s and status>0 and status<5 and msg_id in (%s)",$accno,$idset));
-		else $set=Database::get('messages','*',"status>0 and receiver=".$accno);
+		$set=Database::get('messages','*',"status in (1,3,5,7) and receiver=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$set);
 	}
@@ -22,7 +20,7 @@ class Inbox {
 	//Fetches unread messages.
 	function fetchUnread($accno) {
 		ErrorHandler::reset();
-		$set=Database::get('messages','*',"status=1 and receiver=".$accno);
+		$set=Database::get('messages','*',"status in (1,5) and receiver=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$set);
 	}
@@ -31,7 +29,7 @@ class Inbox {
 	function markRead($msgids) {
 		ErrorHandler::reset();
 		$set=implode(',',$msgids);
-		Database::update('messages',array('status'),array(2),sprintf("msg_id in (%s)",$set));
+		Database::query(sprintf("update %smessages set status=status+2 where msg_id in (%s)",Database::getPrefix(),$set));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -40,8 +38,9 @@ class Inbox {
 	function deleteInboxMessages($idlist,$accno) {
 		ErrorHandler::reset();
 		$set=implode(',',$idlist);
-		if(count($idlist)>0) Database::update('messages',array('status'),array(5),sprintf("msg_id in (%s)",$set));
-		else Database::update('messages',array('status'),array(5),"status>0 and receiver=".$accno);
+		if(count($idlist)>0) Database::query(sprintf("update %smessages set status=status+8 where status in (1,3,5,7) and msg_id in (%s)",Database::getPrefix(),$set));
+		else Database::query(sprintf("update %smessages set status=status+8 where status in (1,3,5,7) and receiver=%s",Database::getPrefix(),$accno));
+		Database::remove('messages',"status in (13,15)");
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

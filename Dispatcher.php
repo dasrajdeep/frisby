@@ -38,6 +38,10 @@ class Dispatcher {
 		//Consults registry to obtain the appropriate route.
 		$route=Registry::read($method);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		if(!Registry::validateArguments($route[1],$data)) {
+			ErrorHandler::fire('int','Invalid number/type of arguments.');
+			return array(false,ErrorHandler::fetchTrace());
+		}
 		
 		//Invokes the requested method.
 		require_once('Controller.php');

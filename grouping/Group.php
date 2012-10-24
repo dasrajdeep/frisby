@@ -12,9 +12,9 @@ class Group {
 	//Creates a new group.
 	function createGroup($creator,$name,$desc,$type=0) {
 		ErrorHandler::reset();
-		$ref=Database::add('groups',array('name','description','type','creationdate'),array($name,$desc,$type,date("Y-m-d")));
+		$ref=Database::add('groups',array('name','description','type'),array($name,$desc,$type));
 		if($ref) $ref=mysql_insert_id();
-		Database::add('group_members',array('member_id','group_id','type','joindate'),array($creator,$ref,1,date("Y-m-d")));
+		Database::add('group_members',array('member_id','group_id','type'),array($creator,$ref,1));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

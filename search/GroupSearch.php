@@ -13,15 +13,12 @@ class GroupSearch {
 	function searchGroup($querydata) {
 		ErrorHandler::reset();
 		$keys=array_keys($querydata);
-		$matcher='';
-		foreach($keys as $k) {
-			if($k=='type' || $k=='creationdate') continue;
-			if($matcher=='') $matcher.=sprintf("%s like '%%%s%%'",$k,$querydata[$k]);
-			else $matcher.=sprintf(" and %s like '%%%s%%'",$k,$querydata[$k]);
-		}
-		if(isset($querydata['type'])) $matcher.=" and type=".$querydata['type'];
-		if(isset($querydata['creationdate'])) $matcher.=" and creationdate>=".$querydata['creationdate'];
-		$set=Database::get('groups','*',$matcher); 
+		$patterns=array();
+		foreach($keys as $k) if($k!='type' && $k!='creationdate') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
+		if(isset($querydata['type'])) array_push($patterns,"type=".$querydata['type']);
+		if(isset($querydata['creationdate'])) array_push($patterns,"creationdate>=".$querydata['creationdate']);
+		$matcher=implode(' and ',$patterns);
+		$set=Database::get('groups','*',$matcher);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		return array(true,$set);
 	}

@@ -13,7 +13,7 @@ class Publish {
 	function createPost($accno,$nodetype,$node,$thread,$data,$type=0) {
 		ErrorHandler::reset();
 		$ref=$this->handleMIME($data['mime_type'],$data['mime']);
-		Database::add('posts',array('publisher','textdata','mime_type','mime','type','nodetype','node','thread','timestamp'),array($accno,$data['text'],$data['mime_type'],$ref,$type,$nodetype,$node,$thread,time()));
+		Database::add('posts',array('publisher','textdata','mime_type','mime','type','nodetype','node','thread'),array($accno,$data['text'],$data['mime_type'],$ref,$type,$nodetype,$node,$thread));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -30,14 +30,13 @@ class Publish {
 	}
 	
 	//Handles the MIME content associated with a post.
-	private function handleMIME($type,$data) {
+	private function handleMIME($type,$datasrc) {
 		if($type==0) return null;
 		//Handle image content.
 		else if($type==1) {
-			$size=getimagesize($data[0]);
-			$raw=file_get_contents($data[0]);
-			$formed=addslashes($raw);
-			$link=Database::add('images',array('type','size','imgdata'),array($data[1],$size,$formed));
+			$iminfo=getimagesize($datasrc);
+			$imgdata=addslashes(file_get_contents($datasrc));
+			Database::add('images',array('type','imgdata','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
 			$newid=mysql_insert_id();
 			return $newid;
 		}

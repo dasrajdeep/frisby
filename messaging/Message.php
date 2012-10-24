@@ -12,7 +12,7 @@ class Message {
 	//Creates a new message.
 	function sendMessage($sender,$receiver,$msg) {
 		ErrorHandler::reset();
-		Database::add('messages',array('sender','receiver','textdata','timestamp','status'),array($sender,$receiver,$msg,time(),1));
+		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,1));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -20,7 +20,7 @@ class Message {
 	//Save message as draft.
 	function saveDraft($sender,$receiver,$msg) {
 		ErrorHandler::reset();
-		Database::add('messages',array('sender','receiver','textdata','timestamp','status'),array($sender,$receiver,$msg,time(),0));
+		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,0));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
