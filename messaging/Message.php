@@ -13,6 +13,7 @@ class Message {
 	function sendMessage($sender,$receiver,$msg) {
 		ErrorHandler::reset();
 		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,1));
+		EventHandler::fire('sentmessage',$sender,$receiver);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -37,6 +38,8 @@ class Message {
 	function sendDraft($msgid) {
 		ErrorHandler::reset();
 		Database::update('messages',array('status'),array(1),"msg_id=".$msgid);
+		$set=Database::get('messages','sender,receiver',"msg_id=".$msgid);
+		EventHandler::fire('sentmessage',$set[0]['sender'],$set[0]['receiver']);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

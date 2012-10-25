@@ -24,7 +24,7 @@
 		$data=array(
 			'text'=>'wrong'
 		);
-		$result=$frisby->call('search','eg',array('people','groups','posts'));
+		$result=$frisby->call('');
 
 		if($result[0]) {
 			echo '<div class="notify" style="color:#ffffff;background-color:#00cd00">SUCCESS</div>';

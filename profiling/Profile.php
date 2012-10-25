@@ -20,6 +20,7 @@ class Profile {
 		Database::add('profile',$keys,$values);
 		$attr=array('alias','email','sex','dob','location');
 		foreach($attr as $a) Database::add('privacy',array('acc_no','infofield','restriction'),array($accno,$a,0));
+		EventHandler::fire('joinednetwork',$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -43,6 +44,7 @@ class Profile {
 	function deleteProfile($accno) {
 		ErrorHandler::reset();
 		Database::remove('profile',"acc_no=".$accno);
+		EventHandler::fire('leftnetwork',$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -54,6 +56,7 @@ class Profile {
 		$values=array();
 		foreach($keys as $k) array_push($values,$data[$k]);
 		Database::update('profile',$keys,$values,"acc_no=".$accno);
+		EventHandler::fire('updatedprofile',$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

@@ -15,6 +15,7 @@ class Group {
 		$ref=Database::add('groups',array('name','description','type'),array($name,$desc,$type));
 		if($ref) $ref=mysql_insert_id();
 		Database::add('group_members',array('member_id','group_id','type'),array($creator,$ref,1));
+		EventHandler::fire('creatednewgroup',$creator,$ref);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

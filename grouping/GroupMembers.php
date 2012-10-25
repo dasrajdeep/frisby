@@ -13,6 +13,7 @@ class GroupMembers {
 	function addMember($accno,$grpid,$type=0) {
 		ErrorHandler::reset();
 		Database::add('group_members',array('member_id','group_id','type'),array($accno,$grpid,$type));
+		EventHandler::fire('joinedgroup',$accno,$grpid);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -21,6 +22,7 @@ class GroupMembers {
 	function deleteMember($accno,$grpid) {
 		ErrorHandler::reset();
 		Database::remove('group_members',sprintf("member_id=%s and group_id=%s",$accno,$grpid));
+		EventHandler::fire('leftgroup',$accno,$grpid);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -29,6 +31,7 @@ class GroupMembers {
 	function updatePrivilege($accno,$grpid,$type) {
 		ErrorHandler::reset();
 		Database::update('group_members',array('type'),array($type),sprintf("member_id=%s and group_id=%s",$accno,$grpid));
+		if(type==2) EventHandler::fire('becamemoderator',$accno,$grpid);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

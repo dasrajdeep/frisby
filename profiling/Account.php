@@ -10,9 +10,13 @@ class Account {
 	}
 	
 	//Creates a new account.
-	function createAccount($userid=null,$status=0) {
+	function createAccount($info,$status=0) {
 		ErrorHandler::reset();
-		Database::add('accounts',array('acc_id','status'),array($userid,$status));
+		$keys=array_keys($info);
+		array_push($keys,'status');
+		$values=array_values($info);
+		array_push($values,$status);
+		Database::add('accounts',$keys,$values);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

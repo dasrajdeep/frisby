@@ -22,6 +22,7 @@
 	//The mappings for user-relations.
 	$map['friendrequest']=array('UserRelations','createRelation');
 	$map['friendaccept']=array('UserRelations','confirmRelation');
+	$map['changerelation']=array('UserRelations','updateRelation');
 	
 	//The mappings for publish-subscribe.
 	$map['createpost']=array('PubSub','createPost');
