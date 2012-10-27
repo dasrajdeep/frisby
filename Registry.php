@@ -1,19 +1,73 @@
 <?php
+/**
+ * This file contains the registry which contains the method mappings and signatures.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Frisby.
+ * Frisby is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Frisby is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * @category   PHP
+ * @package    Frisby
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      File available since Release 1.0
+ */
 
+/**
+ * This class is used to access the registry of the engine and load modules.
+ * 
+ * <code>
+ * require_once('Registry.php');
+ * 
+ * $map=Registry::read('method_name');
+ * Registry::load($map[0]);
+ * </code> 
+ */
 class Registry {
-	//Contains the names of all the modules.
+	/**
+         * Contains the names of the modules used by the engine
+         * 
+         * @var array 
+         */
 	private static $modules=array('events','grouping','messaging','profiling','pubsub','search','user-relations');
 	
-	//Contains the mappings for all the methods that are accessible.
+	/**
+         * Contains the mappings from the external method names to the internal path
+         * 
+         * @var array
+         */
 	private static $map=array();
 	
-	//Contains location information regarding the modules.
+	/**
+         * Contains the routes for the internal methods
+         * 
+         * @var array
+         */
 	private static $modroute=array();
 	
-	//Contains the method signatures.
+	/**
+         * Contains the method signatures
+         * 
+         * @var array
+         */
 	private static $sig=array();
 	
-	//Initializes the registry.
+	/**
+         * Loads the mappings and signatures from an external file and also checks for integrity
+         */
 	static function init() {
 		require_once('config/mappings.inc');
 		self::$map=$map;
@@ -26,24 +80,44 @@ class Registry {
 		foreach($mod as $m) if(!in_array($m,$loaded)) ErrorHandler::fire('int',sprintf('Method "%s" not registered.',$m));
 	}
 	
-	//Reads a specific mapping from the registry.
+	/**
+         * Fetches the route associated with an external method name
+         * 
+         * @param string $method
+         * @return array 
+         */
 	static function read($method) {
 		$route=@self::$map[$method];
 		if($route==null) ErrorHandler::fire('reg','Method does not exist.');
 		return $route;
 	}
 	
-	//Loads a specific module on demand.
+	/**
+         * Loads a module controller into the engine
+         * 
+         * @param string $module 
+         */
 	static function load($module) {
 		require_once(self::$modroute[$module].'/controller.php');
 	}
 	
-	//Fetches the module location.
+	/**
+         * Fetches the location of a module relative to the base directory
+         * 
+         * @param string $module
+         * @return string 
+         */
 	static function getLocation($module) {
 		return self::$modroute[$module];
 	}
 	
-	//Validates argument list for a method.
+	/**
+         * Validates an argument list passed to a method against its signature
+         * 
+         * @param string $method
+         * @param array $list
+         * @return boolean 
+         */
 	static function validateArguments($method,$list) {
 		if(!array_key_exists($method,self::$sig)) return false;
 		$ms=self::$sig[$method];
@@ -56,7 +130,20 @@ class Registry {
 		return true;
 	}
 	
-	//Scans all the modules to find their public methods.
+	/**
+         * Fetches the external names of the methods that are invokable by the user
+         * 
+         * @return array
+         */
+	static function getMethodNames() {
+		return array_keys(self::$map);
+	}
+	
+	/**
+         * Scans the class files of the engine to get a list of the defined methods
+         * 
+         * @return array 
+         */
 	private static function scanModules() {
 		$methods=array();
 		foreach(self::$modules as $m) {

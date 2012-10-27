@@ -1,8 +1,48 @@
 <?php
+/**
+ * This file contains the Setup class used in setting up the engine.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Frisby.
+ * Frisby is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Frisby is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * @category   PHP
+ * @package    Frisby
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      File available since Release 1.0
+ */
 
+/**
+ * An instance of this class is used to install/uninstall the database schema along with its default data.
+ * 
+ * <code>
+ * require_once('Setup.php');
+ * 
+ * $setup=new Setup();
+ * $setup->run();
+ * </code> 
+ */
 class Setup {
 	
-	//Checks the current setup.
+	/**
+         * Checks if the database is properly configured or not
+         * 
+         * @return boolean 
+         */
 	function checkSetup() {
 		require('config/schema_tables.inc');
 		$keys=array_keys($tables);
@@ -11,14 +51,18 @@ class Setup {
 		else return true;
 	}
 	
-	//Runs the setup and configures the engine. Cleans and installs.
+	/**
+         * This method first uninstalls the currently installed schema and then reinstalls it 
+         */
 	function run() {
 		ErrorHandler::reset();
 		$this->uninstallDB();
 		$this->installDB();
 	}
 	
-	//A complete installation of the database.
+	/**
+         * Installs the database schema 
+         */
 	function installDB() {
 		$this->installDBSchema();
 		$this->installViews();
@@ -26,14 +70,18 @@ class Setup {
 		$this->installData();
 	}
 	
-	//Install database schema.
+	/**
+         * Installs the tables of the schema 
+         */
 	function installDBSchema() {
 		$pre=Database::getPrefix();
 		require('config/schema_tables.inc');
 		foreach($tables as $q) Database::query(str_replace('%s',$pre,$q));
 	}
 	
-	//Install default data.
+	/**
+         * Inserts default data into the installed schema 
+         */
 	private function installData() {
 		Database::add('mime',array('mime_id','type','ref_id'),array(0,0,0));
 		require('config/schema_data.inc');
@@ -44,21 +92,27 @@ class Setup {
 		Database::query(sprintf("insert into %simages (type,imgdata,width,height,bits) values ('%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],$img,$iminfo[0],$iminfo[1],$iminfo['bits']));
 	}
 	
-	//Install database views.
+	/**
+         * Installs the views of the schema 
+         */
 	private function installViews() {
 		require('config/schema_views.inc');
 		$pre=Database::getPrefix();
 		foreach($views as $v) Database::query(str_replace('%s',$pre,$v));
 	}
 	
-	//Install database triggers.
+	/**
+         * Installs the triggers of the schema 
+         */
 	function installDBTriggers() {
 		require('config/schema_triggers.inc');
 		$pre=Database::getPrefix();
 		foreach($triggers as $q) Database::query(str_replace('%s',$pre,$q));
 	}
 	
-	//Uninstall database schema.
+	/**
+         * Completely uninstalls the database schema 
+         */
 	function uninstallDB() {
 		$ext=Database::get('extensions','table_name',false);
 		foreach($ext as $e) Database::query(sprintf("drop table if exists %mime_%s",Database::getPrefix(),$e['table_name']));

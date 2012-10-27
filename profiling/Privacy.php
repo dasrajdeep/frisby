@@ -1,15 +1,66 @@
 <?php
+/**
+ * This file contains the Privacy class.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Frisby.
+ * Frisby is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Frisby is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * @category   PHP
+ * @package    Frisby
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      File available since Release 1.0
+ */
 
+/**
+ * An instance of this class is used to manage privacy settings for a user profile.
+ * 
+ * <code>
+ * require_once('Privacy.php');
+ * 
+ * $priv=new Privacy();
+ * $settings=array('sex'=>1,'dob'=>1);
+ * $priv->setPrivacy(userid,$settings);
+ * </code> 
+ */
 class Privacy {
-	//Reference to the calling controller.
+	/**
+         * Contains a reference to the module controller
+         * 
+         * @var object
+         */
 	private $ctrl=null;
 	
-	//Stores the reference to the caller.
+	/**
+         * Passes a reference of the module controller to this object
+         * 
+         * @param object $ref 
+         */
 	function __construct($ref) {
 		$this->ctrl=$ref;
 	}
 	
-	//Sets the privacy attributes for all or specific information.
+	/**
+         * Updates privacy settings for a user profile
+         * 
+         * @param int $accno
+         * @param array $settings
+         * @return array 
+         */
 	function setPrivacy($accno,$settings) {
 		ErrorHandler::reset();
 		$keys=array_keys($settings);
@@ -18,7 +69,13 @@ class Privacy {
 		else return array(true,null);
 	}
 	
-	//Gets privacy settings. A set of information attributes are provided to specify the requirement.
+	/**
+         * Fetches privacy settings for a user profile
+         * 
+         * @param int $accno
+         * @param array $infoset
+         * @return array 
+         */
 	function getPrivacy($accno,$infoset) {
 		ErrorHandler::reset();
 		$cnt=func_num_args();

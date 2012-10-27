@@ -33,7 +33,7 @@
 		$data=array(
 			'text'=>'wrong'
 		);
-		$result=$frisby->call('');
+		$result=$frisby->call('reg_getMethodNames');
 
 		if($result[0]) {
 			echo '<div class="notify" style="color:#ffffff;background-color:#00cd00">SUCCESS</div>';
@@ -43,7 +43,8 @@
 				//$keys=array_keys($result[1][0]);
 				//foreach($keys as $k) if($k!='imgdata') echo sprintf('<div>%s: %s</div>',$k,$result[1][0][$k]);
 				echo '<br/>';
-				print_r($result[1]);
+				echo sprintf('<div><b>%s Items in Set</b></div>',count($result[1]));
+				foreach($result[1] as $r) {print_r($r);echo '<br/>';}
 			}
 		}
 		else echo '<div class="notify" style="color:#ebedee;background-color:#cc0000">ERROR</div>';

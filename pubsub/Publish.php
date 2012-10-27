@@ -1,15 +1,68 @@
 <?php
+/**
+ * This file contains the Publish class.
+ * 
+ * PHP version 5.3
+ * 
+ * LICENSE: This file is part of Frisby.
+ * Frisby is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * Frisby is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
+ * 
+ * @category   PHP
+ * @package    Frisby
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      File available since Release 1.0
+ */
 
+/**
+ * An instance of this class is used to manage publications.
+ * 
+ * <code>
+ * require_once('Publish.php');
+ * 
+ * $pub=new Publish();
+ * $data=array('text'=>'sample');
+ * $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
+ * </code> 
+ */
 class Publish {
-	//Reference to the calling controller.
+	/**
+         * Contains a reference to the module controller
+         * 
+         * @var object
+         */
 	private $ctrl=null;
 	
-	//Stores the reference to the caller.
+	/**
+         * Passes a reference of the module controller to this object
+         * 
+         * @param object $ref 
+         */
 	function __construct($ref) {
 		$this->ctrl=$ref;
 	}
 	
-	//Creates a new post.
+	/**
+         * Creates a new post
+         * 
+         * @param int $accno
+         * @param array $noderef
+         * @param int $thread
+         * @param array $data
+         * @return array 
+         */
 	function createPost($accno,$noderef,$thread,$data) {
 		ErrorHandler::reset();
 		$ref=$this->handleMIME($data['mime_type'],$data['mime']);
@@ -23,7 +76,12 @@ class Publish {
 		else return array(true,null);
 	}
 	
-	//Removes a post.
+	/**
+         * Deletes a post
+         * 
+         * @param int $postid
+         * @return array 
+         */
 	function deletePost($postid) {
 		ErrorHandler::reset();
 		$pre=Database::get('posts','mime',"post_id=".$postid);
@@ -42,7 +100,13 @@ class Publish {
 		else return array(true,null);
 	}
 	
-	//Handles the MIME content associated with a post.
+	/**
+         * Handles the MIME content associated with a post
+         * 
+         * @param int $type
+         * @param string $datasrc
+         * @return int 
+         */
 	private function handleMIME($type,$datasrc) {
 		if($type==0) return 0;
 		//Handle image content.

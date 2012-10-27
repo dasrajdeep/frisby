@@ -16,6 +16,7 @@ $uninstallqueries=array(
 	"drop table if exists %sgroups",
 	"drop table if exists %saccounts",
 	"drop table if exists %sextensions",
+        "drop view if exists %sview_profile",
 	"drop trigger if exists %strg_a",
 	"drop trigger if exists %strg_b",
 	"drop trigger if exists %strg_c",

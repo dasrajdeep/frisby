@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Frisby Social Engine » Frisby</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Frisby Social Engine</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu"></ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/Frisby.html" title="Frisby"><i class="icon-folder-open"></i>Frisby</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#Setup" title="An instance of this class is used to install/uninstall the database schema along with its default data.">Setup</a></li>
+<li><a href="#GroupingController" title="An instance of this class is used to register methods of the grouping module.">GroupingController</a></li>
+<li><a href="#Group" title="An instance of this class is used to manage groups in the social network.">Group</a></li>
+<li><a href="#GroupMembers" title="An instance of this class is used to manage group members.">GroupMembers</a></li>
+<li><a href="#Dispatcher" title="An instance of this class represents a dispatcher for the methods registered in the engine.">Dispatcher</a></li>
+<li><a href="#Logger" title="This class is used to log engine related events to a log file.">Logger</a></li>
+<li><a href="#GroupSearch" title="An instance of this class is used to search for groups in the social network.">GroupSearch</a></li>
+<li><a href="#SearchController" title="An instance of this class is used to register methods of the search module.">SearchController</a></li>
+<li><a href="#PostSearch" title="An instance of this class is used to search publications within the social network.">PostSearch</a></li>
+<li><a href="#PeopleSearch" title="An instance of this class is used to search people within the social network.">PeopleSearch</a></li>
+<li><a href="#Search" title="An instance of this class is used to carry out a generic search.">Search</a></li>
+<li><a href="#Registry" title="This class is used to access the registry of the engine and load modules.">Registry</a></li>
+<li><a href="#EventsController" title="An instance of this class is used to register the methods of the events module.">EventsController</a></li>
+<li><a href="#EventRegister" title="An instance of this class is used to register event types.">EventRegister</a></li>
+<li><a href="#Event" title="An instance of this class is used to manage events explicitly.">Event</a></li>
+<li><a href="#Controller" title="An instance of this class represents a generic controller super-class which any controller class may extend.">Controller</a></li>
+<li><a href="#MessagingController" title="An instance of this class is used to register methods of the messaging module.">MessagingController</a></li>
+<li><a href="#Message" title="An instance of this class is used to create and send messages.">Message</a></li>
+<li><a href="#Inbox" title="An instance of this class is used to manage message inboxes.">Inbox</a></li>
+<li><a href="#Outbox" title="An instance of this class is used to manage outboxes.">Outbox</a></li>
+<li><a href="#Frisby" title="An instance of this class represents a controller for the engine.">Frisby</a></li>
+<li><a href="#ErrorHandler" title="This class is used to manage errors that are triggered within the engine.">ErrorHandler</a></li>
+<li><a href="#PubSubController" title="An instance of this class is used to register methods of the pubsub module.">PubSubController</a></li>
+<li><a href="#Read" title="An instance of this class is used to retrieve publications.">Read</a></li>
+<li><a href="#Publish" title="An instance of this class is used to manage publications.">Publish</a></li>
+<li><a href="#Mime" title="An instance of this class is used to manage MIME content for posts.">Mime</a></li>
+<li><a href="#Database" title="An instance of this class represents a Database helper to manage database operations.">Database</a></li>
+<li><a href="#EventHandler" title="This class can be used to fire an implicit event from within a module,">EventHandler</a></li>
+<li><a href="#UserRelationsController" title="An instance of this class is used to register methods of the user-relations module.">UserRelationsController</a></li>
+<li><a href="#UserRelations" title="An instance of this class is used to manage user relations in the social network.">UserRelations</a></li>
+<li><a href="#ExtendedProfile" title="An instance of this class is used to modify profile attributes.">ExtendedProfile</a></li>
+<li><a href="#ProfileController" title="An instance of this class is used to register methods of the profile module.">ProfileController</a></li>
+<li><a href="#Privacy" title="An instance of this class is used to manage privacy settings for a user profile.">Privacy</a></li>
+<li><a href="#Profile" title="An instance of this class is used to manage user profiles in the social network.">Profile</a></li>
+<li><a href="#Account" title="An instance of this class is used to manage user accounts in the social network.">Account</a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li class="active"><a href="../packages/Frisby.html">Frisby</a></li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Account" class="element ajax clickable class">
+<h1>Account<a href="../classes/Account.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage user accounts in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/Account.html" class="more">« More »</a>
+</div>
+<div id="Controller" class="element ajax clickable class">
+<h1>Controller<a href="../classes/Controller.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a generic controller super-class which any controller class may extend.</p>
+<div class="details collapse"></div>
+<a href="../classes/Controller.html" class="more">« More »</a>
+</div>
+<div id="Database" class="element ajax clickable class">
+<h1>Database<a href="../classes/Database.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a Database helper to manage database operations.</p>
+<div class="details collapse"></div>
+<a href="../classes/Database.html" class="more">« More »</a>
+</div>
+<div id="Dispatcher" class="element ajax clickable class">
+<h1>Dispatcher<a href="../classes/Dispatcher.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a dispatcher for the methods registered in the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/Dispatcher.html" class="more">« More »</a>
+</div>
+<div id="ErrorHandler" class="element ajax clickable class">
+<h1>ErrorHandler<a href="../classes/ErrorHandler.html">¶</a>
+</h1>
+<p class="short_description">This class is used to manage errors that are triggered within the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/ErrorHandler.html" class="more">« More »</a>
+</div>
+<div id="Event" class="element ajax clickable class">
+<h1>Event<a href="../classes/Event.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage events explicitly.</p>
+<div class="details collapse"></div>
+<a href="../classes/Event.html" class="more">« More »</a>
+</div>
+<div id="EventHandler" class="element ajax clickable class">
+<h1>EventHandler<a href="../classes/EventHandler.html">¶</a>
+</h1>
+<p class="short_description">This class can be used to fire an implicit event from within a module,</p>
+<div class="details collapse"></div>
+<a href="../classes/EventHandler.html" class="more">« More »</a>
+</div>
+<div id="EventRegister" class="element ajax clickable class">
+<h1>EventRegister<a href="../classes/EventRegister.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register event types.</p>
+<div class="details collapse"></div>
+<a href="../classes/EventRegister.html" class="more">« More »</a>
+</div>
+<div id="EventsController" class="element ajax clickable class">
+<h1>EventsController<a href="../classes/EventsController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register the methods of the events module.</p>
+<div class="details collapse"></div>
+<a href="../classes/EventsController.html" class="more">« More »</a>
+</div>
+<div id="ExtendedProfile" class="element ajax clickable class">
+<h1>ExtendedProfile<a href="../classes/ExtendedProfile.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to modify profile attributes.</p>
+<div class="details collapse"></div>
+<a href="../classes/ExtendedProfile.html" class="more">« More »</a>
+</div>
+<div id="Frisby" class="element ajax clickable class">
+<h1>Frisby<a href="../classes/Frisby.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a controller for the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/Frisby.html" class="more">« More »</a>
+</div>
+<div id="Group" class="element ajax clickable class">
+<h1>Group<a href="../classes/Group.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage groups in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/Group.html" class="more">« More »</a>
+</div>
+<div id="GroupMembers" class="element ajax clickable class">
+<h1>GroupMembers<a href="../classes/GroupMembers.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage group members.</p>
+<div class="details collapse"></div>
+<a href="../classes/GroupMembers.html" class="more">« More »</a>
+</div>
+<div id="GroupSearch" class="element ajax clickable class">
+<h1>GroupSearch<a href="../classes/GroupSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to search for groups in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/GroupSearch.html" class="more">« More »</a>
+</div>
+<div id="GroupingController" class="element ajax clickable class">
+<h1>GroupingController<a href="../classes/GroupingController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register methods of the grouping module.</p>
+<div class="details collapse"></div>
+<a href="../classes/GroupingController.html" class="more">« More »</a>
+</div>
+<div id="Inbox" class="element ajax clickable class">
+<h1>Inbox<a href="../classes/Inbox.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage message inboxes.</p>
+<div class="details collapse"></div>
+<a href="../classes/Inbox.html" class="more">« More »</a>
+</div>
+<div id="Logger" class="element ajax clickable class">
+<h1>Logger<a href="../classes/Logger.html">¶</a>
+</h1>
+<p class="short_description">This class is used to log engine related events to a log file.</p>
+<div class="details collapse"></div>
+<a href="../classes/Logger.html" class="more">« More »</a>
+</div>
+<div id="Message" class="element ajax clickable class">
+<h1>Message<a href="../classes/Message.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to create and send messages.</p>
+<div class="details collapse"></div>
+<a href="../classes/Message.html" class="more">« More »</a>
+</div>
+<div id="MessagingController" class="element ajax clickable class">
+<h1>MessagingController<a href="../classes/MessagingController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register methods of the messaging module.</p>
+<div class="details collapse"></div>
+<a href="../classes/MessagingController.html" class="more">« More »</a>
+</div>
+<div id="Mime" class="element ajax clickable class">
+<h1>Mime<a href="../classes/Mime.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage MIME content for posts.</p>
+<div class="details collapse"></div>
+<a href="../classes/Mime.html" class="more">« More »</a>
+</div>
+<div id="Outbox" class="element ajax clickable class">
+<h1>Outbox<a href="../classes/Outbox.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage outboxes.</p>
+<div class="details collapse"></div>
+<a href="../classes/Outbox.html" class="more">« More »</a>
+</div>
+<div id="PeopleSearch" class="element ajax clickable class">
+<h1>PeopleSearch<a href="../classes/PeopleSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to search people within the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/PeopleSearch.html" class="more">« More »</a>
+</div>
+<div id="PostSearch" class="element ajax clickable class">
+<h1>PostSearch<a href="../classes/PostSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to search publications within the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/PostSearch.html" class="more">« More »</a>
+</div>
+<div id="Privacy" class="element ajax clickable class">
+<h1>Privacy<a href="../classes/Privacy.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage privacy settings for a user profile.</p>
+<div class="details collapse"></div>
+<a href="../classes/Privacy.html" class="more">« More »</a>
+</div>
+<div id="Profile" class="element ajax clickable class">
+<h1>Profile<a href="../classes/Profile.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage user profiles in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/Profile.html" class="more">« More »</a>
+</div>
+<div id="ProfileController" class="element ajax clickable class">
+<h1>ProfileController<a href="../classes/ProfileController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register methods of the profile module.</p>
+<div class="details collapse"></div>
+<a href="../classes/ProfileController.html" class="more">« More »</a>
+</div>
+<div id="PubSubController" class="element ajax clickable class">
+<h1>PubSubController<a href="../classes/PubSubController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register methods of the pubsub module.</p>
+<div class="details collapse"></div>
+<a href="../classes/PubSubController.html" class="more">« More »</a>
+</div>
+<div id="Publish" class="element ajax clickable class">
+<h1>Publish<a href="../classes/Publish.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage publications.</p>
+<div class="details collapse"></div>
+<a href="../classes/Publish.html" class="more">« More »</a>
+</div>
+<div id="Read" class="element ajax clickable class">
+<h1>Read<a href="../classes/Read.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to retrieve publications.</p>
+<div class="details collapse"></div>
+<a href="../classes/Read.html" class="more">« More »</a>
+</div>
+<div id="Registry" class="element ajax clickable class">
+<h1>Registry<a href="../classes/Registry.html">¶</a>
+</h1>
+<p class="short_description">This class is used to access the registry of the engine and load modules.</p>
+<div class="details collapse"></div>
+<a href="../classes/Registry.html" class="more">« More »</a>
+</div>
+<div id="Search" class="element ajax clickable class">
+<h1>Search<a href="../classes/Search.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to carry out a generic search.</p>
+<div class="details collapse"></div>
+<a href="../classes/Search.html" class="more">« More »</a>
+</div>
+<div id="SearchController" class="element ajax clickable class">
+<h1>SearchController<a href="../classes/SearchController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register methods of the search module.</p>
+<div class="details collapse"></div>
+<a href="../classes/SearchController.html" class="more">« More »</a>
+</div>
+<div id="Setup" class="element ajax clickable class">
+<h1>Setup<a href="../classes/Setup.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to install/uninstall the database schema along with its default data.</p>
+<div class="details collapse"></div>
+<a href="../classes/Setup.html" class="more">« More »</a>
+</div>
+<div id="UserRelations" class="element ajax clickable class">
+<h1>UserRelations<a href="../classes/UserRelations.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage user relations in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/UserRelations.html" class="more">« More »</a>
+</div>
+<div id="UserRelationsController" class="element ajax clickable class">
+<h1>UserRelationsController<a href="../classes/UserRelationsController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register methods of the user-relations module.</p>
+<div class="details collapse"></div>
+<a href="../classes/UserRelationsController.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-28T00:33:23+05:30.<br></footer></div>
+</div>
+</body>
+</html>
