@@ -33,7 +33,7 @@ class Read {
 			if($set['mime']>0) $set['mime']=$this->getMime($set['mime']);
 		}
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return array(true,$set[0]);
 	}
 	
 	//Fetches MIME content.

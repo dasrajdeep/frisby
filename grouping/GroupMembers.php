@@ -35,6 +35,14 @@ class GroupMembers {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
+	
+	//Fetches members of a particular group.
+	function fetchMembers($grpid) {
+		ErrorHandler::reset();
+		$set=Database::get('group_members','member_id,type,joindate',"group_id=".$grpid);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$set);
+	}
 }
 
 ?>

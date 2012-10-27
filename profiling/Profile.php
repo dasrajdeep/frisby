@@ -20,7 +20,6 @@ class Profile {
 		Database::add('profile',$keys,$values);
 		$attr=array('alias','email','sex','dob','location');
 		foreach($attr as $a) Database::add('privacy',array('acc_no','infofield','restriction'),array($accno,$a,0));
-		EventHandler::fire('joinednetwork',$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -44,7 +43,6 @@ class Profile {
 	function deleteProfile($accno) {
 		ErrorHandler::reset();
 		Database::remove('profile',"acc_no=".$accno);
-		EventHandler::fire('leftnetwork',$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -64,15 +62,11 @@ class Profile {
 	//Fetches profile information. The attributes provided fetch specific data. If nothing is provided, the entire profile is returned.
 	function fetchProfile($accno,$attrs) {
 		ErrorHandler::reset();
-		$cnt=func_num_args();
-		if($cnt==1) $result=Database::get('profile','*',"acc_no=".$accno);
-		else {
-			if(in_array('avatar',$attrs)) array_push($attrs,'imgdata');
-			$cols=implode(',',$attrs);
-			$result=Database::get(sprintf('profile,%simages',Database::getPrefix()),$cols,"avatar=img_id and acc_no=".$accno);
-		}
+		$cols='*';
+		if(func_num_args()==2) $cols=implode(',',$attrs);
+		$result=Database::get('view_profile',$cols,"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$result);
+		else return array(true,$result[0]);
 	}
 }
 

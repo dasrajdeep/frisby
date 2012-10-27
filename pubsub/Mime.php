@@ -23,12 +23,23 @@ class Mime {
 		else return array(true,null);
 	}
 	
+	//Removes a MIME schema.
 	function deleteMimeSchema($name) {
 		ErrorHandler::reset();
 		Database::query(sprintf("drop table if exists %smime_%s",Database::getPrefix(),$name));
 		Database::remove('extensions',sprintf("table_name='%s'",$name));
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
+	}
+	
+	//Fetches all the extended MIME schemas.
+	function fetchSchemas() {
+		ErrorHandler::reset();
+		$set=Database::get('extensions','table_name',false);
+		$schemas=array();
+		foreach($set as $s) array_push($schemas,$s['table_name']);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$schemas);
 	}
 }
 

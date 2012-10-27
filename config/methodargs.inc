@@ -5,9 +5,19 @@
 	$sig=array();
 	
 	//The method signatures defined.
-	$sig['createAccount']=array(0,2,array(0,0));
+	$sig['fireEvent']=array(2,3,array(1,0,0));
+	$sig['updateStatus']=array(2,2,array(2,0));
+	$sig['fetchEventsByCategory']=array(2,3,array(1,1,0));
+	$sig['fetchEventsByEntity']=array(3,3,array(0,0,1));
+	$sig['registerEvent']=array(2,3,array(1,1,1));
+	$sig['unregisterEvent']=array(1,1,array(1));
+	$sig['fetchNames']=array(1,1,array(1));
+	$sig['fetchCategories']=array(0,0,array());
+	
+	$sig['createAccount']=array(1,2,array(2,0));
 	$sig['deleteAccount']=array(1,1,array(0));
 	$sig['updateAccount']=array(2,2,array(0,2));
+	$sig['fetchAccountInfo']=array(1,1,array(0));
 	$sig['createProfile']=array(2,2,array(0,2));
 	$sig['setAvatar']=array(2,2,array(0,1));
 	$sig['deleteProfile']=array(1,1,array(0));
@@ -15,21 +25,31 @@
 	$sig['fetchProfile']=array(1,2,array(0,2));
 	$sig['setPrivacy']=array(2,2,array(0,2));
 	$sig['getPrivacy']=array(1,2,array(0,2));
+	$sig['registerProfileAttribute']=array(2,2,array(1,1));
+	$sig['unregisterProfileAttribute']=array(1,1,array(1));
+	$sig['getAttributeNames']=array(0,0,array());
 	
 	$sig['createRelation']=array(2,3,array(0,0,0));
 	$sig['confirmRelation']=array(2,2,array(0,0));
+	$sig['updateRelation']=array(3,3,array(0,0,0));
+	$sig['fetchRelationInfo']=array(2,2,array(0,0));
 	
-	$sig['createPost']=array(5,6,array(0,0,0,0,2,0));
+	$sig['createPost']=array(4,4,array(0,2,0,2));
 	$sig['deletePost']=array(1,1,array(0));
 	$sig['fetchPosts']=array(3,3,array(0,0,0));
 	$sig['getPost']=array(1,1,array(0));
+	$sig['createMimeSchema']=array(2,2,array(1,0));
+	$sig['deleteMimeSchema']=array(1,1,array(1));
+	$sig['fetchSchemas']=array(0,0,array());
 	
 	$sig['createGroup']=array(3,4,array(0,1,1,0));
 	$sig['deleteGroup']=array(1,1,array(0));
 	$sig['updateGroup']=array(2,2,array(0,2));
+	$sig['fetchGroup']=array(1,1,array(0));
 	$sig['addMember']=array(2,3,array(0,0,0));
-	$sig['deleteMember']=array(2,2,array(0,2));
+	$sig['deleteMember']=array(2,2,array(0,0));
 	$sig['updatePrivilege']=array(3,3,array(0,0,0));
+	$sig['fetchMembers']=array(1,1,array(0));
 	
 	$sig['sendMessage']=array(3,3,array(0,0,1));
 	$sig['saveDraft']=array(3,3,array(0,0,1));

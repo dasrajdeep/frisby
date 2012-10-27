@@ -4,14 +4,23 @@
 		<style>
 			body {
 				background-color:#ebedee;
+				color:#555555;
 				text-align:center;
+				font-family:arial,sans-seriff;
 			}
 			.notify {
 				font-family:Arial;
 				font-size:26;
 			}
-			table {
+			td {
 				border:solid;
+				border-width:1px;
+				padding:3px;
+			}
+			th {
+				background-color:#555555;
+				color:#ebedee;
+				padding:7px;
 			}
 		</style>
 	</head>

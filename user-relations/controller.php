@@ -7,6 +7,7 @@ class UserRelationsController extends Controller {
 		$this->assoc['createRelation']='UserRelations';
 		$this->assoc['confirmRelation']='UserRelations';
 		$this->assoc['updateRelation']='UserRelations';
+		$this->assoc['fetchRelationInfo']='UserRelations';
 	
 		//Locations of the sub-modules.
 		$this->loc['UserRelations']='UserRelations.php';

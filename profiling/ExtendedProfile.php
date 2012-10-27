@@ -27,6 +27,17 @@ class ExtendedProfile {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
+	
+	//Fetches all the profile attribute names.
+	function getAttributeNames() {
+		ErrorHandler::reset();
+		$p=Database::query("desc %sprofile");
+		$names=array();
+		while($r=mysql_fetch_assoc($p)) array_push($names,$r['Field']);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$names);
+
+	}
 }
 
 ?>

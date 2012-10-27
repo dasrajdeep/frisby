@@ -18,7 +18,7 @@ class Publish {
 		if($node) $node=$node[0]['node_id'];
 		$values=sprintf("%s,'%s',%s,%s,%s",$accno,$data['text'],$ref,$pre,$node,$thread);
 		Database::query("insert into %sposts (publisher,textdata,mime,node,thread) values (%s)",$pre,$values);
-		EventHandler::fire('creatednewpost',$accno,$node);
+		EventHandler::fire('creatednewpost',$accno,mysql_insert_id());
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}

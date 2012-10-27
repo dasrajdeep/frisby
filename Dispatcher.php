@@ -27,7 +27,6 @@ class Dispatcher {
 		
 		//Dispatcher initializes event handler.
 		require_once('EventHandler.php');
-		EventHandler::init();
 		
 		//Registers a function to be executed when the process completes.
 		register_shutdown_function('Dispatcher::cleanup');

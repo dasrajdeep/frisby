@@ -36,7 +36,7 @@ $tables=array(
 		infofield varchar(50) not null,
 		restriction tinyint default 0,
 		primary key (acc_no,infofield),
-		foreign key (acc_no) references %saccounts(acc_no) on update cascade on delete cascade
+		foreign key (acc_no) references %sprofile(acc_no) on update cascade on delete cascade
 	) engine=INNODB",
 	'user_relations'=>"create table %suser_relations (
 		user1 int,
@@ -115,7 +115,6 @@ $tables=array(
 		log_id int not null auto_increment,
 		event int not null,
 		timestamp timestamp default CURRENT_TIMESTAMP,
-		description text,
 		origin int not null,
 		target int,
 		status tinyint default 0,

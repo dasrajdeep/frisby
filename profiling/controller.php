@@ -7,6 +7,7 @@ class ProfileController extends Controller {
 		$this->assoc['createAccount']='Account';
 		$this->assoc['deleteAccount']='Account';
 		$this->assoc['updateAccount']='Account';
+		$this->assoc['fetchAccountInfo']='Account';
 		$this->assoc['createProfile']='Profile';
 		$this->assoc['setAvatar']='Profile';
 		$this->assoc['deleteProfile']='Profile';
@@ -14,11 +15,15 @@ class ProfileController extends Controller {
 		$this->assoc['fetchProfile']='Profile';
 		$this->assoc['setPrivacy']='Privacy';
 		$this->assoc['getPrivacy']='Privacy';
+		$this->assoc['registerProfileAttribute']='ExtendedProfile';
+		$this->assoc['unregisterProfileAttribute']='ExtendedProfile';
+		$this->assoc['getAttributeNames']='ExtendedProfile';
 		
 		//Locations of the sub-modules.
 		$this->loc['Account']='Account.php';
 		$this->loc['Profile']='Profile.php';
 		$this->loc['Privacy']='Privacy.php';
+		$this->loc['ExtendedProfile']='ExtendedProfile.php';
 	}
 }
 

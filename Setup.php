@@ -21,6 +21,7 @@ class Setup {
 	//A complete installation of the database.
 	function installDB() {
 		$this->installDBSchema();
+		$this->installViews();
 		$this->installDBTriggers();
 		$this->installData();
 	}
@@ -34,15 +35,20 @@ class Setup {
 	
 	//Install default data.
 	private function installData() {
+		Database::add('mime',array('mime_id','type','ref_id'),array(0,0,0));
 		require('config/schema_data.inc');
-		$keys=array_keys($events);
-		foreach($keys as $k) {
-			foreach($events[$k] as $x) Database::add('events',array('category','event_name'),array($k,$x));
-		}
+		foreach($events as $e) Database::add('events',array('category','event_name','description'),array($e[1],$e[0],$e[2]));
 		$imgsrc='data/default_avatar.jpg';
 		$iminfo=getimagesize($imgsrc);
 		$img=addslashes(file_get_contents($imgsrc));
 		Database::query(sprintf("insert into %simages (type,imgdata,width,height,bits) values ('%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],$img,$iminfo[0],$iminfo[1],$iminfo['bits']));
+	}
+	
+	//Install database views.
+	private function installViews() {
+		require('config/schema_views.inc');
+		$pre=Database::getPrefix();
+		foreach($views as $v) Database::query(str_replace('%s',$pre,$v));
 	}
 	
 	//Install database triggers.

@@ -34,6 +34,14 @@ class UserRelations {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
+	
+	//Fetches information regarding a user relation.
+	function fetchRelationInfo($accno1,$accno2) {
+		ErrorHandler::reset();
+		$set=Database::get('user_relations','status,type',sprintf("(user1=%s and user2=%s) or (user2=%s and user1=%s)",$accno1,$accno2,$accno1,$accno2));
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$set[0]);
+	}
 }
 
 ?>

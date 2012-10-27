@@ -24,6 +24,24 @@ class EventRegister {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
+	
+	//Fetches event types by category.
+	function fetchNames($category) {
+		ErrorHandler::reset();
+		$set=Database::get('events','event_id,event_name,description',sprintf("category='%s'",$category));
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$set);
+	}
+	
+	//Fetches event categories.
+	function fetchCategories() {
+		ErrorHandler::reset();
+		$set=Database::get('events','distinct category as cat',false);
+		$categories=array();
+		foreach($set as $s) array_push($categories,$s['cat']);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$categories);
+	}
 }
 
 ?>

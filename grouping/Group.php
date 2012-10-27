@@ -39,6 +39,14 @@ class Group {
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
+
+	//Fetch information about a group.
+	function fetchGroup($grpid) {
+		ErrorHandler::reset();
+		$set=Database::get('groups','*',"group_id=".$grpid);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$set[0]);	
+	}
 }
 
 ?>

@@ -17,6 +17,7 @@ class Account {
 		$values=array_values($info);
 		array_push($values,$status);
 		Database::add('accounts',$keys,$values);
+		if($status>0) EventHandler::fire('joinednetwork',mysql_insert_id());
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
 	}
@@ -24,6 +25,7 @@ class Account {
 	//Removes an account.
 	function deleteAccount($accno) {
 		ErrorHandler::reset();
+		EventHandler::fire('leftnetwork',$accno);
 		Database::remove('accounts',"acc_no=".$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
@@ -36,8 +38,17 @@ class Account {
 		$values=array();
 		foreach($keys as $k) array_push($values,$data[$k]);
 		Database::update('accounts',$keys,$values,"acc_no=".$accno);
+		if(array_key_exists('status',$data) && $data['status']>0) EventHandler::fire('joinednetwork',$accno);
 		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
 		else return array(true,null);
+	}
+	
+	//Fetches account information of a specific user.
+	function fetchAccountInfo($accno) {
+		ErrorHandler::reset();
+		$set=Database::get('accounts','email,firstname,middlename,lastname,status',"acc_no=".$accno);
+		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
+		else return array(true,$set[0]);
 	}
 }
 

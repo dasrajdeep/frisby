@@ -7,9 +7,11 @@ class GroupingController extends Controller {
 		$this->assoc['createGroup']='Group';
 		$this->assoc['deleteGroup']='Group';
 		$this->assoc['updateGroup']='Group';
+		$this->assoc['fetchGroup']='Group';
 		$this->assoc['addMember']='GroupMembers';
 		$this->assoc['deleteMember']='GroupMembers';
 		$this->assoc['updatePrivilege']='GroupMembers';
+		$this->assoc['fetchMembers']='GroupMembers';
 	
 		//Locations of the sub-modules.
 		$this->loc['Group']='Group.php';
