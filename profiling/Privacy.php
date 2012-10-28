@@ -36,6 +36,8 @@
  * $settings=array('sex'=>1,'dob'=>1);
  * $priv->setPrivacy(userid,$settings);
  * </code> 
+ * 
+ * @package frisby\profiling
  */
 class Privacy {
 	/**

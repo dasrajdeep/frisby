@@ -36,6 +36,8 @@
  * $data=array('sex'=>'male','location'=>'Honolulu');
  * $prof->createProfile(userid,$data);
  * </code> 
+ * 
+ * @package frisby\profiling
  */
 class Profile {
 	/**

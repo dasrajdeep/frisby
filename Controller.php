@@ -39,6 +39,8 @@
  *      }
  * }
  * </code> 
+ * 
+ * @package frisby\core
  */
 class Controller {
         /**

@@ -34,6 +34,8 @@
  * 
  * Logger::dump('event_type','event_description');
  * </code>
+ * 
+ * @package frisby\core
  */
 class Logger {
 	/**

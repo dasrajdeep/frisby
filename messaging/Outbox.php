@@ -35,6 +35,8 @@
  * $outbox=new Outbox();
  * $resultset=$outbox->fetchOutbox(userid);
  * </code> 
+ * 
+ * @package frisby\messaging
  */
 class Outbox {
 	/**

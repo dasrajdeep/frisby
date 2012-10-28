@@ -35,6 +35,8 @@
  * $event=new Event();
  * $event->fireEvent('event_name',sourceid,destinationid);
  * </code> 
+ * 
+ * @package frisby\events
  */
 class Event {
 	/**

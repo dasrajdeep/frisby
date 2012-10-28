@@ -35,6 +35,8 @@
  * $ur=new UserRelations();
  * $ur->createRelation(userid1,userid2,0);
  * </code> 
+ * 
+ * @package frisby\user-relations
  */
 class UserRelations {
 	/**

@@ -35,6 +35,8 @@
  * $ctrl=new SearchController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\search
  */
 class SearchController extends Controller {
 	

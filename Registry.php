@@ -35,6 +35,8 @@
  * $map=Registry::read('method_name');
  * Registry::load($map[0]);
  * </code> 
+ * 
+ * @package frisby\core
  */
 class Registry {
 	/**

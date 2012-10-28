@@ -35,6 +35,8 @@
  * $frisby=new Frisby();
  * $resultset=$frisby->call('method_name',arg1,...);
  * </code> 
+ * 
+ * @package frisby\core
  */
 class Frisby {
 	/**

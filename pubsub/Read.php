@@ -35,6 +35,8 @@
  * $read=new Read();
  * $resultset=$read->fetchPosts(0,nodeid,1000);
  * </code> 
+ * 
+ * @package frisby\pubsub
  */
 class Read {
 	/**
@@ -103,7 +105,7 @@ class Read {
 		$m=$m[0];
 		if($m['type']==0) {
 			$set=Database::get('images','imgdata',"img_id=".$m['ref_id']);
-			if($set) $set=$set[0]['imgdata'];
+			if($set) $set=base64_encode($set[0]['imgdata']);
 			return array(0,$set);
 		}
 		else {

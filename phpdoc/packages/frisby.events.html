@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>Frisby Social Engine » \EventHandler</title>
+<title>Frisby Social Engine » frisby\events</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -49,58 +49,52 @@
                         </div></noscript>
 <div class="row">
 <div class="span4">
-<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
 <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-<ul class="side-nav nav nav-list"><li class="nav-header">
-<i class="icon-custom icon-method"></i> Methods
-                    <ul><li class="method public "><a href="#method_fire" title="fire :: Fires an event specified by a name and the participants"><span class="description">Fires an event specified by a name and the participants</span><pre>fire()</pre></a></li></ul>
-</li></ul>
-</div>
-<div class="span8">
-<a id="\EventHandler"></a><ul class="breadcrumb">
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
 <li>
-<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+<a href="../packages/frisby.events.html" title="events"><i class="icon-folder-open"></i>events</a><ul class="nav nav-list nav-packages"></ul>
 </li>
-<li><a href="../namespaces/global.html">global</a></li>
-<li class="active">
-<span class="divider">\</span><a href="../classes/EventHandler.html">EventHandler</a>
-</li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#EventsController" title="An instance of this class is used to register the methods of the events module.">EventsController</a></li>
+<li><a href="#EventRegister" title="An instance of this class is used to register event types.">EventRegister</a></li>
+<li><a href="#Event" title="An instance of this class is used to manage events explicitly.">Event</a></li>
 </ul>
-<div class="element class">
-<p class="short_description">This class can be used to fire an implicit event from within a module,</p>
-<div class="details">
-<div class="long_description"><pre><code>require_once('EventHandler.php');
-
-EventHandler::fire('event_name',sourceid,destinationid);
-</code></pre></div>
-<table class="table table-bordered"><tr>
-<th>package</th>
-<td><a href="../packages/frisby.core.html">frisby\core</a></td>
-</tr></table>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/frisby.html">frisby</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../packages/frisby.events.html">events</a>
+</li>
+</li></ul>
+<div class="package-indent">
 <h3>
-<i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method_fire"></a><div class="element clickable method public method_fire" data-toggle="collapse" data-target=".method_fire .collapse">
-<h2>Fires an event specified by a name and the participants</h2>
-<pre>fire(string $event, int $source, int $target) </pre>
-<div class="labels"><span class="label">Static</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$event</h4>
-<code>string</code>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Event" class="element ajax clickable class">
+<h1>Event<a href="../classes/Event.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage events explicitly.</p>
+<div class="details collapse"></div>
+<a href="../classes/Event.html" class="more">« More »</a>
 </div>
-<div class="subelement argument">
-<h4>$source</h4>
-<code>int</code>
+<div id="EventRegister" class="element ajax clickable class">
+<h1>EventRegister<a href="../classes/EventRegister.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register event types.</p>
+<div class="details collapse"></div>
+<a href="../classes/EventRegister.html" class="more">« More »</a>
 </div>
-<div class="subelement argument">
-<h4>$target</h4>
-<code>int</code>
-</div>
-</div></div>
-</div>
+<div id="EventsController" class="element ajax clickable class">
+<h1>EventsController<a href="../classes/EventsController.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register the methods of the events module.</p>
+<div class="details collapse"></div>
+<a href="../classes/EventsController.html" class="more">« More »</a>
 </div>
 </div>
 </div>
@@ -108,7 +102,7 @@ EventHandler::fire('event_name',sourceid,destinationid);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-28T18:47:19+05:30.<br></footer></div>
+            generated on 2012-10-28T18:47:18+05:30.<br></footer></div>
 </div>
 </body>
 </html>

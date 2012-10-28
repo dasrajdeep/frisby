@@ -35,6 +35,8 @@
  * $ctrl=new PubSubController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\pubsub
  */
 class PubSubController extends Controller {
 	

@@ -35,6 +35,8 @@
  * $ctrl=new UserRelationsController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\user-relations
  */
 class UserRelationsController extends Controller {
 	

@@ -35,6 +35,8 @@
  * $mime=new Mime();
  * $mime->createMimeSchema('relation_name',1);
  * </code> 
+ * 
+ * @package frisby\pubsub
  */
 class Mime {
 	/**

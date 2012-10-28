@@ -36,6 +36,8 @@
  * $data=array('name'=>'some_group');
  * $resultset=$search->searchGroup($data);
  * </code> 
+ * 
+ * @package frisby\search
  */
 class GroupSearch {
 	/**

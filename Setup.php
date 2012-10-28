@@ -35,6 +35,8 @@
  * $setup=new Setup();
  * $setup->run();
  * </code> 
+ * 
+ * @package frisby\core
  */
 class Setup {
 	

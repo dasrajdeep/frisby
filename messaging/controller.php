@@ -35,6 +35,8 @@
  * $ctrl=new MessagingController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\messaging
  */
 class MessagingController extends Controller {
 	

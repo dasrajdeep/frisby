@@ -35,6 +35,8 @@
  * $inbox=new Inbox();
  * $resultset=$inbox->fetchInbox(userid);
  * </code> 
+ * 
+ * @package frisby\messaging
  */
 class Inbox {
 	/**

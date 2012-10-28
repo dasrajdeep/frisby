@@ -36,6 +36,8 @@
  * $data=array(var1,...);
  * $resultset=$dispatcher->dispatch('method_name',$data);
  * </code> 
+ * 
+ * @package frisby\core
  */
 class Dispatcher {
 	

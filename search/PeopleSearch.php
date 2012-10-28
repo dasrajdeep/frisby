@@ -36,6 +36,8 @@
  * $data=array('firstname'=>'someone');
  * $resultset=$search->searchPeople($data);
  * </code> 
+ * 
+ * @package frisby\search
  */
 class PeopleSearch {
 	/**

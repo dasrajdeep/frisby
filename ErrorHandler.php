@@ -35,6 +35,8 @@
  * ErrorHandler::fire('error_type','error_message');
  * $trace=ErrorHandler::fetchTrace();
  * </code> 
+ * 
+ * @package frisby\core
  */
 class ErrorHandler {
 	/**

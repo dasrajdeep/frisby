@@ -35,6 +35,8 @@
  * $reg=new EventRegister();
  * $reg->registerEvent('event_name','event_category','event_description');
  * </code> 
+ * 
+ * @package frisby\events
  */
 class EventRegister {
 	/**

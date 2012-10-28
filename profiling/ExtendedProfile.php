@@ -35,6 +35,8 @@
  * $ep=new ExtendedProfile();
  * $ep->registerProfileAttribute('attribute_name','varchar(100)');
  * </code> 
+ * 
+ * @package frisby\profiling
  */
 class ExtendedProfile {
 	/**

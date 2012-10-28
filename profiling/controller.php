@@ -35,6 +35,8 @@
  * $ctrl=new ProfileController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\profiling
  */
 class ProfileController extends Controller {
 	

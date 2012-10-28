@@ -36,6 +36,8 @@
  * $data=array('text'=>'something');
  * $resultset=$search->searchPosts($data);
  * </code> 
+ * 
+ * @package frisby\search
  */
 class PostSearch {
 	/**

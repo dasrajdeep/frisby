@@ -35,6 +35,8 @@
  * $ctrl=new EventsController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\events
  */
 class EventsController extends Controller {
 	

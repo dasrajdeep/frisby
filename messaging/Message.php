@@ -35,6 +35,8 @@
  * $msg=new Message();
  * $msg->sendMessage(sender_id,receiver_id,'message_text');
  * </code> 
+ * 
+ * @package frisby\messaging
  */
 class Message {
 	/**

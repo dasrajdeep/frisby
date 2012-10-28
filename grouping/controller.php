@@ -35,6 +35,8 @@
  * $ctrl=new GroupingController();
  * $ctrl->invoke('method_name',array(var1,...));
  * </code> 
+ * 
+ * @package frisby\grouping
  */
 class GroupingController extends Controller {
 	

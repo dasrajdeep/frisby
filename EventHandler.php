@@ -34,6 +34,8 @@
  * 
  * EventHandler::fire('event_name',sourceid,destinationid);
  * </code> 
+ * 
+ * @package frisby\core
  */
 class EventHandler {
 	

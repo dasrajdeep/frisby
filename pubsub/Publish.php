@@ -36,6 +36,8 @@
  * $data=array('text'=>'sample');
  * $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
  * </code> 
+ * 
+ * @package frisby\pubsub
  */
 class Publish {
 	/**

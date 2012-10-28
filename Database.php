@@ -34,6 +34,8 @@
  * 
  * $resultset=Database::get('table_name','columns','criterion');
  * </code>  
+ * 
+ * @package frisby\core
  */
 class Database {
     /**

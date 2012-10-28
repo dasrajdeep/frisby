@@ -35,6 +35,8 @@
  * $gm=new GroupMembers();
  * $gm->addMember(memberid,groupid,membershiptype);
  * </code> 
+ * 
+ * @package frisby\grouping
  */
 class GroupMembers {
 	/**

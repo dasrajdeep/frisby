@@ -35,6 +35,8 @@
  * $grp=new Group();
  * $grp->createGroup(creatorid,'group_name','group_description',grouptype);
  * </code> 
+ * 
+ * @package frisby\grouping
  */
 class Group {
 	/**

@@ -36,6 +36,8 @@
  * $data=array('firstname'=>'Frisby','lastname'=>'Developer','email'=>'name@example.com');
  * $acc->createAccount($data);
  * </code> 
+ * 
+ * @package frisby\profiling
  */
 class Account {
 	/**

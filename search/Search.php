@@ -35,6 +35,8 @@
  * $search=new Search();
  * $resultset=$search->search('something',array('people','groups','posts'));
  * </code> 
+ * 
+ * @package frisby\search
  */
 class Search {
 	/**
