@@ -38,22 +38,7 @@
  * 
  * @package frisby\pubsub
  */
-class Mime {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Mime extends ModuleSupport {
 	
 	/**
          * Creates a new MIME database relation
@@ -71,8 +56,7 @@ class Mime {
 			primary key(id)
 		) engine=INNODB",Database::getPrefix(),$name));
 		Database::add('extensions',array('type','table_name'),array($type,$name));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -85,8 +69,7 @@ class Mime {
 		ErrorHandler::reset();
 		Database::query(sprintf("drop table if exists %smime_%s",Database::getPrefix(),$name));
 		Database::remove('extensions',sprintf("table_name='%s'",$name));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -94,13 +77,12 @@ class Mime {
          * 
          * @return array
          */
-	function fetchSchemas() {
+	function fetchMimeSchemas() {
 		ErrorHandler::reset();
 		$set=Database::get('extensions','table_name',false);
 		$schemas=array();
 		foreach($set as $s) array_push($schemas,$s['table_name']);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$schemas);
+		return $schemas;
 	}
 }
 

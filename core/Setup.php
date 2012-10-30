@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */
 
 /**
@@ -37,6 +28,13 @@
  * </code> 
  * 
  * @package frisby\core
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
 class Setup {
 	
@@ -46,22 +44,43 @@ class Setup {
          * @return boolean 
          */
 	function checkSetup() {
-		require('config/schema_tables.inc');
-		$keys=array_keys($tables);
-		foreach($keys as $t) Database::get($t,'*',false);
-		if(ErrorHandler::hasErrors()) return false;
-		else return true;
+		
+		//Check database setup.
+		require('../config/schema_tables.inc');
+		$required=array_keys($tables);
+		
+		$pre=Database::getPrefix();
+		$ptr=Database::query(sprintf("select TABLE_NAME from information_schema.tables where TABLE_SCHEMA like '%s%%'",$pre));
+		
+		$installed=array();
+		while($r=mysql_fetch_assoc($ptr)) array_push($installed,substr($r,strlen($pre)));
+		
+		foreach($required as $r) if(!in_array($r,$installed)) return false;
+		
+		//Check registry setup.
+		$methods=Registry::getMethodNames();
+		$scanned=$this->scanModules();
+		$all=array();
+		foreach($scanned as $s) foreach($s as $x) $all=array_merge($all,$x);
+		foreach($all as $a) if(!in_array($a,$methods)) return false;
+		
+		return true;
 	}
 	
-	/**
-         * This method first uninstalls the currently installed schema and then reinstalls it 
-         */
-	function run() {
-		ErrorHandler::reset();
-		$this->uninstallDB();
+	function installAll() {
 		$this->installDB();
+		$this->installRegistry();
 	}
 	
+	function installRegistry() {
+		Database::remove('registry',"true");
+		$sc=$this->scanModules();
+		$mods=array_keys($sc);
+		foreach($mods as $m) {
+			$classes=array_keys($sc[$m]);
+			foreach($classes as $c) foreach($sc[$m][$c] as $x) Database::add('registry',array('method','classname','module'),array($x,$c,$m));
+		}
+	}
 	/**
          * Installs the database schema 
          */
@@ -77,7 +96,7 @@ class Setup {
          */
 	function installDBSchema() {
 		$pre=Database::getPrefix();
-		require('config/schema_tables.inc');
+		require('../config/schema_tables.inc');
 		foreach($tables as $q) Database::query(str_replace('%s',$pre,$q));
 	}
 	
@@ -86,9 +105,9 @@ class Setup {
          */
 	private function installData() {
 		Database::add('mime',array('mime_id','type','ref_id'),array(0,0,0));
-		require('config/schema_data.inc');
+		require('../config/schema_data.inc');
 		foreach($events as $e) Database::add('events',array('category','event_name','description'),array($e[1],$e[0],$e[2]));
-		$imgsrc='data/default_avatar.jpg';
+		$imgsrc='../data/default_avatar.jpg';
 		$iminfo=getimagesize($imgsrc);
 		$img=addslashes(file_get_contents($imgsrc));
 		Database::query(sprintf("insert into %simages (type,imgdata,width,height,bits) values ('%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],$img,$iminfo[0],$iminfo[1],$iminfo['bits']));
@@ -98,7 +117,7 @@ class Setup {
          * Installs the views of the schema 
          */
 	private function installViews() {
-		require('config/schema_views.inc');
+		require('../config/schema_views.inc');
 		$pre=Database::getPrefix();
 		foreach($views as $v) Database::query(str_replace('%s',$pre,$v));
 	}
@@ -107,7 +126,7 @@ class Setup {
          * Installs the triggers of the schema 
          */
 	function installDBTriggers() {
-		require('config/schema_triggers.inc');
+		require('../config/schema_triggers.inc');
 		$pre=Database::getPrefix();
 		foreach($triggers as $q) Database::query(str_replace('%s',$pre,$q));
 	}
@@ -115,14 +134,35 @@ class Setup {
 	/**
          * Completely uninstalls the database schema 
          */
-	function uninstallDB() {
+	function uninstall() {
 		$ext=Database::get('extensions','table_name',false);
 		foreach($ext as $e) Database::query(sprintf("drop table if exists %mime_%s",Database::getPrefix(),$e['table_name']));
-		require('config/schema_uninstall.inc');
+		require('../config/schema_uninstall.inc');
 		$pre=Database::getPrefix();
 		foreach($uninstallqueries as $q) Database::query(sprintf($q,$pre));
 	}
 	
+	private function scanModules() {
+		chdir('..');
+		$methods=array();
+		$modules=Registry::getModuleNames();
+		$ignore=array('__construct','loadModuleClass','getModuleName');
+		foreach($modules as $m) {
+			$methods[$m]=array();
+			$list=scandir(Registry::location($m));
+			$classes=array();
+			foreach($list as $l) if(preg_match('/^[A-Z][a-zA-Z]*[.]php*$/',$l)==1) array_push($classes,$l);
+			foreach($classes as $c) {
+				require_once(Registry::location($m).'/'.$c);
+				$class=substr($c,0,-4);
+				$methods[$m][$class]=array();
+				$meth=get_class_methods($class);
+				foreach($meth as $x) if(!in_array($x,$ignore)) array_push($methods[$m][$class],$x);
+			}
+		}
+		chdir('core');
+		return $methods;
+	}
 }
 
 ?>

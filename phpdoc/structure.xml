@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project version="2.0.0a10" title="Frisby Social Engine">
-  <file path="Setup.php" hash="0dcd4b96cf5294c73a268a0a647ad375" package="Frisby">
+  <file path="Setup.php" hash="8b20c8fe93c38444f22984879270b46a" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Setup class used in setting up the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -16,116 +16,115 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <include line="49" type="Require" package="Default">
+    <include line="47" type="Require" package="Default">
       <name>config/schema_tables.inc</name>
     </include>
-    <include line="80" type="Require" package="Default">
+    <include line="78" type="Require" package="Default">
       <name>config/schema_tables.inc</name>
     </include>
-    <include line="89" type="Require" package="Default">
+    <include line="87" type="Require" package="Default">
       <name>config/schema_data.inc</name>
     </include>
-    <include line="101" type="Require" package="Default">
+    <include line="99" type="Require" package="Default">
       <name>config/schema_views.inc</name>
     </include>
-    <include line="110" type="Require" package="Default">
+    <include line="108" type="Require" package="Default">
       <name>config/schema_triggers.inc</name>
     </include>
-    <include line="121" type="Require" package="Default">
+    <include line="119" type="Require" package="Default">
       <name>config/schema_uninstall.inc</name>
     </include>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="39" package="frisby\core">
       <extends/>
       <name>Setup</name>
       <full_name>\Setup</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class is used to install/uninstall the database schema along with its default data.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Setup.php');
 
 $setup=new Setup();
 $setup->run();
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="48" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="46" package="frisby\core">
         <name>checkSetup</name>
         <full_name>checkSetup</full_name>
-        <docblock line="43">
+        <docblock line="41">
           <description><![CDATA[Checks if the database is properly configured or not]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="43" name="return" description="" type="boolean">
+          <tag line="41" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="59" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="57" package="frisby\core">
         <name>run</name>
         <full_name>run</full_name>
-        <docblock line="56">
+        <docblock line="54">
           <description><![CDATA[This method first uninstalls the currently installed schema and then reinstalls it]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="68" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="66" package="frisby\core">
         <name>installDB</name>
         <full_name>installDB</full_name>
-        <docblock line="65">
+        <docblock line="63">
           <description><![CDATA[Installs the database schema]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="76" package="frisby\core">
         <name>installDBSchema</name>
         <full_name>installDBSchema</full_name>
-        <docblock line="75">
+        <docblock line="73">
           <description><![CDATA[Installs the tables of the schema]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="87" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="85" package="frisby\core">
         <name>installData</name>
         <full_name>installData</full_name>
-        <docblock line="84">
+        <docblock line="82">
           <description><![CDATA[Inserts default data into the installed schema]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="100" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="98" package="frisby\core">
         <name>installViews</name>
         <full_name>installViews</full_name>
-        <docblock line="97">
+        <docblock line="95">
           <description><![CDATA[Installs the views of the schema]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="109" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="107" package="frisby\core">
         <name>installDBTriggers</name>
         <full_name>installDBTriggers</full_name>
-        <docblock line="106">
+        <docblock line="104">
           <description><![CDATA[Installs the triggers of the schema]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="118" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="116" package="frisby\core">
         <name>uninstallDB</name>
         <full_name>uninstallDB</full_name>
-        <docblock line="115">
+        <docblock line="113">
           <description><![CDATA[Completely uninstalls the database schema]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="grouping/controller.php" hash="249629618232e67bb9660984fb493036" package="Frisby">
+  <file path="grouping/controller.php" hash="fe6d6f021ddb0ecc8733928676c29e19" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the GroupingController class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -173,7 +172,7 @@ $ctrl->invoke('method_name',array(var1,...));
       </method>
     </class>
   </file>
-  <file path="grouping/Group.php" hash="b7791f80d14f1e8a3e6cd0e8e2837e29" package="Frisby">
+  <file path="grouping/Group.php" hash="73c4de7cfe3b2da890d89507493f8b7d" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Group class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -256,8 +255,8 @@ $grp->createGroup(creatorid,'group_name','group_description',grouptype);
           <tag line="57" name="param" description="" type="int" variable="$type">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="57" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="57" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
         <argument line="66">
@@ -281,66 +280,66 @@ $grp->createGroup(creatorid,'group_name','group_description',grouptype);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="82" package="frisby\grouping">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="frisby\grouping">
         <name>deleteGroup</name>
         <full_name>deleteGroup</full_name>
-        <docblock line="76">
+        <docblock line="75">
           <description><![CDATA[Deletes a group]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="76" name="param" description="" type="int" variable="$grpid">
+          <tag line="75" name="param" description="" type="int" variable="$grpid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="76" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="75" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="82">
+        <argument line="81">
           <name>$grpid</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="frisby\grouping">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="95" package="frisby\grouping">
         <name>updateGroup</name>
         <full_name>updateGroup</full_name>
-        <docblock line="90">
+        <docblock line="88">
           <description><![CDATA[Updates information for a group]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="90" name="param" description="" type="int" variable="$grpid">
+          <tag line="88" name="param" description="" type="int" variable="$grpid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="90" name="param" description="" type="array" variable="$data">
+          <tag line="88" name="param" description="" type="array" variable="$data">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="90" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="88" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="97">
+        <argument line="95">
           <name>$grpid</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="97">
+        <argument line="95">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="113" package="frisby\grouping">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="110" package="frisby\grouping">
         <name>fetchGroup</name>
         <full_name>fetchGroup</full_name>
-        <docblock line="107">
+        <docblock line="104">
           <description><![CDATA[Fetches all information regarding a specific group]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="107" name="param" description="" type="int" variable="$grpid">
+          <tag line="104" name="param" description="" type="int" variable="$grpid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="107" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="104" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="113">
+        <argument line="110">
           <name>$grpid</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -348,7 +347,7 @@ $grp->createGroup(creatorid,'group_name','group_description',grouptype);
       </method>
     </class>
   </file>
-  <file path="grouping/GroupMembers.php" hash="0a8dc729f372dfbdda82f45cff001ffd" package="Frisby">
+  <file path="grouping/GroupMembers.php" hash="b126966a5d21fe603b2e27917009497c" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the GroupMembers class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -428,8 +427,8 @@ $gm->addMember(memberid,groupid,membershiptype);
           <tag line="58" name="param" description="" type="int" variable="$type">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="58" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="58" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
         <argument line="66">
@@ -448,82 +447,82 @@ $gm->addMember(memberid,groupid,membershiptype);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="frisby\grouping">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="80" package="frisby\grouping">
         <name>deleteMember</name>
         <full_name>deleteMember</full_name>
-        <docblock line="74">
+        <docblock line="73">
           <description><![CDATA[Deletes a member from a group]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="74" name="param" description="" type="int" variable="$accno">
+          <tag line="73" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="74" name="param" description="" type="int" variable="$grpid">
+          <tag line="73" name="param" description="" type="int" variable="$grpid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="74" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="73" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="81">
+        <argument line="80">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="81">
+        <argument line="80">
           <name>$grpid</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="frisby\grouping">
-        <name>updatePrivilege</name>
-        <full_name>updatePrivilege</full_name>
-        <docblock line="89">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="95" package="frisby\grouping">
+        <name>updateMemberPrivilege</name>
+        <full_name>updateMemberPrivilege</full_name>
+        <docblock line="87">
           <description><![CDATA[Updates privileges for a member of a group]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="89" name="param" description="" type="int" variable="$accno">
+          <tag line="87" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="89" name="param" description="" type="int" variable="$grpid">
+          <tag line="87" name="param" description="" type="int" variable="$grpid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="89" name="param" description="" type="int" variable="$type">
+          <tag line="87" name="param" description="" type="int" variable="$type">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="89" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="87" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="97">
+        <argument line="95">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="97">
+        <argument line="95">
           <name>$grpid</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="97">
+        <argument line="95">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="111" package="frisby\grouping">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="108" package="frisby\grouping">
         <name>fetchMembers</name>
         <full_name>fetchMembers</full_name>
-        <docblock line="105">
+        <docblock line="102">
           <description><![CDATA[Fetches all the members of a specific group]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="105" name="param" description="" type="int" variable="$grpid">
+          <tag line="102" name="param" description="" type="int" variable="$grpid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="105" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="102" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="111">
+        <argument line="108">
           <name>$grpid</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -531,7 +530,7 @@ $gm->addMember(memberid,groupid,membershiptype);
       </method>
     </class>
   </file>
-  <file path="Dispatcher.php" hash="226c5b88a17c5bb1e0516428fdb4df7c" package="Frisby">
+  <file path="Dispatcher.php" hash="9481b1b4ec1c68678329da38b9ddfef2" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the dispatcher for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -547,38 +546,30 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <include line="57" type="Require Once" package="Default">
+    <include line="55" type="Require Once" package="Default">
       <name>Logger.php</name>
     </include>
-    <include line="61" type="Require Once" package="Default">
+    <include line="59" type="Require Once" package="Default">
       <name>ErrorHandler.php</name>
     </include>
-    <include line="64" type="Require Once" package="Default">
+    <include line="62" type="Require Once" package="Default">
       <name>Database.php</name>
     </include>
-    <include line="68" type="Require Once" package="Default">
+    <include line="66" type="Require Once" package="Default">
       <name>Registry.php</name>
     </include>
-    <include line="72" type="Require Once" package="Default">
+    <include line="70" type="Require Once" package="Default">
       <name>EventHandler.php</name>
     </include>
-    <include line="95" type="Require Once" package="Default">
+    <include line="93" type="Require Once" package="Default">
       <name>Controller.php</name>
     </include>
-    <class final="false" abstract="false" namespace="global" line="42" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="40" package="frisby\core">
       <extends/>
       <name>Dispatcher</name>
       <full_name>\Dispatcher</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class represents a dispatcher for the methods registered in the engine.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Dispatcher.php');
 
@@ -586,46 +577,53 @@ $dispatcher=new Dispatcher();
 $data=array(var1,...);
 $resultset=$dispatcher->dispatch('method_name',$data);
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="47" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="45" package="frisby\core">
         <name>cleanup</name>
         <full_name>cleanup</full_name>
-        <docblock line="44">
+        <docblock line="42">
           <description><![CDATA[Performs housekeeping for the engine]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="55" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="53" package="frisby\core">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="52">
+        <docblock line="50">
           <description><![CDATA[Loads and/or initializes the necessary classes and registers a shutdown function]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="85" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="83" package="frisby\core">
         <name>dispatch</name>
         <full_name>dispatch</full_name>
-        <docblock line="78">
+        <docblock line="76">
           <description><![CDATA[Invokes a method supplied as argument and returns the data returned by the invoked method]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="78" name="param" description="" type="string" variable="$method">
+          <tag line="76" name="param" description="" type="string" variable="$method">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="78" name="param" description="" type="array" variable="$data">
+          <tag line="76" name="param" description="" type="array" variable="$data">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="78" name="return" description="" type="array">
+          <tag line="76" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
-        <argument line="85">
+        <argument line="83">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="85">
+        <argument line="83">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -633,7 +631,7 @@ $resultset=$dispatcher->dispatch('method_name',$data);
       </method>
     </class>
   </file>
-  <file path="Logger.php" hash="90bbc0add7d433416eb2fdf7aefb1d71" package="Frisby">
+  <file path="Logger.php" hash="f4f38542385854434d33c8dfecbf348b" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the event logger for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -649,85 +647,84 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <class final="false" abstract="false" namespace="global" line="40" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
       <extends/>
       <name>Logger</name>
       <full_name>\Logger</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[This class is used to log engine related events to a log file.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Logger.php');
 
 Logger::dump('event_type','event_description');
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <property final="false" static="true" visibility="private" line="46" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="44" namespace="global" package="Default">
         <name>$file</name>
         <default><![CDATA[]]></default>
-        <docblock line="41">
+        <docblock line="39">
           <description><![CDATA[Contains a handler to the log file]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="41" name="var" description="" type="object">
+          <tag line="39" name="var" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="public" line="53" namespace="global" package="Default">
+      <property final="false" static="true" visibility="public" line="51" namespace="global" package="Default">
         <name>$logtype</name>
         <default><![CDATA[array('db' => 'DATABASE', 'reg' => 'REGISTRY', 'evt' => 'EVENTS', 'int' => 'INTEGRITY')]]></default>
-        <docblock line="48">
+        <docblock line="46">
           <description><![CDATA[Contains the mappings from the event mnemonics to the event names]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="48" name="var" description="" type="array">
+          <tag line="46" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="63" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="61" package="frisby\core">
         <name>init</name>
         <full_name>init</full_name>
-        <docblock line="60">
+        <docblock line="58">
           <description><![CDATA[Creates or opens the log file for writing]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="76" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="74" package="frisby\core">
         <name>dump</name>
         <full_name>dump</full_name>
-        <docblock line="70">
+        <docblock line="68">
           <description><![CDATA[Dumps a log event to the log file]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="70" name="param" description="" type="string" variable="$type">
+          <tag line="68" name="param" description="" type="string" variable="$type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="70" name="param" description="" type="string" variable="$message">
+          <tag line="68" name="param" description="" type="string" variable="$message">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="76">
+        <argument line="74">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="76">
+        <argument line="74">
           <name>$message</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="83" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="81" package="frisby\core">
         <name>shutdown</name>
         <full_name>shutdown</full_name>
-        <docblock line="80">
+        <docblock line="78">
           <description><![CDATA[Closes the file handler]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
@@ -1164,7 +1161,7 @@ $resultset=$search->search('something',array('people','groups','posts'));
       </method>
     </class>
   </file>
-  <file path="Registry.php" hash="17ac85645468dfa3f680322fcea326d8" package="Frisby">
+  <file path="Registry.php" hash="7131e92ed3f2b873702d79d8103ee409" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the registry which contains the method mappings and signatures.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1180,198 +1177,197 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <include line="74" type="Require Once" package="Default">
+    <include line="72" type="Require Once" package="Default">
       <name>config/mappings.inc</name>
     </include>
-    <include line="77" type="Require Once" package="Default">
+    <include line="74" type="Require Once" package="Default">
       <name>config/methodargs.inc</name>
     </include>
-    <include line="103" type="Require Once" package="Default">
+    <include line="98" type="Require Once" package="Default">
       <name/>
     </include>
-    <include line="156" type="Require Once" package="Default">
+    <include line="152" type="Require Once" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="39" package="frisby\core">
       <extends/>
       <name>Registry</name>
       <full_name>\Registry</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[This class is used to access the registry of the engine and load modules.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Registry.php');
 
 $map=Registry::read('method_name');
 Registry::load($map[0]);
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <property final="false" static="true" visibility="private" line="47" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="45" namespace="global" package="Default">
         <name>$modules</name>
         <default><![CDATA[array('events', 'grouping', 'messaging', 'profiling', 'pubsub', 'search', 'user-relations')]]></default>
-        <docblock line="42">
+        <docblock line="40">
           <description><![CDATA[Contains the names of the modules used by the engine]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="42" name="var" description="" type="array">
+          <tag line="40" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="private" line="54" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="52" namespace="global" package="Default">
         <name>$map</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="49">
+        <docblock line="47">
           <description><![CDATA[Contains the mappings from the external method names to the internal path]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="49" name="var" description="" type="array">
+          <tag line="47" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="private" line="61" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="59" namespace="global" package="Default">
         <name>$modroute</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="56">
+        <docblock line="54">
           <description><![CDATA[Contains the routes for the internal methods]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="56" name="var" description="" type="array">
+          <tag line="54" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="private" line="68" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="66" namespace="global" package="Default">
         <name>$sig</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="63">
+        <docblock line="61">
           <description><![CDATA[Contains the method signatures]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="63" name="var" description="" type="array">
+          <tag line="61" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="73" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="71" package="frisby\core">
         <name>init</name>
         <full_name>init</full_name>
-        <docblock line="70">
-          <description><![CDATA[Loads the mappings and signatures from an external file and also checks for integrity]]></description>
+        <docblock line="68">
+          <description><![CDATA[Loads the mappings and signatures from an external file]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="91" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="86" package="frisby\core">
         <name>read</name>
         <full_name>read</full_name>
-        <docblock line="85">
+        <docblock line="80">
           <description><![CDATA[Fetches the route associated with an external method name]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="85" name="param" description="" type="string" variable="$method">
+          <tag line="80" name="param" description="" type="string" variable="$method">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="85" name="return" description="" type="array">
+          <tag line="80" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
-        <argument line="91">
+        <argument line="86">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="102" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="97" package="frisby\core">
         <name>load</name>
         <full_name>load</full_name>
-        <docblock line="97">
+        <docblock line="92">
           <description><![CDATA[Loads a module controller into the engine]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="97" name="param" description="" type="string" variable="$module">
+          <tag line="92" name="param" description="" type="string" variable="$module">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="102">
+        <argument line="97">
           <name>$module</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="112" package="frisby\core">
-        <name>getLocation</name>
-        <full_name>getLocation</full_name>
-        <docblock line="106">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="107" package="frisby\core">
+        <name>getModuleClass</name>
+        <full_name>getModuleClass</full_name>
+        <docblock line="101">
           <description><![CDATA[Fetches the location of a module relative to the base directory]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="106" name="param" description="" type="string" variable="$module">
+          <tag line="101" name="param" description="" type="string" variable="$module">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="106" name="return" description="" type="string">
+          <tag line="101" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="112">
+        <argument line="107">
           <name>$module</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="123" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="118" package="frisby\core">
         <name>validateArguments</name>
         <full_name>validateArguments</full_name>
-        <docblock line="116">
+        <docblock line="111">
           <description><![CDATA[Validates an argument list passed to a method against its signature]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="116" name="param" description="" type="string" variable="$method">
+          <tag line="111" name="param" description="" type="string" variable="$method">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="116" name="param" description="" type="array" variable="$list">
+          <tag line="111" name="param" description="" type="array" variable="$list">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="116" name="return" description="" type="boolean">
+          <tag line="111" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="123">
+        <argument line="118">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="123">
+        <argument line="118">
           <name>$list</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="140" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="135" package="frisby\core">
         <name>getMethodNames</name>
         <full_name>getMethodNames</full_name>
-        <docblock line="135">
+        <docblock line="130">
           <description><![CDATA[Fetches the external names of the methods that are invokable by the user]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="135" name="return" description="" type="array">
+          <tag line="130" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="private" namespace="global" line="149" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="private" namespace="global" line="144" package="frisby\core">
         <name>scanModules</name>
         <full_name>scanModules</full_name>
-        <docblock line="144">
+        <docblock line="139">
           <description><![CDATA[Scans the class files of the engine to get a list of the defined methods]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="144" name="return" description="" type="array">
+          <tag line="139" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="events/controller.php" hash="442bdc31e84e3f6122ed195cbcbed74a" package="Frisby">
+  <file path="events/controller.php" hash="8a3786047815e3ad633a060ddb92651f" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the EventsController class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1387,39 +1383,37 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\events">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\events">
       <extends>\Controller</extends>
       <name>EventsController</name>
       <full_name>\EventsController</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class is used to register the methods of the events module.]]></description>
         <long-description><![CDATA[<pre><code>require_once('EventsController.php');
 
 $ctrl=new EventsController();
-$ctrl->invoke('method_name',array(var1,...));
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\events"/>
+        <tag line="20" name="package" description="frisby\events"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="46" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="43" package="frisby\events">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="43">
-          <description><![CDATA[Registers the methods of the events module]]></description>
+        <docblock line="40">
+          <description><![CDATA[Registers the methods of the events module.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="events/EventRegister.php" hash="4f1a841e2b3e8f7528b4bb2ee19ece5a" package="Frisby">
+  <file path="events/EventRegister.php" hash="2c42eeaa0b43fdf05bafa91dd1390c5f" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the EventRegister class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1435,142 +1429,154 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\events">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\events">
       <extends/>
       <name>EventRegister</name>
       <full_name>\EventRegister</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class is used to register event types.]]></description>
         <long-description><![CDATA[<pre><code>require_once('EventRegister.php');
 
 $reg=new EventRegister();
-$reg->registerEvent('event_name','event_category','event_description');
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\events"/>
+        <tag line="20" name="package" description="frisby\events"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <property final="false" static="false" visibility="private" line="47" namespace="global" package="Default">
+      <property final="false" static="false" visibility="private" line="46" namespace="global" package="Default">
         <name>$ctrl</name>
         <default><![CDATA[null]]></default>
-        <docblock line="42">
-          <description><![CDATA[Contains a reference to the module controller]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="42" name="var" description="" type="object">
-            <type by_reference="false">object</type>
+        <docblock line="39">
+          <description><![CDATA[The controller object.]]></description>
+          <long-description><![CDATA[<p>Contains a reference to the module controller.</p>]]></long-description>
+          <tag line="39" name="var" description="" type="\EventsController">
+            <type by_reference="false">\EventsController</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="54" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="55" package="frisby\events">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="49">
-          <description><![CDATA[Passes a reference of the module controller to this object]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="49" name="param" description="" type="object" variable="$ref">
-            <type by_reference="false">object</type>
+        <docblock line="48">
+          <description><![CDATA[Stores controller reference.]]></description>
+          <long-description><![CDATA[<p>Passes a reference of the module controller to this object.</p>]]></long-description>
+          <tag line="48" name="param" description="" type="\EventsController" variable="$ref">
+            <type by_reference="false">\EventsController</type>
           </tag>
         </docblock>
-        <argument line="54">
+        <argument line="55">
           <name>$ref</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="66" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="frisby\events">
         <name>registerEvent</name>
         <full_name>registerEvent</full_name>
-        <docblock line="58">
-          <description><![CDATA[Registers an event type to be used by the engine]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="58" name="param" description="" type="string" variable="$name">
+        <docblock line="59">
+          <description><![CDATA[Registers an event type.]]></description>
+          <long-description><![CDATA[<p>Registers an event type to be used by the engine identified by a name specified in the first argument.
+The event type can then be used to explicity fire events of that type using the method 'fireEvent'.
+The event type must be assigned a category when registering as the second argument.
+A short description of the event may be provided.</p>]]></long-description>
+          <tag line="59" name="see" description="\global\Event::fireEvent()" refers="\global\Event::fireEvent()"/>
+          <tag line="59" name="param" description="" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="58" name="param" description="" type="string" variable="$category">
+          <tag line="59" name="param" description="" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="58" name="param" description="" type="string" variable="$desc">
+          <tag line="59" name="param" description="" type="string" variable="$desc">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="58" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="59" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="66">
+        <argument line="78">
           <name>$name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="66">
+        <argument line="78">
           <name>$category</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="66">
+        <argument line="78">
           <name>$desc</name>
           <default><![CDATA['']]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="79" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="frisby\events">
         <name>unregisterEvent</name>
         <full_name>unregisterEvent</full_name>
-        <docblock line="73">
-          <description><![CDATA[Unregisters an event type]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="73" name="param" description="" type="string" variable="$name">
+        <docblock line="84">
+          <description><![CDATA[Unregisters an event type.]]></description>
+          <long-description><![CDATA[<p>Removes an event type from the system.
+This is specified by the event name which is the only argument accepted by the method.</p>
+
+<pre><code>$reg->unregisterEvent('event_name');
+</code></pre>]]></long-description>
+          <tag line="84" name="param" description="" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="73" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="84" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="79">
+        <argument line="97">
           <name>$name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="92" package="frisby\events">
-        <name>fetchNames</name>
-        <full_name>fetchNames</full_name>
-        <docblock line="86">
-          <description><![CDATA[Fetches the names of all event types of a specific category]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="86" name="param" description="" type="string" variable="$category">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="115" package="frisby\events">
+        <name>fetchEventNames</name>
+        <full_name>fetchEventNames</full_name>
+        <docblock line="103">
+          <description><![CDATA[Fetches event types by category.]]></description>
+          <long-description><![CDATA[<p>Fetches the names of all event types of a specified category.</p>
+
+<pre><code>$names=$reg->fetchEventNames('category');
+</code></pre>]]></long-description>
+          <tag line="103" name="param" description="" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="86" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="103" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="92">
+        <argument line="115">
           <name>$category</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="104" package="frisby\events">
-        <name>fetchCategories</name>
-        <full_name>fetchCategories</full_name>
-        <docblock line="99">
-          <description><![CDATA[Fetches the names of all categories of events]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="99" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="132" package="frisby\events">
+        <name>fetchEventCategories</name>
+        <full_name>fetchEventCategories</full_name>
+        <docblock line="121">
+          <description><![CDATA[Fetches event categories.]]></description>
+          <long-description><![CDATA[<p>Fetches the names of all categories of events registered on the system.</p>
+
+<pre><code>$cats=$reg->fetchEventCategories();
+</code></pre>]]></long-description>
+          <tag line="121" name="return" description="" type="string[]">
+            <type by_reference="false">string[]</type>
           </tag>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="events/Event.php" hash="b2a7dc01373e4b6071ee3ce613f1a461" package="Frisby">
+  <file path="events/Event.php" hash="42b646bc99fcdba41fd6f36b80a2d47d" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Event class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1586,182 +1592,207 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\events">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\events">
       <extends/>
       <name>Event</name>
       <full_name>\Event</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class is used to manage events explicitly.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Event.php');
 
 $event=new Event();
-$event->fireEvent('event_name',sourceid,destinationid);
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\events"/>
+        <tag line="20" name="package" description="frisby\events"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <property final="false" static="false" visibility="private" line="47" namespace="global" package="Default">
+      <property final="false" static="false" visibility="private" line="46" namespace="global" package="Default">
         <name>$ctrl</name>
         <default><![CDATA[null]]></default>
-        <docblock line="42">
-          <description><![CDATA[Contains a reference to the module controller]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="42" name="var" description="" type="object">
-            <type by_reference="false">object</type>
+        <docblock line="39">
+          <description><![CDATA[The controller object.]]></description>
+          <long-description><![CDATA[<p>Contains a reference to the module controller.</p>]]></long-description>
+          <tag line="39" name="var" description="" type="\EventsController">
+            <type by_reference="false">\EventsController</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="54" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="55" package="frisby\events">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="49">
-          <description><![CDATA[Passes a reference of the module controller to this object]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="49" name="param" description="" type="object" variable="$ref">
-            <type by_reference="false">object</type>
+        <docblock line="48">
+          <description><![CDATA[Stores controller reference.]]></description>
+          <long-description><![CDATA[<p>Passes a reference of the module controller to this object.</p>]]></long-description>
+          <tag line="48" name="param" description="" type="\EventsController" variable="$ref">
+            <type by_reference="false">\EventsController</type>
           </tag>
         </docblock>
-        <argument line="54">
+        <argument line="55">
           <name>$ref</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="66" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="85" package="frisby\events">
         <name>fireEvent</name>
         <full_name>fireEvent</full_name>
-        <docblock line="58">
-          <description><![CDATA[Fires an event explicitly]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="58" name="param" description="" type="string" variable="$name">
+        <docblock line="59">
+          <description><![CDATA[Fires an event explicitly.]]></description>
+          <long-description><![CDATA[<p>The method accepts the name of the event as the first argument.
+The second is the source identifier and should be a valid user account ID.
+The third is the destination identifier and is optional.
+The method fires an event specified by the event name and logs it.
+The event name must be a registered event name. This engine comes with a set of registered events,
+which can be viewed by using the 'fetchEventNames' and 'fetchEventCategories' methods.
+Additional events may be registered by using the 'registerEvent' method.</p>]]></long-description>
+          <tag line="59" name="see" description="\global\EventRegister::fetchEventNames()" refers="\global\EventRegister::fetchEventNames()"/>
+          <tag line="59" name="see" description="\global\EventRegister::fetchEventCategories()" refers="\global\EventRegister::fetchEventCategories()"/>
+          <tag line="59" name="see" description="\global\EventRegister::registerEvent()" refers="\global\EventRegister::registerEvent()"/>
+          <tag line="59" name="param" description="" type="string" variable="$name">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="58" name="param" description="" type="int" variable="$src">
+          <tag line="59" name="param" description="" type="int" variable="$src">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="58" name="param" description="" type="int" variable="$dest">
+          <tag line="59" name="param" description="" type="int" variable="$dest">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="58" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="59" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="66">
+        <argument line="85">
           <name>$name</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="66">
+        <argument line="85">
           <name>$src</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="66">
+        <argument line="85">
           <name>$dest</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="frisby\events">
-        <name>updateStatus</name>
-        <full_name>updateStatus</full_name>
-        <docblock line="74">
-          <description><![CDATA[Updates an event status]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="74" name="param" description="" type="array" variable="$events">
-            <type by_reference="false">array</type>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="109" package="frisby\events">
+        <name>updateEventStatus</name>
+        <full_name>updateEventStatus</full_name>
+        <docblock line="94">
+          <description><![CDATA[Updates an event status.]]></description>
+          <long-description><![CDATA[<p>The method accepts an array of event IDs and a status value.
+It sets the status of the logged events specified by the IDs to the status value.</p>
+
+<pre><code>$events=array(1,4,3,7);
+$event->updateStatus($events,1);
+</code></pre>]]></long-description>
+          <tag line="94" name="param" description="" type="int[]" variable="$events">
+            <type by_reference="false">int[]</type>
           </tag>
-          <tag line="74" name="param" description="" type="int" variable="$status">
+          <tag line="94" name="param" description="" type="int" variable="$status">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="74" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="94" name="return" description="" type="null">
+            <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="81">
+        <argument line="109">
           <name>$events</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="81">
+        <argument line="109">
           <name>$status</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="133" package="frisby\events">
         <name>fetchEventsByCategory</name>
         <full_name>fetchEventsByCategory</full_name>
-        <docblock line="89">
-          <description><![CDATA[Fetches logged events of a specific category]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="89" name="param" description="" type="string" variable="$category">
+        <docblock line="116">
+          <description><![CDATA[Fetches logged events of a specific category.]]></description>
+          <long-description><![CDATA[<p>Event categories include profile,groups,etc.
+The method accepts the category name and a timestamp value in 'YYYY-MM-DD HH:MM:SS' format.
+A status can be optionally specified as an argument to filter by the status of the events.
+The method fetches all events of the specified category logged since the specified timestamp.</p>
+
+<pre><code>$eventset=$event->fetchEventsByCategory('profile','2012-12-01 00:00:00');
+</code></pre>]]></long-description>
+          <tag line="116" name="param" description="" type="string" variable="$category">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="89" name="param" description="" type="string" variable="$age">
+          <tag line="116" name="param" description="" type="string" variable="$age">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="89" name="param" description="" type="int" variable="$status">
+          <tag line="116" name="param" description="" type="int" variable="$status">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="89" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="116" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="97">
+        <argument line="133">
           <name>$category</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="97">
+        <argument line="133">
           <name>$age</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="97">
+        <argument line="133">
           <name>$status</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="114" package="frisby\events">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="159" package="frisby\events">
         <name>fetchEventsByEntity</name>
         <full_name>fetchEventsByEntity</full_name>
-        <docblock line="106">
-          <description><![CDATA[Fetches logged events related to a particular entity]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="106" name="param" description="" type="int" variable="$orig">
+        <docblock line="141">
+          <description><![CDATA[Fetches logged events related to a particular entity.]]></description>
+          <long-description><![CDATA[<p>The entity referred to here may be a group or user or any other defined entity.
+The method accepts the IDs of the corresponding source and/or targets of the events,
+corresponding to the entities.
+A timestamp is also accepted as a parameter to fetch event logs since a particular time.
+Timestamp follows the 'YYYY-MM-DD HH:MM:SS' format.</p>
+
+<pre><code>$eventset=$event->fetchEventsByEntity(1,2,'2012-12-01 00:00:00');
+</code></pre>]]></long-description>
+          <tag line="141" name="param" description="" type="int" variable="$orig">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="106" name="param" description="" type="int" variable="$targ">
+          <tag line="141" name="param" description="" type="int" variable="$targ">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="106" name="param" description="" type="string" variable="$age">
+          <tag line="141" name="param" description="" type="string" variable="$age">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="106" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="141" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="114">
+        <argument line="159">
           <name>$orig</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
-        <argument line="114">
+        <argument line="159">
           <name>$targ</name>
           <default><![CDATA[null]]></default>
           <type/>
         </argument>
-        <argument line="114">
+        <argument line="159">
           <name>$age</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -1769,7 +1800,7 @@ $event->fireEvent('event_name',sourceid,destinationid);
       </method>
     </class>
   </file>
-  <file path="Controller.php" hash="1c47fe11dd1cf5a73fe5df4f14a002f9" package="Frisby">
+  <file path="Controller.php" hash="b8784c5c034259fc8c51cdbd3f0d95e2" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the super-class for all controllers.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1785,23 +1816,15 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <include line="74" type="Require Once" package="Default">
+    <include line="83" type="Require Once" package="Default">
       <name/>
     </include>
-    <class final="false" abstract="false" namespace="global" line="45" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="43" package="frisby\core">
       <extends/>
       <name>Controller</name>
       <full_name>\Controller</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class represents a generic controller super-class which any controller class may extend.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Controller.php');
 
@@ -1812,72 +1835,91 @@ class Sample extends Controller {
      }
 }
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
       <property final="false" static="false" visibility="protected" line="51" namespace="global" package="Default">
         <name>$assoc</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="46">
-          <description><![CDATA[Contains the mappings of the method names to the respective class names]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="46" name="var" description="" type="array">
-            <type by_reference="false">array</type>
+        <docblock line="44">
+          <description><![CDATA[A registry for the class methods.]]></description>
+          <long-description><![CDATA[<p>Contains the mappings of the method names to the respective class names.</p>]]></long-description>
+          <tag line="44" name="var" description="" type="\assoc[]">
+            <type by_reference="false">\assoc[]</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="protected" line="58" namespace="global" package="Default">
+      <property final="false" static="false" visibility="protected" line="60" namespace="global" package="Default">
         <name>$loc</name>
         <default><![CDATA[array()]]></default>
         <docblock line="53">
-          <description><![CDATA[Contains the mappings of the class names to the respective class files]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="53" name="var" description="" type="array">
-            <type by_reference="false">array</type>
+          <description><![CDATA[A registry for the class locations.]]></description>
+          <long-description><![CDATA[<p>Contains the mappings of the class names to the respective class files.</p>]]></long-description>
+          <tag line="53" name="var" description="" type="\assoc[]">
+            <type by_reference="false">\assoc[]</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="66" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="75" package="frisby\core">
         <name>loadSubModule</name>
         <full_name>loadSubModule</full_name>
-        <docblock line="60">
-          <description><![CDATA[Loads a sub-module and returns an object of the sub-module class]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="60" name="param" description="" type="string" variable="$method">
+        <docblock line="62">
+          <description><![CDATA[Class loader for a module.]]></description>
+          <long-description><![CDATA[<p>Loads a sub-module class and returns an object of the sub-module class.
+The argument accepted is that of a method name which is registered with the current module.</p>
+
+<pre><code>$mod=$obj->loadSubModule('method_name');
+</code></pre>]]></long-description>
+          <tag line="62" name="param" description="" type="string" variable="$method">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="60" name="return" description="" type="null|object">
+          <tag line="62" name="return" description="" type="null|object">
             <type by_reference="false">null</type>
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="66">
+        <argument line="75">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="90" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="110" package="frisby\core">
         <name>invoke</name>
         <full_name>invoke</full_name>
-        <docblock line="83">
-          <description><![CDATA[Invokes a method of the current module with the data supplied as an array or arguments]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="83" name="param" description="" type="string" variable="$method">
+        <docblock line="92">
+          <description><![CDATA[Method dispatcher for the controller.]]></description>
+          <long-description><![CDATA[<p>Invokes a method of the current module.
+Accepts two arguments: the method name and an array containing the argument list of the function to be called.
+The value returned consists of an array of two objects:
+a boolean flag representing success or failure and,
+the data returned by the invoked method.</p>
+
+<pre><code>$args=array($arg1,...);
+$resultset=$obj->invoke('method_name',$args);
+</code></pre>]]></long-description>
+          <tag line="92" name="param" description="" type="string" variable="$method">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="83" name="param" description="" type="array" variable="$data">
-            <type by_reference="false">array</type>
+          <tag line="92" name="param" description="" type="mixed[]" variable="$data">
+            <type by_reference="false">mixed[]</type>
           </tag>
-          <tag line="83" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="92" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="90">
+        <argument line="110">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="90">
+        <argument line="110">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -2380,7 +2422,7 @@ $resultset=$outbox->fetchOutbox(userid);
       </method>
     </class>
   </file>
-  <file path="Frisby.php" hash="a432003fd3c576d201145d738c6512bd" package="Frisby">
+  <file path="Frisby.php" hash="4cdf08e0c1c20f850b794d79a48193c3" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the bootstrap class for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2396,89 +2438,95 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <include line="73" type="Require Once" package="Default">
+    <include line="79" type="Require Once" package="Default">
       <name>Dispatcher.php</name>
     </include>
-    <include line="77" type="Require Once" package="Default">
+    <include line="83" type="Require Once" package="Default">
       <name>Setup.php</name>
     </include>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
       <extends/>
       <name>Frisby</name>
       <full_name>\Frisby</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class represents a controller for the engine.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Frisby.php');
 
 $frisby=new Frisby();
-$resultset=$frisby->call('method_name',arg1,...);
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <property final="false" static="false" visibility="private" line="47" namespace="global" package="Default">
+      <property final="false" static="false" visibility="private" line="46" namespace="global" package="Default">
         <name>$setup</name>
         <default><![CDATA[]]></default>
-        <docblock line="42">
-          <description><![CDATA[Contains an object of the Setup class]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="42" name="var" description="" type="object">
-            <type by_reference="false">object</type>
+        <docblock line="39">
+          <description><![CDATA[The setup object.]]></description>
+          <long-description><![CDATA[<p>Contains an object of the Setup class.</p>]]></long-description>
+          <tag line="39" name="var" description="" type="\Setup">
+            <type by_reference="false">\Setup</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="private" line="54" namespace="global" package="Default">
+      <property final="false" static="false" visibility="private" line="55" namespace="global" package="Default">
         <name>$dispatcher</name>
         <default><![CDATA[]]></default>
-        <docblock line="49">
-          <description><![CDATA[Contains an object of the Dispatcher class]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="49" name="var" description="" type="object">
-            <type by_reference="false">object</type>
+        <docblock line="48">
+          <description><![CDATA[The dispatcher object.]]></description>
+          <long-description><![CDATA[<p>Contains an object of the Dispatcher class.</p>]]></long-description>
+          <tag line="48" name="var" description="" type="\Dispatcher">
+            <type by_reference="false">\Dispatcher</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="false" visibility="private" line="61" namespace="global" package="Default">
+      <property final="false" static="false" visibility="private" line="64" namespace="global" package="Default">
         <name>$setupmethods</name>
         <default><![CDATA[array('setup_installDBSchema' => 'installDBSchema', 'setup_installDBTriggers' => 'installDBTriggers', 'setup_installDB' => 'installDB', 'setup_uninstallDB' => 'uninstallDB')]]></default>
-        <docblock line="56">
-          <description><![CDATA[Contains the mappings from the external setup method names to the internal setup methods]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="56" name="var" description="" type="array">
-            <type by_reference="false">array</type>
+        <docblock line="57">
+          <description><![CDATA[A registry for the setup methods.]]></description>
+          <long-description><![CDATA[<p>Contains the mappings from the external setup method names to the internal setup methods.</p>]]></long-description>
+          <tag line="57" name="var" description="" type="\assoc[]">
+            <type by_reference="false">\assoc[]</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="71" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="77" package="frisby\core">
         <name>__construct</name>
         <full_name>__construct</full_name>
-        <docblock line="68">
-          <description><![CDATA[Loads and initializes the classes required by the engine]]></description>
-          <long-description><![CDATA[]]></long-description>
+        <docblock line="71">
+          <description><![CDATA[Loads and initializes the classes required by the engine.]]></description>
+          <long-description><![CDATA[<p>This is a constructor for the Frisby class object.
+It loads the dispatcher and the setup and initializes them.</p>]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="87" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="103" package="frisby\core">
         <name>call</name>
         <full_name>call</full_name>
-        <docblock line="81">
-          <description><![CDATA[The method to invoke methods in the engine related to social networking]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="81" name="param" description="" type="string" variable="$method">
+        <docblock line="87">
+          <description><![CDATA[The master method to execute the social functions.]]></description>
+          <long-description><![CDATA[<p>This is the method that should be used to execute the functions advertised by the engine
+(Use the 'reg_getMethodNames' function to fetch the list of supported functions).
+The function accepts the method name as the first argument,
+followed by a variable number of arguments which are specific to the method specified.
+Please refer to the module functions regarding the arguments accepted by the functions.</p>
+
+<pre><code>$resultset=$frisby->call('method_name',$arg1,...);
+</code></pre>]]></long-description>
+          <tag line="87" name="param" description="" type="string" variable="$method">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="81" name="return" description="" type="array">
-            <type by_reference="false">array</type>
+          <tag line="87" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="87">
+        <argument line="103">
           <name>$method</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -2486,7 +2534,7 @@ $resultset=$frisby->call('method_name',arg1,...);
       </method>
     </class>
   </file>
-  <file path="ErrorHandler.php" hash="ce90ac03c3268b11c50d28ed39149160" package="Frisby">
+  <file path="ErrorHandler.php" hash="828f32df4faeba7e52cb87fb2fb67e30" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the error-handler for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2502,118 +2550,117 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="39" package="frisby\core">
       <extends/>
       <name>ErrorHandler</name>
       <full_name>\ErrorHandler</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[This class is used to manage errors that are triggered within the engine.]]></description>
         <long-description><![CDATA[<pre><code>require_once('ErrorHandler.php');
 
 ErrorHandler::fire('error_type','error_message');
 $trace=ErrorHandler::fetchTrace();
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <property final="false" static="true" visibility="private" line="47" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="45" namespace="global" package="Default">
         <name>$tracelist</name>
         <default><![CDATA[array()]]></default>
-        <docblock line="42">
+        <docblock line="40">
           <description><![CDATA[Contains the last trace of errors fired]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="42" name="var" description="" type="array">
+          <tag line="40" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="private" line="54" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="52" namespace="global" package="Default">
         <name>$error</name>
         <default><![CDATA[false]]></default>
-        <docblock line="49">
+        <docblock line="47">
           <description><![CDATA[Contains a flag to check whether any error event was fired]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="49" name="var" description="" type="boolean">
+          <tag line="47" name="var" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="public" line="61" namespace="global" package="Default">
+      <property final="false" static="true" visibility="public" line="59" namespace="global" package="Default">
         <name>$errtype</name>
         <default><![CDATA[array('db' => 'DATABASE', 'reg' => 'REGISTRY', 'evt' => 'EVENTS', 'int' => 'INTEGRITY')]]></default>
-        <docblock line="56">
+        <docblock line="54">
           <description><![CDATA[Contains the mappings from error mnemonics to error names]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="56" name="var" description="" type="array">
+          <tag line="54" name="var" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="74" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="72" package="frisby\core">
         <name>fire</name>
         <full_name>fire</full_name>
-        <docblock line="68">
+        <docblock line="66">
           <description><![CDATA[Triggers an error event]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="68" name="param" description="" type="string" variable="$type">
+          <tag line="66" name="param" description="" type="string" variable="$type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="68" name="param" description="" type="string" variable="$message">
+          <tag line="66" name="param" description="" type="string" variable="$message">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
-        <argument line="74">
+        <argument line="72">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="74">
+        <argument line="72">
           <name>$message</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="85" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="83" package="frisby\core">
         <name>fetchTrace</name>
         <full_name>fetchTrace</full_name>
-        <docblock line="80">
+        <docblock line="78">
           <description><![CDATA[Fetches the last recorded trace of the fired error events]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="80" name="return" description="" type="array">
+          <tag line="78" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="94" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="92" package="frisby\core">
         <name>hasErrors</name>
         <full_name>hasErrors</full_name>
-        <docblock line="89">
+        <docblock line="87">
           <description><![CDATA[Fetches a flag indicating the occurence of any error]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="89" name="return" description="" type="boolean">
+          <tag line="87" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="101" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="99" package="frisby\core">
         <name>reset</name>
         <full_name>reset</full_name>
-        <docblock line="98">
+        <docblock line="96">
           <description><![CDATA[Resets the error flag and removes all errors from the trace list]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="pubsub/controller.php" hash="75041b14743123df40933aa3fb34cfc3" package="Frisby">
+  <file path="pubsub/controller.php" hash="27dedbed0d818d93b82edcb1d9137ba1" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the PubSubController class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2958,7 +3005,7 @@ $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
       </method>
     </class>
   </file>
-  <file path="pubsub/Mime.php" hash="b4eba1ed73773fbae0bb80a486fffd6b" package="Frisby">
+  <file path="pubsub/Mime.php" hash="02060d93fafeb369fd4f9dcbcf2e5d5c" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Mime class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3070,8 +3117,8 @@ $mime->createMimeSchema('relation_name',1);
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="frisby\pubsub">
-        <name>fetchSchemas</name>
-        <full_name>fetchSchemas</full_name>
+        <name>fetchMimeSchemas</name>
+        <full_name>fetchMimeSchemas</full_name>
         <docblock line="92">
           <description><![CDATA[Fetches all the MIME schemas defined by the administrator]]></description>
           <long-description><![CDATA[]]></long-description>
@@ -3082,7 +3129,7 @@ $mime->createMimeSchema('relation_name',1);
       </method>
     </class>
   </file>
-  <file path="Database.php" hash="3cb8589c983e4403937ebb8cb088444e" package="Frisby">
+  <file path="Database.php" hash="9dea153fe81c968265ccb59a86285c5c" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the static Database class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3098,246 +3145,293 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <include line="61" type="Require Once" package="Default">
+    <include line="72" type="Require Once" package="Default">
       <name>config/database.inc</name>
     </include>
-    <class final="false" abstract="false" namespace="global" line="40" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
       <extends/>
       <name>Database</name>
       <full_name>\Database</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[An instance of this class represents a Database helper to manage database operations.]]></description>
         <long-description><![CDATA[<pre><code>require_once('Database.php');
 
-$resultset=Database::get('table_name','columns','criterion');
+Database::connect();
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
       <property final="false" static="true" visibility="private" line="46" namespace="global" package="Default">
         <name>$con</name>
         <default><![CDATA[FALSE]]></default>
-        <docblock line="41">
-          <description><![CDATA[The database connection object]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="41" name="var" description="" type="object">
+        <docblock line="39">
+          <description><![CDATA[The database connection object.]]></description>
+          <long-description><![CDATA[<p>Contains the database handler returned by the mysql_connect() method.</p>]]></long-description>
+          <tag line="39" name="var" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
       </property>
-      <property final="false" static="true" visibility="private" line="53" namespace="global" package="Default">
+      <property final="false" static="true" visibility="private" line="56" namespace="global" package="Default">
         <name>$prefix</name>
         <default><![CDATA['']]></default>
         <docblock line="48">
-          <description><![CDATA[The prefix used for all tables in the database used by the engine]]></description>
-          <long-description><![CDATA[]]></long-description>
+          <description><![CDATA[The database prefix.]]></description>
+          <long-description><![CDATA[<p>The prefix used for all tables in the database.
+This prefix is automatically prepended to the names of tables and views before querying on the database.</p>]]></long-description>
           <tag line="48" name="var" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </property>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="60" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="71" package="frisby\core">
         <name>connect</name>
         <full_name>connect</full_name>
-        <docblock line="55">
-          <description><![CDATA[Connects to the database server and the required database]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="55" name="return" description="" type="boolean">
+        <docblock line="58">
+          <description><![CDATA[Connects to the database.]]></description>
+          <long-description><![CDATA[<p>Connects to the database server and selects the specified database.
+The credentials used here i.e. hostname,username,password are read from the configuration file 'database.inc'.
+This file needs to be configured before the software runs properly.</p>
+
+<pre><code>Database::connect();
+</code></pre>]]></long-description>
+          <tag line="58" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="79" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="96" package="frisby\core">
         <name>disconnect</name>
         <full_name>disconnect</full_name>
-        <docblock line="76">
-          <description><![CDATA[Disconnects from the database]]></description>
-          <long-description><![CDATA[]]></long-description>
+        <docblock line="87">
+          <description><![CDATA[Disconnects from the database.]]></description>
+          <long-description><![CDATA[<p>Disconnects from the database server and releases the handler.</p>
+
+<pre><code>Database::disconnect();
+</code></pre>]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="93" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="121" package="frisby\core">
         <name>get</name>
         <full_name>get</full_name>
-        <docblock line="85">
-          <description><![CDATA[Fetches data from the database]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="85" name="param" description="" type="string" variable="$table">
+        <docblock line="102">
+          <description><![CDATA[Fetches data from the database.]]></description>
+          <long-description><![CDATA[<p>The method accepts a table name as the first argument followed by a string of
+comma separated column names and a criterion string to be supplied to the 'WHERE' clause of the SQL query.
+Data is returned in the form of a linear array of associative arrays.
+Each element of the linear array represents a row fetched by the query on the database.
+Each associative array represents a set of values for a particular row.
+The keys of these arrays are the field names and the values, their corresponding values.</p>
+
+<pre><code>$resultset=Database::get('table_name','column_names','criterion');
+</code></pre>]]></long-description>
+          <tag line="102" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="85" name="param" description="" type="string" variable="$values">
+          <tag line="102" name="param" description="" type="string" variable="$values">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="85" name="param" description="" type="array" variable="$criterion">
-            <type by_reference="false">array</type>
+          <tag line="102" name="param" description="" type="string" variable="$criterion">
+            <type by_reference="false">string</type>
           </tag>
-          <tag line="85" name="return" description="" type="null|array">
-            <type by_reference="false">null</type>
-            <type by_reference="false">array</type>
+          <tag line="102" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="93">
+        <argument line="121">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="93">
+        <argument line="121">
           <name>$values</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="93">
+        <argument line="121">
           <name>$criterion</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="115" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="156" package="frisby\core">
         <name>add</name>
         <full_name>add</full_name>
-        <docblock line="107">
-          <description><![CDATA[Inserts data into the database]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="107" name="param" description="" type="string" variable="$table">
+        <docblock line="135">
+          <description><![CDATA[Inserts data into the database.]]></description>
+          <long-description><![CDATA[<p>The method accepts a table name as the first argument.
+The second argument should be a string array containing the field names.
+The third argument should also be a string array containing the values of the fields.
+Note that the indices of the fields in the first array and the their respective values in
+the second array should coincide.
+The method returns the value returned by the mysql_query() function.</p>
+
+<pre><code>$cols=array('col_1','col_2');
+$vals=array('val_1','val_2');
+Database::add('table_name',$cols,$vals);
+</code></pre>]]></long-description>
+          <tag line="135" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="107" name="param" description="" type="array" variable="$fields">
-            <type by_reference="false">array</type>
+          <tag line="135" name="param" description="" type="string[]" variable="$fields">
+            <type by_reference="false">string[]</type>
           </tag>
-          <tag line="107" name="param" description="" type="array" variable="$data">
-            <type by_reference="false">array</type>
+          <tag line="135" name="param" description="" type="string[]" variable="$data">
+            <type by_reference="false">string[]</type>
           </tag>
-          <tag line="107" name="return" description="" type="boolean">
+          <tag line="135" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="115">
+        <argument line="156">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="115">
+        <argument line="156">
           <name>$fields</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="115">
+        <argument line="156">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="139" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="191" package="frisby\core">
         <name>update</name>
         <full_name>update</full_name>
-        <docblock line="130">
-          <description><![CDATA[Updates data in the database]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="130" name="param" description="" type="string" variable="$table">
+        <docblock line="171">
+          <description><![CDATA[Updates data in the database.]]></description>
+          <long-description><![CDATA[<p>The method accepts a table name followed by two string arrays containing
+the field names and their corresponding values, and a criterion string.
+The criterion string is directly used in the 'WHERE' clause of the query.
+The method returns the value returned by the mysql_query() method.</p>
+
+<pre><code>$cols=array('col_1','col_2');
+$vals=array('val_1','val_2');
+Database::update('table_name',$cols,$vals,'criterion');
+</code></pre>]]></long-description>
+          <tag line="171" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="130" name="param" description="" type="array" variable="$fields">
-            <type by_reference="false">array</type>
+          <tag line="171" name="param" description="" type="string[]" variable="$fields">
+            <type by_reference="false">string[]</type>
           </tag>
-          <tag line="130" name="param" description="" type="array" variable="$data">
-            <type by_reference="false">array</type>
+          <tag line="171" name="param" description="" type="string[]" variable="$data">
+            <type by_reference="false">string[]</type>
           </tag>
-          <tag line="130" name="param" description="" type="string" variable="$criterion">
+          <tag line="171" name="param" description="" type="string" variable="$criterion">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="130" name="return" description="" type="boolean">
+          <tag line="171" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="139">
+        <argument line="191">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="139">
+        <argument line="191">
           <name>$fields</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="139">
+        <argument line="191">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="139">
+        <argument line="191">
           <name>$criterion</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="163" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="220" package="frisby\core">
         <name>remove</name>
         <full_name>remove</full_name>
-        <docblock line="156">
-          <description><![CDATA[Deletes data from the database]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="156" name="param" description="" type="string" variable="$table">
+        <docblock line="206">
+          <description><![CDATA[Deletes data from the database.]]></description>
+          <long-description><![CDATA[<p>The method accepts a table name and a criterion string based on which it will perform deletions.
+The return value is that returned by the mysql_query() method.</p>
+
+<pre><code>Database::remove('table_name','criterion');
+</code></pre>]]></long-description>
+          <tag line="206" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="156" name="param" description="" type="string" variable="$match">
+          <tag line="206" name="param" description="" type="string" variable="$match">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="156" name="return" description="" type="boolean">
+          <tag line="206" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="163">
+        <argument line="220">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="163">
+        <argument line="220">
           <name>$match</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="182" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="248" package="frisby\core">
         <name>query</name>
         <full_name>query</full_name>
-        <docblock line="176">
-          <description><![CDATA[Executes a user-specified query on the database]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="176" name="param" description="" type="string" variable="$query">
+        <docblock line="231">
+          <description><![CDATA[Executes a user-specified query on the database.]]></description>
+          <long-description><![CDATA[<p>This method accepts a raw query and executes it on the database.
+However since the method is unaware of the type of data returned by the database server,
+it returns a handler for the processed query. The handler can be used to fetch rows from the
+database using the mysql_fetch_array() or mysql_fetch_assoc() methods.</p>
+
+<pre><code>$link=Database::query();
+$rows=array();
+while($row=mysql_fetch_assoc($link)) array_push($rows,$row);
+</code></pre>]]></long-description>
+          <tag line="231" name="param" description="" type="string" variable="$query">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="176" name="return" description="" type="boolean|object">
-            <type by_reference="false">boolean</type>
+          <tag line="231" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="182">
+        <argument line="248">
           <name>$query</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="199" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="268" package="frisby\core">
         <name>getPrefix</name>
         <full_name>getPrefix</full_name>
-        <docblock line="194">
-          <description><![CDATA[Fetches the database prefix used]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="194" name="return" description="" type="string">
+        <docblock line="257">
+          <description><![CDATA[Fetches the database prefix.]]></description>
+          <long-description><![CDATA[<p>Fetches the prefix defined in the configuration file for the database schema.</p>
+
+<pre><code>$pre=Database::getPrefix();
+</code></pre>]]></long-description>
+          <tag line="257" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="EventHandler.php" hash="eee0e443b11061394d085edf3120a791" package="Frisby">
+  <file path="EventHandler.php" hash="7e70e8bd0b8617c8c55ae2832a6e347b" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the event handler for implicit events registered in the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3353,62 +3447,61 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
     </docblock>
-    <class final="false" abstract="false" namespace="global" line="40" package="frisby\core">
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
       <extends/>
       <name>EventHandler</name>
       <full_name>\EventHandler</full_name>
-      <docblock line="29">
+      <docblock line="20">
         <description><![CDATA[This class can be used to fire an implicit event from within a module,]]></description>
         <long-description><![CDATA[<pre><code>require_once('EventHandler.php');
 
 EventHandler::fire('event_name',sourceid,destinationid);
 </code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\core"/>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
       </docblock>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="49" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="47" package="frisby\core">
         <name>fire</name>
         <full_name>fire</full_name>
-        <docblock line="42">
+        <docblock line="40">
           <description><![CDATA[Fires an event specified by a name and the participants]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="42" name="param" description="" type="string" variable="$event">
+          <tag line="40" name="param" description="" type="string" variable="$event">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="42" name="param" description="" type="int" variable="$source">
+          <tag line="40" name="param" description="" type="int" variable="$source">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="42" name="param" description="" type="int" variable="$target">
+          <tag line="40" name="param" description="" type="int" variable="$target">
             <type by_reference="false">int</type>
           </tag>
         </docblock>
-        <argument line="49">
+        <argument line="47">
           <name>$event</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="49">
+        <argument line="47">
           <name>$source</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="49">
+        <argument line="47">
           <name>$target</name>
-          <default><![CDATA[null]]></default>
+          <default><![CDATA['null']]></default>
           <type/>
         </argument>
       </method>
     </class>
   </file>
-  <file path="user-relations/controller.php" hash="4a1d124ff966c661df448d27e98e7414" package="Frisby">
+  <file path="user-relations/controller.php" hash="74083f7ca3d50df5a980299e16b52536" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the UserRelationsController class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3456,7 +3549,7 @@ $ctrl->invoke('method_name',array(var1,...));
       </method>
     </class>
   </file>
-  <file path="user-relations/UserRelations.php" hash="be623be371d6dd58f263e178c195d4af" package="Frisby">
+  <file path="user-relations/UserRelations.php" hash="db049292c7b7e97ad1e0f2aa17268996" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the UserRelations class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3522,8 +3615,8 @@ $ur->createRelation(userid1,userid2,0);
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="66" package="frisby\user-relations">
-        <name>createRelation</name>
-        <full_name>createRelation</full_name>
+        <name>createUserRelation</name>
+        <full_name>createUserRelation</full_name>
         <docblock line="58">
           <description><![CDATA[Creates a new user relations]]></description>
           <long-description><![CDATA[]]></long-description>
@@ -3557,8 +3650,8 @@ $ur->createRelation(userid1,userid2,0);
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="frisby\user-relations">
-        <name>confirmRelation</name>
-        <full_name>confirmRelation</full_name>
+        <name>confirmUserRelation</name>
+        <full_name>confirmUserRelation</full_name>
         <docblock line="74">
           <description><![CDATA[Updates a user relation by changing its status to accepted]]></description>
           <long-description><![CDATA[]]></long-description>
@@ -3584,8 +3677,8 @@ $ur->createRelation(userid1,userid2,0);
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="97" package="frisby\user-relations">
-        <name>updateRelation</name>
-        <full_name>updateRelation</full_name>
+        <name>updateUserRelation</name>
+        <full_name>updateUserRelation</full_name>
         <docblock line="89">
           <description><![CDATA[Updates a user relation]]></description>
           <long-description><![CDATA[]]></long-description>
@@ -3619,8 +3712,8 @@ $ur->createRelation(userid1,userid2,0);
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="111" package="frisby\user-relations">
-        <name>fetchRelationInfo</name>
-        <full_name>fetchRelationInfo</full_name>
+        <name>fetchUserRelationInfo</name>
+        <full_name>fetchUserRelationInfo</full_name>
         <docblock line="104">
           <description><![CDATA[Fetches information regarding a user relation]]></description>
           <long-description><![CDATA[]]></long-description>
@@ -3647,7 +3740,7 @@ $ur->createRelation(userid1,userid2,0);
       </method>
     </class>
   </file>
-  <file path="profiling/ExtendedProfile.php" hash="8802f3571dd21de9a2029143f8869aa1" package="Frisby">
+  <file path="profiling/ExtendedProfile.php" hash="ea2f4a51fe0b6ac65192c9efa4f487f9" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the ExtendedProfile class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3759,8 +3852,8 @@ $ep->registerProfileAttribute('attribute_name','varchar(100)');
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="93" package="frisby\profiling">
-        <name>getAttributeNames</name>
-        <full_name>getAttributeNames</full_name>
+        <name>getProfileAttributeNames</name>
+        <full_name>getProfileAttributeNames</full_name>
         <docblock line="88">
           <description><![CDATA[Fetches all the profile attribute names]]></description>
           <long-description><![CDATA[]]></long-description>
@@ -3771,7 +3864,7 @@ $ep->registerProfileAttribute('attribute_name','varchar(100)');
       </method>
     </class>
   </file>
-  <file path="profiling/controller.php" hash="bded3106a963222909e6039b43fdb6cd" package="Frisby">
+  <file path="profiling/controller.php" hash="fbd80ce79cefbff57670151f2350d703" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the ProfileController class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3941,7 +4034,7 @@ $priv->setPrivacy(userid,$settings);
       </method>
     </class>
   </file>
-  <file path="profiling/Profile.php" hash="ee17c3e6230038c0fc586d868fc095fd" package="Frisby">
+  <file path="profiling/Profile.php" hash="7aca7244605a2faa238c58c9db08c3c2" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Profile class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>

@@ -57,8 +57,8 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Registers methods of the profile module"><span class="description">Registers methods of the profile module</span><pre>__construct()</pre></a></li>
-<li class="method public inherited"><a href="#method_invoke" title="invoke :: Invokes a method of the current module with the data supplied as an array or arguments"><span class="description">Invokes a method of the current module with the data supplied as an array or arguments</span><pre>invoke()</pre></a></li>
-<li class="method public inherited"><a href="#method_loadSubModule" title="loadSubModule :: Loads a sub-module and returns an object of the sub-module class"><span class="description">Loads a sub-module and returns an object of the sub-module class</span><pre>loadSubModule()</pre></a></li>
+<li class="method public inherited"><a href="#method_invoke" title="invoke :: Method dispatcher for the controller."><span class="description">Method dispatcher for the controller.</span><pre>invoke()</pre></a></li>
+<li class="method public inherited"><a href="#method_loadSubModule" title="loadSubModule :: Class loader for a module."><span class="description">Class loader for a module.</span><pre>loadSubModule()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -67,8 +67,8 @@
 </li>
 <li class="nav-header protected">» Protected
                     <ul>
-<li class="property protected inherited"><a href="#property_assoc" title="$assoc :: Contains the mappings of the method names to the respective class names"><span class="description">Contains the mappings of the method names to the respective class names</span><pre>$assoc</pre></a></li>
-<li class="property protected inherited"><a href="#property_loc" title="$loc :: Contains the mappings of the class names to the respective class files"><span class="description">Contains the mappings of the class names to the respective class files</span><pre>$loc</pre></a></li>
+<li class="property protected inherited"><a href="#property_assoc" title="$assoc :: A registry for the class methods."><span class="description">A registry for the class methods.</span><pre>$assoc</pre></a></li>
+<li class="property protected inherited"><a href="#property_loc" title="$loc :: A registry for the class locations."><span class="description">A registry for the class locations.</span><pre>$loc</pre></a></li>
 </ul>
 </li>
 </ul>
@@ -91,10 +91,24 @@
 $ctrl=new ProfileController();
 $ctrl->invoke('method_name',array(var1,...));
 </code></pre></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>package</th>
 <td><a href="../packages/frisby.profiling.html">frisby\profiling</a></td>
-</tr></table>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:das.rajdeep97@gmail.com">Rajdeep Das</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright 2012 Rajdeep Das</td>
+</tr>
+<tr>
+<th>version</th>
+<td>GIT: v1.0</td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
@@ -104,11 +118,19 @@ $ctrl->invoke('method_name',array(var1,...));
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_invoke"></a><div class="element clickable method public method_invoke" data-toggle="collapse" data-target=".method_invoke .collapse">
-<h2>Invokes a method of the current module with the data supplied as an array or arguments</h2>
-<pre>invoke(string $method, array $data) : array</pre>
+<h2>Method dispatcher for the controller.</h2>
+<pre>invoke(string $method, mixed[] $data) : mixed[]</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>Invokes a method of the current module.
+Accepts two arguments: the method name and an array containing the argument list of the function to be called.
+The value returned consists of an array of two objects:
+a boolean flag representing success or failure and,
+the data returned by the invoked method.</p>
+
+<pre><code>$args=array($arg1,...);
+$resultset=$obj->invoke('method_name',$args);
+</code></pre></div>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Controller::invoke()</td>
@@ -120,18 +142,22 @@ $ctrl->invoke('method_name',array(var1,...));
 </div>
 <div class="subelement argument">
 <h4>$data</h4>
-<code>array</code>
+<code>mixed[]</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>mixed[]</code></div>
 </div></div>
 </div>
 <a id="method_loadSubModule"></a><div class="element clickable method public method_loadSubModule" data-toggle="collapse" data-target=".method_loadSubModule .collapse">
-<h2>Loads a sub-module and returns an object of the sub-module class</h2>
+<h2>Class loader for a module.</h2>
 <pre>loadSubModule(string $method) : null | object</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>Loads a sub-module class and returns an object of the sub-module class.
+The argument accepted is that of a method name which is registered with the current module.</p>
+
+<pre><code>$mod=$obj->loadSubModule('method_name');
+</code></pre></div>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Controller::loadSubModule()</td>
@@ -150,11 +176,11 @@ $ctrl->invoke('method_name',array(var1,...));
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
 <a id="property_assoc"> </a><div class="element clickable property protected property_assoc" data-toggle="collapse" data-target=".property_assoc .collapse">
-<h2>Contains the mappings of the method names to the respective class names</h2>
-<pre>$assoc : array</pre>
+<h2>A registry for the class methods.</h2>
+<pre>$assoc : \assoc[]</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>Contains the mappings of the method names to the respective class names.</p></div>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Controller::$$assoc</td>
@@ -162,11 +188,11 @@ $ctrl->invoke('method_name',array(var1,...));
 </div></div>
 </div>
 <a id="property_loc"> </a><div class="element clickable property protected property_loc" data-toggle="collapse" data-target=".property_loc .collapse">
-<h2>Contains the mappings of the class names to the respective class files</h2>
-<pre>$loc : array</pre>
+<h2>A registry for the class locations.</h2>
+<pre>$loc : \assoc[]</pre>
 <div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>Contains the mappings of the class names to the respective class files.</p></div>
 <table class="table table-bordered"><tr>
 <th>inherited_from</th>
 <td>\Controller::$$loc</td>
@@ -180,7 +206,7 @@ $ctrl->invoke('method_name',array(var1,...));
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-28T18:47:19+05:30.<br></footer></div>
+            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
 </div>
 </body>
 </html>

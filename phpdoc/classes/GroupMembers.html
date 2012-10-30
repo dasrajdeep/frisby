@@ -60,7 +60,7 @@
 <li class="method public "><a href="#method_addMember" title="addMember :: Adds a member to a specific group"><span class="description">Adds a member to a specific group</span><pre>addMember()</pre></a></li>
 <li class="method public "><a href="#method_deleteMember" title="deleteMember :: Deletes a member from a group"><span class="description">Deletes a member from a group</span><pre>deleteMember()</pre></a></li>
 <li class="method public "><a href="#method_fetchMembers" title="fetchMembers :: Fetches all the members of a specific group"><span class="description">Fetches all the members of a specific group</span><pre>fetchMembers()</pre></a></li>
-<li class="method public "><a href="#method_updatePrivilege" title="updatePrivilege :: Updates privileges for a member of a group"><span class="description">Updates privileges for a member of a group</span><pre>updatePrivilege()</pre></a></li>
+<li class="method public "><a href="#method_updateMemberPrivilege" title="updateMemberPrivilege :: Updates privileges for a member of a group"><span class="description">Updates privileges for a member of a group</span><pre>updateMemberPrivilege()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -111,7 +111,7 @@ $gm->addMember(memberid,groupid,membershiptype);
 </div>
 <a id="method_addMember"></a><div class="element clickable method public method_addMember" data-toggle="collapse" data-target=".method_addMember .collapse">
 <h2>Adds a member to a specific group</h2>
-<pre>addMember(int $accno, int $grpid, int $type) : array</pre>
+<pre>addMember(int $accno, int $grpid, int $type) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -129,12 +129,12 @@ $gm->addMember(memberid,groupid,membershiptype);
 <code>int</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_deleteMember"></a><div class="element clickable method public method_deleteMember" data-toggle="collapse" data-target=".method_deleteMember .collapse">
 <h2>Deletes a member from a group</h2>
-<pre>deleteMember(int $accno, int $grpid) : array</pre>
+<pre>deleteMember(int $accno, int $grpid) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -148,12 +148,12 @@ $gm->addMember(memberid,groupid,membershiptype);
 <code>int</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_fetchMembers"></a><div class="element clickable method public method_fetchMembers" data-toggle="collapse" data-target=".method_fetchMembers .collapse">
 <h2>Fetches all the members of a specific group</h2>
-<pre>fetchMembers(int $grpid) : array</pre>
+<pre>fetchMembers(int $grpid) : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -163,12 +163,12 @@ $gm->addMember(memberid,groupid,membershiptype);
 <code>int</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>mixed[]</code></div>
 </div></div>
 </div>
-<a id="method_updatePrivilege"></a><div class="element clickable method public method_updatePrivilege" data-toggle="collapse" data-target=".method_updatePrivilege .collapse">
+<a id="method_updateMemberPrivilege"></a><div class="element clickable method public method_updateMemberPrivilege" data-toggle="collapse" data-target=".method_updateMemberPrivilege .collapse">
 <h2>Updates privileges for a member of a group</h2>
-<pre>updatePrivilege(int $accno, int $grpid, int $type) : array</pre>
+<pre>updateMemberPrivilege(int $accno, int $grpid, int $type) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -186,7 +186,7 @@ $gm->addMember(memberid,groupid,membershiptype);
 <code>int</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <h3>
@@ -204,7 +204,7 @@ $gm->addMember(memberid,groupid,membershiptype);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-28T18:47:18+05:30.<br></footer></div>
+            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
 </div>
 </body>
 </html>

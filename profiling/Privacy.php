@@ -39,22 +39,7 @@
  * 
  * @package frisby\profiling
  */
-class Privacy {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Privacy extends ModuleSupport {
 	
 	/**
          * Updates privacy settings for a user profile
@@ -67,8 +52,7 @@ class Privacy {
 		ErrorHandler::reset();
 		$keys=array_keys($settings);
 		foreach($keys as $k) Database::update('privacy',array('restriction'),array($settings[$k]),sprintf("acc_no=%s and infofield='%s'",$accno,$k));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -90,8 +74,7 @@ class Privacy {
 		else $result=Database::get('privacy','infofield,restriction',"acc_no=".$accno);
 		$privacy=array();
 		foreach($result as $r) $privacy[$r['infofield']]=$r['restriction'];
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$privacy);
+		return $privacy;
 	}
 }
 

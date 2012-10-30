@@ -57,10 +57,10 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Passes a reference of the module controller to this object"><span class="description">Passes a reference of the module controller to this object</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_confirmRelation" title="confirmRelation :: Updates a user relation by changing its status to accepted"><span class="description">Updates a user relation by changing its status to accepted</span><pre>confirmRelation()</pre></a></li>
-<li class="method public "><a href="#method_createRelation" title="createRelation :: Creates a new user relations"><span class="description">Creates a new user relations</span><pre>createRelation()</pre></a></li>
-<li class="method public "><a href="#method_fetchRelationInfo" title="fetchRelationInfo :: Fetches information regarding a user relation"><span class="description">Fetches information regarding a user relation</span><pre>fetchRelationInfo()</pre></a></li>
-<li class="method public "><a href="#method_updateRelation" title="updateRelation :: Updates a user relation"><span class="description">Updates a user relation</span><pre>updateRelation()</pre></a></li>
+<li class="method public "><a href="#method_confirmUserRelation" title="confirmUserRelation :: Updates a user relation by changing its status to accepted"><span class="description">Updates a user relation by changing its status to accepted</span><pre>confirmUserRelation()</pre></a></li>
+<li class="method public "><a href="#method_createUserRelation" title="createUserRelation :: Creates a new user relations"><span class="description">Creates a new user relations</span><pre>createUserRelation()</pre></a></li>
+<li class="method public "><a href="#method_fetchUserRelationInfo" title="fetchUserRelationInfo :: Fetches information regarding a user relation"><span class="description">Fetches information regarding a user relation</span><pre>fetchUserRelationInfo()</pre></a></li>
+<li class="method public "><a href="#method_updateUserRelation" title="updateUserRelation :: Updates a user relation"><span class="description">Updates a user relation</span><pre>updateUserRelation()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header">
@@ -109,9 +109,9 @@ $ur->createRelation(userid1,userid2,0);
 </div>
 </div></div>
 </div>
-<a id="method_confirmRelation"></a><div class="element clickable method public method_confirmRelation" data-toggle="collapse" data-target=".method_confirmRelation .collapse">
+<a id="method_confirmUserRelation"></a><div class="element clickable method public method_confirmUserRelation" data-toggle="collapse" data-target=".method_confirmUserRelation .collapse">
 <h2>Updates a user relation by changing its status to accepted</h2>
-<pre>confirmRelation(int $accno1, int $accno2) : array</pre>
+<pre>confirmUserRelation(int $accno1, int $accno2) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -128,9 +128,9 @@ $ur->createRelation(userid1,userid2,0);
 <div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
-<a id="method_createRelation"></a><div class="element clickable method public method_createRelation" data-toggle="collapse" data-target=".method_createRelation .collapse">
+<a id="method_createUserRelation"></a><div class="element clickable method public method_createUserRelation" data-toggle="collapse" data-target=".method_createUserRelation .collapse">
 <h2>Creates a new user relations</h2>
-<pre>createRelation(int $accno1, int $accno2, int $type) : array</pre>
+<pre>createUserRelation(int $accno1, int $accno2, int $type) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -151,9 +151,9 @@ $ur->createRelation(userid1,userid2,0);
 <div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
-<a id="method_fetchRelationInfo"></a><div class="element clickable method public method_fetchRelationInfo" data-toggle="collapse" data-target=".method_fetchRelationInfo .collapse">
+<a id="method_fetchUserRelationInfo"></a><div class="element clickable method public method_fetchUserRelationInfo" data-toggle="collapse" data-target=".method_fetchUserRelationInfo .collapse">
 <h2>Fetches information regarding a user relation</h2>
-<pre>fetchRelationInfo(int $accno1, int $accno2) : array</pre>
+<pre>fetchUserRelationInfo(int $accno1, int $accno2) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -170,9 +170,9 @@ $ur->createRelation(userid1,userid2,0);
 <div class="subelement response"><code>array</code></div>
 </div></div>
 </div>
-<a id="method_updateRelation"></a><div class="element clickable method public method_updateRelation" data-toggle="collapse" data-target=".method_updateRelation .collapse">
+<a id="method_updateUserRelation"></a><div class="element clickable method public method_updateUserRelation" data-toggle="collapse" data-target=".method_updateUserRelation .collapse">
 <h2>Updates a user relation</h2>
-<pre>updateRelation(int $accno1, int $accno2, int $type) : array</pre>
+<pre>updateUserRelation(int $accno1, int $accno2, int $type) : array</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -208,7 +208,7 @@ $ur->createRelation(userid1,userid2,0);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-28T18:47:19+05:30.<br></footer></div>
+            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
 </div>
 </body>
 </html>

@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */
 
 /**
@@ -32,33 +23,53 @@
  * <code>
  * require_once('Database.php');
  * 
- * $resultset=Database::get('table_name','columns','criterion');
+ * Database::connect();
  * </code>  
  * 
- * @package frisby\core
+ * @package    frisby\core
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
 class Database {
     /**
-     * The database connection object
+     * The database connection object.
+     * 
+     * Contains the database handler returned by the mysql_connect() method.
      * 
      * @var object 
      */
     private static $con = FALSE;
     
     /**
-     * The prefix used for all tables in the database used by the engine
+     * The database prefix.
+     * 
+     * The prefix used for all tables in the database. 
+     * This prefix is automatically prepended to the names of tables and views before querying on the database.
      * 
      * @var string 
      */
     private static $prefix = '';
 
     /**
-     * Connects to the database server and the required database
+     * Connects to the database.
+     * 
+     * Connects to the database server and selects the specified database.
+     * The credentials used here i.e. hostname,username,password are read from the configuration file 'database.inc'.
+     * This file needs to be configured before the software runs properly.
+     * 
+     * <code>
+     * Database::connect();
+     * </code>
      * 
      * @return boolean 
      */
     public static function connect() {
-        require_once('config/database.inc');
+        require_once('../config/database.inc');
         self::$con = @mysql_connect($database["host"], $database["username"], $database["password"]);
         if (!self::$con) {
             ErrorHandler::fire('db', 'Unable to connect to database. ' . mysql_error());
@@ -74,7 +85,13 @@ class Database {
     }
     
     /**
-     * Disconnects from the database 
+     * Disconnects from the database.
+     * 
+     * Disconnects from the database server and releases the handler.
+     * 
+     * <code>
+     * Database::disconnect();
+     * </code> 
      */
     public static function disconnect() {
         @mysql_close(self::$con);
@@ -83,12 +100,23 @@ class Database {
     }
 
     /**
-     * Fetches data from the database
+     * Fetches data from the database.
+     * 
+     * The method accepts a table name as the first argument followed by a string of 
+     * comma separated column names and a criterion string to be supplied to the 'WHERE' clause of the SQL query.
+     * Data is returned in the form of a linear array of associative arrays.
+     * Each element of the linear array represents a row fetched by the query on the database.
+     * Each associative array represents a set of values for a particular row.
+     * The keys of these arrays are the field names and the values, their corresponding values.
+     * 
+     * <code>
+     * $resultset=Database::get('table_name','column_names','criterion');
+     * </code>
      * 
      * @param string $table
      * @param string $values
-     * @param array $criterion
-     * @return null|array 
+     * @param string $criterion
+     * @return mixed[] 
      */
     public static function get($table,$values,$criterion) {
         if(!self::$con) return NULL;
@@ -105,11 +133,24 @@ class Database {
     }
     
     /**
-     * Inserts data into the database
+     * Inserts data into the database.
+     * 
+     * The method accepts a table name as the first argument.
+     * The second argument should be a string array containing the field names.
+     * The third argument should also be a string array containing the values of the fields.
+     * Note that the indices of the fields in the first array and the their respective values in 
+     * the second array should coincide.
+     * The method returns the value returned by the mysql_query() function.
+     * 
+     * <code>
+     * $cols=array('col_1','col_2');
+     * $vals=array('val_1','val_2');
+     * Database::add('table_name',$cols,$vals);
+     * </code>
      * 
      * @param string $table
-     * @param array $fields
-     * @param array $data
+     * @param string[] $fields
+     * @param string[] $data
      * @return boolean 
      */
     public static function add($table, $fields, $data) {
@@ -128,11 +169,22 @@ class Database {
     }
 
     /**
-     * Updates data in the database
+     * Updates data in the database.
+     * 
+     * The method accepts a table name followed by two string arrays containing
+     * the field names and their corresponding values, and a criterion string.
+     * The criterion string is directly used in the 'WHERE' clause of the query.
+     * The method returns the value returned by the mysql_query() method.
+     * 
+     * <code>
+     * $cols=array('col_1','col_2');
+     * $vals=array('val_1','val_2');
+     * Database::update('table_name',$cols,$vals,'criterion');
+     * </code>
      * 
      * @param string $table
-     * @param array $fields
-     * @param array $data
+     * @param string[] $fields
+     * @param string[] $data
      * @param string $criterion
      * @return boolean 
      */
@@ -148,13 +200,18 @@ class Database {
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
             ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
-        if (!$result)
-            return FALSE;
-        return true;
+        return $result;
     }
 
     /**
-     * Deletes data from the database
+     * Deletes data from the database.
+     * 
+     * The method accepts a table name and a criterion string based on which it will perform deletions.
+     * The return value is that returned by the mysql_query() method.
+     * 
+     * <code>
+     * Database::remove('table_name','criterion');
+     * </code>
      * 
      * @param string $table
      * @param string $match
@@ -168,16 +225,25 @@ class Database {
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
             ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
-        if (!$result)
-            return FALSE;
-        return true;
+        return $result;
     }
 
     /**
-     * Executes a user-specified query on the database
+     * Executes a user-specified query on the database.
+     * 
+     * This method accepts a raw query and executes it on the database. 
+     * However since the method is unaware of the type of data returned by the database server,
+     * it returns a handler for the processed query. The handler can be used to fetch rows from the
+     * database using the mysql_fetch_array() or mysql_fetch_assoc() methods.
+     * 
+     * <code>
+     * $link=Database::query();
+     * $rows=array();
+     * while($row=mysql_fetch_assoc($link)) array_push($rows,$row);
+     * </code>
      * 
      * @param string $query
-     * @return boolean|object 
+     * @return object 
      */
     public static function query($query) {
         if (!self::$con)
@@ -185,14 +251,17 @@ class Database {
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
             ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
-        if (!$result)
-            return false;
-        else
-            return $result;
+        return $result;
     }
 	
     /**
-     * Fetches the database prefix used
+     * Fetches the database prefix.
+     * 
+     * Fetches the prefix defined in the configuration file for the database schema.
+     * 
+     * <code>
+     * $pre=Database::getPrefix();
+     * </code>
      * 
      * @return string 
      */

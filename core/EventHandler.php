@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */
 
 /**
@@ -36,6 +27,13 @@
  * </code> 
  * 
  * @package frisby\core
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
 class EventHandler {
 	
@@ -46,10 +44,10 @@ class EventHandler {
          * @param int $source
          * @param int $target 
          */
-	static function fire($event,$source,$target=null) {
+	static function fire($event,$source,$target='null') {
 		$pre=Database::getPrefix();
 		$values=sprintf("(select event_id from %sevents where event_name='%s'),%s,%s",$pre,$event,$source,$target);
-		Database::query("insert into %sevent_log (event,source,target) values (%s)",$pre,$values);
+		Database::query(sprintf("insert into %sevent_log (event,origin,target) values (%s)",$pre,$values));
 	}
 }
 

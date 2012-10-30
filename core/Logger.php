@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */	
 
 /**
@@ -36,6 +27,13 @@
  * </code>
  * 
  * @package frisby\core
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
 class Logger {
 	/**
@@ -45,26 +43,30 @@ class Logger {
          */
 	private static $file;
 	
+	private static $filename='../data/log.txt';
+	
 	/**
          * Contains the mappings from the event mnemonics to the event names
          * 
          * @var array
          */
-	static $logtype=array(
-		'db'=>'DATABASE',
-		'reg'=>'REGISTRY',
-		'evt'=>'EVENTS',
-		'int'=>'INTEGRITY'
-	);
+        private static $sysEvents=array(
+            'db'=>'DATABASE',
+            'php'=>'PHP',
+            'val'=>'VALIDATION',
+            'set'=>'SETUP',
+            'arg'=>'ARGUMENTS',
+            'int'=>'INTEGRITY'
+        );
 	
 	/**
          * Creates or opens the log file for writing 
          */
 	public static function init() {
-		self::$file=file_exists('data/log.txt');
-		if(!self::$file) self::$file=fopen('data/log.txt','w');
-		else self::$file=fopen('data/log.txt','a+');
-		$permitted=@chmod('data/log.txt',0777);
+		self::$file=file_exists(self::$filename);
+		if(!self::$file) self::$file=fopen(self::$filename,'w');
+		else self::$file=fopen(self::$filename,'a+');
+		@chmod(self::$filename,0777);
 	}
 	
 	/**
@@ -74,10 +76,21 @@ class Logger {
          * @param string $message 
          */
 	public static function dump($type,$message) {
-		fwrite(self::$file,'['.time().']'.self::$logtype[$type].':'.$message.'\n');
+                $event=@self::$sysEvents[$type];
+		fwrite(self::$file,'['.time().']'.$event.':'.$message.'\n');
 	}
 	
-	/**
+	public static function read() {
+		$log=fread(self::$file,filesize(self::$filename));
+		return $log;
+	}
+        
+        public static function event($mnemonic) {
+            if(array_key_exists($mnemonic, self::$sysEvents)) return self::$sysEvents[$mnemonic];
+            else return null;
+        }
+
+        /**
          * Closes the file handler 
          */
 	public static function shutdown() {

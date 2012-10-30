@@ -39,22 +39,7 @@
  * 
  * @package frisby\pubsub
  */
-class Publish {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Publish extends ModuleSupport {
 	
 	/**
          * Creates a new post
@@ -74,8 +59,7 @@ class Publish {
 		$values=sprintf("%s,'%s',%s,%s,%s",$accno,$data['text'],$ref,$pre,$node,$thread);
 		Database::query("insert into %sposts (publisher,textdata,mime,node,thread) values (%s)",$pre,$values);
 		EventHandler::fire('creatednewpost',$accno,mysql_insert_id());
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -98,8 +82,7 @@ class Publish {
 			Database::remove('mime',"mime_id=".$pre);
 		}
 		Database::remove('posts',"post_id=".$postid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**

@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */
 
 /**
@@ -33,83 +24,118 @@
  * require_once('Event.php');
  * 
  * $event=new Event();
- * $event->fireEvent('event_name',sourceid,destinationid);
  * </code> 
  * 
  * @package frisby\events
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
-class Event {
+class Event extends ModuleSupport {
+
 	/**
-         * Contains a reference to the module controller
+         * Fires an event explicitly.
          * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
+         * The method accepts the name of the event as the first argument.
+         * The second is the source identifier and should be a valid user account ID.
+         * The third is the destination identifier and is optional.
+         * The method fires an event specified by the event name and logs it.
+         * The event name must be a registered event name. This engine comes with a set of registered events,
+         * which can be viewed by using the 'fetchEventNames' and 'fetchEventCategories' methods.
+         * Additional events may be registered by using the 'registerEvent' method.
          * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
-	
-	/**
-         * Fires an event explicitly
+         * @see EventRegister::fetchEventNames()
+         * @see EventRegister::fetchEventCategories()
+         * @see EventRegister::registerEvent()
+         * 
+         * <code>
+         * $src_id=1;
+         * $dest_id=2;
+         * $event->fireEvent('event_name',$src_id,$dest_id);
+         * </code>
          * 
          * @param string $name
          * @param int $src
          * @param int $dest
-         * @return array 
+         * @return null 
          */
 	function fireEvent($name,$src,$dest=null) {
 		ErrorHandler::reset();
 		$pre=Database::getPrefix();
-		Database::query(sprintf("insert into %sevent_log (event,origin,target) values ((select event_id from %sevents where event_name=%s),%s,%s)",$pre,$pre,$name,$src,$dest));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+                $eid=sprintf("select event_id from %sevents where event_name=%s",$pre,$name);
+                $query=sprintf("insert into %sevent_log (event,origin,target) values ((%s),%s,%s)",$pre,$eid,$src,$dest);
+		Database::query($query);
+		return null;
 	}
 	
 	/**
-         * Updates an event status
+         * Updates an event status.
          * 
-         * @param array $events
+         * The method accepts an array of event IDs and a status value.
+         * It sets the status of the logged events specified by the IDs to the status value.
+         * 
+         * <code>
+         * $events=array(1,4,3,7);
+         * $event->updateStatus($events,1);
+         * </code>
+         * 
+         * @param int[] $events
          * @param int $status
-         * @return array 
+         * @return null 
          */
-	function updateStatus($events,$status) {
+	function updateEventStatus($events,$status) {
 		ErrorHandler::reset();
 		$ids=implode(',',$events);
 		Database::update('event_log',array('status'),array($status),sprintf("log_id in (%s)",$ids));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
-         * Fetches logged events of a specific category
+         * Fetches logged events of a specific category.
+         * 
+         * Event categories include profile,groups,etc. 
+         * The method accepts the category name and a timestamp value in 'YYYY-MM-DD HH:MM:SS' format.
+         * A status can be optionally specified as an argument to filter by the status of the events.
+         * The method fetches all events of the specified category logged since the specified timestamp.
+         * 
+         * <code>
+         * $eventset=$event->fetchEventsByCategory('profile','2012-12-01 00:00:00');
+         * </code>
          * 
          * @param string $category
          * @param string $age
          * @param int $status
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchEventsByCategory($category,$age,$status=null) {
 		ErrorHandler::reset();
 		$pre=Database::getPrefix();
 		if($status) $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s' and status=%s",$pre,$category,$age,$status));
 		else $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s'",$pre,$category,$age));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$set);
+		return $set;
 	}
 	
 	/**
-         * Fetches logged events related to a particular entity
+         * Fetches logged events related to a particular entity.
+         * 
+         * The entity referred to here may be a group or user or any other defined entity.
+         * The method accepts the IDs of the corresponding source and/or targets of the events,
+         * corresponding to the entities.
+         * A timestamp is also accepted as a parameter to fetch event logs since a particular time.
+         * Timestamp follows the 'YYYY-MM-DD HH:MM:SS' format.
+         * 
+         * <code>
+         * $eventset=$event->fetchEventsByEntity(1,2,'2012-12-01 00:00:00');
+         * </code>
          * 
          * @param int $orig
          * @param int $targ
          * @param string $age
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchEventsByEntity($orig=null,$targ=null,$age) {
 		ErrorHandler::reset();
@@ -118,8 +144,7 @@ class Event {
 		if($orig) array_push($filters,"origin=".$orig);
 		if($targ) array_push($filters,"target=".$targ);
 		$set=Database::get('event_log','*',sprintf("%s and timestamp>='%s'",implode(' and ',$filters),$age));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$set);
+		return $set;
 	}
 }
 

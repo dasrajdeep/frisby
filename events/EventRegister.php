@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */
 
 /**
@@ -33,81 +24,98 @@
  * require_once('EventRegister.php');
  * 
  * $reg=new EventRegister();
- * $reg->registerEvent('event_name','event_category','event_description');
  * </code> 
  * 
  * @package frisby\events
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
-class EventRegister {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
+class EventRegister extends ModuleSupport {
 	
 	/**
-         * Passes a reference of the module controller to this object
+         * Registers an event type.
          * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
-	
-	/**
-         * Registers an event type to be used by the engine
+         * Registers an event type to be used by the engine identified by a name specified in the first argument. 
+         * The event type can then be used to explicity fire events of that type using the method 'fireEvent'.
+         * The event type must be assigned a category when registering as the second argument.
+         * A short description of the event may be provided.
+         * 
+         * @see Event::fireEvent()
+         * 
+         * <code>
+         * $reg->registerEvent('event_name','event_category','event_description');
+         * </code>
          * 
          * @param string $name
          * @param string $category
          * @param string $desc
-         * @return array 
+         * @return null 
          */
 	function registerEvent($name,$category,$desc='') {
 		ErrorHandler::reset();
 		Database::add('events',array('category','event_name','description'),array($category,$name,$desc));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
-         * Unregisters an event type
+         * Unregisters an event type.
+         * 
+         * Removes an event type from the system. 
+         * This is specified by the event name which is the only argument accepted by the method.
+         * 
+         * <code>
+         * $reg->unregisterEvent('event_name');
+         * </code>
          * 
          * @param string $name
-         * @return array 
+         * @return null 
          */
 	function unregisterEvent($name) {
 		ErrorHandler::reset();
 		Database::remove('events',sprintf("event_name='%s'",$name));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
-         * Fetches the names of all event types of a specific category
+         * Fetches event types by category.
+         * 
+         * Fetches the names of all event types of a specified category.
+         * 
+         * <code>
+         * $names=$reg->fetchEventNames('category');
+         * </code>
          * 
          * @param string $category
-         * @return array 
+         * @return mixed[] 
          */
-	function fetchNames($category) {
+	function fetchEventNames($category) {
 		ErrorHandler::reset();
 		$set=Database::get('events','event_id,event_name,description',sprintf("category='%s'",$category));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$set);
+		return $set;
 	}
 	
 	/**
-         * Fetches the names of all categories of events
+         * Fetches event categories.
          * 
-         * @return array
+         * Fetches the names of all categories of events registered on the system.
+         * 
+         * <code>
+         * $cats=$reg->fetchEventCategories();
+         * </code>
+         * 
+         * @return string[]
          */
-	function fetchCategories() {
+	function fetchEventCategories() {
 		ErrorHandler::reset();
 		$set=Database::get('events','distinct category as cat',false);
 		$categories=array();
 		foreach($set as $s) array_push($categories,$s['cat']);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$categories);
+		return $categories;
 	}
 }
 

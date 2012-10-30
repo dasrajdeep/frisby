@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the bootstrap class for the engine.
+ * This file contains the dispatcher for the engine.
  * 
  * PHP version 5.3
  * 
@@ -18,12 +18,14 @@
  */
 
 /**
- * An instance of this class represents a controller for the engine.
+ * An instance of this class represents a dispatcher for the API methods registered in the engine.
  * 
  * <code>
- * require_once('Frisby.php');
+ * require_once('Dispatcher.php');
  * 
- * $frisby=new Frisby();
+ * $dispatcher=new Dispatcher();
+ * $data=array(var1,...);
+ * $resultset=$dispatcher->dispatch('method_name',$data);
  * </code> 
  * 
  * @package frisby\core
@@ -35,41 +37,33 @@
  * @link       https://github.com/dasrajdeep/frisby
  * @since      Class available since Release 1.0
  */
-class Frisby {	
+class Dispatcher {
 	
-	function __construct() {
-		//Boots up the engine and moves to core directory.
-		chdir('core');
-		require_once('Bootstrap.php');
-		chdir('..');
+	/**
+         * Invokes a method supplied as argument and returns the data returned by the invoked method
+         * 
+         * @param string $method
+         * @param mixed[] $data
+         * @return mixed 
+         */
+	function dispatch($method,$data) {
+		
+		$route=Registry::read($method);
+		
+		$module=$route['module'];
+		
+		$loc=Registry::location($module);
+		chdir('../'.$loc);
+		
+		$class=$route['classname'];
+		require_once($class.'.php');
+		$obj=new $class();
+		$result=call_user_func_array(array($obj,$method),$data);
+		
+		chdir('../core');
+		
+		return $result;
 	}
 	
-	function call($method) {
-		
-		chdir('core');
-		
-		$data=func_get_args();
-		$data=array_slice($data,1);
-		
-		ErrorHandler::reset();
-		
-		if(preg_match('/^(admin_)(.)+/',$method)==1) {
-			$method=substr($method,6);
-			require_once('Admin.php');
-			$admin=new Admin();
-			$result=$admin->invoke($method,$data);
-		}
-		else {
-			require_once('Dispatcher.php');
-			$api=new Dispatcher();
-			$result=$api->dispatch($method,$data);
-		}
-		
-		chdir('..');
-		
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$result);
-	}
 }
-
 ?>

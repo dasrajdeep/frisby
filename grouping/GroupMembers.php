@@ -38,22 +38,7 @@
  * 
  * @package frisby\grouping
  */
-class GroupMembers {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class GroupMembers extends ModuleSupport {
 	
 	/**
          * Adds a member to a specific group
@@ -61,14 +46,13 @@ class GroupMembers {
          * @param int $accno
          * @param int $grpid
          * @param int $type
-         * @return array 
+         * @return null 
          */
 	function addMember($accno,$grpid,$type=0) {
 		ErrorHandler::reset();
 		Database::add('group_members',array('member_id','group_id','type'),array($accno,$grpid,$type));
 		EventHandler::fire('joinedgroup',$accno,$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -76,14 +60,13 @@ class GroupMembers {
          * 
          * @param int $accno
          * @param int $grpid
-         * @return array 
+         * @return null 
          */
 	function deleteMember($accno,$grpid) {
 		ErrorHandler::reset();
 		Database::remove('group_members',sprintf("member_id=%s and group_id=%s",$accno,$grpid));
 		EventHandler::fire('leftgroup',$accno,$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
         /**
@@ -92,27 +75,25 @@ class GroupMembers {
          * @param int $accno
          * @param int $grpid
          * @param int $type
-         * @return array 
+         * @return null
          */
-	function updatePrivilege($accno,$grpid,$type) {
+	function updateMemberPrivilege($accno,$grpid,$type) {
 		ErrorHandler::reset();
 		Database::update('group_members',array('type'),array($type),sprintf("member_id=%s and group_id=%s",$accno,$grpid));
 		if(type==2) EventHandler::fire('becamemoderator',$accno,$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+                return null;
 	}
 	
 	/**
          * Fetches all the members of a specific group
          * 
          * @param int $grpid
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchMembers($grpid) {
 		ErrorHandler::reset();
 		$set=Database::get('group_members','member_id,type,joindate',"group_id=".$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$set);
+		return $set;
 	}
 }
 

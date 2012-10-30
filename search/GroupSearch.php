@@ -39,22 +39,7 @@
  * 
  * @package frisby\search
  */
-class GroupSearch {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class GroupSearch extends ModuleSupport {
 	
 	/**
          * Searches for groups
@@ -71,8 +56,7 @@ class GroupSearch {
 		if(isset($querydata['creationdate'])) array_push($patterns,"creationdate>=".$querydata['creationdate']);
 		$matcher=implode(' and ',$patterns);
 		$set=Database::get('groups','*',$matcher);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 }
 

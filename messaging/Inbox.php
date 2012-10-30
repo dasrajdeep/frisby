@@ -38,22 +38,7 @@
  * 
  * @package frisby\messaging
  */
-class Inbox {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to the this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Inbox extends ModuleSupport {
 	
 	/**
          * Fetches the entire inbox
@@ -64,8 +49,7 @@ class Inbox {
 	function fetchInbox($accno) {
 		ErrorHandler::reset();
 		$set=Database::get('messages','*',"status in (1,3,5,7) and receiver=".$accno);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 	
 	/**
@@ -77,8 +61,7 @@ class Inbox {
 	function fetchUnread($accno) {
 		ErrorHandler::reset();
 		$set=Database::get('messages','*',"status in (1,5) and receiver=".$accno);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 	
 	/**
@@ -91,8 +74,7 @@ class Inbox {
 		ErrorHandler::reset();
 		$set=implode(',',$msgids);
 		Database::query(sprintf("update %smessages set status=status+2 where msg_id in (%s)",Database::getPrefix(),$set));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -108,8 +90,7 @@ class Inbox {
 		if(count($idlist)>0) Database::query(sprintf("update %smessages set status=status+8 where status in (1,3,5,7) and msg_id in (%s)",Database::getPrefix(),$set));
 		else Database::query(sprintf("update %smessages set status=status+8 where status in (1,3,5,7) and receiver=%s",Database::getPrefix(),$accno));
 		Database::remove('messages',"status in (13,15)");
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 }
 

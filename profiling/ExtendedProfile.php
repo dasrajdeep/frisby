@@ -38,22 +38,7 @@
  * 
  * @package frisby\profiling
  */
-class ExtendedProfile {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class ExtendedProfile extends ModuleSupport {
 	
 	/**
          * Registers a new profile attribute 
@@ -67,8 +52,7 @@ class ExtendedProfile {
 		Database::query(sprintf("alter table %sprofile add column %s %s",Database::getPrefix(),$name,$datatype));
 		$set=Database::get('privacy','distinct acc_no as acc',false);
 		foreach($set as $s) Database::add('privacy',array('acc_no','infofield'),array($s['acc'],$name));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -81,8 +65,7 @@ class ExtendedProfile {
 		ErrorHandler::reset();
 		Database::query(sprintf("alter table %sprofile drop column %s",Database::getPrefix(),$name));
 		Database::remove('privacy',sprintf("infofield='%s'",$name));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -90,13 +73,12 @@ class ExtendedProfile {
          * 
          * @return array
          */
-	function getAttributeNames() {
+	function getProfileAttributeNames() {
 		ErrorHandler::reset();
 		$p=Database::query("desc %sprofile");
 		$names=array();
 		while($r=mysql_fetch_assoc($p)) array_push($names,$r['Field']);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$names);
+		return $names;
 
 	}
 }

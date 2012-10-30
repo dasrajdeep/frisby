@@ -38,23 +38,8 @@
  * 
  * @package frisby\search
  */
-class Search {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
-	
+class Search extends ModuleSupport {
+
 	/**
          * Searches by names in specified domains
          * 
@@ -67,20 +52,19 @@ class Search {
 		$results=array();
 		foreach($domain as $d) {
 			if($d=='people') {
-				$mod=$this->ctrl->loadSubModule('searchPeople');
+				$mod=loadSubModule('searchPeople');
 				$results['people']=$mod->searchPeople(array('name'=>$querydata));
 			}
 			else if($d=='groups') {
-				$mod=$this->ctrl->loadSubModule('searchGroup');
+				$mod=loadSubModule('searchGroup');
 				$results['groups']=$mod->searchGroup(array('name'=>$querydata));
 			}
 			else if($d=='posts') {
-				$mod=$this->ctrl->loadSubModule('searchPosts');
+				$mod=loadSubModule('searchPosts');
 				$results['posts']=$mod->searchPosts(array('text'=>$querydata));
 			}
 		}
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$results);
+		return $results;
 	}
 }
 

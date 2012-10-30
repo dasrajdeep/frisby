@@ -39,22 +39,7 @@
  * 
  * @package frisby\search
  */
-class PeopleSearch {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class PeopleSearch extends ModuleSupport {
 	
 	/**
          * Searches for people within the entire network
@@ -70,8 +55,7 @@ class PeopleSearch {
 		if(array_key_exists('name',$querydata)) array_push($patterns,sprintf("concat(firstname,' ',middlename,' ',lastname) like '%%%s%%'",$querydata['name']));
 		$matcher=implode(' and ',$patterns);
 		$set=Database::get('profile','*',$matcher);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 	
 	/**
@@ -92,8 +76,7 @@ class PeopleSearch {
 		if(isset($domain['user_id'])) array_push($patterns,sprintf("acc_no in (select user1 as user from %suser_relations where user2=%s and status=1 union select user2 as user from %suser_relations where user1=%s and status=1)",$pre,$domain['user_id'],$pre,$domain['user_id']));
 		$matcher=implode(' and ',$patterns);
 		$set=Database::get('profile','*',$matcher);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 }
 

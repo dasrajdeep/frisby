@@ -2,6 +2,13 @@
 
 //Database queries for schema tables installation.
 $tables=array(
+	'registry'=>"create table %sregistry (
+		method varchar(50) not null,
+		classname varchar(50) not null,
+		module varchar(50),
+		type tinyint default 0,
+		primary key (method)
+	) engine=INNODB",
 	'accounts'=>"create table %saccounts (
 		acc_no int not null auto_increment,
 		email varchar(150) not null,

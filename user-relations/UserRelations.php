@@ -38,22 +38,7 @@
  * 
  * @package frisby\user-relations
  */
-class UserRelations {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class UserRelations extends ModuleSupport {
 	
 	/**
          * Creates a new user relations
@@ -63,12 +48,11 @@ class UserRelations {
          * @param int $type
          * @return array 
          */
-	function createRelation($accno1,$accno2,$type=0) {
+	function createUserRelation($accno1,$accno2,$type=0) {
 		ErrorHandler::reset();
 		Database::add('user_relations',array('user1','user2','type','status'),array($accno1,$accno2,$type,0));
 		EventHandler::fire('sentfriendrequest',$accno1,$accno2);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -78,12 +62,11 @@ class UserRelations {
          * @param int $accno2
          * @return array 
          */
-	function confirmRelation($accno1,$accno2) {
+	function confirmUserRelation($accno1,$accno2) {
 		ErrorHandler::reset();
 		Database::update('user_relations',array('status'),array(1),sprintf("(user1=%s and user2=%s) or (user2=%s and user1=%s)",$accno1,$accno2,$accno1,$accno2));
 		EventHandler::fire('acceptedrequest',$accno1,$accno2);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -94,11 +77,10 @@ class UserRelations {
          * @param int $type
          * @return array 
          */
-	function updateRelation($accno1,$accno2,$type) {
+	function updateUserRelation($accno1,$accno2,$type) {
 		ErrorHandler::reset();
 		Database::update('user_relations',array('type'),array($type),sprintf("user1=%s and user2=%s",$accno1,$accno2));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -108,11 +90,10 @@ class UserRelations {
          * @param int $accno2
          * @return array 
          */
-	function fetchRelationInfo($accno1,$accno2) {
+	function fetchUserRelationInfo($accno1,$accno2) {
 		ErrorHandler::reset();
 		$set=Database::get('user_relations','status,type',sprintf("(user1=%s and user2=%s) or (user2=%s and user1=%s)",$accno1,$accno2,$accno1,$accno2));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$set[0]);
+		return $set[0];
 	}
 }
 

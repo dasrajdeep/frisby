@@ -38,22 +38,7 @@
  * 
  * @package frisby\messaging
  */
-class Message {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Message extends ModuleSupport {
 	
 	/**
          * Sends a message
@@ -67,8 +52,7 @@ class Message {
 		ErrorHandler::reset();
 		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,1));
 		EventHandler::fire('sentmessage',$sender,$receiver);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -82,8 +66,7 @@ class Message {
 	function saveDraft($sender,$receiver,$msg) {
 		ErrorHandler::reset();
 		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,0));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -96,8 +79,7 @@ class Message {
 	function editDraft($msgid,$msg) {
 		ErrorHandler::reset();
 		Database::update('messages',array('textdata'),array($msg),"msg_id=".$msgid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -111,8 +93,7 @@ class Message {
 		Database::update('messages',array('status'),array(1),"msg_id=".$msgid);
 		$set=Database::get('messages','sender,receiver',"msg_id=".$msgid);
 		EventHandler::fire('sentmessage',$set[0]['sender'],$set[0]['receiver']);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 }
 

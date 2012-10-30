@@ -38,21 +38,7 @@
  * 
  * @package frisby\grouping
  */
-class Group {
-	/**
-         * Contains a reference to the module controller
-         * @var object 
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Group extends ModuleSupport {
 	
 	/**
          * Creates a new group
@@ -61,7 +47,7 @@ class Group {
          * @param string $name
          * @param string $desc
          * @param int $type
-         * @return array 
+         * @return null 
          */
 	function createGroup($creator,$name,$desc,$type=0) {
 		ErrorHandler::reset();
@@ -69,22 +55,20 @@ class Group {
 		if($ref) $ref=mysql_insert_id();
 		Database::add('group_members',array('member_id','group_id','type'),array($creator,$ref,1));
 		EventHandler::fire('creatednewgroup',$creator,$ref);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
          * Deletes a group
          * 
          * @param int $grpid
-         * @return array 
+         * @return null 
          */
 	function deleteGroup($grpid) {
 		ErrorHandler::reset();
 		Database::remove('groups',"group_id=".$grpid);
 		Database::remove('group_members',"group_id=".$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -92,7 +76,7 @@ class Group {
          * 
          * @param int $grpid
          * @param array $data
-         * @return array 
+         * @return null 
          */
 	function updateGroup($grpid,$data) {
 		ErrorHandler::reset();
@@ -100,21 +84,19 @@ class Group {
 		$values=array();
 		foreach($keys as $k) array_push($values,$data[$k]);
 		Database::update('groups',$keys,$values,"group_id=".$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 
 	/**
          * Fetches all information regarding a specific group
          * 
          * @param int $grpid
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchGroup($grpid) {
 		ErrorHandler::reset();
 		$set=Database::get('groups','*',"group_id=".$grpid);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$set[0]);	
+		return $set[0];	
 	}
 }
 

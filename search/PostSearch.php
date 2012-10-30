@@ -39,22 +39,7 @@
  * 
  * @package frisby\search
  */
-class PostSearch {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class PostSearch extends ModuleSupport {
 	
 	/**
          * Searches for publications within the entire network
@@ -71,8 +56,7 @@ class PostSearch {
 		$matcher=implode(' and ',$parts);
 		if(isset($querydata['maxposts'])) $matcher.=' limit '.$querydata['maxposts'];
 		$set=Database::get('posts','*',$matcher);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 }
 

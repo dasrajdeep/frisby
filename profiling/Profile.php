@@ -39,22 +39,7 @@
  * 
  * @package frisby\profiling
  */
-class Profile {
-	/**
-         * Contains a reference of the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Profile extends ModuleSupport {
 	
 	/**
          * Creates a new user profile
@@ -73,8 +58,7 @@ class Profile {
 		Database::add('profile',$keys,$values);
 		$attr=array('alias','email','sex','dob','location');
 		foreach($attr as $a) Database::add('privacy',array('acc_no','infofield','restriction'),array($accno,$a,0));
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -94,8 +78,7 @@ class Profile {
 		if($old && $old[0]['avatar']) $old=$old[0]['avatar'];
 		if($old && $old>1) Database::remove('images',"img_id=".$old);
 		Database::update('profile',array('avatar'),array($newid),"acc_no=".$accno);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -107,8 +90,7 @@ class Profile {
 	function deleteProfile($accno) {
 		ErrorHandler::reset();
 		Database::remove('profile',"acc_no=".$accno);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -125,8 +107,7 @@ class Profile {
 		foreach($keys as $k) array_push($values,$data[$k]);
 		Database::update('profile',$keys,$values,"acc_no=".$accno);
 		EventHandler::fire('updatedprofile',$accno);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,null);
+		return null;
 	}
 	
 	/**
@@ -141,8 +122,8 @@ class Profile {
 		$cols='*';
 		if(func_num_args()==2) $cols=implode(',',$attrs);
 		$result=Database::get('view_profile',$cols,"acc_no=".$accno);
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$result[0]);
+                if(isset($result['avatar'])) $result['avatar']=base64_encode($result['avatar']);
+		return $result[0];
 	}
 }
 

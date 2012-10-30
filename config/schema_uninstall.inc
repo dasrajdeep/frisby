@@ -2,8 +2,9 @@
 
 //Database queries for schema uninstallation.
 $uninstallqueries=array(
-	"drop table if exists %sprofile",
+	"drop table if exists %sregistry",
 	"drop table if exists %sprivacy",
+	"drop table if exists %sprofile",
 	"drop table if exists %suser_relations",
 	"drop table if exists %sposts",
 	"drop table if exists %snodes",

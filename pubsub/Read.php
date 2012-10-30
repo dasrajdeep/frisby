@@ -38,22 +38,7 @@
  * 
  * @package frisby\pubsub
  */
-class Read {
-	/**
-         * Contains a reference to the module controller
-         * 
-         * @var object
-         */
-	private $ctrl=null;
-	
-	/**
-         * Passes a reference of the module controller to this object
-         * 
-         * @param object $ref 
-         */
-	function __construct($ref) {
-		$this->ctrl=$ref;
-	}
+class Read extends ModuleSupport {
 	
 	/**
          * Fetches publications on a specific node
@@ -71,8 +56,7 @@ class Read {
 		for($i=0;$i<count($set);$i++) {
 			if($set[$i]['mime']>0) $set[$i]['mime']=$this->getMime($set[$i]['mime']);
 		}
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set);
+		return $set;
 	}
 	
 	/**
@@ -90,8 +74,7 @@ class Read {
 			$set=$set[0];
 			if($set['mime']>0) $set['mime']=$this->getMime($set['mime']);
 		}
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		return array(true,$set[0]);
+		return $set[0];
 	}
 	
         /**

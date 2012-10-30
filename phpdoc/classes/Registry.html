@@ -56,9 +56,9 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_getLocation" title="getLocation :: Fetches the location of a module relative to the base directory"><span class="description">Fetches the location of a module relative to the base directory</span><pre>getLocation()</pre></a></li>
 <li class="method public "><a href="#method_getMethodNames" title="getMethodNames :: Fetches the external names of the methods that are invokable by the user"><span class="description">Fetches the external names of the methods that are invokable by the user</span><pre>getMethodNames()</pre></a></li>
-<li class="method public "><a href="#method_init" title="init :: Loads the mappings and signatures from an external file and also checks for integrity"><span class="description">Loads the mappings and signatures from an external file and also checks for integrity</span><pre>init()</pre></a></li>
+<li class="method public "><a href="#method_getModuleClass" title="getModuleClass :: Fetches the location of a module relative to the base directory"><span class="description">Fetches the location of a module relative to the base directory</span><pre>getModuleClass()</pre></a></li>
+<li class="method public "><a href="#method_init" title="init :: Loads the mappings and signatures from an external file"><span class="description">Loads the mappings and signatures from an external file</span><pre>init()</pre></a></li>
 <li class="method public "><a href="#method_load" title="load :: Loads a module controller into the engine"><span class="description">Loads a module controller into the engine</span><pre>load()</pre></a></li>
 <li class="method public "><a href="#method_read" title="read :: Fetches the route associated with an external method name"><span class="description">Fetches the route associated with an external method name</span><pre>read()</pre></a></li>
 <li class="method public "><a href="#method_validateArguments" title="validateArguments :: Validates an argument list passed to a method against its signature"><span class="description">Validates an argument list passed to a method against its signature</span><pre>validateArguments()</pre></a></li>
@@ -99,15 +99,55 @@
 $map=Registry::read('method_name');
 Registry::load($map[0]);
 </code></pre></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>package</th>
 <td><a href="../packages/frisby.core.html">frisby\core</a></td>
-</tr></table>
+</tr>
+<tr>
+<th>category</th>
+<td>PHP</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:das.rajdeep97@gmail.com">Rajdeep Das</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright 2012 Rajdeep Das</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.gnu.org/licenses/gpl.txt">The GNU General Public License</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>GIT: v1.0</td>
+</tr>
+<tr>
+<th>link</th>
+<td><a href="https://github.com/dasrajdeep/frisby">https://github.com/dasrajdeep/frisby</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>Class available since Release 1.0</td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method_getLocation"></a><div class="element clickable method public method_getLocation" data-toggle="collapse" data-target=".method_getLocation .collapse">
+<a id="method_getMethodNames"></a><div class="element clickable method public method_getMethodNames" data-toggle="collapse" data-target=".method_getMethodNames .collapse">
+<h2>Fetches the external names of the methods that are invokable by the user</h2>
+<pre>getMethodNames() : array</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_getModuleClass"></a><div class="element clickable method public method_getModuleClass" data-toggle="collapse" data-target=".method_getModuleClass .collapse">
 <h2>Fetches the location of a module relative to the base directory</h2>
-<pre>getLocation(string $module) : string</pre>
+<pre>getModuleClass(string $module) : string</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -120,18 +160,8 @@ Registry::load($map[0]);
 <div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
-<a id="method_getMethodNames"></a><div class="element clickable method public method_getMethodNames" data-toggle="collapse" data-target=".method_getMethodNames .collapse">
-<h2>Fetches the external names of the methods that are invokable by the user</h2>
-<pre>getMethodNames() : array</pre>
-<div class="labels"><span class="label">Static</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
 <a id="method_init"></a><div class="element clickable method public method_init" data-toggle="collapse" data-target=".method_init .collapse">
-<h2>Loads the mappings and signatures from an external file and also checks for integrity</h2>
+<h2>Loads the mappings and signatures from an external file</h2>
 <pre>init() </pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
@@ -226,7 +256,7 @@ Registry::load($map[0]);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-28T18:47:18+05:30.<br></footer></div>
+            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
 </div>
 </body>
 </html>

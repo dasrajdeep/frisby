@@ -15,15 +15,6 @@
  * GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
- * 
- * @category   PHP
- * @package    Frisby
- * @author     Rajdeep Das <das.rajdeep97@gmail.com>
- * @copyright  Copyright 2012 Rajdeep Das
- * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
- * @link       https://github.com/dasrajdeep/frisby
- * @since      File available since Release 1.0
  */
 
 /**
@@ -37,6 +28,13 @@
  * </code> 
  * 
  * @package frisby\core
+ * @category   PHP
+ * @author     Rajdeep Das <das.rajdeep97@gmail.com>
+ * @copyright  Copyright 2012 Rajdeep Das
+ * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
+ * @version    GIT: v1.0
+ * @link       https://github.com/dasrajdeep/frisby
+ * @since      Class available since Release 1.0
  */
 class ErrorHandler {
 	/**
@@ -54,18 +52,6 @@ class ErrorHandler {
 	private static $error=false;
 	
 	/**
-         * Contains the mappings from error mnemonics to error names
-         * 
-         * @var array 
-         */
-	static $errtype=array(
-		'db'=>'DATABASE',
-		'reg'=>'REGISTRY',
-		'evt'=>'EVENTS',
-		'int'=>'INTEGRITY'
-	);
-	
-	/**
          * Triggers an error event
          * 
          * @param string $type
@@ -73,7 +59,7 @@ class ErrorHandler {
          */
 	static function fire($type,$message) {
 		self::$error=true;
-		array_push(self::$tracelist,array(self::$errtype[$type],$message));
+		array_push(self::$tracelist,array($type,$message));
 		Logger::dump($type,$message);
 	}
 	
@@ -83,6 +69,7 @@ class ErrorHandler {
          * @return array 
          */
 	static function fetchTrace() {
+                for($i=0;$i<count(self::$tracelist);$i++) self::$tracelist[$i][0]=Logger::event(self::$tracelist[$i][0]);
 		return self::$tracelist;
 	}
 	
@@ -103,5 +90,4 @@ class ErrorHandler {
 		array_splice(self::$tracelist,0);
 	}
 }
-
 ?>
