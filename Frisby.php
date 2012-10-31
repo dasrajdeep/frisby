@@ -36,12 +36,21 @@
  * @since      Class available since Release 1.0
  */
 class Frisby {	
+	
+	/**
+	* Contains a flag indicating boot errors.
+	*
+	* @var boolean
+	*/
+	private $bootError=false;
+	
 	/**
          * Boots up the engine and transfers control to the core. 
          */
 	function __construct() {
 		chdir('core');
 		require_once('Bootstrap.php');
+		if(ErrorHandler::hasErrors()) $this->bootError=true;
 		chdir('..');
 	}
 	 /**
@@ -67,6 +76,9 @@ class Frisby {
           */
 	function call($method) {
 		
+		//Check for boot errors.
+		if($this->bootError) return array(false,ErrorHandler::fetchTrace());
+		
 		chdir('core');
 		
 		$data=func_get_args();
@@ -84,6 +96,7 @@ class Frisby {
 		}
 		else {
 			require_once('Dispatcher.php');
+			require_once('EventHandler.php');
 			$api=new Dispatcher();
                         try {
                             $result=$api->dispatch($method,$data);
