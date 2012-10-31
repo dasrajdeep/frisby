@@ -6,7 +6,7 @@ $views=array(
 	"create or replace view %sview_profile as
 		select 
 		a.acc_no as `acc_no`,a.firstname as `firstname`,a.middlename as `middlename`,a.lastname as `lastname`,a.email as `email`,
-		p.alias as `alias`,p.sex as `sex`,p.dob as `dob`,p.location as `location`,i.imgdata as `avatar`
+		p.alias as `alias`,p.sex as `sex`,p.dob as `dob`,p.location as `location`,i.imgdata as `avatar`,i.type as `imgtype`
 		from 
 		%saccounts as a inner join %sprofile as p inner join %simages as i
 		on
