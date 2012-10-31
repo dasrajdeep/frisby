@@ -41,12 +41,12 @@
 class Message extends ModuleSupport {
 	
 	/**
-         * Sends a message
+         * Sends a message.
          * 
          * @param int $sender
          * @param int $receiver
          * @param string $msg
-         * @return array 
+         * @return null 
          */
 	function sendMessage($sender,$receiver,$msg) {
 		ErrorHandler::reset();
@@ -56,12 +56,12 @@ class Message extends ModuleSupport {
 	}
 	
 	/**
-         * Saves a message as a draft
+         * Saves a message as a draft.
          * 
          * @param int $sender
          * @param int $receiver
          * @param string $msg
-         * @return array 
+         * @return null 
          */
 	function saveDraft($sender,$receiver,$msg) {
 		ErrorHandler::reset();
@@ -70,11 +70,11 @@ class Message extends ModuleSupport {
 	}
 	
 	/**
-         * Updates a stored draft
+         * Updates a stored draft.
          * 
          * @param int $msgid
          * @param string $msg
-         * @return array 
+         * @return null 
          */
 	function editDraft($msgid,$msg) {
 		ErrorHandler::reset();
@@ -86,7 +86,7 @@ class Message extends ModuleSupport {
          * Sends a stored draft
          * 
          * @param int $msgid
-         * @return array 
+         * @return null 
          */
 	function sendDraft($msgid) {
 		ErrorHandler::reset();

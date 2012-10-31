@@ -38,21 +38,21 @@
  */
 class ErrorHandler {
 	/**
-         * Contains the last trace of errors fired
+         * Contains the last trace of errors fired.
          * 
-         * @var array 
+         * @var mixed[] 
          */
 	private static $tracelist=array();
 	
 	/**
-         * Contains a flag to check whether any error event was fired
+         * Flag to check for error occurence.
          * 
          * @var boolean 
          */
 	private static $error=false;
 	
 	/**
-         * Triggers an error event
+         * Triggers an error event.
          * 
          * @param string $type
          * @param string $message 
@@ -64,9 +64,9 @@ class ErrorHandler {
 	}
 	
 	/**
-         * Fetches the last recorded trace of the fired error events
+         * Fetches the last recorded trace of the fired error events.
          * 
-         * @return array 
+         * @return mixed[] 
          */
 	static function fetchTrace() {
                 for($i=0;$i<count(self::$tracelist);$i++) self::$tracelist[$i][0]=Logger::event(self::$tracelist[$i][0]);
@@ -74,7 +74,7 @@ class ErrorHandler {
 	}
 	
 	/**
-         * Fetches a flag indicating the occurence of any error
+         * Fetches a flag indicating the occurence of any error.
          * 
          * @return boolean 
          */
@@ -83,7 +83,7 @@ class ErrorHandler {
 	}
 	
 	/**
-         * Resets the error flag and removes all errors from the trace list 
+         * Resets the error handler. 
          */
 	static function reset() {
 		self::$error=false;

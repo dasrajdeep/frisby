@@ -41,12 +41,12 @@
 class Read extends ModuleSupport {
 	
 	/**
-         * Fetches publications on a specific node
+         * Fetches publications on a specific node.
          * 
          * @param int $nodetype
          * @param int $node
          * @param int $limit
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchPosts($nodetype,$node,$limit) {
 		ErrorHandler::reset();
@@ -60,10 +60,10 @@ class Read extends ModuleSupport {
 	}
 	
 	/**
-         * Fetches a specific publication
+         * Fetches a specific publication.
          * 
          * @param int $postid
-         * @return array 
+         * @return mixed[] 
          */
 	function getPost($postid) {
 		ErrorHandler::reset();
@@ -78,10 +78,10 @@ class Read extends ModuleSupport {
 	}
 	
         /**
-         * Fetches the MIME content associated with a publication
+         * Fetches the MIME content associated with a publication.
          * 
          * @param int $id
-         * @return array 
+         * @return mixed[] 
          */
 	private function getMime($id) {
 		$m=Database::get('mime','type,ref_id',"mime_id=".$id);

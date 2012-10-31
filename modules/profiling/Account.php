@@ -42,11 +42,11 @@
 class Account extends ModuleSupport {
 	
 	/**
-         * Creates a new user account
+         * Creates a new user account.
          * 
-         * @param array $info
+         * @param mixed[] $info
          * @param int $status
-         * @return array 
+         * @return null 
          */
 	function createAccount($info,$status=0) {
 		ErrorHandler::reset();
@@ -63,7 +63,7 @@ class Account extends ModuleSupport {
          * Deletes a user account
          * 
          * @param int $accno
-         * @return array 
+         * @return null 
          */
 	function deleteAccount($accno) {
 		ErrorHandler::reset();
@@ -76,8 +76,8 @@ class Account extends ModuleSupport {
          * Updates an existing user account
          * 
          * @param int $accno
-         * @param array $data
-         * @return array 
+         * @param mixed[] $data
+         * @return null 
          */
 	function updateAccount($accno,$data) {
 		ErrorHandler::reset();
@@ -93,7 +93,7 @@ class Account extends ModuleSupport {
          * Fetches user account information for a specific user
          * 
          * @param int $accno
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchAccountInfo($accno) {
 		ErrorHandler::reset();

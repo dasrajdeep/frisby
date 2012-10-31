@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the static Database class.
+ * This file contains the Database class.
  * 
  * PHP version 5.3
  * 

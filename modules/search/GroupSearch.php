@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the Search class.
+ * This file contains the GroupSearch class.
  * 
  * PHP version 5.3
  * 
@@ -27,44 +27,36 @@
  */
 
 /**
- * An instance of this class is used to carry out a generic search.
+ * An instance of this class is used to search for groups in the social network.
  * 
  * <code>
- * require_once('Search.php');
+ * require_once('GroupSearch.php');
  * 
- * $search=new Search();
- * $resultset=$search->search('something',array('people','groups','posts'));
+ * $search=new GroupSearch();
+ * $data=array('name'=>'some_group');
+ * $resultset=$search->searchGroup($data);
  * </code> 
  * 
  * @package frisby\search
  */
-class Search extends ModuleSupport {
-
+class GroupSearch extends ModuleSupport {
+	
 	/**
-         * Searches by names in specified domains
+         * Searches for groups.
          * 
-         * @param array $querydata
-         * @param array $domain
-         * @return array 
+         * @param mixed[] $querydata
+         * @return mixed[] 
          */
-	function search($querydata,$domain) {
+	function searchGroup($querydata) {
 		ErrorHandler::reset();
-		$results=array();
-		foreach($domain as $d) {
-			if($d=='people') {
-				$mod=loadSubModule('searchPeople');
-				$results['people']=$mod->searchPeople(array('name'=>$querydata));
-			}
-			else if($d=='groups') {
-				$mod=loadSubModule('searchGroup');
-				$results['groups']=$mod->searchGroup(array('name'=>$querydata));
-			}
-			else if($d=='posts') {
-				$mod=loadSubModule('searchPosts');
-				$results['posts']=$mod->searchPosts(array('text'=>$querydata));
-			}
-		}
-		return $results;
+		$keys=array_keys($querydata);
+		$patterns=array();
+		foreach($keys as $k) if($k!='type' && $k!='creationdate') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
+		if(isset($querydata['type'])) array_push($patterns,"type=".$querydata['type']);
+		if(isset($querydata['creationdate'])) array_push($patterns,"creationdate>=".$querydata['creationdate']);
+		$matcher=implode(' and ',$patterns);
+		$set=Database::get('groups','*',$matcher);
+		return $set;
 	}
 }
 

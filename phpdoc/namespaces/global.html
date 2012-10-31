@@ -20,6 +20,7 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/frisby.html"><i class="icon-folder-open"></i> frisby</a></li>
 </ul>
 </li>
@@ -69,6 +70,44 @@
 </ul>
 <div class="namespace-indent">
 <h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a id="function_errorHandler"></a><div class="element clickable function  function_errorHandler" data-toggle="collapse" data-target=".function_errorHandler .collapse">
+<h2>Customly handles errors originating from the system.</h2>
+<pre>errorHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="function_shutdown"></a><div class="element clickable function  function_shutdown" data-toggle="collapse" data-target=".function_shutdown .collapse">
+<h2>Performs housekeeping at script termination.</h2>
+<pre>shutdown() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
 <i class="icon-custom icon-class"></i> Classes and interfaces</h3>
 <div id="Account" class="element ajax clickable class">
 <h1>Account<a href="../classes/Account.html">¶</a>
@@ -77,12 +116,12 @@
 <div class="details collapse"></div>
 <a href="../classes/Account.html" class="more">« More »</a>
 </div>
-<div id="Controller" class="element ajax clickable class">
-<h1>Controller<a href="../classes/Controller.html">¶</a>
+<div id="Admin" class="element ajax clickable class">
+<h1>Admin<a href="../classes/Admin.html">¶</a>
 </h1>
-<p class="short_description">An instance of this class represents a generic controller super-class which any controller class may extend.</p>
+<p class="short_description">An instance of this class represents a dispatcher for the Administration methods registered in the engine.</p>
 <div class="details collapse"></div>
-<a href="../classes/Controller.html" class="more">« More »</a>
+<a href="../classes/Admin.html" class="more">« More »</a>
 </div>
 <div id="Database" class="element ajax clickable class">
 <h1>Database<a href="../classes/Database.html">¶</a>
@@ -94,7 +133,7 @@
 <div id="Dispatcher" class="element ajax clickable class">
 <h1>Dispatcher<a href="../classes/Dispatcher.html">¶</a>
 </h1>
-<p class="short_description">An instance of this class represents a dispatcher for the methods registered in the engine.</p>
+<p class="short_description">An instance of this class represents a dispatcher for the API methods registered in the engine.</p>
 <div class="details collapse"></div>
 <a href="../classes/Dispatcher.html" class="more">« More »</a>
 </div>
@@ -125,13 +164,6 @@
 <p class="short_description">An instance of this class is used to register event types.</p>
 <div class="details collapse"></div>
 <a href="../classes/EventRegister.html" class="more">« More »</a>
-</div>
-<div id="EventsController" class="element ajax clickable class">
-<h1>EventsController<a href="../classes/EventsController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register the methods of the events module.</p>
-<div class="details collapse"></div>
-<a href="../classes/EventsController.html" class="more">« More »</a>
 </div>
 <div id="ExtendedProfile" class="element ajax clickable class">
 <h1>ExtendedProfile<a href="../classes/ExtendedProfile.html">¶</a>
@@ -168,13 +200,6 @@
 <div class="details collapse"></div>
 <a href="../classes/GroupSearch.html" class="more">« More »</a>
 </div>
-<div id="GroupingController" class="element ajax clickable class">
-<h1>GroupingController<a href="../classes/GroupingController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register methods of the grouping module.</p>
-<div class="details collapse"></div>
-<a href="../classes/GroupingController.html" class="more">« More »</a>
-</div>
 <div id="Inbox" class="element ajax clickable class">
 <h1>Inbox<a href="../classes/Inbox.html">¶</a>
 </h1>
@@ -196,19 +221,19 @@
 <div class="details collapse"></div>
 <a href="../classes/Message.html" class="more">« More »</a>
 </div>
-<div id="MessagingController" class="element ajax clickable class">
-<h1>MessagingController<a href="../classes/MessagingController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register methods of the messaging module.</p>
-<div class="details collapse"></div>
-<a href="../classes/MessagingController.html" class="more">« More »</a>
-</div>
 <div id="Mime" class="element ajax clickable class">
 <h1>Mime<a href="../classes/Mime.html">¶</a>
 </h1>
 <p class="short_description">An instance of this class is used to manage MIME content for posts.</p>
 <div class="details collapse"></div>
 <a href="../classes/Mime.html" class="more">« More »</a>
+</div>
+<div id="ModuleSupport" class="element ajax clickable class">
+<h1>ModuleSupport<a href="../classes/ModuleSupport.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents an invoker for module classes.</p>
+<div class="details collapse"></div>
+<a href="../classes/ModuleSupport.html" class="more">« More »</a>
 </div>
 <div id="Outbox" class="element ajax clickable class">
 <h1>Outbox<a href="../classes/Outbox.html">¶</a>
@@ -245,20 +270,6 @@
 <div class="details collapse"></div>
 <a href="../classes/Profile.html" class="more">« More »</a>
 </div>
-<div id="ProfileController" class="element ajax clickable class">
-<h1>ProfileController<a href="../classes/ProfileController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register methods of the profile module.</p>
-<div class="details collapse"></div>
-<a href="../classes/ProfileController.html" class="more">« More »</a>
-</div>
-<div id="PubSubController" class="element ajax clickable class">
-<h1>PubSubController<a href="../classes/PubSubController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register methods of the pubsub module.</p>
-<div class="details collapse"></div>
-<a href="../classes/PubSubController.html" class="more">« More »</a>
-</div>
 <div id="Publish" class="element ajax clickable class">
 <h1>Publish<a href="../classes/Publish.html">¶</a>
 </h1>
@@ -276,7 +287,7 @@
 <div id="Registry" class="element ajax clickable class">
 <h1>Registry<a href="../classes/Registry.html">¶</a>
 </h1>
-<p class="short_description">This class is used to access the registry of the engine and load modules.</p>
+<p class="short_description">This class is used to access the registry of the engine.</p>
 <div class="details collapse"></div>
 <a href="../classes/Registry.html" class="more">« More »</a>
 </div>
@@ -287,17 +298,10 @@
 <div class="details collapse"></div>
 <a href="../classes/Search.html" class="more">« More »</a>
 </div>
-<div id="SearchController" class="element ajax clickable class">
-<h1>SearchController<a href="../classes/SearchController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register methods of the search module.</p>
-<div class="details collapse"></div>
-<a href="../classes/SearchController.html" class="more">« More »</a>
-</div>
 <div id="Setup" class="element ajax clickable class">
 <h1>Setup<a href="../classes/Setup.html">¶</a>
 </h1>
-<p class="short_description">An instance of this class is used to install/uninstall the database schema along with its default data.</p>
+<p class="short_description">An instance of this class is used to install/uninstall the software.</p>
 <div class="details collapse"></div>
 <a href="../classes/Setup.html" class="more">« More »</a>
 </div>
@@ -308,20 +312,13 @@
 <div class="details collapse"></div>
 <a href="../classes/UserRelations.html" class="more">« More »</a>
 </div>
-<div id="UserRelationsController" class="element ajax clickable class">
-<h1>UserRelationsController<a href="../classes/UserRelationsController.html">¶</a>
-</h1>
-<p class="short_description">An instance of this class is used to register methods of the user-relations module.</p>
-<div class="details collapse"></div>
-<a href="../classes/UserRelationsController.html" class="more">« More »</a>
-</div>
 </div>
 </div>
 </div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
+            generated on 2012-10-31T13:10:10+05:30.<br></footer></div>
 </div>
 </body>
 </html>

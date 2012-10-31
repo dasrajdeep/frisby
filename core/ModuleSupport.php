@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the super-class for all controllers.
+ * This file contains the support class for the module classes.
  * 
  * PHP version 5.3
  * 
@@ -18,9 +18,12 @@
  */
 
 /**
- * An instance of this class represents a generic controller super-class which any controller class may extend.
+ * An instance of this class represents an invoker for module classes.
  * 
  * <code>
+ * require_once('ModuleSupport.php');
+ * 
+ * $ms=new ModuleSupport();
  * </code> 
  * 
  * @package frisby\core
@@ -28,14 +31,24 @@
  * @author     Rajdeep Das <das.rajdeep97@gmail.com>
  * @copyright  Copyright 2012 Rajdeep Das
  * @license    http://www.gnu.org/licenses/gpl.txt  The GNU General Public License
- * @version    GIT: v1.0
+ * @version    GIT: v2.0
  * @link       https://github.com/dasrajdeep/frisby
- * @since      Class available since Release 1.0
+ * @since      Class available since Release 2.0
  */
 class ModuleSupport {
-	
+	/**
+         * Contains the name of the current module.
+         * 
+         * @var string 
+         */
 	protected $modulename='';
- 
+        
+        /**
+         * Loads a module class and returns an object of the class.
+         * 
+         * @param string $method
+         * @return null|object 
+         */
 	public function loadModuleClass($method) {
 		$classname=Database::get('registry','classname',sprintf("method='%s' and module='%s'",$method,$this->modulename));
 		if(count($classname)==0) {
@@ -48,7 +61,12 @@ class ModuleSupport {
 		return $obj;
 	}
 	
-	public function getModuleName() {
+        /**
+         * Fetches the name of the current module.
+         * 
+         * @return string 
+         */
+	protected function getModuleName() {
 		return $this->modulename;
 	}
 }

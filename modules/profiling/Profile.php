@@ -42,11 +42,11 @@
 class Profile extends ModuleSupport {
 	
 	/**
-         * Creates a new user profile
+         * Creates a new user profile.
          * 
          * @param int $accno
-         * @param array $data
-         * @return array 
+         * @param mixed[] $data
+         * @return null 
          */
 	function createProfile($accno,$data) {
 		ErrorHandler::reset();
@@ -62,11 +62,11 @@ class Profile extends ModuleSupport {
 	}
 	
 	/**
-         * Sets an avatar image for a user profile
+         * Sets an avatar for a user profile.
          * 
          * @param int $accno
          * @param string $img
-         * @return array 
+         * @return null 
          */
 	function setAvatar($accno,$img) {
 		ErrorHandler::reset();
@@ -82,10 +82,10 @@ class Profile extends ModuleSupport {
 	}
 	
 	/**
-         * Deletes a user profile
+         * Deletes a user profile.
          * 
          * @param int $accno
-         * @return array 
+         * @return null 
          */
 	function deleteProfile($accno) {
 		ErrorHandler::reset();
@@ -94,11 +94,11 @@ class Profile extends ModuleSupport {
 	}
 	
 	/**
-         * Updates a user profile
+         * Updates a user profile.
          * 
          * @param int $accno
-         * @param array $data
-         * @return array 
+         * @param mixed[] $data
+         * @return null 
          */
 	function updateProfile($accno,$data) {
 		ErrorHandler::reset();
@@ -111,11 +111,11 @@ class Profile extends ModuleSupport {
 	}
 	
 	/**
-         * Fetches user profile information for a specific user
+         * Fetches user profile information.
          * 
          * @param int $accno
-         * @param array $attrs
-         * @return array 
+         * @param string[] $attrs
+         * @return mixed[] 
          */
 	function fetchProfile($accno,$attrs) {
 		ErrorHandler::reset();

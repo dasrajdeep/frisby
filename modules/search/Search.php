@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the GroupSearch class.
+ * This file contains the Search class.
  * 
  * PHP version 5.3
  * 
@@ -27,36 +27,44 @@
  */
 
 /**
- * An instance of this class is used to search for groups in the social network.
+ * An instance of this class is used to carry out a generic search.
  * 
  * <code>
- * require_once('GroupSearch.php');
+ * require_once('Search.php');
  * 
- * $search=new GroupSearch();
- * $data=array('name'=>'some_group');
- * $resultset=$search->searchGroup($data);
+ * $search=new Search();
+ * $resultset=$search->search('something',array('people','groups','posts'));
  * </code> 
  * 
  * @package frisby\search
  */
-class GroupSearch extends ModuleSupport {
-	
+class Search extends ModuleSupport {
+
 	/**
-         * Searches for groups
+         * Searches by names in specified domains.
          * 
-         * @param array $querydata
-         * @return array 
+         * @param string $querydata
+         * @param string[] $domain
+         * @return mixed[] 
          */
-	function searchGroup($querydata) {
+	function search($querydata,$domain) {
 		ErrorHandler::reset();
-		$keys=array_keys($querydata);
-		$patterns=array();
-		foreach($keys as $k) if($k!='type' && $k!='creationdate') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
-		if(isset($querydata['type'])) array_push($patterns,"type=".$querydata['type']);
-		if(isset($querydata['creationdate'])) array_push($patterns,"creationdate>=".$querydata['creationdate']);
-		$matcher=implode(' and ',$patterns);
-		$set=Database::get('groups','*',$matcher);
-		return $set;
+		$results=array();
+		foreach($domain as $d) {
+			if($d=='people') {
+				$mod=loadSubModule('searchPeople');
+				$results['people']=$mod->searchPeople(array('name'=>$querydata));
+			}
+			else if($d=='groups') {
+				$mod=loadSubModule('searchGroup');
+				$results['groups']=$mod->searchGroup(array('name'=>$querydata));
+			}
+			else if($d=='posts') {
+				$mod=loadSubModule('searchPosts');
+				$results['posts']=$mod->searchPosts(array('text'=>$querydata));
+			}
+		}
+		return $results;
 	}
 }
 

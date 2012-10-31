@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the Setup class used in setting up the engine.
+ * This file contains the Setup class used by the engine.
  * 
  * PHP version 5.3
  * 
@@ -18,13 +18,12 @@
  */
 
 /**
- * An instance of this class is used to install/uninstall the database schema along with its default data.
+ * An instance of this class is used to install/uninstall the software.
  * 
  * <code>
  * require_once('Setup.php');
  * 
  * $setup=new Setup();
- * $setup->run();
  * </code> 
  * 
  * @package frisby\core
@@ -39,7 +38,7 @@
 class Setup {
 	
 	/**
-         * Checks if the database is properly configured or not
+         * Checks if the engine is properly configured or not.
          * 
          * @return boolean 
          */
@@ -67,11 +66,17 @@ class Setup {
 		return true;
 	}
 	
+        /**
+         * Installs the software. 
+         */
 	function installAll() {
 		$this->installDB();
 		$this->installRegistry();
 	}
 	
+        /**
+         * Installs the registry. 
+         */
 	function installRegistry() {
 		Database::remove('registry',"true");
 		$sc=$this->scanModules();
@@ -81,8 +86,9 @@ class Setup {
 			foreach($classes as $c) foreach($sc[$m][$c] as $x) Database::add('registry',array('method','classname','module'),array($x,$c,$m));
 		}
 	}
+        
 	/**
-         * Installs the database schema 
+         * Installs the database schema. 
          */
 	function installDB() {
 		$this->installDBSchema();
@@ -92,7 +98,7 @@ class Setup {
 	}
 	
 	/**
-         * Installs the tables of the schema 
+         * Installs the tables of the schema. 
          */
 	function installDBSchema() {
 		$pre=Database::getPrefix();
@@ -101,7 +107,7 @@ class Setup {
 	}
 	
 	/**
-         * Inserts default data into the installed schema 
+         * Inserts default data into the installed schema. 
          */
 	private function installData() {
 		Database::add('mime',array('mime_id','type','ref_id'),array(0,0,0));
@@ -114,7 +120,7 @@ class Setup {
 	}
 	
 	/**
-         * Installs the views of the schema 
+         * Installs the views of the schema. 
          */
 	private function installViews() {
 		require('../config/schema_views.inc');
@@ -123,7 +129,7 @@ class Setup {
 	}
 	
 	/**
-         * Installs the triggers of the schema 
+         * Installs the triggers of the schema. 
          */
 	function installDBTriggers() {
 		require('../config/schema_triggers.inc');
@@ -132,7 +138,7 @@ class Setup {
 	}
 	
 	/**
-         * Completely uninstalls the database schema 
+         * Completely uninstalls the software. 
          */
 	function uninstall() {
 		$ext=Database::get('extensions','table_name',false);
@@ -142,8 +148,13 @@ class Setup {
 		foreach($uninstallqueries as $q) Database::query(sprintf($q,$pre));
 	}
 	
+        /**
+         * Scans the installed modules for API methods.
+         * 
+         * @return mixed[] 
+         */
 	private function scanModules() {
-		chdir('..');
+		chdir('../modules');
 		$methods=array();
 		$modules=Registry::getModuleNames();
 		$ignore=array('__construct','loadModuleClass','getModuleName');
@@ -160,7 +171,7 @@ class Setup {
 				foreach($meth as $x) if(!in_array($x,$ignore)) array_push($methods[$m][$class],$x);
 			}
 		}
-		chdir('core');
+		chdir('../core');
 		return $methods;
 	}
 }

@@ -41,10 +41,10 @@
 class Inbox extends ModuleSupport {
 	
 	/**
-         * Fetches the entire inbox
+         * Fetches the entire inbox.
          * 
          * @param int $accno
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchInbox($accno) {
 		ErrorHandler::reset();
@@ -53,10 +53,10 @@ class Inbox extends ModuleSupport {
 	}
 	
 	/**
-         * Fetches unread messages from the inbox
+         * Fetches unread messages from the inbox.
          * 
          * @param int $accno
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchUnread($accno) {
 		ErrorHandler::reset();
@@ -65,10 +65,10 @@ class Inbox extends ModuleSupport {
 	}
 	
 	/**
-         * Marks messages in the inbox as read
+         * Marks messages in the inbox as read.
          * 
-         * @param array $msgids
-         * @return array 
+         * @param int[] $msgids
+         * @return null 
          */
 	function markRead($msgids) {
 		ErrorHandler::reset();
@@ -78,11 +78,11 @@ class Inbox extends ModuleSupport {
 	}
 	
 	/**
-         * Deletes messages from the inbox
+         * Deletes messages from the inbox.
          * 
-         * @param array $idlist
+         * @param int[] $idlist
          * @param int $accno
-         * @return array 
+         * @return null 
          */
 	function deleteInboxMessages($idlist,$accno) {
 		ErrorHandler::reset();

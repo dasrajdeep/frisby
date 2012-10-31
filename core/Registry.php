@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the registry which contains the method mappings and signatures.
+ * This file contains the engine registry.
  * 
  * PHP version 5.3
  * 
@@ -18,7 +18,7 @@
  */
 
 /**
- * This class is used to access the registry of the engine and load modules.
+ * This class is used to access the registry of the engine.
  * 
  * <code>
  * require_once('Registry.php');
@@ -36,26 +36,27 @@
  * @since      Class available since Release 1.0
  */
 class Registry {
-	
+	/**
+         * Contains the mappings from the module names to their locations.
+         * 
+         * @var mixed[] 
+         */
 	private static $modules;
 	
 	/**
-         * Loads the mappings and signatures from an external file
+         * Loads the module mappings from an external file.
          */
 	static function init() {
-		
-		//Loads information regarding the modules and their locations.
 		require_once('../config/modules.inc');
 		self::$modules=$modules;
 	}
 	
 	/**
-         * Fetches the route associated with an external method name
+         * Fetches the module and classname associated with an API method name.
          * 
          * @param string $method
-         * @return array 
+         * @return string[] 
          */
-        
     static function read($method) {
 		$route=Database::get('registry','module,classname',sprintf("method='%s'",$method));
 		if(count($route)==0) {
@@ -64,7 +65,13 @@ class Registry {
 		}
 		return $route[0];
 	}  
-      
+        
+        /**
+         * Fetches the location of a module.
+         * 
+         * @param string $module
+         * @return null|string 
+         */
 	static function location($module) {
 		if(array_key_exists($module,self::$modules)) return self::$modules[$module];
 		ErrorHandler::fire('int','Module does not exist.');
@@ -74,7 +81,7 @@ class Registry {
 	/**
          * Fetches the names of the API methods.
          * 
-         * @return array
+         * @return string[]
          */
 	static function getMethodNames() {
 		$rs=Database::get('registry','method',false);
@@ -83,6 +90,11 @@ class Registry {
 		return $names;
 	}
 	
+        /**
+         * Fetches the names of the installed modules.
+         * 
+         * @return string[] 
+         */
 	static function getModuleNames() {
 		return array_keys(self::$modules);
 	}

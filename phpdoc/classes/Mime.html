@@ -20,6 +20,7 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/frisby.html"><i class="icon-folder-open"></i> frisby</a></li>
 </ul>
 </li>
@@ -56,18 +57,21 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Passes a reference of the module controller to this object"><span class="description">Passes a reference of the module controller to this object</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_createMimeSchema" title="createMimeSchema :: Creates a new MIME database relation"><span class="description">Creates a new MIME database relation</span><pre>createMimeSchema()</pre></a></li>
-<li class="method public "><a href="#method_deleteMimeSchema" title="deleteMimeSchema :: Deletes a MIME database relation from the database"><span class="description">Deletes a MIME database relation from the database</span><pre>deleteMimeSchema()</pre></a></li>
-<li class="method public "><a href="#method_fetchMimeSchemas" title="fetchMimeSchemas :: Fetches all the MIME schemas defined by the administrator"><span class="description">Fetches all the MIME schemas defined by the administrator</span><pre>fetchMimeSchemas()</pre></a></li>
+<li class="method public "><a href="#method_createMimeSchema" title="createMimeSchema :: Creates a new MIME database relation."><span class="description">Creates a new MIME database relation.</span><pre>createMimeSchema()</pre></a></li>
+<li class="method public "><a href="#method_deleteMimeSchema" title="deleteMimeSchema :: Deletes a MIME database relation."><span class="description">Deletes a MIME database relation.</span><pre>deleteMimeSchema()</pre></a></li>
+<li class="method public "><a href="#method_fetchMimeSchemas" title="fetchMimeSchemas :: Fetches all the extended MIME schemas."><span class="description">Fetches all the extended MIME schemas.</span><pre>fetchMimeSchemas()</pre></a></li>
+<li class="method public inherited"><a href="#method_loadModuleClass" title="loadModuleClass :: Loads a module class and returns an object of the class."><span class="description">Loads a module class and returns an object of the class.</span><pre>loadModuleClass()</pre></a></li>
 </ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul><li class="method protected inherited"><a href="#method_getModuleName" title="getModuleName :: Fetches the name of the current module."><span class="description">Fetches the name of the current module.</span><pre>getModuleName()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
-<li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property_ctrl" title="$ctrl :: Contains a reference to the module controller"><span class="description">Contains a reference to the module controller</span><pre>$ctrl</pre></a></li></ul>
+<li class="nav-header protected">» Protected
+                    <ul><li class="property protected inherited"><a href="#property_modulename" title="$modulename :: Contains the name of the current module."><span class="description">Contains the name of the current module.</span><pre>$modulename</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -89,28 +93,29 @@
 $mime=new Mime();
 $mime->createMimeSchema('relation_name',1);
 </code></pre></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>package</th>
 <td><a href="../packages/frisby.pubsub.html">frisby\pubsub</a></td>
-</tr></table>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:das.rajdeep97@gmail.com">Rajdeep Das</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright 2012 Rajdeep Das</td>
+</tr>
+<tr>
+<th>version</th>
+<td>GIT: v2.0</td>
+</tr>
+</table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Passes a reference of the module controller to this object</h2>
-<pre>__construct(object $ref) </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$ref</h4>
-<code>object</code>
-</div>
-</div></div>
-</div>
 <a id="method_createMimeSchema"></a><div class="element clickable method public method_createMimeSchema" data-toggle="collapse" data-target=".method_createMimeSchema .collapse">
-<h2>Creates a new MIME database relation</h2>
-<pre>createMimeSchema(string $name, int $type) : array</pre>
+<h2>Creates a new MIME database relation.</h2>
+<pre>createMimeSchema(string $name, int $type) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -124,12 +129,12 @@ $mime->createMimeSchema('relation_name',1);
 <code>int</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_deleteMimeSchema"></a><div class="element clickable method public method_deleteMimeSchema" data-toggle="collapse" data-target=".method_deleteMimeSchema .collapse">
-<h2>Deletes a MIME database relation from the database</h2>
-<pre>deleteMimeSchema(string $name) : array</pre>
+<h2>Deletes a MIME database relation.</h2>
+<pre>deleteMimeSchema(string $name) : null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -139,26 +144,67 @@ $mime->createMimeSchema('relation_name',1);
 <code>string</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_fetchMimeSchemas"></a><div class="element clickable method public method_fetchMimeSchemas" data-toggle="collapse" data-target=".method_fetchMimeSchemas .collapse">
-<h2>Fetches all the MIME schemas defined by the administrator</h2>
-<pre>fetchMimeSchemas() : array</pre>
+<h2>Fetches all the extended MIME schemas.</h2>
+<pre>fetchMimeSchemas() : string[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>string[]</code></div>
+</div></div>
+</div>
+<a id="method_loadModuleClass"></a><div class="element clickable method public method_loadModuleClass" data-toggle="collapse" data-target=".method_loadModuleClass .collapse">
+<h2>Loads a module class and returns an object of the class.</h2>
+<pre>loadModuleClass(string $method) : null | object</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModuleSupport::loadModuleClass()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>null</code><code>object</code>
+</div>
+</div></div>
+</div>
+<a id="method_getModuleName"></a><div class="element clickable method protected method_getModuleName" data-toggle="collapse" data-target=".method_getModuleName .collapse">
+<h2>Fetches the name of the current module.</h2>
+<pre>getModuleName() : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModuleSupport::getModuleName()</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_ctrl"> </a><div class="element clickable property private property_ctrl" data-toggle="collapse" data-target=".property_ctrl .collapse">
-<h2>Contains a reference to the module controller</h2>
-<pre>$ctrl : object</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+<a id="property_modulename"> </a><div class="element clickable property protected property_modulename" data-toggle="collapse" data-target=".property_modulename .collapse">
+<h2>Contains the name of the current module.</h2>
+<pre>$modulename : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\ModuleSupport::$$modulename</td>
+</tr></table>
+</div></div>
 </div>
 </div>
 </div>
@@ -167,7 +213,7 @@ $mime->createMimeSchema('relation_name',1);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
+            generated on 2012-10-31T13:10:10+05:30.<br></footer></div>
 </div>
 </body>
 </html>

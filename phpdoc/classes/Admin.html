@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>Frisby Social Engine » \Setup</title>
+<title>Frisby Social Engine » \Admin</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,40 +57,43 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_checkSetup" title="checkSetup :: Checks if the engine is properly configured or not."><span class="description">Checks if the engine is properly configured or not.</span><pre>checkSetup()</pre></a></li>
-<li class="method public "><a href="#method_installAll" title="installAll :: Installs the software."><span class="description">Installs the software.</span><pre>installAll()</pre></a></li>
-<li class="method public "><a href="#method_installDB" title="installDB :: Installs the database schema."><span class="description">Installs the database schema.</span><pre>installDB()</pre></a></li>
-<li class="method public "><a href="#method_installDBSchema" title="installDBSchema :: Installs the tables of the schema."><span class="description">Installs the tables of the schema.</span><pre>installDBSchema()</pre></a></li>
-<li class="method public "><a href="#method_installDBTriggers" title="installDBTriggers :: Installs the triggers of the schema."><span class="description">Installs the triggers of the schema.</span><pre>installDBTriggers()</pre></a></li>
-<li class="method public "><a href="#method_installRegistry" title="installRegistry :: Installs the registry."><span class="description">Installs the registry.</span><pre>installRegistry()</pre></a></li>
-<li class="method public "><a href="#method_uninstall" title="uninstall :: Completely uninstalls the software."><span class="description">Completely uninstalls the software.</span><pre>uninstall()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Constructs the array of admin methods."><span class="description">Constructs the array of admin methods.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_checkSetup" title="checkSetup :: Checks for integrity of the engine setup."><span class="description">Checks for integrity of the engine setup.</span><pre>checkSetup()</pre></a></li>
+<li class="method public "><a href="#method_cleanInstall" title="cleanInstall :: Cleans and reinstalls the software."><span class="description">Cleans and reinstalls the software.</span><pre>cleanInstall()</pre></a></li>
+<li class="method public "><a href="#method_fetchLog" title="fetchLog :: Fetches the system event log."><span class="description">Fetches the system event log.</span><pre>fetchLog()</pre></a></li>
+<li class="method public "><a href="#method_getAPIMethods" title="getAPIMethods :: Fetches the registered API methods."><span class="description">Fetches the registered API methods.</span><pre>getAPIMethods()</pre></a></li>
+<li class="method public "><a href="#method_getAdminMethods" title="getAdminMethods :: Fetches the registered Admin methods."><span class="description">Fetches the registered Admin methods.</span><pre>getAdminMethods()</pre></a></li>
+<li class="method public "><a href="#method_install" title="install :: Installs the software."><span class="description">Installs the software.</span><pre>install()</pre></a></li>
+<li class="method public "><a href="#method_invoke" title="invoke :: Invokes an administrative method."><span class="description">Invokes an administrative method.</span><pre>invoke()</pre></a></li>
+<li class="method public "><a href="#method_uninstall" title="uninstall :: Uninstalls the software."><span class="description">Uninstalls the software.</span><pre>uninstall()</pre></a></li>
+<li class="method public "><a href="#method_updateModules" title="updateModules :: Scans and updates the API modules."><span class="description">Scans and updates the API modules.</span><pre>updateModules()</pre></a></li>
 </ul>
 </li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
 <li class="nav-header private">» Private
-                    <ul>
-<li class="method private "><a href="#method_installData" title="installData :: Inserts default data into the installed schema."><span class="description">Inserts default data into the installed schema.</span><pre>installData()</pre></a></li>
-<li class="method private "><a href="#method_installViews" title="installViews :: Installs the views of the schema."><span class="description">Installs the views of the schema.</span><pre>installViews()</pre></a></li>
-<li class="method private "><a href="#method_scanModules" title="scanModules :: Scans the installed modules for API methods."><span class="description">Scans the installed modules for API methods.</span><pre>scanModules()</pre></a></li>
-</ul>
+                    <ul><li class="property private "><a href="#property_methods" title="$methods :: Contains the callable methods of the Admin class."><span class="description">Contains the callable methods of the Admin class.</span><pre>$methods</pre></a></li></ul>
 </li>
 </ul>
 </div>
 <div class="span8">
-<a id="\Setup"></a><ul class="breadcrumb">
+<a id="\Admin"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/global.html">global</a></li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Setup.html">Setup</a>
+<span class="divider">\</span><a href="../classes/Admin.html">Admin</a>
 </li>
 </ul>
 <div class="element class">
-<p class="short_description">An instance of this class is used to install/uninstall the software.</p>
+<p class="short_description">An instance of this class represents a dispatcher for the Administration methods registered in the engine.</p>
 <div class="details">
-<div class="long_description"><pre><code>require_once('Setup.php');
+<div class="long_description"><pre><code>require_once('Admin.php');
 
-$setup=new Setup();
+$admin=new Admin();
 </code></pre></div>
 <table class="table table-bordered">
 <tr>
@@ -115,7 +118,7 @@ $setup=new Setup();
 </tr>
 <tr>
 <th>version</th>
-<td>GIT: v1.0</td>
+<td>GIT: v2.0</td>
 </tr>
 <tr>
 <th>link</th>
@@ -123,13 +126,19 @@ $setup=new Setup();
 </tr>
 <tr>
 <th>since</th>
-<td>Class available since Release 1.0</td>
+<td>Class available since Release 2.0</td>
 </tr>
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Constructs the array of admin methods.</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
 <a id="method_checkSetup"></a><div class="element clickable method public method_checkSetup" data-toggle="collapse" data-target=".method_checkSetup .collapse">
-<h2>Checks if the engine is properly configured or not.</h2>
+<h2>Checks for integrity of the engine setup.</h2>
 <pre>checkSetup() : boolean</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
@@ -138,63 +147,86 @@ $setup=new Setup();
 <div class="subelement response"><code>boolean</code></div>
 </div></div>
 </div>
-<a id="method_installAll"></a><div class="element clickable method public method_installAll" data-toggle="collapse" data-target=".method_installAll .collapse">
-<h2>Installs the software.</h2>
-<pre>installAll() </pre>
+<a id="method_cleanInstall"></a><div class="element clickable method public method_cleanInstall" data-toggle="collapse" data-target=".method_cleanInstall .collapse">
+<h2>Cleans and reinstalls the software.</h2>
+<pre>cleanInstall() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="method_installDB"></a><div class="element clickable method public method_installDB" data-toggle="collapse" data-target=".method_installDB .collapse">
-<h2>Installs the database schema.</h2>
-<pre>installDB() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_installDBSchema"></a><div class="element clickable method public method_installDBSchema" data-toggle="collapse" data-target=".method_installDBSchema .collapse">
-<h2>Installs the tables of the schema.</h2>
-<pre>installDBSchema() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_installDBTriggers"></a><div class="element clickable method public method_installDBTriggers" data-toggle="collapse" data-target=".method_installDBTriggers .collapse">
-<h2>Installs the triggers of the schema.</h2>
-<pre>installDBTriggers() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_installRegistry"></a><div class="element clickable method public method_installRegistry" data-toggle="collapse" data-target=".method_installRegistry .collapse">
-<h2>Installs the registry.</h2>
-<pre>installRegistry() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_uninstall"></a><div class="element clickable method public method_uninstall" data-toggle="collapse" data-target=".method_uninstall .collapse">
-<h2>Completely uninstalls the software.</h2>
-<pre>uninstall() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_installData"></a><div class="element clickable method private method_installData" data-toggle="collapse" data-target=".method_installData .collapse">
-<h2>Inserts default data into the installed schema.</h2>
-<pre>installData() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_installViews"></a><div class="element clickable method private method_installViews" data-toggle="collapse" data-target=".method_installViews .collapse">
-<h2>Installs the views of the schema.</h2>
-<pre>installViews() </pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="method_scanModules"></a><div class="element clickable method private method_scanModules" data-toggle="collapse" data-target=".method_scanModules .collapse">
-<h2>Scans the installed modules for API methods.</h2>
-<pre>scanModules() : mixed[]</pre>
+<a id="method_fetchLog"></a><div class="element clickable method public method_fetchLog" data-toggle="collapse" data-target=".method_fetchLog .collapse">
+<h2>Fetches the system event log.</h2>
+<pre>fetchLog() : string</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_getAPIMethods"></a><div class="element clickable method public method_getAPIMethods" data-toggle="collapse" data-target=".method_getAPIMethods .collapse">
+<h2>Fetches the registered API methods.</h2>
+<pre>getAPIMethods() : string[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string[]</code></div>
+</div></div>
+</div>
+<a id="method_getAdminMethods"></a><div class="element clickable method public method_getAdminMethods" data-toggle="collapse" data-target=".method_getAdminMethods .collapse">
+<h2>Fetches the registered Admin methods.</h2>
+<pre>getAdminMethods() : string[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string[]</code></div>
+</div></div>
+</div>
+<a id="method_install"></a><div class="element clickable method public method_install" data-toggle="collapse" data-target=".method_install .collapse">
+<h2>Installs the software.</h2>
+<pre>install() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_invoke"></a><div class="element clickable method public method_invoke" data-toggle="collapse" data-target=".method_invoke .collapse">
+<h2>Invokes an administrative method.</h2>
+<pre>invoke(string $method, mixed[] $data) : mixed[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$method</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$data</h4>
+<code>mixed[]</code>
+</div>
+<h3>Returns</h3>
 <div class="subelement response"><code>mixed[]</code></div>
 </div></div>
+</div>
+<a id="method_uninstall"></a><div class="element clickable method public method_uninstall" data-toggle="collapse" data-target=".method_uninstall .collapse">
+<h2>Uninstalls the software.</h2>
+<pre>uninstall() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_updateModules"></a><div class="element clickable method public method_updateModules" data-toggle="collapse" data-target=".method_updateModules .collapse">
+<h2>Scans and updates the API modules.</h2>
+<pre>updateModules() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_methods"> </a><div class="element clickable property private property_methods" data-toggle="collapse" data-target=".property_methods .collapse">
+<h2>Contains the callable methods of the Admin class.</h2>
+<pre>$methods : string[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 </div>
 </div>

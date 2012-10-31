@@ -36,14 +36,35 @@
  * @since      Class available since Release 1.0
  */
 class Frisby {	
-	
+	/**
+         * Boots up the engine and transfers control to the core. 
+         */
 	function __construct() {
-		//Boots up the engine and moves to core directory.
 		chdir('core');
 		require_once('Bootstrap.php');
 		chdir('..');
 	}
-	
+	 /**
+          * The master method to make a Frisby API or Admin function call.
+          * 
+          * The method requires a method name registered with the engine. 
+          * The arguments for the method should be provided in the subsequent parameters.
+          * The method can be an API method or an Administrative method.
+          * All administrative methods must start with a prefix 'admin_' prior to the method name.
+          * A list of administrative methods can be obtained by using the function 'getAdminMethods'.
+          * A list of API methods can be obtained by using the function 'getAPIMethods'
+          * 
+          * @see Admin::getAdminMethods
+          * @see Admin::getAPIMethods
+          * 
+          * <code>
+          * $frisby->call('getAPIMethods');
+          * $frisby->call('fetchEventNames','Profile');
+          * </code>
+          * 
+          * @param string $method
+          * @return mixed[] 
+          */
 	function call($method) {
 		
 		chdir('core');
@@ -57,12 +78,16 @@ class Frisby {
 			$method=substr($method,6);
 			require_once('Admin.php');
 			$admin=new Admin();
-			$result=$admin->invoke($method,$data);
+                        try {
+                            $result=$admin->invoke($method,$data);
+                        } catch(Exception $e) {}
 		}
 		else {
 			require_once('Dispatcher.php');
 			$api=new Dispatcher();
-			$result=$api->dispatch($method,$data);
+                        try {
+                            $result=$api->dispatch($method,$data);
+                        } catch(Exception $e) {}
 		}
 		
 		chdir('..');

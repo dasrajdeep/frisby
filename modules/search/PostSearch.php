@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the Outbox class.
+ * This file contains the PostSearch class.
  * 
  * PHP version 5.3
  * 
@@ -27,45 +27,36 @@
  */
 
 /**
- * An instance of this class is used to manage outboxes.
+ * An instance of this class is used to search publications within the social network.
  * 
  * <code>
- * require_once('.php');
+ * require_once('PostSearch.php');
  * 
- * $outbox=new Outbox();
- * $resultset=$outbox->fetchOutbox(userid);
+ * $search=new PostSearch();
+ * $data=array('text'=>'something');
+ * $resultset=$search->searchPosts($data);
  * </code> 
  * 
- * @package frisby\messaging
+ * @package frisby\search
  */
-class Outbox extends ModuleSupport {
+class PostSearch extends ModuleSupport {
 	
 	/**
-         * Fetches the outbox of a user
+         * Searches for publications within the entire network.
          * 
-         * @param int $accno
-         * @return array 
+         * @param mixed[] $querydata
+         * @return mixed[] 
          */
-	function fetchOutbox($accno) {
+	function searchPosts($querydata) {
 		ErrorHandler::reset();
-		$set=Database::get('messages','*',"status in (0,1,3,9,11) and sender=".$accno);
+		$parts=array();
+		if(isset($querydata['publisher'])) array_push($parts,"publisher=".$querydata['publisher']);
+		if(isset($querydata['text'])) array_push($parts,sprintf("textdata like '%%%s%%'",$querydata['text']));
+		if(isset($querydata['node'])) array_push($parts,"node=".$querydata['node']);
+		$matcher=implode(' and ',$parts);
+		if(isset($querydata['maxposts'])) $matcher.=' limit '.$querydata['maxposts'];
+		$set=Database::get('posts','*',$matcher);
 		return $set;
-	}
-	
-	/**
-         * Deletes messages from an outbox
-         * 
-         * @param array $idlist
-         * @param int $accno
-         * @return array 
-         */
-	function deleteOutboxMessages($idlist,$accno) {
-		ErrorHandler::reset();
-		$set=implode(',',$idlist);
-		if(count($idlist)>0) Database::query(sprintf("update %smessages set status=status+4 where status in (0,1,3,9,11) and msg_id in (%s)",Database::getPrefix(),$set));
-		else Database::query(sprintf("update %smessages set status=status+4 where status in (0,1,3,9,11) and sender=%s",Database::getPrefix(),$accno));
-		Database::remove('messages',"status in (4,13,15)");
-		return null;
 	}
 }
 

@@ -20,6 +20,7 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/frisby.html"><i class="icon-folder-open"></i> frisby</a></li>
 </ul>
 </li>
@@ -56,28 +57,19 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_getMethodNames" title="getMethodNames :: Fetches the external names of the methods that are invokable by the user"><span class="description">Fetches the external names of the methods that are invokable by the user</span><pre>getMethodNames()</pre></a></li>
-<li class="method public "><a href="#method_getModuleClass" title="getModuleClass :: Fetches the location of a module relative to the base directory"><span class="description">Fetches the location of a module relative to the base directory</span><pre>getModuleClass()</pre></a></li>
-<li class="method public "><a href="#method_init" title="init :: Loads the mappings and signatures from an external file"><span class="description">Loads the mappings and signatures from an external file</span><pre>init()</pre></a></li>
-<li class="method public "><a href="#method_load" title="load :: Loads a module controller into the engine"><span class="description">Loads a module controller into the engine</span><pre>load()</pre></a></li>
-<li class="method public "><a href="#method_read" title="read :: Fetches the route associated with an external method name"><span class="description">Fetches the route associated with an external method name</span><pre>read()</pre></a></li>
-<li class="method public "><a href="#method_validateArguments" title="validateArguments :: Validates an argument list passed to a method against its signature"><span class="description">Validates an argument list passed to a method against its signature</span><pre>validateArguments()</pre></a></li>
+<li class="method public "><a href="#method_getMethodNames" title="getMethodNames :: Fetches the names of the API methods."><span class="description">Fetches the names of the API methods.</span><pre>getMethodNames()</pre></a></li>
+<li class="method public "><a href="#method_getModuleNames" title="getModuleNames :: Fetches the names of the installed modules."><span class="description">Fetches the names of the installed modules.</span><pre>getModuleNames()</pre></a></li>
+<li class="method public "><a href="#method_init" title="init :: Loads the module mappings from an external file."><span class="description">Loads the module mappings from an external file.</span><pre>init()</pre></a></li>
+<li class="method public "><a href="#method_location" title="location :: Fetches the location of a module."><span class="description">Fetches the location of a module.</span><pre>location()</pre></a></li>
+<li class="method public "><a href="#method_read" title="read :: Fetches the module and classname associated with an API method name."><span class="description">Fetches the module and classname associated with an API method name.</span><pre>read()</pre></a></li>
 </ul>
-</li>
-<li class="nav-header private">» Private
-                    <ul><li class="method private "><a href="#method_scanModules" title="scanModules :: Scans the class files of the engine to get a list of the defined methods"><span class="description">Scans the class files of the engine to get a list of the defined methods</span><pre>scanModules()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
 <li class="nav-header private">» Private
-                    <ul>
-<li class="property private "><a href="#property_map" title="$map :: Contains the mappings from the external method names to the internal path"><span class="description">Contains the mappings from the external method names to the internal path</span><pre>$map</pre></a></li>
-<li class="property private "><a href="#property_modroute" title="$modroute :: Contains the routes for the internal methods"><span class="description">Contains the routes for the internal methods</span><pre>$modroute</pre></a></li>
-<li class="property private "><a href="#property_modules" title="$modules :: Contains the names of the modules used by the engine"><span class="description">Contains the names of the modules used by the engine</span><pre>$modules</pre></a></li>
-<li class="property private "><a href="#property_sig" title="$sig :: Contains the method signatures"><span class="description">Contains the method signatures</span><pre>$sig</pre></a></li>
-</ul>
+                    <ul><li class="property private "><a href="#property_modules" title="$modules :: Contains the mappings from the module names to their locations."><span class="description">Contains the mappings from the module names to their locations.</span><pre>$modules</pre></a></li></ul>
 </li>
 </ul>
 </div>
@@ -92,12 +84,11 @@
 </li>
 </ul>
 <div class="element class">
-<p class="short_description">This class is used to access the registry of the engine and load modules.</p>
+<p class="short_description">This class is used to access the registry of the engine.</p>
 <div class="details">
 <div class="long_description"><pre><code>require_once('Registry.php');
 
-$map=Registry::read('method_name');
-Registry::load($map[0]);
+Registry::init();
 </code></pre></div>
 <table class="table table-bordered">
 <tr>
@@ -136,39 +127,34 @@ Registry::load($map[0]);
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method_getMethodNames"></a><div class="element clickable method public method_getMethodNames" data-toggle="collapse" data-target=".method_getMethodNames .collapse">
-<h2>Fetches the external names of the methods that are invokable by the user</h2>
-<pre>getMethodNames() : array</pre>
+<h2>Fetches the names of the API methods.</h2>
+<pre>getMethodNames() : string[]</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>string[]</code></div>
 </div></div>
 </div>
-<a id="method_getModuleClass"></a><div class="element clickable method public method_getModuleClass" data-toggle="collapse" data-target=".method_getModuleClass .collapse">
-<h2>Fetches the location of a module relative to the base directory</h2>
-<pre>getModuleClass(string $module) : string</pre>
+<a id="method_getModuleNames"></a><div class="element clickable method public method_getModuleNames" data-toggle="collapse" data-target=".method_getModuleNames .collapse">
+<h2>Fetches the names of the installed modules.</h2>
+<pre>getModuleNames() : string[]</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$module</h4>
-<code>string</code>
-</div>
 <h3>Returns</h3>
-<div class="subelement response"><code>string</code></div>
+<div class="subelement response"><code>string[]</code></div>
 </div></div>
 </div>
 <a id="method_init"></a><div class="element clickable method public method_init" data-toggle="collapse" data-target=".method_init .collapse">
-<h2>Loads the mappings and signatures from an external file</h2>
+<h2>Loads the module mappings from an external file.</h2>
 <pre>init() </pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
-<a id="method_load"></a><div class="element clickable method public method_load" data-toggle="collapse" data-target=".method_load .collapse">
-<h2>Loads a module controller into the engine</h2>
-<pre>load(string $module) </pre>
+<a id="method_location"></a><div class="element clickable method public method_location" data-toggle="collapse" data-target=".method_location .collapse">
+<h2>Fetches the location of a module.</h2>
+<pre>location(string $module) : null | string</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -177,11 +163,15 @@ Registry::load($map[0]);
 <h4>$module</h4>
 <code>string</code>
 </div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>null</code><code>string</code>
+</div>
 </div></div>
 </div>
 <a id="method_read"></a><div class="element clickable method public method_read" data-toggle="collapse" data-target=".method_read .collapse">
-<h2>Fetches the route associated with an external method name</h2>
-<pre>read(string $method) : array</pre>
+<h2>Fetches the module and classname associated with an API method name.</h2>
+<pre>read(string $method) : string[]</pre>
 <div class="labels"><span class="label">Static</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -191,61 +181,14 @@ Registry::load($map[0]);
 <code>string</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
-</div></div>
-</div>
-<a id="method_validateArguments"></a><div class="element clickable method public method_validateArguments" data-toggle="collapse" data-target=".method_validateArguments .collapse">
-<h2>Validates an argument list passed to a method against its signature</h2>
-<pre>validateArguments(string $method, array $list) : boolean</pre>
-<div class="labels"><span class="label">Static</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$method</h4>
-<code>string</code>
-</div>
-<div class="subelement argument">
-<h4>$list</h4>
-<code>array</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>boolean</code></div>
-</div></div>
-</div>
-<a id="method_scanModules"></a><div class="element clickable method private method_scanModules" data-toggle="collapse" data-target=".method_scanModules .collapse">
-<h2>Scans the class files of the engine to get a list of the defined methods</h2>
-<pre>scanModules() : array</pre>
-<div class="labels"><span class="label">Static</span></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>array</code></div>
+<div class="subelement response"><code>string[]</code></div>
 </div></div>
 </div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_map"> </a><div class="element clickable property private property_map" data-toggle="collapse" data-target=".property_map .collapse">
-<h2>Contains the mappings from the external method names to the internal path</h2>
-<pre>$map : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_modroute"> </a><div class="element clickable property private property_modroute" data-toggle="collapse" data-target=".property_modroute .collapse">
-<h2>Contains the routes for the internal methods</h2>
-<pre>$modroute : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
 <a id="property_modules"> </a><div class="element clickable property private property_modules" data-toggle="collapse" data-target=".property_modules .collapse">
-<h2>Contains the names of the modules used by the engine</h2>
-<pre>$modules : array</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
-</div>
-<a id="property_sig"> </a><div class="element clickable property private property_sig" data-toggle="collapse" data-target=".property_sig .collapse">
-<h2>Contains the method signatures</h2>
-<pre>$sig : array</pre>
+<h2>Contains the mappings from the module names to their locations.</h2>
+<pre>$modules : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
@@ -256,7 +199,7 @@ Registry::load($map[0]);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
+            generated on 2012-10-31T13:10:10+05:30.<br></footer></div>
 </div>
 </body>
 </html>

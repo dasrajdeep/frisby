@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the dispatcher for the engine.
+ * This file contains the API dispatcher for the engine.
  * 
  * PHP version 5.3
  * 
@@ -53,14 +53,14 @@ class Dispatcher {
 		$module=$route['module'];
 		
 		$loc=Registry::location($module);
-		chdir('../'.$loc);
+		chdir('../modules/'.$loc);
 		
 		$class=$route['classname'];
 		require_once($class.'.php');
 		$obj=new $class();
 		$result=call_user_func_array(array($obj,$method),$data);
 		
-		chdir('../core');
+		chdir('../../core');
 		
 		return $result;
 	}

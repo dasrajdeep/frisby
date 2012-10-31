@@ -42,11 +42,11 @@
 class Privacy extends ModuleSupport {
 	
 	/**
-         * Updates privacy settings for a user profile
+         * Updates privacy settings for a user profile.
          * 
          * @param int $accno
-         * @param array $settings
-         * @return array 
+         * @param mixed[] $settings
+         * @return null 
          */
 	function setPrivacy($accno,$settings) {
 		ErrorHandler::reset();
@@ -56,11 +56,11 @@ class Privacy extends ModuleSupport {
 	}
 	
 	/**
-         * Fetches privacy settings for a user profile
+         * Fetches privacy settings for a user profile.
          * 
          * @param int $accno
-         * @param array $infoset
-         * @return array 
+         * @param string[] $infoset
+         * @return mixed[] 
          */
 	function getPrivacy($accno,$infoset) {
 		ErrorHandler::reset();

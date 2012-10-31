@@ -42,13 +42,13 @@
 class Publish extends ModuleSupport {
 	
 	/**
-         * Creates a new post
+         * Creates a new post.
          * 
          * @param int $accno
-         * @param array $noderef
+         * @param int[] $noderef
          * @param int $thread
-         * @param array $data
-         * @return array 
+         * @param mixed[] $data
+         * @return null 
          */
 	function createPost($accno,$noderef,$thread,$data) {
 		ErrorHandler::reset();
@@ -63,10 +63,10 @@ class Publish extends ModuleSupport {
 	}
 	
 	/**
-         * Deletes a post
+         * Deletes a post.
          * 
          * @param int $postid
-         * @return array 
+         * @return null 
          */
 	function deletePost($postid) {
 		ErrorHandler::reset();

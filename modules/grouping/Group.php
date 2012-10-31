@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the GroupMembers class.
+ * This file contains the Group class.
  * 
  * PHP version 5.3
  * 
@@ -27,73 +27,76 @@
  */
 
 /**
- * An instance of this class is used to manage group members.
+ * An instance of this class is used to manage groups in the social network.
  * 
  * <code>
- * require_once('GroupMembers.php');
+ * require_once('Group.php');
  * 
- * $gm=new GroupMembers();
- * $gm->addMember(memberid,groupid,membershiptype);
+ * $grp=new Group();
+ * $grp->createGroup(creatorid,'group_name','group_description',grouptype);
  * </code> 
  * 
  * @package frisby\grouping
  */
-class GroupMembers extends ModuleSupport {
+class Group extends ModuleSupport {
 	
 	/**
-         * Adds a member to a specific group
+         * Creates a new group.
          * 
-         * @param int $accno
-         * @param int $grpid
+         * @param int $creator
+         * @param string $name
+         * @param string $desc
          * @param int $type
          * @return null 
          */
-	function addMember($accno,$grpid,$type=0) {
+	function createGroup($creator,$name,$desc,$type=0) {
 		ErrorHandler::reset();
-		Database::add('group_members',array('member_id','group_id','type'),array($accno,$grpid,$type));
-		EventHandler::fire('joinedgroup',$accno,$grpid);
+		$ref=Database::add('groups',array('name','description','type'),array($name,$desc,$type));
+		if($ref) $ref=mysql_insert_id();
+		Database::add('group_members',array('member_id','group_id','type'),array($creator,$ref,1));
+		EventHandler::fire('creatednewgroup',$creator,$ref);
 		return null;
 	}
 	
 	/**
-         * Deletes a member from a group
+         * Deletes a group.
          * 
-         * @param int $accno
          * @param int $grpid
          * @return null 
          */
-	function deleteMember($accno,$grpid) {
+	function deleteGroup($grpid) {
 		ErrorHandler::reset();
-		Database::remove('group_members',sprintf("member_id=%s and group_id=%s",$accno,$grpid));
-		EventHandler::fire('leftgroup',$accno,$grpid);
+		Database::remove('groups',"group_id=".$grpid);
+		Database::remove('group_members',"group_id=".$grpid);
 		return null;
 	}
 	
-        /**
-         * Updates privileges for a member of a group
-         * 
-         * @param int $accno
-         * @param int $grpid
-         * @param int $type
-         * @return null
-         */
-	function updateMemberPrivilege($accno,$grpid,$type) {
-		ErrorHandler::reset();
-		Database::update('group_members',array('type'),array($type),sprintf("member_id=%s and group_id=%s",$accno,$grpid));
-		if(type==2) EventHandler::fire('becamemoderator',$accno,$grpid);
-                return null;
-	}
-	
 	/**
-         * Fetches all the members of a specific group
+         * Updates information for a group.
+         * 
+         * @param int $grpid
+         * @param array $data
+         * @return null 
+         */
+	function updateGroup($grpid,$data) {
+		ErrorHandler::reset();
+		$keys=array_keys($data);
+		$values=array();
+		foreach($keys as $k) array_push($values,$data[$k]);
+		Database::update('groups',$keys,$values,"group_id=".$grpid);
+		return null;
+	}
+
+	/**
+         * Fetches all information regarding a specific group.
          * 
          * @param int $grpid
          * @return mixed[] 
          */
-	function fetchMembers($grpid) {
+	function fetchGroup($grpid) {
 		ErrorHandler::reset();
-		$set=Database::get('group_members','member_id,type,joindate',"group_id=".$grpid);
-		return $set;
+		$set=Database::get('groups','*',"group_id=".$grpid);
+		return $set[0];	
 	}
 }
 

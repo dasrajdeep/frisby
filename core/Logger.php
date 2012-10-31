@@ -37,18 +37,23 @@
  */
 class Logger {
 	/**
-         * Contains a handler to the log file
+         * Contains a handler to the log file.
          * 
          * @var object
          */
 	private static $file;
 	
+        /**
+         * Contains the filename of the log file.
+         * 
+         * @var string 
+         */
 	private static $filename='../data/log.txt';
 	
 	/**
-         * Contains the mappings from the event mnemonics to the event names
+         * Contains the mappings from the event mnemonics to the event names.
          * 
-         * @var array
+         * @var mixed[]
          */
         private static $sysEvents=array(
             'db'=>'DATABASE',
@@ -60,7 +65,7 @@ class Logger {
         );
 	
 	/**
-         * Creates or opens the log file for writing 
+         * Creates or opens the log file for writing. 
          */
 	public static function init() {
 		self::$file=file_exists(self::$filename);
@@ -70,7 +75,7 @@ class Logger {
 	}
 	
 	/**
-         * Dumps a log event to the log file
+         * Dumps a log event to the log file.
          * 
          * @param string $type
          * @param string $message 
@@ -80,18 +85,29 @@ class Logger {
 		fwrite(self::$file,'['.time().']'.$event.':'.$message.'\n');
 	}
 	
+        /**
+         * Fetches the log.
+         * 
+         * @return string 
+         */
 	public static function read() {
 		$log=fread(self::$file,filesize(self::$filename));
 		return $log;
 	}
         
+        /**
+         * Gets the event name corresponding to a mnemonic.
+         * 
+         * @param string $mnemonic
+         * @return string|null 
+         */
         public static function event($mnemonic) {
             if(array_key_exists($mnemonic, self::$sysEvents)) return self::$sysEvents[$mnemonic];
             else return null;
         }
 
         /**
-         * Closes the file handler 
+         * Closes the file handler. 
          */
 	public static function shutdown() {
 		fclose(self::$file);

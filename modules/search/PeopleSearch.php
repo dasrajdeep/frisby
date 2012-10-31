@@ -42,10 +42,10 @@
 class PeopleSearch extends ModuleSupport {
 	
 	/**
-         * Searches for people within the entire network
+         * Searches for people within the entire network.
          * 
-         * @param array $querydata
-         * @return array 
+         * @param mixed[] $querydata
+         * @return mixed[] 
          */
 	function searchPeople($querydata) {
 		ErrorHandler::reset();
@@ -59,11 +59,11 @@ class PeopleSearch extends ModuleSupport {
 	}
 	
 	/**
-         * Searches for people within a group or friend list
+         * Searches for people within a group or friend list.
          * 
-         * @param array $querydata
+         * @param mixed[] $querydata
          * @param int $domain
-         * @return array 
+         * @return mixed[] 
          */
 	function searchMembers($querydata,$domain) {
 		ErrorHandler::reset();

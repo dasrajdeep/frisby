@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the ExtendedProfile class.
+ * This file contains the Mime class.
  * 
  * PHP version 5.3
  * 
@@ -27,59 +27,62 @@
  */
 
 /**
- * An instance of this class is used to modify profile attributes.
+ * An instance of this class is used to manage MIME content for posts.
  * 
  * <code>
- * require_once('ExtendedProfile.php');
+ * require_once('Mime.php');
  * 
- * $ep=new ExtendedProfile();
- * $ep->registerProfileAttribute('attribute_name','varchar(100)');
+ * $mime=new Mime();
+ * $mime->createMimeSchema('relation_name',1);
  * </code> 
  * 
- * @package frisby\profiling
+ * @package frisby\pubsub
  */
-class ExtendedProfile extends ModuleSupport {
+class Mime extends ModuleSupport {
 	
 	/**
-         * Registers a new profile attribute 
+         * Creates a new MIME database relation.
          * 
          * @param string $name
-         * @param string $datatype
-         * @return array 
+         * @param int $type
+         * @return null 
          */
-	function registerProfileAttribute($name,$datatype) {
+	function createMimeSchema($name,$type) {
 		ErrorHandler::reset();
-		Database::query(sprintf("alter table %sprofile add column %s %s",Database::getPrefix(),$name,$datatype));
-		$set=Database::get('privacy','distinct acc_no as acc',false);
-		foreach($set as $s) Database::add('privacy',array('acc_no','infofield'),array($s['acc'],$name));
+		Database::query(sprint("create table %smime_%s (
+			id int not null auto_increment,
+			name varchar(100),
+			ref_id varchar(150) not null,
+			primary key(id)
+		) engine=INNODB",Database::getPrefix(),$name));
+		Database::add('extensions',array('type','table_name'),array($type,$name));
 		return null;
 	}
 	
 	/**
-         * Removes a profile attribute
+         * Deletes a MIME database relation.
          * 
          * @param string $name
-         * @return array 
+         * @return null 
          */
-	function unregisterProfileAttribute($name) {
+	function deleteMimeSchema($name) {
 		ErrorHandler::reset();
-		Database::query(sprintf("alter table %sprofile drop column %s",Database::getPrefix(),$name));
-		Database::remove('privacy',sprintf("infofield='%s'",$name));
+		Database::query(sprintf("drop table if exists %smime_%s",Database::getPrefix(),$name));
+		Database::remove('extensions',sprintf("table_name='%s'",$name));
 		return null;
 	}
 	
 	/**
-         * Fetches all the profile attribute names 
+         * Fetches all the extended MIME schemas.
          * 
-         * @return array
+         * @return string[]
          */
-	function getProfileAttributeNames() {
+	function fetchMimeSchemas() {
 		ErrorHandler::reset();
-		$p=Database::query("desc %sprofile");
-		$names=array();
-		while($r=mysql_fetch_assoc($p)) array_push($names,$r['Field']);
-		return $names;
-
+		$set=Database::get('extensions','table_name',false);
+		$schemas=array();
+		foreach($set as $s) array_push($schemas,$s['table_name']);
+		return $schemas;
 	}
 }
 

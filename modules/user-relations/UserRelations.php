@@ -41,12 +41,12 @@
 class UserRelations extends ModuleSupport {
 	
 	/**
-         * Creates a new user relations
+         * Creates a new user relation.
          * 
          * @param int $accno1
          * @param int $accno2
          * @param int $type
-         * @return array 
+         * @return null 
          */
 	function createUserRelation($accno1,$accno2,$type=0) {
 		ErrorHandler::reset();
@@ -56,11 +56,11 @@ class UserRelations extends ModuleSupport {
 	}
 	
 	/**
-         * Updates a user relation by changing its status to accepted
+         * Confirms a user relation.
          * 
          * @param int $accno1
          * @param int $accno2
-         * @return array 
+         * @return null 
          */
 	function confirmUserRelation($accno1,$accno2) {
 		ErrorHandler::reset();
@@ -70,12 +70,12 @@ class UserRelations extends ModuleSupport {
 	}
 	
 	/**
-         * Updates a user relation
+         * Updates a user relation.
          * 
          * @param int $accno1
          * @param int $accno2
          * @param int $type
-         * @return array 
+         * @return null 
          */
 	function updateUserRelation($accno1,$accno2,$type) {
 		ErrorHandler::reset();
@@ -84,11 +84,11 @@ class UserRelations extends ModuleSupport {
 	}
 	
 	/**
-         * Fetches information regarding a user relation
+         * Fetches information regarding a user relation.
          * 
          * @param int $accno1
          * @param int $accno2
-         * @return array 
+         * @return mixed[] 
          */
 	function fetchUserRelationInfo($accno1,$accno2) {
 		ErrorHandler::reset();

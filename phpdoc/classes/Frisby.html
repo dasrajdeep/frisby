@@ -20,6 +20,7 @@
 <a href="#api" class="dropdown-toggle" data-toggle="dropdown">
                                     API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
 <li><a href="../packages/frisby.html"><i class="icon-folder-open"></i> frisby</a></li>
 </ul>
 </li>
@@ -52,26 +53,13 @@
 <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
 <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-<ul class="side-nav nav nav-list">
-<li class="nav-header">
+<ul class="side-nav nav nav-list"><li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method___construct" title="__construct :: Loads and initializes the classes required by the engine."><span class="description">Loads and initializes the classes required by the engine.</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#method_call" title="call :: The master method to execute the social functions."><span class="description">The master method to execute the social functions.</span><pre>call()</pre></a></li>
+<li class="method public "><a href="#method___construct" title="__construct :: Boots up the engine and transfers control to the core."><span class="description">Boots up the engine and transfers control to the core.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_call" title="call :: The master method to make a Frisby API or Admin function call."><span class="description">The master method to make a Frisby API or Admin function call.</span><pre>call()</pre></a></li>
 </ul>
-</li>
-<li class="nav-header">
-<i class="icon-custom icon-property"></i> Properties
-                    <ul></ul>
-</li>
-<li class="nav-header private">» Private
-                    <ul>
-<li class="property private "><a href="#property_dispatcher" title="$dispatcher :: The dispatcher object."><span class="description">The dispatcher object.</span><pre>$dispatcher</pre></a></li>
-<li class="property private "><a href="#property_setup" title="$setup :: The setup object."><span class="description">The setup object.</span><pre>$setup</pre></a></li>
-<li class="property private "><a href="#property_setupmethods" title="$setupmethods :: A registry for the setup methods."><span class="description">A registry for the setup methods.</span><pre>$setupmethods</pre></a></li>
-</ul>
-</li>
-</ul>
+</li></ul>
 </div>
 <div class="span8">
 <a id="\Frisby"></a><ul class="breadcrumb">
@@ -127,25 +115,32 @@ $frisby=new Frisby();
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
-<h2>Loads and initializes the classes required by the engine.</h2>
+<h2>Boots up the engine and transfers control to the core.</h2>
 <pre>__construct() </pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"><p>This is a constructor for the Frisby class object.
-It loads the dispatcher and the setup and initializes them.</p></div></div></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 <a id="method_call"></a><div class="element clickable method public method_call" data-toggle="collapse" data-target=".method_call .collapse">
-<h2>The master method to execute the social functions.</h2>
+<h2>The master method to make a Frisby API or Admin function call.</h2>
 <pre>call(string $method) : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This is the method that should be used to execute the functions advertised by the engine
-(Use the 'reg_getMethodNames' function to fetch the list of supported functions).
-The function accepts the method name as the first argument,
-followed by a variable number of arguments which are specific to the method specified.
-Please refer to the module functions regarding the arguments accepted by the functions.</p>
-
-<pre><code>$resultset=$frisby->call('method_name',$arg1,...);
-</code></pre></div>
+<div class="long_description"><p>The method requires a method name registered with the engine.
+The arguments for the method should be provided in the subsequent parameters.
+The method can be an API method or an Administrative method.
+All administrative methods must start with a prefix 'admin_' prior to the method name.
+A list of administrative methods can be obtained by using the function 'getAdminMethods'.
+A list of API methods can be obtained by using the function 'getAPIMethods'</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\global\Admin::getAdminMethods</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\global\Admin::getAPIMethods</a></td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$method</h4>
@@ -155,26 +150,6 @@ Please refer to the module functions regarding the arguments accepted by the fun
 <div class="subelement response"><code>mixed[]</code></div>
 </div></div>
 </div>
-<h3>
-<i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property_dispatcher"> </a><div class="element clickable property private property_dispatcher" data-toggle="collapse" data-target=".property_dispatcher .collapse">
-<h2>The dispatcher object.</h2>
-<pre>$dispatcher : <a href="../classes/Dispatcher.html">\Dispatcher</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Contains an object of the Dispatcher class.</p></div></div></div>
-</div>
-<a id="property_setup"> </a><div class="element clickable property private property_setup" data-toggle="collapse" data-target=".property_setup .collapse">
-<h2>The setup object.</h2>
-<pre>$setup : <a href="../classes/Setup.html">\Setup</a></pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Contains an object of the Setup class.</p></div></div></div>
-</div>
-<a id="property_setupmethods"> </a><div class="element clickable property private property_setupmethods" data-toggle="collapse" data-target=".property_setupmethods .collapse">
-<h2>A registry for the setup methods.</h2>
-<pre>$setupmethods : \assoc[]</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description"><div class="long_description"><p>Contains the mappings from the external setup method names to the internal setup methods.</p></div></div></div>
-</div>
 </div>
 </div>
 </div>
@@ -182,7 +157,7 @@ Please refer to the module functions regarding the arguments accepted by the fun
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-29T01:25:20+05:30.<br></footer></div>
+            generated on 2012-10-31T13:10:10+05:30.<br></footer></div>
 </div>
 </body>
 </html>
