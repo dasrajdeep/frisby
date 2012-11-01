@@ -72,9 +72,9 @@ class ExtendedProfile extends ModuleSupport {
          * @return string[]
          */
 	function getProfileAttributeNames() {
-		$p=Database::query("desc %sprofile");
+		$p=Database::query(sprintf("desc %sprofile",Database::getPrefix()));
 		$names=array();
-		while($r=mysql_fetch_assoc($p)) array_push($names,$r['Field']);
+		while($r=mysql_fetch_assoc($p)) if($r['Field']!=='acc_no') array_push($names,$r['Field']);
 		return $names;
 
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project version="2.0.0a10" title="Frisby Social Engine">
+<project version="2.0.0a10" title="">
   <file path="core\Admin.php" hash="2c997fa19ee63aea849cd8e23d272c04" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the admin for the engine.]]></description>
@@ -817,9 +817,9 @@ along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www
       </argument>
     </function>
   </file>
-  <file path="core\EventHandler.php" hash="f2550deb780954940df4735bf795deac" package="Default">
+  <file path="core\EventHandler.php" hash="a1886f74af005df4b6a55441ea9b320b" package="Default">
     <docblock line="2">
-      <description><![CDATA[This file contains the error-handler for the engine.]]></description>
+      <description><![CDATA[This file contains the event-handler for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
 
 <p>LICENSE: This file is part of Frisby.
@@ -839,7 +839,7 @@ along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www
       <name>EventHandler</name>
       <full_name>\EventHandler</full_name>
       <docblock line="20">
-        <description><![CDATA[This class can be used to fire an implicit event from within a module,]]></description>
+        <description><![CDATA[This class can be used to fire events from within the system.]]></description>
         <long-description><![CDATA[<pre><code>require_once('EventHandler.php');
 
 EventHandler::fireEvent('event_name',sourceid,destinationid);

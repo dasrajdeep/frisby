@@ -87,7 +87,7 @@ class Profile extends ModuleSupport {
 		$cols='*';
 		if(func_num_args()==2 && count($attrs)>0) $cols=implode(',',$attrs);
 		$result=Database::get('view_profile',$cols,"acc_no=".$accno);
-                if(isset($result[0]['avatar'])) $result[0]['avatar']=base64_encode($result[0]['avatar']);
+                if(isset($result[0]['avatarimage'])) $result[0]['avatarimage']=base64_encode($result[0]['avatarimage']);
 		return $result[0];
 	}
 }
