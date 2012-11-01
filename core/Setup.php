@@ -164,7 +164,7 @@ class Setup {
 			$classes=array();
 			foreach($list as $l) if(preg_match('/^[A-Z][a-zA-Z]*[.]php*$/',$l)==1) array_push($classes,$l);
 			foreach($classes as $c) {
-				require_once(Registry::location($m).'/'.$c);
+				require_once(Registry::location($m).DIRECTORY_SEPARATOR.$c);
 				$class=substr($c,0,-4);
 				$methods[$m][$class]=array();
 				$meth=get_class_methods($class);

@@ -60,7 +60,7 @@ class Registry {
     static function read($method) {
 		$route=Database::get('registry','module,classname',sprintf("method='%s'",$method));
 		if(count($route)==0) {
-			ErrorHandler::fire('val','No such method exists.');
+			EventHandler::fireError('val','No such method exists.');
 			return null;
 		}
 		return $route[0];
@@ -74,7 +74,7 @@ class Registry {
          */
 	static function location($module) {
 		if(array_key_exists($module,self::$modules)) return self::$modules[$module];
-		ErrorHandler::fire('int','Module does not exist.');
+		EventHandler::fireError('int','Module does not exist.');
 		return null;
 	}
 	

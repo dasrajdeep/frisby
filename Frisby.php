@@ -49,8 +49,8 @@ class Frisby {
          */
 	function __construct() {
 		chdir('core');
-		require_once('Bootstrap.php');
-		if(ErrorHandler::hasErrors()) $this->bootError=true;
+		require_once('bootstrap.php');
+		if(EventHandler::hasErrors()) $this->bootError=true;
 		chdir('..');
 	}
 	 /**
@@ -77,36 +77,40 @@ class Frisby {
 	function call($method) {
 		
 		//Check for boot errors.
-		if($this->bootError) return array(false,ErrorHandler::fetchTrace());
+		if($this->bootError) return array(false,EventHandler::fetchTrace());
 		
 		chdir('core');
+		ini_set('display_errors', false);
 		
 		$data=func_get_args();
 		$data=array_slice($data,1);
 		
-		ErrorHandler::reset();
+		EventHandler::clearErrorTrace();
 		
 		if(preg_match('/^(admin_)(.)+/',$method)==1) {
 			$method=substr($method,6);
 			require_once('Admin.php');
 			$admin=new Admin();
-                        try {
-                            $result=$admin->invoke($method,$data);
-                        } catch(Exception $e) {}
+			set_error_handler('adminHandler');
+			$result=$admin->invoke($method,$data);
 		}
 		else {
 			require_once('Dispatcher.php');
-			require_once('EventHandler.php');
 			$api=new Dispatcher();
-                        try {
-                            $result=$api->dispatch($method,$data);
-                        } catch(Exception $e) {}
+			set_error_handler('apiHandler');
+			$result=$api->dispatch($method,$data);
 		}
 		
-		chdir('..');
+		set_error_handler('defaultHandler');
 		
-		if(ErrorHandler::hasErrors()) return array(false,ErrorHandler::fetchTrace());
-		else return array(true,$result);
+		if(EventHandler::hasErrors()) $result=array(false,EventHandler::fetchTrace());
+		else $result=array(true,$result);
+		
+		chdir('..');
+		ini_set('display_errors', true);
+		restore_error_handler();
+		
+		return $result;
 	}
 }
 

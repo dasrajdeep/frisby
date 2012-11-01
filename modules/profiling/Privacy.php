@@ -49,7 +49,6 @@ class Privacy extends ModuleSupport {
          * @return null 
          */
 	function setPrivacy($accno,$settings) {
-		ErrorHandler::reset();
 		$keys=array_keys($settings);
 		foreach($keys as $k) Database::update('privacy',array('restriction'),array($settings[$k]),sprintf("acc_no=%s and infofield='%s'",$accno,$k));
 		return null;
@@ -63,7 +62,6 @@ class Privacy extends ModuleSupport {
          * @return mixed[] 
          */
 	function getPrivacy($accno,$infoset) {
-		ErrorHandler::reset();
 		$cnt=func_num_args();
 		$set=null;
 		if($cnt==2) {

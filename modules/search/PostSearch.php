@@ -48,7 +48,6 @@ class PostSearch extends ModuleSupport {
          * @return mixed[] 
          */
 	function searchPosts($querydata) {
-		ErrorHandler::reset();
 		$parts=array();
 		if(isset($querydata['publisher'])) array_push($parts,"publisher=".$querydata['publisher']);
 		if(isset($querydata['text'])) array_push($parts,sprintf("textdata like '%%%s%%'",$querydata['text']));

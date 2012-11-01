@@ -48,7 +48,6 @@ class Search extends ModuleSupport {
          * @return mixed[] 
          */
 	function search($querydata,$domain) {
-		ErrorHandler::reset();
 		$results=array();
 		foreach($domain as $d) {
 			if($d=='people') {

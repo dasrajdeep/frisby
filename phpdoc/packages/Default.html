@@ -61,7 +61,13 @@
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-function"></i> Functions</li>
-<li class="function  "><a href="#function_errorHandler" title="errorHandler :: Customly handles errors originating from the system."><span class="description">Customly handles errors originating from the system.</span><pre>errorHandler</pre></a></li>
+<li class="function  "><a href="#function_adminHandler" title="adminHandler :: Customly handles errors originating during system boot."><span class="description">Customly handles errors originating during system boot.</span><pre>adminHandler</pre></a></li>
+<li class="function  "><a href="#function_apiHandler" title="apiHandler :: Customly handles errors originating during API calls."><span class="description">Customly handles errors originating during API calls.</span><pre>apiHandler</pre></a></li>
+<li class="function  "><a href="#function_bootHandler" title="bootHandler :: Customly handles errors originating during system boot."><span class="description">Customly handles errors originating during system boot.</span><pre>bootHandler</pre></a></li>
+<li class="function  "><a href="#function_createMessage" title="createMessage :: Generates an error message."><span class="description">Generates an error message.</span><pre>createMessage</pre></a></li>
+<li class="function  "><a href="#function_defaultHandler" title="defaultHandler :: Default error handler for the system."><span class="description">Default error handler for the system.</span><pre>defaultHandler</pre></a></li>
+<li class="function  "><a href="#function_fetchLevel" title="fetchLevel :: Returns type of error based on level."><span class="description">Returns type of error based on level.</span><pre>fetchLevel</pre></a></li>
+<li class="function  "><a href="#function_postAction" title="postAction :: Performs an action based on the error level."><span class="description">Performs an action based on the error level.</span><pre>postAction</pre></a></li>
 <li class="function  "><a href="#function_shutdown" title="shutdown :: Performs housekeeping at script termination."><span class="description">Performs housekeeping at script termination.</span><pre>shutdown</pre></a></li>
 </ul>
 </div>
@@ -72,9 +78,9 @@
 <div class="package-indent">
 <h3>
 <i class="icon-custom icon-function"></i> Functions</h3>
-<a id="function_errorHandler"></a><div class="element clickable function  function_errorHandler" data-toggle="collapse" data-target=".function_errorHandler .collapse">
-<h2>Customly handles errors originating from the system.</h2>
-<pre>errorHandler(int $level, string $message, string $filename, int $line) </pre>
+<a id="function_adminHandler"></a><div class="element clickable function  function_adminHandler" data-toggle="collapse" data-target=".function_adminHandler .collapse">
+<h2>Customly handles errors originating during system boot.</h2>
+<pre>adminHandler(int $level, string $message, string $filename, int $line) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -95,11 +101,120 @@
 <h4>$line</h4>
 <code>int</code>
 </div>
-<h3>Exceptions</h3>
-<table class="table table-bordered"><tr>
-<th><code><a href="http://php.net/manual/en/class.exception.php">\Exception</a></code></th>
-<td></td>
-</tr></table>
+</div></div>
+</div>
+<a id="function_apiHandler"></a><div class="element clickable function  function_apiHandler" data-toggle="collapse" data-target=".function_apiHandler .collapse">
+<h2>Customly handles errors originating during API calls.</h2>
+<pre>apiHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_bootHandler"></a><div class="element clickable function  function_bootHandler" data-toggle="collapse" data-target=".function_bootHandler .collapse">
+<h2>Customly handles errors originating during system boot.</h2>
+<pre>bootHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_createMessage"></a><div class="element clickable function  function_createMessage" data-toggle="collapse" data-target=".function_createMessage .collapse">
+<h2>Generates an error message.</h2>
+<pre>createMessage(mixed[] $args) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>mixed[]</code>
+</div>
+</div></div>
+</div>
+<a id="function_defaultHandler"></a><div class="element clickable function  function_defaultHandler" data-toggle="collapse" data-target=".function_defaultHandler .collapse">
+<h2>Default error handler for the system.</h2>
+<pre>defaultHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_fetchLevel"></a><div class="element clickable function  function_fetchLevel" data-toggle="collapse" data-target=".function_fetchLevel .collapse">
+<h2>Returns type of error based on level.</h2>
+<pre>fetchLevel(int $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_postAction"></a><div class="element clickable function  function_postAction" data-toggle="collapse" data-target=".function_postAction .collapse">
+<h2>Performs an action based on the error level.</h2>
+<pre>postAction(int $level) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
 </div></div>
 </div>
 <a id="function_shutdown"></a><div class="element clickable function  function_shutdown" data-toggle="collapse" data-target=".function_shutdown .collapse">
@@ -114,7 +229,7 @@
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-10-31T13:10:10+05:30.<br></footer></div>
+            generated on 2012-11-01T21:20:52+05:30.<br></footer></div>
 </div>
 </body>
 </html>

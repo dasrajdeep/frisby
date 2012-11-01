@@ -36,7 +36,7 @@ $tables=array(
 		location varchar(100),
 		primary key (acc_no),
 		foreign key (acc_no) references %saccounts (acc_no) on update cascade on delete cascade,
-		foreign key (avatar) references %simages (img_id) on update cascade on delete cascade
+		foreign key (avatar) references %simages (img_id) on update cascade on delete restrict
 	) engine=INNODB",
 	'privacy'=>"create table %sprivacy (
 		acc_no int not null,
@@ -129,13 +129,12 @@ $tables=array(
 		foreign key (event) references %sevents(event_id) on update cascade on delete cascade,
 		foreign key (origin) references %saccounts(acc_no) on update cascade on delete cascade
 	) engine=INNODB",
-	'extensions'=>"create table %sextensions (
+	'external'=>"create table %sexternal (
 		ext_id int not null auto_increment,
 		type tinyint not null,
-		table_name varchar(25) not null,
-		primary key (ext_id),
-		unique (table_name),
-		unique (type)
+		resource_name text,
+		resource_id varchar(150) not null,
+		primary key (ext_id)
 	) engine=INNODB"
 );
 

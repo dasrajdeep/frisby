@@ -17,20 +17,25 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+error_reporting(E_ALL);
 ini_set('display_errors', false);
 
 require_once('Logger.php');
-require_once('ErrorHandler.php');
+require_once('error-handlers.php');
+require_once('EventHandler.php');
 require_once('Database.php');
 require_once('Registry.php');
 require_once('ModuleSupport.php');
+
+set_error_handler('bootHandler');
 
 Logger::init();
 Database::connect();
 Registry::init();
 
-set_error_handler('errorHandler');
 register_shutdown_function('shutdown');
+
+set_error_handler('defaultHandler');
 
 /**
  * Performs housekeeping at script termination. 
@@ -38,24 +43,7 @@ register_shutdown_function('shutdown');
 function shutdown() {
 	Database::disconnect();
 	Logger::shutdown();
-}
-
-/**
- * Customly handles errors originating from the system.
- * 
- * @param int $level
- * @param string $message
- * @param string $filename
- * @param int $line
- * @throws Exception 
- */
-function errorHandler($level,$message,$filename,$line) {
-        $levels=array(1=>'FATAL',2=>'WARNING',4=>'PARSE',8=>'NOTICE');
-        if($level<10) $level=$levels[$level];
-        $error='**'.$level.'** '.$message.' (at file: '.$filename.', line '.$line.')';
-        ErrorHandler::fire('php', $error);
-	throw new Exception('Frisby Exception');
-	die();
+	restore_error_handler();
 }
 
 ?>

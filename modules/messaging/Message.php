@@ -49,9 +49,8 @@ class Message extends ModuleSupport {
          * @return null 
          */
 	function sendMessage($sender,$receiver,$msg) {
-		ErrorHandler::reset();
 		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,1));
-		EventHandler::fire('sentmessage',$sender,$receiver);
+		EventHandler::fireEvent('sentmessage',$sender,$receiver);
 		return null;
 	}
 	
@@ -64,7 +63,6 @@ class Message extends ModuleSupport {
          * @return null 
          */
 	function saveDraft($sender,$receiver,$msg) {
-		ErrorHandler::reset();
 		Database::add('messages',array('sender','receiver','textdata','status'),array($sender,$receiver,$msg,0));
 		return null;
 	}
@@ -77,7 +75,6 @@ class Message extends ModuleSupport {
          * @return null 
          */
 	function editDraft($msgid,$msg) {
-		ErrorHandler::reset();
 		Database::update('messages',array('textdata'),array($msg),"msg_id=".$msgid);
 		return null;
 	}
@@ -89,10 +86,9 @@ class Message extends ModuleSupport {
          * @return null 
          */
 	function sendDraft($msgid) {
-		ErrorHandler::reset();
 		Database::update('messages',array('status'),array(1),"msg_id=".$msgid);
 		$set=Database::get('messages','sender,receiver',"msg_id=".$msgid);
-		EventHandler::fire('sentmessage',$set[0]['sender'],$set[0]['receiver']);
+		EventHandler::fireEvent('sentmessage',$set[0]['sender'],$set[0]['receiver']);
 		return null;
 	}
 }

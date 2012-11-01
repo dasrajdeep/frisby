@@ -49,7 +49,6 @@ class Read extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchPosts($nodetype,$node,$limit) {
-		ErrorHandler::reset();
 		$fields='post_id,publisher,textdata,timestamp,thread,mime';
 		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) limit %s",Database::getPrefix(),$nodetype,$node,$limit);
 		$set=Database::get(sprintf('posts',Database::getPrefix()),$fields,$criterion);
@@ -66,7 +65,6 @@ class Read extends ModuleSupport {
          * @return mixed[] 
          */
 	function getPost($postid) {
-		ErrorHandler::reset();
 		$fields='post_id,publisher,textdata,timestamp,thread,mime';
 		$criterion=sprintf("post_id=%s",$postid);
 		$set=Database::get(sprintf('posts',Database::getPrefix()),$fields,$criterion);
@@ -86,19 +84,14 @@ class Read extends ModuleSupport {
 	private function getMime($id) {
 		$m=Database::get('mime','type,ref_id',"mime_id=".$id);
 		$m=$m[0];
-		if($m['type']==0) {
+		if($m['type']==1) {
 			$set=Database::get('images','imgdata,type',"img_id=".$m['ref_id']);
 			if($set) $set=array(base64_encode($set[0]['imgdata']),$set[0]['type']);
-			return array(0,$set);
+			return array(1,$set);
 		}
-		else {
-			$ext=Database::get('extensions','table_name',"type=".$m['type']);
-			if($ext) {
-				$ext=$ext[0]['table_name'];
-				$set=Database::get(sprintf('%smime_%s',Database::getPrefix(),$ext),'ref_id',"id=".$m['ref_id']);
-				if($set) $set=$set[0]['ref_id'];
-				return array($m['type'],$set);
-			}
+		else if($m['type']>1) {
+			$ext=Database::get('external','resource_name,resource_id',"ext_id=".$m['ref_id']);
+			return array($m['type'],$ext[0]);
 		}
 	}
 }

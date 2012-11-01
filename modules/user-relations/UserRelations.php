@@ -49,9 +49,8 @@ class UserRelations extends ModuleSupport {
          * @return null 
          */
 	function createUserRelation($accno1,$accno2,$type=0) {
-		ErrorHandler::reset();
 		Database::add('user_relations',array('user1','user2','type','status'),array($accno1,$accno2,$type,0));
-		EventHandler::fire('sentfriendrequest',$accno1,$accno2);
+		EventHandler::fireEvent('sentfriendrequest',$accno1,$accno2);
 		return null;
 	}
 	
@@ -63,9 +62,8 @@ class UserRelations extends ModuleSupport {
          * @return null 
          */
 	function confirmUserRelation($accno1,$accno2) {
-		ErrorHandler::reset();
 		Database::update('user_relations',array('status'),array(1),sprintf("(user1=%s and user2=%s) or (user2=%s and user1=%s)",$accno1,$accno2,$accno1,$accno2));
-		EventHandler::fire('acceptedrequest',$accno1,$accno2);
+		EventHandler::fireEvent('acceptedrequest',$accno1,$accno2);
 		return null;
 	}
 	
@@ -78,7 +76,6 @@ class UserRelations extends ModuleSupport {
          * @return null 
          */
 	function updateUserRelation($accno1,$accno2,$type) {
-		ErrorHandler::reset();
 		Database::update('user_relations',array('type'),array($type),sprintf("user1=%s and user2=%s",$accno1,$accno2));
 		return null;
 	}
@@ -91,9 +88,24 @@ class UserRelations extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchUserRelationInfo($accno1,$accno2) {
-		ErrorHandler::reset();
 		$set=Database::get('user_relations','status,type',sprintf("(user1=%s and user2=%s) or (user2=%s and user1=%s)",$accno1,$accno2,$accno1,$accno2));
 		return $set[0];
+	}
+	
+	/**
+	* Fetches relatives of a user.
+	* 
+	* @param int $accno
+	* @return int[]
+	*/
+	function fetchRelatives($accno) {
+		$pre=Database::getPrefix();
+		$q1=sprintf("select user1 as acc_no from %suser_relations where user2=%s",$pre,$accno);
+		$q2=sprintf("select user2 as acc_no from %suser_relations where user1=%s",$pre,$accno);
+		$ptr=Database::query(sprintf("%s union %s",$q1,$q2));
+		$relatives=array();
+		while($r=mysql_fetch_assoc($ptr)) array_push($relatives,$r['acc_no']);
+		return $relatives;
 	}
 }
 

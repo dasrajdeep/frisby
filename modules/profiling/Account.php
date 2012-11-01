@@ -49,13 +49,16 @@ class Account extends ModuleSupport {
          * @return null 
          */
 	function createAccount($info,$status=0) {
-		ErrorHandler::reset();
 		$keys=array_keys($info);
 		array_push($keys,'status');
 		$values=array_values($info);
 		array_push($values,$status);
 		Database::add('accounts',$keys,$values);
-		if($status>0) EventHandler::fire('joinednetwork',mysql_insert_id());
+		$accno=mysql_insert_id();
+		Database::add('profile',array('acc_no'),array($accno));
+		$attr=array('alias','email','sex','dob','location');
+		foreach($attr as $a) Database::add('privacy',array('acc_no','infofield','restriction'),array($accno,$a,0));
+		if($status>0) EventHandler::fireEvent('joinednetwork',$accno);
 		return null;
 	}
 	
@@ -66,8 +69,7 @@ class Account extends ModuleSupport {
          * @return null 
          */
 	function deleteAccount($accno) {
-		ErrorHandler::reset();
-		EventHandler::fire('leftnetwork',$accno);
+		EventHandler::fireEvent('leftnetwork',$accno);
 		Database::remove('accounts',"acc_no=".$accno);
 		return null;
 	}
@@ -80,12 +82,11 @@ class Account extends ModuleSupport {
          * @return null 
          */
 	function updateAccount($accno,$data) {
-		ErrorHandler::reset();
 		$keys=array_keys($data);
 		$values=array();
 		foreach($keys as $k) array_push($values,$data[$k]);
 		Database::update('accounts',$keys,$values,"acc_no=".$accno);
-		if(array_key_exists('status',$data) && $data['status']>0) EventHandler::fire('joinednetwork',$accno);
+		if(array_key_exists('status',$data) && $data['status']>0) EventHandler::fireEvent('joinednetwork',$accno);
 		return null;
 	}
 	
@@ -96,7 +97,6 @@ class Account extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchAccountInfo($accno) {
-		ErrorHandler::reset();
 		$set=Database::get('accounts','email,firstname,middlename,lastname,status',"acc_no=".$accno);
 		return $set[0];
 	}

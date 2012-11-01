@@ -48,7 +48,6 @@ class ExtendedProfile extends ModuleSupport {
          * @return null 
          */
 	function registerProfileAttribute($name,$datatype) {
-		ErrorHandler::reset();
 		Database::query(sprintf("alter table %sprofile add column %s %s",Database::getPrefix(),$name,$datatype));
 		$set=Database::get('privacy','distinct acc_no as acc',false);
 		foreach($set as $s) Database::add('privacy',array('acc_no','infofield'),array($s['acc'],$name));
@@ -62,7 +61,6 @@ class ExtendedProfile extends ModuleSupport {
          * @return null 
          */
 	function unregisterProfileAttribute($name) {
-		ErrorHandler::reset();
 		Database::query(sprintf("alter table %sprofile drop column %s",Database::getPrefix(),$name));
 		Database::remove('privacy',sprintf("infofield='%s'",$name));
 		return null;
@@ -74,7 +72,6 @@ class ExtendedProfile extends ModuleSupport {
          * @return string[]
          */
 	function getProfileAttributeNames() {
-		ErrorHandler::reset();
 		$p=Database::query("desc %sprofile");
 		$names=array();
 		while($r=mysql_fetch_assoc($p)) array_push($names,$r['Field']);

@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the event handler for implicit events registered in the engine.
+ * This file contains the event-handler for the engine.
  * 
  * PHP version 5.3
  * 
@@ -18,12 +18,13 @@
  */
 
 /**
- * This class can be used to fire an implicit event from within a module,
+ * This class can be used to fire events from within the system.
  * 
  * <code>
  * require_once('EventHandler.php');
  * 
- * EventHandler::fire('event_name',sourceid,destinationid);
+ * EventHandler::fireEvent('event_name',sourceid,destinationid);
+ * EventHandler::fireError('error_type','error_message');
  * </code> 
  * 
  * @package frisby\core
@@ -36,6 +37,31 @@
  * @since      Class available since Release 1.0
  */
 class EventHandler {
+	/**
+         * Contains the last trace of errors fired.
+         * 
+         * @var mixed[] 
+         */
+	private static $tracelist=array();
+	
+	/**
+         * Flag to check for error occurence.
+         * 
+         * @var boolean 
+         */
+	private static $error=false;
+	
+	/**
+         * Triggers an error event.
+         * 
+         * @param string $type
+         * @param string $message 
+         */
+	static function fireError($type,$message) {
+		self::$error=true;
+		array_push(self::$tracelist,array($type,$message));
+		Logger::dump($type,$message);
+	}
 	
 	/**
          * Fires an event specified by a name and the participants
@@ -44,11 +70,37 @@ class EventHandler {
          * @param int $source
          * @param int $target 
          */
-	static function fire($event,$source,$target='null') {
+	static function fireEvent($event,$source,$target='null') {
 		$pre=Database::getPrefix();
 		$values=sprintf("(select event_id from %sevents where event_name='%s'),%s,%s",$pre,$event,$source,$target);
 		Database::query(sprintf("insert into %sevent_log (event,origin,target) values (%s)",$pre,$values));
 	}
+	
+	/**
+         * Fetches the last recorded trace of the fired error events.
+         * 
+         * @return mixed[] 
+         */
+	static function fetchTrace() {
+                for($i=0;$i<count(self::$tracelist);$i++) self::$tracelist[$i][0]=Logger::event(self::$tracelist[$i][0]);
+		return self::$tracelist;
+	}
+	
+	/**
+         * Fetches a flag indicating the occurence of any error.
+         * 
+         * @return boolean 
+         */
+	static function hasErrors() {
+		return self::$error;
+	}
+	
+	/**
+         * Resets the current error trace. 
+         */
+	static function clearErrorTrace() {
+		self::$error=false;
+		array_splice(self::$tracelist,0);
+	}
 }
-
 ?>

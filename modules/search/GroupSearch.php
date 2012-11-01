@@ -48,7 +48,6 @@ class GroupSearch extends ModuleSupport {
          * @return mixed[] 
          */
 	function searchGroup($querydata) {
-		ErrorHandler::reset();
 		$keys=array_keys($querydata);
 		$patterns=array();
 		foreach($keys as $k) if($k!='type' && $k!='creationdate') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));

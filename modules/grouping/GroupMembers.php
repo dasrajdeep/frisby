@@ -49,9 +49,8 @@ class GroupMembers extends ModuleSupport {
          * @return null 
          */
 	function addMember($accno,$grpid,$type=0) {
-		ErrorHandler::reset();
 		Database::add('group_members',array('member_id','group_id','type'),array($accno,$grpid,$type));
-		EventHandler::fire('joinedgroup',$accno,$grpid);
+		EventHandler::fireEvent('joinedgroup',$accno,$grpid);
 		return null;
 	}
 	
@@ -63,9 +62,8 @@ class GroupMembers extends ModuleSupport {
          * @return null 
          */
 	function deleteMember($accno,$grpid) {
-		ErrorHandler::reset();
 		Database::remove('group_members',sprintf("member_id=%s and group_id=%s",$accno,$grpid));
-		EventHandler::fire('leftgroup',$accno,$grpid);
+		EventHandler::fireEvent('leftgroup',$accno,$grpid);
 		return null;
 	}
 	
@@ -78,9 +76,8 @@ class GroupMembers extends ModuleSupport {
          * @return null
          */
 	function updateMemberPrivilege($accno,$grpid,$type) {
-		ErrorHandler::reset();
 		Database::update('group_members',array('type'),array($type),sprintf("member_id=%s and group_id=%s",$accno,$grpid));
-		if(type==2) EventHandler::fire('becamemoderator',$accno,$grpid);
+		if(type==2) EventHandler::fireEvent('becamemoderator',$accno,$grpid);
                 return null;
 	}
 	
@@ -91,7 +88,6 @@ class GroupMembers extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchMembers($grpid) {
-		ErrorHandler::reset();
 		$set=Database::get('group_members','member_id,type,joindate',"group_id=".$grpid);
 		return $set;
 	}

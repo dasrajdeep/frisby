@@ -47,7 +47,6 @@ class Outbox extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchOutbox($accno) {
-		ErrorHandler::reset();
 		$set=Database::get('messages','*',"status in (0,1,3,9,11) and sender=".$accno);
 		return $set;
 	}
@@ -60,7 +59,6 @@ class Outbox extends ModuleSupport {
          * @return null 
          */
 	function deleteOutboxMessages($idlist,$accno) {
-		ErrorHandler::reset();
 		$set=implode(',',$idlist);
 		if(count($idlist)>0) Database::query(sprintf("update %smessages set status=status+4 where status in (0,1,3,9,11) and msg_id in (%s)",Database::getPrefix(),$set));
 		else Database::query(sprintf("update %smessages set status=status+4 where status in (0,1,3,9,11) and sender=%s",Database::getPrefix(),$accno));

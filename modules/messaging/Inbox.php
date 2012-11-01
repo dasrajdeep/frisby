@@ -47,7 +47,6 @@ class Inbox extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchInbox($accno) {
-		ErrorHandler::reset();
 		$set=Database::get('messages','*',"status in (1,3,5,7) and receiver=".$accno);
 		return $set;
 	}
@@ -59,7 +58,6 @@ class Inbox extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchUnread($accno) {
-		ErrorHandler::reset();
 		$set=Database::get('messages','*',"status in (1,5) and receiver=".$accno);
 		return $set;
 	}
@@ -71,7 +69,6 @@ class Inbox extends ModuleSupport {
          * @return null 
          */
 	function markRead($msgids) {
-		ErrorHandler::reset();
 		$set=implode(',',$msgids);
 		Database::query(sprintf("update %smessages set status=status+2 where msg_id in (%s)",Database::getPrefix(),$set));
 		return null;
@@ -85,7 +82,6 @@ class Inbox extends ModuleSupport {
          * @return null 
          */
 	function deleteInboxMessages($idlist,$accno) {
-		ErrorHandler::reset();
 		$set=implode(',',$idlist);
 		if(count($idlist)>0) Database::query(sprintf("update %smessages set status=status+8 where status in (1,3,5,7) and msg_id in (%s)",Database::getPrefix(),$set));
 		else Database::query(sprintf("update %smessages set status=status+8 where status in (1,3,5,7) and receiver=%s",Database::getPrefix(),$accno));

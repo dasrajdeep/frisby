@@ -64,7 +64,6 @@ class Event extends ModuleSupport {
          * @return null 
          */
 	function fireEvent($name,$src,$dest=null) {
-		ErrorHandler::reset();
 		$pre=Database::getPrefix();
                 $eid=sprintf("select event_id from %sevents where event_name=%s",$pre,$name);
                 $query=sprintf("insert into %sevent_log (event,origin,target) values ((%s),%s,%s)",$pre,$eid,$src,$dest);
@@ -88,7 +87,6 @@ class Event extends ModuleSupport {
          * @return null 
          */
 	function updateEventStatus($events,$status) {
-		ErrorHandler::reset();
 		$ids=implode(',',$events);
 		Database::update('event_log',array('status'),array($status),sprintf("log_id in (%s)",$ids));
 		return null;
@@ -112,7 +110,6 @@ class Event extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchEventsByCategory($category,$age,$status=null) {
-		ErrorHandler::reset();
 		$pre=Database::getPrefix();
 		if($status) $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s' and status=%s",$pre,$category,$age,$status));
 		else $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s'",$pre,$category,$age));
@@ -138,7 +135,6 @@ class Event extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchEventsByEntity($orig=null,$targ=null,$age) {
-		ErrorHandler::reset();
 		if(!$orig and !$targ) return array(true,null);
 		$filters=array();
 		if($orig) array_push($filters,"origin=".$orig);

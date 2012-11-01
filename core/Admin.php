@@ -60,15 +60,10 @@ class Admin {
          */
 	public function invoke($method,$data) {
 		if(!in_array($method,$this->methods)) {
-			ErrorHandler::fire('val','No such method exists.');
+			EventHandler::fireError('val','No such method exists.');
 			return null;
 		}
-                try {
-                    $result=call_user_func_array(array($this,$method),$data);
-                } catch(Exception $e) {
-                    ErrorHandler::fire('arg', 'Invalid argument(s) supplied.');
-                    $result=null;
-                }
+		$result=call_user_func_array(array($this,$method),$data);
 		return $result;
 	}
 	
@@ -135,7 +130,7 @@ class Admin {
          * 
          * @return string[] 
          */
-	function getAdminMethods() {
+	function getAdminMethods() { 
 		return $this->methods;
 	}
 	

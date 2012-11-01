@@ -42,26 +42,6 @@
 class Profile extends ModuleSupport {
 	
 	/**
-         * Creates a new user profile.
-         * 
-         * @param int $accno
-         * @param mixed[] $data
-         * @return null 
-         */
-	function createProfile($accno,$data) {
-		ErrorHandler::reset();
-		$keys=array_keys($data);
-		$values=array();
-		foreach($keys as $k) array_push($values,$data[$k]);
-		array_push($keys,'acc_no');
-		array_push($values,$accno);
-		Database::add('profile',$keys,$values);
-		$attr=array('alias','email','sex','dob','location');
-		foreach($attr as $a) Database::add('privacy',array('acc_no','infofield','restriction'),array($accno,$a,0));
-		return null;
-	}
-	
-	/**
          * Sets an avatar for a user profile.
          * 
          * @param int $accno
@@ -69,7 +49,6 @@ class Profile extends ModuleSupport {
          * @return null 
          */
 	function setAvatar($accno,$img) {
-		ErrorHandler::reset();
 		$iminfo=getimagesize($img);
 		$imgdata=addslashes(file_get_contents($img));
 		Database::add('images',array('type','imgdata','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
@@ -82,18 +61,6 @@ class Profile extends ModuleSupport {
 	}
 	
 	/**
-         * Deletes a user profile.
-         * 
-         * @param int $accno
-         * @return null 
-         */
-	function deleteProfile($accno) {
-		ErrorHandler::reset();
-		Database::remove('profile',"acc_no=".$accno);
-		return null;
-	}
-	
-	/**
          * Updates a user profile.
          * 
          * @param int $accno
@@ -101,12 +68,11 @@ class Profile extends ModuleSupport {
          * @return null 
          */
 	function updateProfile($accno,$data) {
-		ErrorHandler::reset();
 		$keys=array_keys($data);
 		$values=array();
 		foreach($keys as $k) array_push($values,$data[$k]);
 		Database::update('profile',$keys,$values,"acc_no=".$accno);
-		EventHandler::fire('updatedprofile',$accno);
+		EventHandler::fireEvent('updatedprofile',$accno);
 		return null;
 	}
 	
@@ -118,11 +84,10 @@ class Profile extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchProfile($accno,$attrs) {
-		ErrorHandler::reset();
 		$cols='*';
-		if(func_num_args()==2) $cols=implode(',',$attrs);
+		if(func_num_args()==2 && count($attrs)>0) $cols=implode(',',$attrs);
 		$result=Database::get('view_profile',$cols,"acc_no=".$accno);
-                if(isset($result['avatar'])) $result['avatar']=base64_encode($result['avatar']);
+                if(isset($result[0]['avatar'])) $result[0]['avatar']=base64_encode($result[0]['avatar']);
 		return $result[0];
 	}
 }

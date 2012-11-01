@@ -57,7 +57,6 @@ class EventRegister extends ModuleSupport {
          * @return null 
          */
 	function registerEvent($name,$category,$desc='') {
-		ErrorHandler::reset();
 		Database::add('events',array('category','event_name','description'),array($category,$name,$desc));
 		return null;
 	}
@@ -76,7 +75,6 @@ class EventRegister extends ModuleSupport {
          * @return null 
          */
 	function unregisterEvent($name) {
-		ErrorHandler::reset();
 		Database::remove('events',sprintf("event_name='%s'",$name));
 		return null;
 	}
@@ -94,7 +92,6 @@ class EventRegister extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchEventNames($category) {
-		ErrorHandler::reset();
 		$set=Database::get('events','event_id,event_name,description',sprintf("category='%s'",$category));
 		return $set;
 	}
@@ -111,7 +108,6 @@ class EventRegister extends ModuleSupport {
          * @return string[]
          */
 	function fetchEventCategories() {
-		ErrorHandler::reset();
 		$set=Database::get('events','distinct category as cat',false);
 		$categories=array();
 		foreach($set as $s) array_push($categories,$s['cat']);

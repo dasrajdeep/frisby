@@ -70,14 +70,14 @@ class Database {
      */
     public static function connect() {
         require_once('../config/database.inc');
-        self::$con = @mysql_connect($database["host"], $database["username"], $database["password"]);
+        self::$con = mysql_connect($database["host"], $database["username"], $database["password"]);
         if (!self::$con) {
-            ErrorHandler::fire('db', 'Unable to connect to database. ' . mysql_error());
+            EventHandler::fireError('db', 'Unable to connect to database. ' . mysql_error());
             return FALSE;
         }
-        $selected = @mysql_select_db($database["name"], self::$con);
+        $selected = mysql_select_db($database["name"], self::$con);
         if (!$selected) {
-            ErrorHandler::fire('db', 'Unable to connect to database. ' . mysql_error());
+            EventHandler::fireError('db', 'Unable to connect to database. ' . mysql_error());
             return FALSE;
         }
         self::$prefix = $database['prefix'];
@@ -94,9 +94,9 @@ class Database {
      * </code> 
      */
     public static function disconnect() {
-        @mysql_close(self::$con);
+        mysql_close(self::$con);
         if (mysql_errno())
-            ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error());
+            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error());
     }
 
     /**
@@ -125,7 +125,7 @@ class Database {
         else $criterion="";
         $query=sprintf("SELECT %s FROM %s%s",$values,$table,$criterion);
         $result=mysql_query($query,self::$con);
-		if(mysql_errno()) ErrorHandler::fire('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
+		if(mysql_errno()) EventHandler::fireError('db','MySQL<'.mysql_errno().'>'.mysql_error().' `'.$query.'`');
         if(!$result) return NULL;
         $rows=array();
         while($row=mysql_fetch_assoc($result)) array_push($rows, $row); 
@@ -164,7 +164,7 @@ class Database {
         $query = sprintf("INSERT INTO %s (%s) VALUES (%s)", $table, $fields, $data);
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
-            ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
+            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
         return $result;
     }
 
@@ -199,7 +199,7 @@ class Database {
         $query = sprintf("UPDATE %s SET %s WHERE %s", $table, $set, $criterion);
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
-            ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
+            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
         return $result;
     }
 
@@ -224,7 +224,7 @@ class Database {
         $query = sprintf("DELETE FROM %s WHERE %s", $table, $match);
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
-            ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
+            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
         return $result;
     }
 
@@ -250,7 +250,7 @@ class Database {
             return false;
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
-            ErrorHandler::fire('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
+            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
         return $result;
     }
 	

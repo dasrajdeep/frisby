@@ -48,7 +48,6 @@ class PeopleSearch extends ModuleSupport {
          * @return mixed[] 
          */
 	function searchPeople($querydata) {
-		ErrorHandler::reset();
 		$keys=array_keys($querydata);
 		$patterns=array();
 		foreach($keys as $k) if($k!='name') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
@@ -62,7 +61,7 @@ class PeopleSearch extends ModuleSupport {
          * Searches for people within a group or friend list.
          * 
          * @param mixed[] $querydata
-         * @param int $domain
+         * @param mixed[] $domain
          * @return mixed[] 
          */
 	function searchMembers($querydata,$domain) {
