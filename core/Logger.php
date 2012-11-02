@@ -94,7 +94,9 @@ class Logger {
          * @return string 
          */
 	public static function read() {
-		$log=fread(self::$file,filesize(self::$filename));
+		$size=filesize(self::$filename);
+		if($size==0) $log='Log empty.';
+		else $log=fread(self::$file,$size);
 		return $log;
 	}
         
