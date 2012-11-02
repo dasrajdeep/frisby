@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project version="2.0.0a10" title="">
-  <file path="core\Admin.php" hash="2c997fa19ee63aea849cd8e23d272c04" package="Default">
+<project version="2.0.0a10" title="Frisby Social Engine">
+  <file path="core\Admin.php" hash="2734ed551e3b2c1c2f9463302e6591d5" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the admin for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -17,19 +17,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
     </docblock>
-    <include line="85" type="Require Once" package="Default">
+    <include line="92" type="Require Once" package="Default">
       <name>Setup.php</name>
     </include>
-    <include line="95" type="Require Once" package="Default">
+    <include line="102" type="Require Once" package="Default">
       <name>Setup.php</name>
     </include>
-    <include line="105" type="Require Once" package="Default">
+    <include line="112" type="Require Once" package="Default">
       <name>Setup.php</name>
     </include>
-    <include line="114" type="Require Once" package="Default">
+    <include line="121" type="Require Once" package="Default">
       <name>Setup.php</name>
     </include>
-    <include line="141" type="Require Once" package="Default">
+    <include line="148" type="Require Once" package="Default">
       <name>Setup.php</name>
     </include>
     <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
@@ -108,67 +108,75 @@ $admin=new Admin();
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="84" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="82" package="frisby\core">
+        <name>clearLog</name>
+        <full_name>clearLog</full_name>
+        <docblock line="79">
+          <description><![CDATA[Clears the system event log.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="91" package="frisby\core">
         <name>checkSetup</name>
         <full_name>checkSetup</full_name>
-        <docblock line="79">
+        <docblock line="86">
           <description><![CDATA[Checks for integrity of the engine setup.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="79" name="return" description="" type="boolean">
+          <tag line="86" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="94" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="101" package="frisby\core">
         <name>cleanInstall</name>
         <full_name>cleanInstall</full_name>
-        <docblock line="91">
+        <docblock line="98">
           <description><![CDATA[Cleans and reinstalls the software.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="104" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="111" package="frisby\core">
         <name>install</name>
         <full_name>install</full_name>
-        <docblock line="101">
+        <docblock line="108">
           <description><![CDATA[Installs the software.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="113" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="120" package="frisby\core">
         <name>uninstall</name>
         <full_name>uninstall</full_name>
-        <docblock line="110">
+        <docblock line="117">
           <description><![CDATA[Uninstalls the software.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="124" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="131" package="frisby\core">
         <name>getAPIMethods</name>
         <full_name>getAPIMethods</full_name>
-        <docblock line="119">
+        <docblock line="126">
           <description><![CDATA[Fetches the registered API methods.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="119" name="return" description="" type="string[]">
-            <type by_reference="false">string[]</type>
-          </tag>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="133" package="frisby\core">
-        <name>getAdminMethods</name>
-        <full_name>getAdminMethods</full_name>
-        <docblock line="128">
-          <description><![CDATA[Fetches the registered Admin methods.]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="128" name="return" description="" type="string[]">
+          <tag line="126" name="return" description="" type="string[]">
             <type by_reference="false">string[]</type>
           </tag>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="140" package="frisby\core">
+        <name>getAdminMethods</name>
+        <full_name>getAdminMethods</full_name>
+        <docblock line="135">
+          <description><![CDATA[Fetches the registered Admin methods.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="135" name="return" description="" type="string[]">
+            <type by_reference="false">string[]</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="147" package="frisby\core">
         <name>updateModules</name>
         <full_name>updateModules</full_name>
-        <docblock line="137">
+        <docblock line="144">
           <description><![CDATA[Scans and updates the API modules.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
@@ -964,7 +972,7 @@ EventHandler::fireError('error_type','error_message');
       </method>
     </class>
   </file>
-  <file path="core\Logger.php" hash="b122dfcb143d726e915f29ef62dd44b4" package="Default">
+  <file path="core\Logger.php" hash="e95253877ea902bd491a64d9913dae2f" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the event logger for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1076,30 +1084,38 @@ Logger::dump('event_type','event_description');
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="107" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="106" package="frisby\core">
+        <name>clear</name>
+        <full_name>clear</full_name>
+        <docblock line="103">
+          <description><![CDATA[Clears the log.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="116" package="frisby\core">
         <name>event</name>
         <full_name>event</full_name>
-        <docblock line="101">
+        <docblock line="110">
           <description><![CDATA[Gets the event name corresponding to a mnemonic.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="101" name="param" description="" type="string" variable="$mnemonic">
+          <tag line="110" name="param" description="" type="string" variable="$mnemonic">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="101" name="return" description="" type="string|null">
+          <tag line="110" name="return" description="" type="string|null">
             <type by_reference="false">string</type>
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="107">
+        <argument line="116">
           <name>$mnemonic</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="115" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="124" package="frisby\core">
         <name>shutdown</name>
         <full_name>shutdown</full_name>
-        <docblock line="112">
+        <docblock line="121">
           <description><![CDATA[Closes the file handler.]]></description>
           <long-description><![CDATA[]]></long-description>
         </docblock>
@@ -1455,98 +1471,7 @@ $setup=new Setup();
       </method>
     </class>
   </file>
-  <file path="Frisby.php" hash="6f2d615e9193b5519dda1913000f0fa8" package="Default">
-    <docblock line="2">
-      <description><![CDATA[This file contains the bootstrap class for the engine.]]></description>
-      <long-description><![CDATA[<p>PHP version 5.3</p>
-
-<p>LICENSE: This file is part of Frisby.
-Frisby is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-Frisby is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-    </docblock>
-    <include line="52" type="Require Once" package="Default">
-      <name>bootstrap.php</name>
-    </include>
-    <include line="92" type="Require Once" package="Default">
-      <name>Admin.php</name>
-    </include>
-    <include line="98" type="Require Once" package="Default">
-      <name>Dispatcher.php</name>
-    </include>
-    <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
-      <extends/>
-      <name>Frisby</name>
-      <full_name>\Frisby</full_name>
-      <docblock line="20">
-        <description><![CDATA[An instance of this class represents a controller for the engine.]]></description>
-        <long-description><![CDATA[<pre><code>require_once('Frisby.php');
-
-$frisby=new Frisby();
-</code></pre>]]></long-description>
-        <tag line="20" name="package" description="frisby\core"/>
-        <tag line="20" name="category" description="PHP"/>
-        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-        <tag line="20" name="version" description="GIT: v1.0"/>
-        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-        <tag line="20" name="since" description="Class available since Release 1.0"/>
-      </docblock>
-      <property final="false" static="false" visibility="private" line="45" namespace="global" package="Default">
-        <name>$bootError</name>
-        <default><![CDATA[false]]></default>
-        <docblock line="40">
-          <description><![CDATA[Contains a flag indicating boot errors.]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="40" name="var" description="" type="boolean">
-            <type by_reference="false">boolean</type>
-          </tag>
-        </docblock>
-      </property>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="50" package="frisby\core">
-        <name>__construct</name>
-        <full_name>__construct</full_name>
-        <docblock line="47">
-          <description><![CDATA[Boots up the engine and transfers control to the core.]]></description>
-          <long-description><![CDATA[]]></long-description>
-        </docblock>
-      </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="77" package="frisby\core">
-        <name>call</name>
-        <full_name>call</full_name>
-        <docblock line="56">
-          <description><![CDATA[The master method to make a Frisby API or Admin function call.]]></description>
-          <long-description><![CDATA[<p>The method requires a method name registered with the engine.
-The arguments for the method should be provided in the subsequent parameters.
-The method can be an API method or an Administrative method.
-All administrative methods must start with a prefix 'admin_' prior to the method name.
-A list of administrative methods can be obtained by using the function 'getAdminMethods'.
-A list of API methods can be obtained by using the function 'getAPIMethods'</p>]]></long-description>
-          <tag line="56" name="see" description="\global\Admin::getAdminMethods" refers="\global\Admin::getAdminMethods"/>
-          <tag line="56" name="see" description="\global\Admin::getAPIMethods" refers="\global\Admin::getAPIMethods"/>
-          <tag line="56" name="param" description="" type="string" variable="$method">
-            <type by_reference="false">string</type>
-          </tag>
-          <tag line="56" name="return" description="" type="mixed[]">
-            <type by_reference="false">mixed[]</type>
-          </tag>
-        </docblock>
-        <argument line="77">
-          <name>$method</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-    </class>
-  </file>
+  <file path="Frisby.php" hash="4a17b551343919670afaee7ffb01a462" package="Default"/>
   <file path="modules\events\Event.php" hash="21f37c4dc29e6b414b434c8222298b6e" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Event class.]]></description>
@@ -2683,7 +2608,7 @@ $acc->createAccount($data);
       </method>
     </class>
   </file>
-  <file path="modules\profiling\ExtendedProfile.php" hash="ecac2da78b7d6c55676398d75cc9015e" package="Frisby">
+  <file path="modules\profiling\ExtendedProfile.php" hash="e85cb5e5b2f7459c4b975955f16fc4b5" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the ExtendedProfile class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2875,7 +2800,7 @@ $priv->setPrivacy(userid,$settings);
       </method>
     </class>
   </file>
-  <file path="modules\profiling\Profile.php" hash="e39eaecc1716dbc83c2924e15f94d7fd" package="Frisby">
+  <file path="modules\profiling\Profile.php" hash="8f3f779f101682edb58082dd5068cbf9" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Profile class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2997,7 +2922,7 @@ $prof->createProfile(userid,$data);
       </method>
     </class>
   </file>
-  <file path="modules\pubsub\Publish.php" hash="69c3b13f01e5721dc91c8908e09b890d" package="Frisby">
+  <file path="modules\pubsub\Publish.php" hash="8795c6f773a6256843c67c9f23d5d96b" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Publish class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3036,7 +2961,7 @@ $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
 </code></pre>]]></long-description>
         <tag line="29" name="package" description="frisby\pubsub"/>
       </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="53" package="frisby\pubsub">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="54" package="frisby\pubsub">
         <name>createPost</name>
         <full_name>createPost</full_name>
         <docblock line="44">
@@ -3045,8 +2970,11 @@ $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
           <tag line="44" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="44" name="param" description="" type="int[]" variable="$noderef">
-            <type by_reference="false">int[]</type>
+          <tag line="44" name="param" description="" type="int" variable="$nodetype">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="44" name="param" description="" type="int" variable="$nodeid">
+            <type by_reference="false">int</type>
           </tag>
           <tag line="44" name="param" description="" type="int" variable="$thread">
             <type by_reference="false">int</type>
@@ -3058,68 +2986,73 @@ $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="53">
+        <argument line="54">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="53">
-          <name>$noderef</name>
+        <argument line="54">
+          <name>$nodetype</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="53">
+        <argument line="54">
+          <name>$nodeid</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="54">
           <name>$thread</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="53">
+        <argument line="54">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="70" package="frisby\pubsub">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="71" package="frisby\pubsub">
         <name>deletePost</name>
         <full_name>deletePost</full_name>
-        <docblock line="64">
+        <docblock line="65">
           <description><![CDATA[Deletes a post.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="64" name="param" description="" type="int" variable="$postid">
+          <tag line="65" name="param" description="" type="int" variable="$postid">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="64" name="return" description="" type="null">
+          <tag line="65" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="70">
+        <argument line="71">
           <name>$postid</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="93" package="frisby\pubsub">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="94" package="frisby\pubsub">
         <name>handleMIME</name>
         <full_name>handleMIME</full_name>
-        <docblock line="86">
+        <docblock line="87">
           <description><![CDATA[Handles the MIME content associated with a post]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="86" name="param" description="" type="int" variable="$type">
+          <tag line="87" name="param" description="" type="int" variable="$type">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="86" name="param" description="" type="string" variable="$datasrc">
+          <tag line="87" name="param" description="" type="string" variable="$datasrc">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="86" name="return" description="" type="int">
+          <tag line="87" name="return" description="" type="int">
             <type by_reference="false">int</type>
           </tag>
         </docblock>
-        <argument line="93">
+        <argument line="94">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="93">
+        <argument line="94">
           <name>$datasrc</name>
           <default><![CDATA[]]></default>
           <type/>

@@ -76,6 +76,13 @@ class Admin {
 		return Logger::read();
 	}
 	
+	/**
+         * Clears the system event log.
+         */
+	function clearLog() {
+		Logger::clear();
+	}
+	
         /**
          * Checks for integrity of the engine setup.
          * 

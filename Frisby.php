@@ -53,6 +53,7 @@ class Frisby {
 		if(EventHandler::hasErrors()) $this->bootError=true;
 		chdir('..');
 	}
+	
 	 /**
           * The master method to make a Frisby API or Admin function call.
           * 
@@ -84,6 +85,14 @@ class Frisby {
 		
 		$data=func_get_args();
 		$data=array_slice($data,1);
+		
+		//Encodes data for security reasons.
+		foreach($i=0;$i<count($data);$i++) {
+			if(is_array($d[$i])) {
+				$keys=array_keys($d[$i]);
+				foreach($keys as $k) $d[$i][$k]=mysql_escape_string($d[$i][$k]);
+			} else $d[$i]=mysql_escape_string($d[$i]);
+		}
 		
 		EventHandler::clearErrorTrace();
 		

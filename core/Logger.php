@@ -99,6 +99,13 @@ class Logger {
 		else $log=fread(self::$file,$size);
 		return $log;
 	}
+	
+	/**
+         * Clears the log. 
+         */
+	public static function clear() {
+		ftruncate(self::$file,0);
+	}
         
         /**
          * Gets the event name corresponding to a mnemonic.

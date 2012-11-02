@@ -45,15 +45,16 @@ class Publish extends ModuleSupport {
          * Creates a new post.
          * 
          * @param int $accno
-         * @param int[] $noderef
+         * @param int $nodetype
+		 * @param int $nodeid
          * @param int $thread
          * @param mixed[] $data
          * @return null 
          */
-	function createPost($accno,$noderef,$thread,$data) {
+	function createPost($accno,$nodetype,$nodeid,$thread,$data) {
 		$ref=$this->handleMIME($data['mime_type'],$data['mime']);
 		$pre=Database::getPrefix();
-		$node=Database::get('nodes','node_id',sprintf("type=%s and ref_id=%s",$noderef[0],$noderef[1]));
+		$node=Database::get('nodes','node_id',sprintf("type=%s and ref_id=%s",$nodetype,$nodeid));
 		if($node) $node=$node[0]['node_id'];
 		$values=sprintf("%s,'%s',%s,%s,%s",$accno,$data['text'],$ref,$pre,$node,$thread);
 		Database::query("insert into %sposts (publisher,textdata,mime,node,thread) values (%s)",$pre,$values);
