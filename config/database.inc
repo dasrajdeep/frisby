@@ -30,9 +30,9 @@ $database['username']='root';
 $database['password']='';
 
 //The name of the database to be used. Note that this is not the name of the DBMS.
-$database['name']='frisby';
+$database['name']='socio';
 
 //A prefix generally used to distinguish the tables used in the database. This is optional.
-$database['prefix']='frisby_';
+$database['prefix']='socio_';
 
 ?>

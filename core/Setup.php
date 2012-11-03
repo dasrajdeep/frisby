@@ -141,8 +141,6 @@ class Setup {
          * Completely uninstalls the software. 
          */
 	function uninstall() {
-		$ext=Database::get('extensions','table_name',false);
-		foreach($ext as $e) Database::query(sprintf("drop table if exists %mime_%s",Database::getPrefix(),$e['table_name']));
 		require('../config/schema_uninstall.inc');
 		$pre=Database::getPrefix();
 		foreach($uninstallqueries as $q) Database::query(sprintf($q,$pre));
