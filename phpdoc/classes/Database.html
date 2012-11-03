@@ -60,6 +60,7 @@
 <li class="method public "><a href="#method_add" title="add :: Inserts data into the database."><span class="description">Inserts data into the database.</span><pre>add()</pre></a></li>
 <li class="method public "><a href="#method_connect" title="connect :: Connects to the database."><span class="description">Connects to the database.</span><pre>connect()</pre></a></li>
 <li class="method public "><a href="#method_disconnect" title="disconnect :: Disconnects from the database."><span class="description">Disconnects from the database.</span><pre>disconnect()</pre></a></li>
+<li class="method public "><a href="#method_fetchStructure" title="fetchStructure :: Fetches the structure of a relation."><span class="description">Fetches the structure of a relation.</span><pre>fetchStructure()</pre></a></li>
 <li class="method public "><a href="#method_get" title="get :: Fetches data from the database."><span class="description">Fetches data from the database.</span><pre>get()</pre></a></li>
 <li class="method public "><a href="#method_getPrefix" title="getPrefix :: Fetches the database prefix."><span class="description">Fetches the database prefix.</span><pre>getPrefix()</pre></a></li>
 <li class="method public "><a href="#method_query" title="query :: Executes a user-specified query on the database."><span class="description">Executes a user-specified query on the database.</span><pre>query()</pre></a></li>
@@ -188,6 +189,21 @@ This file needs to be configured before the software runs properly.</p>
 
 <pre><code>Database::disconnect();
 </code></pre></div></div></div>
+</div>
+<a id="method_fetchStructure"></a><div class="element clickable method public method_fetchStructure" data-toggle="collapse" data-target=".method_fetchStructure .collapse">
+<h2>Fetches the structure of a relation.</h2>
+<pre>fetchStructure(string $table) : mixed[]</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$table</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed[]</code></div>
+</div></div>
 </div>
 <a id="method_get"></a><div class="element clickable method public method_get" data-toggle="collapse" data-target=".method_get .collapse">
 <h2>Fetches data from the database.</h2>
@@ -336,7 +352,7 @@ This prefix is automatically prepended to the names of tables and views before q
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-02T21:54:11+05:30.<br></footer></div>
+            generated on 2012-11-03T17:26:22+05:30.<br></footer></div>
 </div>
 </body>
 </html>

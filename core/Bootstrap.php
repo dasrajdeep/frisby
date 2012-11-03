@@ -17,8 +17,10 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+date_default_timezone_set('Asia/Kolkata');
+
 error_reporting(E_ALL);
-ini_set('display_errors', false);
+//ini_set('display_errors', false);
 
 require_once('Logger.php');
 require_once('error-handlers.php');

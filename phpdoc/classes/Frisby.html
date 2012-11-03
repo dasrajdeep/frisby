@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>Frisby Social Engine » \Dispatcher</title>
+<title>Frisby Social Engine » \Frisby</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -53,29 +53,39 @@
 <span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
 <button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
 </div>
-<ul class="side-nav nav nav-list"><li class="nav-header">
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
-                    <ul><li class="method public "><a href="#method_dispatch" title="dispatch :: Invokes a method supplied as argument and returns the data returned by the invoked method"><span class="description">Invokes a method supplied as argument and returns the data returned by the invoked method</span><pre>dispatch()</pre></a></li></ul>
-</li></ul>
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Boots up the engine and transfers control to the core."><span class="description">Boots up the engine and transfers control to the core.</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_call" title="call :: The master method to make a Frisby API or Admin function call."><span class="description">The master method to make a Frisby API or Admin function call.</span><pre>call()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property_bootError" title="$bootError :: Contains a flag indicating boot errors."><span class="description">Contains a flag indicating boot errors.</span><pre>$bootError</pre></a></li></ul>
+</li>
+</ul>
 </div>
 <div class="span8">
-<a id="\Dispatcher"></a><ul class="breadcrumb">
+<a id="\Frisby"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/global.html">global</a></li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/Dispatcher.html">Dispatcher</a>
+<span class="divider">\</span><a href="../classes/Frisby.html">Frisby</a>
 </li>
 </ul>
 <div class="element class">
-<p class="short_description">An instance of this class represents a dispatcher for the API methods registered in the engine.</p>
+<p class="short_description">An instance of this class represents a controller for the engine.</p>
 <div class="details">
-<div class="long_description"><pre><code>require_once('Dispatcher.php');
+<div class="long_description"><pre><code>require_once('Frisby.php');
 
-$dispatcher=new Dispatcher();
-$data=array(var1,...);
-$resultset=$dispatcher->dispatch('method_name',$data);
+$frisby=new Frisby();
 </code></pre></div>
 <table class="table table-bordered">
 <tr>
@@ -113,24 +123,49 @@ $resultset=$dispatcher->dispatch('method_name',$data);
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method_dispatch"></a><div class="element clickable method public method_dispatch" data-toggle="collapse" data-target=".method_dispatch .collapse">
-<h2>Invokes a method supplied as argument and returns the data returned by the invoked method</h2>
-<pre>dispatch(string $method, mixed[] $data) : mixed</pre>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Boots up the engine and transfers control to the core.</h2>
+<pre>__construct() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_call"></a><div class="element clickable method public method_call" data-toggle="collapse" data-target=".method_call .collapse">
+<h2>The master method to make a Frisby API or Admin function call.</h2>
+<pre>call(string $method) : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
+<div class="long_description"><p>The method requires a method name registered with the engine.
+The arguments for the method should be provided in the subsequent parameters.
+The method can be an API method or an Administrative method.
+All administrative methods must start with a prefix 'admin_' prior to the method name.
+A list of administrative methods can be obtained by using the function 'getAdminMethods'.
+A list of API methods can be obtained by using the function 'getAPIMethods'</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\global\Admin::getAdminMethods</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\global\Admin::getAPIMethods</a></td>
+</tr>
+</table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$method</h4>
 <code>string</code>
 </div>
-<div class="subelement argument">
-<h4>$data</h4>
-<code>mixed[]</code>
-</div>
 <h3>Returns</h3>
-<div class="subelement response"><code>mixed</code></div>
+<div class="subelement response"><code>mixed[]</code></div>
 </div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_bootError"> </a><div class="element clickable property private property_bootError" data-toggle="collapse" data-target=".property_bootError .collapse">
+<h2>Contains a flag indicating boot errors.</h2>
+<pre>$bootError : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
 </div>
 </div>
 </div>

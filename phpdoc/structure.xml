@@ -183,7 +183,7 @@ $admin=new Admin();
       </method>
     </class>
   </file>
-  <file path="core\bootstrap.php" hash="84881129807bc5eabb9953f90a3b4ae3" package="Default">
+  <file path="core\bootstrap.php" hash="f771a7b09e82d78d46f23ff477b9b202" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the boostrap loader for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -200,34 +200,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
     </docblock>
-    <include line="23" type="Require Once" package="Default">
+    <include line="25" type="Require Once" package="Default">
       <name>Logger.php</name>
     </include>
-    <include line="24" type="Require Once" package="Default">
+    <include line="26" type="Require Once" package="Default">
       <name>error-handlers.php</name>
     </include>
-    <include line="25" type="Require Once" package="Default">
+    <include line="27" type="Require Once" package="Default">
       <name>EventHandler.php</name>
     </include>
-    <include line="26" type="Require Once" package="Default">
+    <include line="28" type="Require Once" package="Default">
       <name>Database.php</name>
     </include>
-    <include line="27" type="Require Once" package="Default">
+    <include line="29" type="Require Once" package="Default">
       <name>Registry.php</name>
     </include>
-    <include line="28" type="Require Once" package="Default">
+    <include line="30" type="Require Once" package="Default">
       <name>ModuleSupport.php</name>
     </include>
-    <function namespace="global" line="43" package="Default">
+    <function namespace="global" line="45" package="Default">
       <name>shutdown</name>
       <full_name>\shutdown</full_name>
-      <docblock line="40">
+      <docblock line="42">
         <description><![CDATA[Performs housekeeping at script termination.]]></description>
         <long-description><![CDATA[]]></long-description>
       </docblock>
     </function>
   </file>
-  <file path="core\Database.php" hash="9976908ca95b4c95820fd6f9cb5fdd5c" package="Default">
+  <file path="core\Database.php" hash="b182fce1f43fc14fdeb87f598dee23ae" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Database class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -316,10 +316,29 @@ This file needs to be configured before the software runs properly.</p>
 </code></pre>]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="121" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="108" package="frisby\core">
+        <name>fetchStructure</name>
+        <full_name>fetchStructure</full_name>
+        <docblock line="102">
+          <description><![CDATA[Fetches the structure of a relation.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="102" name="param" description="" type="string" variable="$table">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="102" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+        <argument line="108">
+          <name>$table</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="135" package="frisby\core">
         <name>get</name>
         <full_name>get</full_name>
-        <docblock line="102">
+        <docblock line="116">
           <description><![CDATA[Fetches data from the database.]]></description>
           <long-description><![CDATA[<p>The method accepts a table name as the first argument followed by a string of
 comma separated column names and a criterion string to be supplied to the 'WHERE' clause of the SQL query.
@@ -330,39 +349,39 @@ The keys of these arrays are the field names and the values, their corresponding
 
 <pre><code>$resultset=Database::get('table_name','column_names','criterion');
 </code></pre>]]></long-description>
-          <tag line="102" name="param" description="" type="string" variable="$table">
+          <tag line="116" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="102" name="param" description="" type="string" variable="$values">
+          <tag line="116" name="param" description="" type="string" variable="$values">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="102" name="param" description="" type="string" variable="$criterion">
+          <tag line="116" name="param" description="" type="string" variable="$criterion">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="102" name="return" description="" type="mixed[]">
+          <tag line="116" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="121">
+        <argument line="135">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="121">
+        <argument line="135">
           <name>$values</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="121">
+        <argument line="135">
           <name>$criterion</name>
-          <default><![CDATA[]]></default>
+          <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="156" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="170" package="frisby\core">
         <name>add</name>
         <full_name>add</full_name>
-        <docblock line="135">
+        <docblock line="149">
           <description><![CDATA[Inserts data into the database.]]></description>
           <long-description><![CDATA[<p>The method accepts a table name as the first argument.
 The second argument should be a string array containing the field names.
@@ -375,39 +394,39 @@ The method returns the value returned by the mysql_query() function.</p>
 $vals=array('val_1','val_2');
 Database::add('table_name',$cols,$vals);
 </code></pre>]]></long-description>
-          <tag line="135" name="param" description="" type="string" variable="$table">
+          <tag line="149" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="135" name="param" description="" type="string[]" variable="$fields">
+          <tag line="149" name="param" description="" type="string[]" variable="$fields">
             <type by_reference="false">string[]</type>
           </tag>
-          <tag line="135" name="param" description="" type="string[]" variable="$data">
+          <tag line="149" name="param" description="" type="string[]" variable="$data">
             <type by_reference="false">string[]</type>
           </tag>
-          <tag line="135" name="return" description="" type="boolean">
+          <tag line="149" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="156">
+        <argument line="170">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="156">
+        <argument line="170">
           <name>$fields</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="156">
+        <argument line="170">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="191" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="205" package="frisby\core">
         <name>update</name>
         <full_name>update</full_name>
-        <docblock line="171">
+        <docblock line="185">
           <description><![CDATA[Updates data in the database.]]></description>
           <long-description><![CDATA[<p>The method accepts a table name followed by two string arrays containing
 the field names and their corresponding values, and a criterion string.
@@ -418,78 +437,78 @@ The method returns the value returned by the mysql_query() method.</p>
 $vals=array('val_1','val_2');
 Database::update('table_name',$cols,$vals,'criterion');
 </code></pre>]]></long-description>
-          <tag line="171" name="param" description="" type="string" variable="$table">
+          <tag line="185" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="171" name="param" description="" type="string[]" variable="$fields">
+          <tag line="185" name="param" description="" type="string[]" variable="$fields">
             <type by_reference="false">string[]</type>
           </tag>
-          <tag line="171" name="param" description="" type="string[]" variable="$data">
+          <tag line="185" name="param" description="" type="string[]" variable="$data">
             <type by_reference="false">string[]</type>
           </tag>
-          <tag line="171" name="param" description="" type="string" variable="$criterion">
+          <tag line="185" name="param" description="" type="string" variable="$criterion">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="171" name="return" description="" type="boolean">
+          <tag line="185" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="191">
+        <argument line="205">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="191">
+        <argument line="205">
           <name>$fields</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="191">
+        <argument line="205">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="191">
+        <argument line="205">
           <name>$criterion</name>
-          <default><![CDATA[]]></default>
+          <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="220" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="236" package="frisby\core">
         <name>remove</name>
         <full_name>remove</full_name>
-        <docblock line="206">
+        <docblock line="222">
           <description><![CDATA[Deletes data from the database.]]></description>
           <long-description><![CDATA[<p>The method accepts a table name and a criterion string based on which it will perform deletions.
 The return value is that returned by the mysql_query() method.</p>
 
 <pre><code>Database::remove('table_name','criterion');
 </code></pre>]]></long-description>
-          <tag line="206" name="param" description="" type="string" variable="$table">
+          <tag line="222" name="param" description="" type="string" variable="$table">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="206" name="param" description="" type="string" variable="$match">
+          <tag line="222" name="param" description="" type="string" variable="$match">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="206" name="return" description="" type="boolean">
+          <tag line="222" name="return" description="" type="boolean">
             <type by_reference="false">boolean</type>
           </tag>
         </docblock>
-        <argument line="220">
+        <argument line="236">
           <name>$table</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="220">
+        <argument line="236">
           <name>$match</name>
-          <default><![CDATA[]]></default>
+          <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="248" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="266" package="frisby\core">
         <name>query</name>
         <full_name>query</full_name>
-        <docblock line="231">
+        <docblock line="249">
           <description><![CDATA[Executes a user-specified query on the database.]]></description>
           <long-description><![CDATA[<p>This method accepts a raw query and executes it on the database.
 However since the method is unaware of the type of data returned by the database server,
@@ -500,36 +519,36 @@ database using the mysql_fetch_array() or mysql_fetch_assoc() methods.</p>
 $rows=array();
 while($row=mysql_fetch_assoc($link)) array_push($rows,$row);
 </code></pre>]]></long-description>
-          <tag line="231" name="param" description="" type="string" variable="$query">
+          <tag line="249" name="param" description="" type="string" variable="$query">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="231" name="return" description="" type="object">
+          <tag line="249" name="return" description="" type="object">
             <type by_reference="false">object</type>
           </tag>
         </docblock>
-        <argument line="248">
+        <argument line="266">
           <name>$query</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="268" package="frisby\core">
+      <method final="false" abstract="false" static="true" visibility="public" namespace="global" line="291" package="frisby\core">
         <name>getPrefix</name>
         <full_name>getPrefix</full_name>
-        <docblock line="257">
+        <docblock line="280">
           <description><![CDATA[Fetches the database prefix.]]></description>
           <long-description><![CDATA[<p>Fetches the prefix defined in the configuration file for the database schema.</p>
 
 <pre><code>$pre=Database::getPrefix();
 </code></pre>]]></long-description>
-          <tag line="257" name="return" description="" type="string">
+          <tag line="280" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
     </class>
   </file>
-  <file path="core\Dispatcher.php" hash="d616583b9c350c67e107fa1739afa9f0" package="Default">
+  <file path="core\Dispatcher.php" hash="af8af6eaa6b1631808c199818b156c9d" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the API dispatcher for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -972,7 +991,7 @@ EventHandler::fireError('error_type','error_message');
       </method>
     </class>
   </file>
-  <file path="core\Logger.php" hash="e95253877ea902bd491a64d9913dae2f" package="Default">
+  <file path="core\Logger.php" hash="3242870cb2b29a7a2109d736b66ed956" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the event logger for the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1122,7 +1141,7 @@ Logger::dump('event_type','event_description');
       </method>
     </class>
   </file>
-  <file path="core\ModuleSupport.php" hash="4cf43845f0999733dce2dbea4f6892e3" package="Default">
+  <file path="core\ModuleSupport.php" hash="d187fc3c622121867852f2359419d4db" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the support class for the module classes.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1192,13 +1211,29 @@ $ms=new ModuleSupport();
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="69" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="69" package="frisby\core">
+        <name>setModuleName</name>
+        <full_name>setModuleName</full_name>
+        <docblock line="64">
+          <description><![CDATA[Sets the module name for this object.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="64" name="param" description="" type="string" variable="$module">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+        <argument line="69">
+          <name>$module</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="global" line="78" package="frisby\core">
         <name>getModuleName</name>
         <full_name>getModuleName</full_name>
-        <docblock line="64">
+        <docblock line="73">
           <description><![CDATA[Fetches the name of the current module.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="64" name="return" description="" type="string">
+          <tag line="73" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
@@ -1326,7 +1361,7 @@ Registry::init();
       </method>
     </class>
   </file>
-  <file path="core\Setup.php" hash="931c8083ac7a52be3e73738e1c343fea" package="Default">
+  <file path="core\Setup.php" hash="19bfc94ccc52ddf5b68363822c3b3844" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Setup class used by the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1471,7 +1506,98 @@ $setup=new Setup();
       </method>
     </class>
   </file>
-  <file path="Frisby.php" hash="4a17b551343919670afaee7ffb01a462" package="Default"/>
+  <file path="Frisby.php" hash="adc22f103fb982ca08a3bc9881f377fb" package="Default">
+    <docblock line="2">
+      <description><![CDATA[This file contains the bootstrap class for the engine.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Frisby.
+Frisby is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Frisby is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+    </docblock>
+    <include line="52" type="Require Once" package="Default">
+      <name>bootstrap.php</name>
+    </include>
+    <include line="101" type="Require Once" package="Default">
+      <name>Admin.php</name>
+    </include>
+    <include line="107" type="Require Once" package="Default">
+      <name>Dispatcher.php</name>
+    </include>
+    <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
+      <extends/>
+      <name>Frisby</name>
+      <full_name>\Frisby</full_name>
+      <docblock line="20">
+        <description><![CDATA[An instance of this class represents a controller for the engine.]]></description>
+        <long-description><![CDATA[<pre><code>require_once('Frisby.php');
+
+$frisby=new Frisby();
+</code></pre>]]></long-description>
+        <tag line="20" name="package" description="frisby\core"/>
+        <tag line="20" name="category" description="PHP"/>
+        <tag line="20" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+        <tag line="20" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+        <tag line="20" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+        <tag line="20" name="version" description="GIT: v1.0"/>
+        <tag line="20" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+        <tag line="20" name="since" description="Class available since Release 1.0"/>
+      </docblock>
+      <property final="false" static="false" visibility="private" line="45" namespace="global" package="Default">
+        <name>$bootError</name>
+        <default><![CDATA[false]]></default>
+        <docblock line="40">
+          <description><![CDATA[Contains a flag indicating boot errors.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="40" name="var" description="" type="boolean">
+            <type by_reference="false">boolean</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="50" package="frisby\core">
+        <name>__construct</name>
+        <full_name>__construct</full_name>
+        <docblock line="47">
+          <description><![CDATA[Boots up the engine and transfers control to the core.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="frisby\core">
+        <name>call</name>
+        <full_name>call</full_name>
+        <docblock line="57">
+          <description><![CDATA[The master method to make a Frisby API or Admin function call.]]></description>
+          <long-description><![CDATA[<p>The method requires a method name registered with the engine.
+The arguments for the method should be provided in the subsequent parameters.
+The method can be an API method or an Administrative method.
+All administrative methods must start with a prefix 'admin_' prior to the method name.
+A list of administrative methods can be obtained by using the function 'getAdminMethods'.
+A list of API methods can be obtained by using the function 'getAPIMethods'</p>]]></long-description>
+          <tag line="57" name="see" description="\global\Admin::getAdminMethods" refers="\global\Admin::getAdminMethods"/>
+          <tag line="57" name="see" description="\global\Admin::getAPIMethods" refers="\global\Admin::getAPIMethods"/>
+          <tag line="57" name="param" description="" type="string" variable="$method">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="57" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+        <argument line="78">
+          <name>$method</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
   <file path="modules\events\Event.php" hash="21f37c4dc29e6b414b434c8222298b6e" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Event class.]]></description>
@@ -2475,7 +2601,7 @@ $resultset=$outbox->fetchOutbox(userid);
       </method>
     </class>
   </file>
-  <file path="modules\profiling\Account.php" hash="786e2474115df3116e75c70da343eef0" package="Frisby">
+  <file path="modules\profiling\Account.php" hash="085472fc635af9150083d36e38f9c378" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Account class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2587,20 +2713,20 @@ $acc->createAccount($data);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="99" package="frisby\profiling">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="108" package="frisby\profiling">
         <name>fetchAccountInfo</name>
         <full_name>fetchAccountInfo</full_name>
-        <docblock line="93">
+        <docblock line="102">
           <description><![CDATA[Fetches user account information for a specific user]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="93" name="param" description="" type="int" variable="$accno">
+          <tag line="102" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="93" name="return" description="" type="mixed[]">
+          <tag line="102" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="99">
+        <argument line="108">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -2705,7 +2831,7 @@ $ep->registerProfileAttribute('attribute_name','varchar(100)');
       </method>
     </class>
   </file>
-  <file path="modules\profiling\Privacy.php" hash="8918a5ff740380d4611894133ca72d2f" package="Frisby">
+  <file path="modules\profiling\Privacy.php" hash="b2ebf7eb3b7a4ed91cf451124b36ea51" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Privacy class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2771,36 +2897,37 @@ $priv->setPrivacy(userid,$settings);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="64" package="frisby\profiling">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="71" package="frisby\profiling">
         <name>getPrivacy</name>
         <full_name>getPrivacy</full_name>
-        <docblock line="57">
+        <docblock line="64">
           <description><![CDATA[Fetches privacy settings for a user profile.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="57" name="param" description="" type="int" variable="$accno">
+          <tag line="64" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="57" name="param" description="" type="string[]" variable="$infoset">
+          <tag line="64" name="param" description="" type="string[]|null" variable="$infoset">
             <type by_reference="false">string[]</type>
+            <type by_reference="false">null</type>
           </tag>
-          <tag line="57" name="return" description="" type="mixed[]">
+          <tag line="64" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="64">
+        <argument line="71">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="64">
+        <argument line="71">
           <name>$infoset</name>
-          <default><![CDATA[]]></default>
+          <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
     </class>
   </file>
-  <file path="modules\profiling\Profile.php" hash="8f3f779f101682edb58082dd5068cbf9" package="Frisby">
+  <file path="modules\profiling\Profile.php" hash="44efa5c70293ff6554e53bfca5de1a2f" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Profile class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -2893,30 +3020,31 @@ $prof->createProfile(userid,$data);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="86" package="frisby\profiling">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="95" package="frisby\profiling">
         <name>fetchProfile</name>
         <full_name>fetchProfile</full_name>
-        <docblock line="79">
+        <docblock line="88">
           <description><![CDATA[Fetches user profile information.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="79" name="param" description="" type="int" variable="$accno">
+          <tag line="88" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="79" name="param" description="" type="string[]" variable="$attrs">
+          <tag line="88" name="param" description="" type="string[]|null" variable="$attrs">
             <type by_reference="false">string[]</type>
+            <type by_reference="false">null</type>
           </tag>
-          <tag line="79" name="return" description="" type="mixed[]">
+          <tag line="88" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="86">
+        <argument line="95">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="86">
+        <argument line="95">
           <name>$attrs</name>
-          <default><![CDATA[]]></default>
+          <default><![CDATA[null]]></default>
           <type/>
         </argument>
       </method>
@@ -3173,7 +3301,74 @@ $resultset=$read->fetchPosts(0,nodeid,1000);
       </method>
     </class>
   </file>
-  <file path="modules\search\GroupSearch.php" hash="5c06afc5fad89238d3f99761941d99ff" package="Frisby">
+  <file path="modules\search\GenericSearch.php" hash="159fcc60a5362ca0f62ed71bed3cb5e9" package="Frisby">
+    <docblock line="2">
+      <description><![CDATA[This file contains the Search class.]]></description>
+      <long-description><![CDATA[<p>PHP version 5.3</p>
+
+<p>LICENSE: This file is part of Frisby.
+Frisby is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+Frisby is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
+      <tag line="2" name="category" description="PHP"/>
+      <tag line="2" name="package" description="Frisby"/>
+      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
+      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
+      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
+      <tag line="2" name="version" description="GIT: v1.0"/>
+      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
+      <tag line="2" name="since" description="File available since Release 1.0"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="global" line="41" package="frisby\search">
+      <extends>\ModuleSupport</extends>
+      <name>GenericSearch</name>
+      <full_name>\GenericSearch</full_name>
+      <docblock line="29">
+        <description><![CDATA[An instance of this class is used to carry out a generic search.]]></description>
+        <long-description><![CDATA[<pre><code>require_once('GenericSearch.php');
+
+$search=new GenericSearch();
+$resultset=$search->search('something',array('people','groups','posts'));
+</code></pre>]]></long-description>
+        <tag line="29" name="package" description="frisby\search"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="50" package="frisby\search">
+        <name>search</name>
+        <full_name>search</full_name>
+        <docblock line="43">
+          <description><![CDATA[Searches by names in specified domains.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="43" name="param" description="" type="string" variable="$querydata">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="43" name="param" description="" type="string[]" variable="$domain">
+            <type by_reference="false">string[]</type>
+          </tag>
+          <tag line="43" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+        <argument line="50">
+          <name>$querydata</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="50">
+          <name>$domain</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="modules\search\GroupSearch.php" hash="d652acad3e454fda0ecdceae2b2f4ee3" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the GroupSearch class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3233,7 +3428,7 @@ $resultset=$search->searchGroup($data);
       </method>
     </class>
   </file>
-  <file path="modules\search\PeopleSearch.php" hash="a7c27b999e803a31554089cc2182ba37" package="Frisby">
+  <file path="modules\search\PeopleSearch.php" hash="fa1b8261b9b150d1914751a767820f3e" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the PeopleSearch class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3291,28 +3486,28 @@ $resultset=$search->searchPeople($data);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="67" package="frisby\search">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="76" package="frisby\search">
         <name>searchMembers</name>
         <full_name>searchMembers</full_name>
-        <docblock line="60">
+        <docblock line="69">
           <description><![CDATA[Searches for people within a group or friend list.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="60" name="param" description="" type="mixed[]" variable="$querydata">
+          <tag line="69" name="param" description="" type="mixed[]" variable="$querydata">
             <type by_reference="false">mixed[]</type>
           </tag>
-          <tag line="60" name="param" description="" type="mixed[]" variable="$domain">
+          <tag line="69" name="param" description="" type="mixed[]" variable="$domain">
             <type by_reference="false">mixed[]</type>
           </tag>
-          <tag line="60" name="return" description="" type="mixed[]">
+          <tag line="69" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="67">
+        <argument line="76">
           <name>$querydata</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="67">
+        <argument line="76">
           <name>$domain</name>
           <default><![CDATA[]]></default>
           <type/>
@@ -3320,7 +3515,7 @@ $resultset=$search->searchPeople($data);
       </method>
     </class>
   </file>
-  <file path="modules\search\PostSearch.php" hash="32f3996d671693604f10f034b73329b6" package="Frisby">
+  <file path="modules\search\PostSearch.php" hash="4cb03e9d06333ea2c53d77ca7c7d2a57" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the PostSearch class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3380,74 +3575,7 @@ $resultset=$search->searchPosts($data);
       </method>
     </class>
   </file>
-  <file path="modules\search\Search.php" hash="e3249bd710f81e9a629e53b9dec2162c" package="Frisby">
-    <docblock line="2">
-      <description><![CDATA[This file contains the Search class.]]></description>
-      <long-description><![CDATA[<p>PHP version 5.3</p>
-
-<p>LICENSE: This file is part of Frisby.
-Frisby is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-Frisby is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-You should have received a copy of the GNU General Public License
-along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>]]></long-description>
-      <tag line="2" name="category" description="PHP"/>
-      <tag line="2" name="package" description="Frisby"/>
-      <tag line="2" name="author" description="Rajdeep Das &lt;das.rajdeep97@gmail.com&gt;"/>
-      <tag line="2" name="copyright" description="Copyright 2012 Rajdeep Das"/>
-      <tag line="2" name="license" description="http://www.gnu.org/licenses/gpl.txt  The GNU General Public License"/>
-      <tag line="2" name="version" description="GIT: v1.0"/>
-      <tag line="2" name="link" description="https://github.com/dasrajdeep/frisby" link="https://github.com/dasrajdeep/frisby"/>
-      <tag line="2" name="since" description="File available since Release 1.0"/>
-    </docblock>
-    <class final="false" abstract="false" namespace="global" line="41" package="frisby\search">
-      <extends>\ModuleSupport</extends>
-      <name>Search</name>
-      <full_name>\Search</full_name>
-      <docblock line="29">
-        <description><![CDATA[An instance of this class is used to carry out a generic search.]]></description>
-        <long-description><![CDATA[<pre><code>require_once('Search.php');
-
-$search=new Search();
-$resultset=$search->search('something',array('people','groups','posts'));
-</code></pre>]]></long-description>
-        <tag line="29" name="package" description="frisby\search"/>
-      </docblock>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="50" package="frisby\search">
-        <name>search</name>
-        <full_name>search</full_name>
-        <docblock line="43">
-          <description><![CDATA[Searches by names in specified domains.]]></description>
-          <long-description><![CDATA[]]></long-description>
-          <tag line="43" name="param" description="" type="string" variable="$querydata">
-            <type by_reference="false">string</type>
-          </tag>
-          <tag line="43" name="param" description="" type="string[]" variable="$domain">
-            <type by_reference="false">string[]</type>
-          </tag>
-          <tag line="43" name="return" description="" type="mixed[]">
-            <type by_reference="false">mixed[]</type>
-          </tag>
-        </docblock>
-        <argument line="50">
-          <name>$querydata</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-        <argument line="50">
-          <name>$domain</name>
-          <default><![CDATA[]]></default>
-          <type/>
-        </argument>
-      </method>
-    </class>
-  </file>
-  <file path="modules\user-relations\UserRelations.php" hash="19dad911685822111a780ab7ed0d951e" package="Frisby">
+  <file path="modules\user-relations\UserRelations.php" hash="ec2ba9410f24bd64ce686c29bf10908e" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the UserRelations class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3547,82 +3675,82 @@ $ur->createRelation(userid1,userid2,0);
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="78" package="frisby\user-relations">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="79" package="frisby\user-relations">
         <name>updateUserRelation</name>
         <full_name>updateUserRelation</full_name>
-        <docblock line="70">
+        <docblock line="71">
           <description><![CDATA[Updates a user relation.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="70" name="param" description="" type="int" variable="$accno1">
+          <tag line="71" name="param" description="" type="int" variable="$accno1">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="70" name="param" description="" type="int" variable="$accno2">
+          <tag line="71" name="param" description="" type="int" variable="$accno2">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="70" name="param" description="" type="int" variable="$type">
+          <tag line="71" name="param" description="" type="int" variable="$type">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="70" name="return" description="" type="null">
+          <tag line="71" name="return" description="" type="null">
             <type by_reference="false">null</type>
           </tag>
         </docblock>
-        <argument line="78">
+        <argument line="79">
           <name>$accno1</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="78">
+        <argument line="79">
           <name>$accno2</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="78">
+        <argument line="79">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="90" package="frisby\user-relations">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="91" package="frisby\user-relations">
         <name>fetchUserRelationInfo</name>
         <full_name>fetchUserRelationInfo</full_name>
-        <docblock line="83">
+        <docblock line="84">
           <description><![CDATA[Fetches information regarding a user relation.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="83" name="param" description="" type="int" variable="$accno1">
+          <tag line="84" name="param" description="" type="int" variable="$accno1">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="83" name="param" description="" type="int" variable="$accno2">
+          <tag line="84" name="param" description="" type="int" variable="$accno2">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="83" name="return" description="" type="mixed[]">
+          <tag line="84" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="90">
+        <argument line="91">
           <name>$accno1</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="90">
+        <argument line="91">
           <name>$accno2</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="101" package="frisby\user-relations">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="102" package="frisby\user-relations">
         <name>fetchRelatives</name>
         <full_name>fetchRelatives</full_name>
-        <docblock line="95">
+        <docblock line="96">
           <description><![CDATA[Fetches relatives of a user.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="95" name="param" description="" type="int" variable="$accno">
+          <tag line="96" name="param" description="" type="int" variable="$accno">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="95" name="return" description="" type="int[]">
+          <tag line="96" name="return" description="" type="int[]">
             <type by_reference="false">int[]</type>
           </tag>
         </docblock>
-        <argument line="101">
+        <argument line="102">
           <name>$accno</name>
           <default><![CDATA[]]></default>
           <type/>

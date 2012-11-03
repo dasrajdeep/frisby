@@ -50,7 +50,14 @@ class Privacy extends ModuleSupport {
          */
 	function setPrivacy($accno,$settings) {
 		$keys=array_keys($settings);
-		foreach($keys as $k) Database::update('privacy',array('restriction'),array($settings[$k]),sprintf("acc_no=%s and infofield='%s'",$accno,$k));
+		$valid=array('email');
+		$struct=Database::fetchStructure('profile');
+		$invalid=array('acc_no','avatar');
+		foreach($struct as $s) if(!in_array($s[0],$invalid)) array_push($valid,$s[0]);
+		foreach($keys as $k) {
+			if(in_array($k,$valid)) Database::update('privacy',array('restriction'),array($settings[$k]),sprintf("acc_no=%s and infofield='%s'",$accno,$k));
+			else EventHandler::fireError('arg','Invalid privacy field specified.');
+		}
 		return null;
 	}
 	
@@ -58,18 +65,23 @@ class Privacy extends ModuleSupport {
          * Fetches privacy settings for a user profile.
          * 
          * @param int $accno
-         * @param string[] $infoset
+         * @param string[]|null $infoset
          * @return mixed[] 
          */
-	function getPrivacy($accno,$infoset) {
-		$cnt=func_num_args();
-		$set=null;
-		if($cnt==2) {
-			for($i=0;$i<count($infoset);$i++) $infoset[$i]=sprintf("'%s'",$infoset[$i]);
-			$set=implode(',',$infoset);
+	function getPrivacy($accno,$infoset=null) {
+		$valid=array('email');
+		$struct=Database::fetchStructure('profile');
+		$invalid=array('acc_no','avatar');
+		foreach($struct as $s) if(!in_array($s[0],$invalid)) array_push($valid,$s[0]);
+		if($infoset) {
+			$rows=array();
+			foreach($infoset as $i) {
+				if(in_array($i,$valid)) array_push($rows,sprintf("'%s'",$i));
+				else EventHandler::fireError('arg','Invalid privacy field specified.');
+			}
+			$set=implode(',',$rows);
 			$result=Database::get('privacy','infofield,restriction',sprintf("acc_no=%s and infofield in (%s)",$accno,$set));
-		} 
-		else $result=Database::get('privacy','infofield,restriction',"acc_no=".$accno);
+		} else $result=Database::get('privacy','infofield,restriction',"acc_no=".$accno);
 		$privacy=array();
 		foreach($result as $r) $privacy[$r['infofield']]=$r['restriction'];
 		return $privacy;

@@ -58,6 +58,7 @@ class Dispatcher {
 		$class=$route['classname'];
 		require_once($class.'.php');
 		$obj=new $class();
+		$obj->setModuleName($module);
 		$result=call_user_func_array(array($obj,$method),$data);
 		
 		chdir('../../core');

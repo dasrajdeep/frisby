@@ -30,15 +30,15 @@
  * An instance of this class is used to carry out a generic search.
  * 
  * <code>
- * require_once('Search.php');
+ * require_once('GenericSearch.php');
  * 
- * $search=new Search();
+ * $search=new GenericSearch();
  * $resultset=$search->search('something',array('people','groups','posts'));
  * </code> 
  * 
  * @package frisby\search
  */
-class Search extends ModuleSupport {
+class GenericSearch extends ModuleSupport {
 
 	/**
          * Searches by names in specified domains.
@@ -51,16 +51,16 @@ class Search extends ModuleSupport {
 		$results=array();
 		foreach($domain as $d) {
 			if($d=='people') {
-				$mod=loadSubModule('searchPeople');
-				$results['people']=$mod->searchPeople(array('name'=>$querydata));
+				$mod=$this->loadModuleClass('searchPeople');
+				if($mod) $results['people']=$mod->searchPeople(array('name'=>$querydata));
 			}
 			else if($d=='groups') {
-				$mod=loadSubModule('searchGroup');
-				$results['groups']=$mod->searchGroup(array('name'=>$querydata));
+				$mod=$this->loadModuleClass('searchGroup');
+				if($mod) $results['groups']=$mod->searchGroup(array('name'=>$querydata));
 			}
 			else if($d=='posts') {
-				$mod=loadSubModule('searchPosts');
-				$results['posts']=$mod->searchPosts(array('text'=>$querydata));
+				$mod=$this->loadModuleClass('searchPosts');
+				if($mod) $results['posts']=$mod->searchPosts(array('text'=>$querydata));
 			}
 		}
 		return $results;

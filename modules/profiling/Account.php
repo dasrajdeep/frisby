@@ -84,8 +84,17 @@ class Account extends ModuleSupport {
 	function updateAccount($accno,$data) {
 		$keys=array_keys($data);
 		$values=array();
-		foreach($keys as $k) array_push($values,$data[$k]);
-		Database::update('accounts',$keys,$values,"acc_no=".$accno);
+		$valid=array();
+		$struct=Database::fetchStructure('accounts');
+		foreach($struct as $s) array_push($valid,$s[0]);
+		$cols=array();
+		foreach($keys as $k) {
+			if(in_array($k,$valid)) {
+				array_push($cols,$k);
+				array_push($values,$data[$k]);
+			} else EventHandler::fire('args','Invalid field specified for update.');
+		}
+		Database::update('accounts',$cols,$values,"acc_no=".$accno);
 		if(array_key_exists('status',$data) && $data['status']>0) EventHandler::fireEvent('joinednetwork',$accno);
 		return null;
 	}

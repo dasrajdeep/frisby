@@ -49,10 +49,10 @@ class Setup {
 		$required=array_keys($tables);
 		
 		$pre=Database::getPrefix();
-		$ptr=Database::query(sprintf("select TABLE_NAME from information_schema.tables where TABLE_SCHEMA like '%s%%'",$pre));
+		$set=Database::query(sprintf("select TABLE_NAME from information_schema.tables where TABLE_SCHEMA like '%s%%'",$pre));
 		
 		$installed=array();
-		while($r=mysql_fetch_assoc($ptr)) array_push($installed,substr($r,strlen($pre)));
+		foreach($set as $s) array_push($installed,substr($s['TABLE_NAME'],strlen($pre)));
 		
 		foreach($required as $r) if(!in_array($r,$installed)) return false;
 		

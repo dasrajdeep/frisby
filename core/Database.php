@@ -98,7 +98,21 @@ class Database {
         if (mysql_errno())
             EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error());
     }
-
+	
+	/**
+     * Fetches the structure of a relation.
+     * 
+     * @param string $table
+     * @return mixed[] 
+     */
+	public static function fetchStructure($table) {
+		$table=self::$prefix.$table;
+		$ptr=mysql_query("desc ".$table);
+		$struct=array();
+		while($r=mysql_fetch_assoc($ptr)) array_push($struct,array($r['Field'],$r['Type']));
+		return $struct;
+	}
+	
     /**
      * Fetches data from the database.
      * 
@@ -118,10 +132,10 @@ class Database {
      * @param string $criterion
      * @return mixed[] 
      */
-    public static function get($table,$values,$criterion) {
+    public static function get($table,$values,$criterion=null) {
         if(!self::$con) return NULL;
         $table=self::$prefix.$table;
-        if($criterion!=FALSE) $criterion=" WHERE ".$criterion;
+        if($criterion && $criterion!=='') $criterion=" WHERE ".$criterion;
         else $criterion="";
         $query=sprintf("SELECT %s FROM %s%s",$values,$table,$criterion);
         $result=mysql_query($query,self::$con);
@@ -188,7 +202,7 @@ class Database {
      * @param string $criterion
      * @return boolean 
      */
-    public static function update($table, $fields, $data, $criterion) {
+    public static function update($table, $fields, $data, $criterion=null) {
         if (!self::$con)
             return FALSE;
         $table = self::$prefix . $table;
@@ -196,7 +210,9 @@ class Database {
         for ($i = 0; $i < count($fields); $i++)
             array_push($assignments, sprintf("%s='%s'", $fields[$i], $data[$i]));
         $set = implode(",", $assignments);
-        $query = sprintf("UPDATE %s SET %s WHERE %s", $table, $set, $criterion);
+		if($criterion && $criterion!=='') $criterion=' WHERE '.$criterion;
+		else $criterion='';
+        $query = sprintf("UPDATE %s SET %s%s", $table, $set, $criterion);
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
             EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
@@ -217,11 +233,13 @@ class Database {
      * @param string $match
      * @return boolean 
      */
-    public static function remove($table, $match) {
+    public static function remove($table, $match=null) {
         if (!self::$con)
             return false;
         $table = self::$prefix . $table;
-        $query = sprintf("DELETE FROM %s WHERE %s", $table, $match);
+		if($match && $match!=='') $match=' WHERE '.$match;
+		else $match='';
+        $query = sprintf("DELETE FROM %s%s", $table, $match);
         $result = mysql_query($query, self::$con);
         if (mysql_errno())
             EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
@@ -249,6 +267,11 @@ class Database {
         if (!self::$con)
             return false;
         $result = mysql_query($query, self::$con);
+		if(preg_match('/^(select|SELECT)[ ]/',$query)===1) {
+			$tmp=array();
+			while($r=mysql_fetch_assoc($result)) array_push($tmp,$r);
+			$result=$tmp;
+		}
         if (mysql_errno())
             EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
         return $result;

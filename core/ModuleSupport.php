@@ -51,14 +51,23 @@ class ModuleSupport {
          */
 	public function loadModuleClass($method) {
 		$classname=Database::get('registry','classname',sprintf("method='%s' and module='%s'",$method,$this->modulename));
-		if(count($classname)==0) {
-			ErrorHandler::fire('int','Module contains no such method.');
+		if(count($classname)===0) {
+			EventHandler::fireError('int','Module contains no such method.');
 			return null;
 		}
 		$classname=$classname[0]['classname'];
-		require_once($classname.'php');
+		require_once($classname.'.php');
 		$obj=new $classname();
 		return $obj;
+	}
+	
+		/**
+         * Sets the module name for this object.
+         * 
+         * @param string $module
+         */
+	public function setModuleName($module) {
+		$this->modulename=$module;
 	}
 	
         /**

@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta charset="utf-8">
-<title>Frisby Social Engine » \ExtendedProfile</title>
+<title>Frisby Social Engine » \GenericSearch</title>
 <meta name="author" content="Mike van Riel">
 <meta name="description" content="">
 <link href="../css/template.css" rel="stylesheet" media="all">
@@ -57,11 +57,9 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
-<li class="method public "><a href="#method_getProfileAttributeNames" title="getProfileAttributeNames :: Fetches all the profile attribute names"><span class="description">Fetches all the profile attribute names</span><pre>getProfileAttributeNames()</pre></a></li>
 <li class="method public inherited"><a href="#method_loadModuleClass" title="loadModuleClass :: Loads a module class and returns an object of the class."><span class="description">Loads a module class and returns an object of the class.</span><pre>loadModuleClass()</pre></a></li>
-<li class="method public "><a href="#method_registerProfileAttribute" title="registerProfileAttribute :: Registers a new profile attribute."><span class="description">Registers a new profile attribute.</span><pre>registerProfileAttribute()</pre></a></li>
+<li class="method public "><a href="#method_search" title="search :: Searches by names in specified domains."><span class="description">Searches by names in specified domains.</span><pre>search()</pre></a></li>
 <li class="method public inherited"><a href="#method_setModuleName" title="setModuleName :: Sets the module name for this object."><span class="description">Sets the module name for this object.</span><pre>setModuleName()</pre></a></li>
-<li class="method public "><a href="#method_unregisterProfileAttribute" title="unregisterProfileAttribute :: Removes a profile attribute"><span class="description">Removes a profile attribute</span><pre>unregisterProfileAttribute()</pre></a></li>
 </ul>
 </li>
 <li class="nav-header protected">» Protected
@@ -77,27 +75,27 @@
 </ul>
 </div>
 <div class="span8">
-<a id="\ExtendedProfile"></a><ul class="breadcrumb">
+<a id="\GenericSearch"></a><ul class="breadcrumb">
 <li>
 <a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
 </li>
 <li><a href="../namespaces/global.html">global</a></li>
 <li class="active">
-<span class="divider">\</span><a href="../classes/ExtendedProfile.html">ExtendedProfile</a>
+<span class="divider">\</span><a href="../classes/GenericSearch.html">GenericSearch</a>
 </li>
 </ul>
 <div class="element class">
-<p class="short_description">An instance of this class is used to modify profile attributes.</p>
+<p class="short_description">An instance of this class is used to carry out a generic search.</p>
 <div class="details">
-<div class="long_description"><pre><code>require_once('ExtendedProfile.php');
+<div class="long_description"><pre><code>require_once('GenericSearch.php');
 
-$ep=new ExtendedProfile();
-$ep->registerProfileAttribute('attribute_name','varchar(100)');
+$search=new GenericSearch();
+$resultset=$search->search('something',array('people','groups','posts'));
 </code></pre></div>
 <table class="table table-bordered">
 <tr>
 <th>package</th>
-<td><a href="../packages/frisby.profiling.html">frisby\profiling</a></td>
+<td><a href="../packages/frisby.search.html">frisby\search</a></td>
 </tr>
 <tr>
 <th>author</th>
@@ -114,16 +112,6 @@ $ep->registerProfileAttribute('attribute_name','varchar(100)');
 </table>
 <h3>
 <i class="icon-custom icon-method"></i> Methods</h3>
-<a id="method_getProfileAttributeNames"></a><div class="element clickable method public method_getProfileAttributeNames" data-toggle="collapse" data-target=".method_getProfileAttributeNames .collapse">
-<h2>Fetches all the profile attribute names</h2>
-<pre>getProfileAttributeNames() : string[]</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Returns</h3>
-<div class="subelement response"><code>string[]</code></div>
-</div></div>
-</div>
 <a id="method_loadModuleClass"></a><div class="element clickable method public method_loadModuleClass" data-toggle="collapse" data-target=".method_loadModuleClass .collapse">
 <h2>Loads a module class and returns an object of the class.</h2>
 <pre>loadModuleClass(string $method) : null | object</pre>
@@ -145,23 +133,23 @@ $ep->registerProfileAttribute('attribute_name','varchar(100)');
 </div>
 </div></div>
 </div>
-<a id="method_registerProfileAttribute"></a><div class="element clickable method public method_registerProfileAttribute" data-toggle="collapse" data-target=".method_registerProfileAttribute .collapse">
-<h2>Registers a new profile attribute.</h2>
-<pre>registerProfileAttribute(string $name, string $datatype) : null</pre>
+<a id="method_search"></a><div class="element clickable method public method_search" data-toggle="collapse" data-target=".method_search .collapse">
+<h2>Searches by names in specified domains.</h2>
+<pre>search(string $querydata, string[] $domain) : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
-<h4>$name</h4>
+<h4>$querydata</h4>
 <code>string</code>
 </div>
 <div class="subelement argument">
-<h4>$datatype</h4>
-<code>string</code>
+<h4>$domain</h4>
+<code>string[]</code>
 </div>
 <h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
+<div class="subelement response"><code>mixed[]</code></div>
 </div></div>
 </div>
 <a id="method_setModuleName"></a><div class="element clickable method public method_setModuleName" data-toggle="collapse" data-target=".method_setModuleName .collapse">
@@ -179,21 +167,6 @@ $ep->registerProfileAttribute('attribute_name','varchar(100)');
 <h4>$module</h4>
 <code>string</code>
 </div>
-</div></div>
-</div>
-<a id="method_unregisterProfileAttribute"></a><div class="element clickable method public method_unregisterProfileAttribute" data-toggle="collapse" data-target=".method_unregisterProfileAttribute .collapse">
-<h2>Removes a profile attribute</h2>
-<pre>unregisterProfileAttribute(string $name) : null</pre>
-<div class="labels"></div>
-<div class="row collapse"><div class="detail-description">
-<div class="long_description"></div>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$name</h4>
-<code>string</code>
-</div>
-<h3>Returns</h3>
-<div class="subelement response"><code>null</code></div>
 </div></div>
 </div>
 <a id="method_getModuleName"></a><div class="element clickable method protected method_getModuleName" data-toggle="collapse" data-target=".method_getModuleName .collapse">

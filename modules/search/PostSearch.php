@@ -48,12 +48,16 @@ class PostSearch extends ModuleSupport {
          * @return mixed[] 
          */
 	function searchPosts($querydata) {
+		$keys=array_keys($querydata);
+		$valid=array('post_id','publisher','thread','node');
 		$parts=array();
-		if(isset($querydata['publisher'])) array_push($parts,"publisher=".$querydata['publisher']);
-		if(isset($querydata['text'])) array_push($parts,sprintf("textdata like '%%%s%%'",$querydata['text']));
-		if(isset($querydata['node'])) array_push($parts,"node=".$querydata['node']);
+		foreach($keys as $k) {
+			if($k==='timestamp') array_push($parts,sprintf("timestamp>='%s'",$querydata['timestamp']));
+			else if($k==='text') array_push($parts,sprintf("textdata like '%%%s%%'",$querydata['text']));
+			else if(in_array($k,$valid)) array_push($parts,$k."=".$querydata[$k]);
+			else EventHandler::fire('args','Invalid search field specified.');
+		}
 		$matcher=implode(' and ',$parts);
-		if(isset($querydata['maxposts'])) $matcher.=' limit '.$querydata['maxposts'];
 		$set=Database::get('posts','*',$matcher);
 		return $set;
 	}

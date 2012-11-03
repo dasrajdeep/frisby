@@ -68,10 +68,19 @@ class Profile extends ModuleSupport {
          * @return null 
          */
 	function updateProfile($accno,$data) {
+		$valid=array();
+		$struct=Database::fetchStructure('view_profile');
+		foreach($struct as $s) if($s[0]!=='acc_no') array_push($valid,$s[0]);
 		$keys=array_keys($data);
 		$values=array();
-		foreach($keys as $k) array_push($values,$data[$k]);
-		Database::update('profile',$keys,$values,"acc_no=".$accno);
+		$cols=array();
+		foreach($keys as $k) {
+			if(in_array($k,$valid)) {
+				array_push($cols,$k);
+				array_push($values,$data[$k]);
+			} else EventHandler::fireError('arg','Invalid profile attribute specified for update.');
+		}
+		Database::update('profile',$cols,$values,"acc_no=".$accno);
 		EventHandler::fireEvent('updatedprofile',$accno);
 		return null;
 	}
@@ -80,14 +89,24 @@ class Profile extends ModuleSupport {
          * Fetches user profile information.
          * 
          * @param int $accno
-         * @param string[] $attrs
+         * @param string[]|null $attrs
          * @return mixed[] 
          */
-	function fetchProfile($accno,$attrs) {
+	function fetchProfile($accno,$attrs=null) {
+		$valid=array();
+		$struct=Database::fetchStructure('view_profile');
+		foreach($struct as $s) array_push($valid,$s[0]);
 		$cols='*';
-		if(func_num_args()==2 && count($attrs)>0) $cols=implode(',',$attrs);
+		if($attrs) {
+			$cols=array();
+			foreach($attrs as $a) {
+				if(in_array($a,$valid)) array_push($cols,$a);
+				else EventHandler::fireError('arg','Invalid profile attribute specified.');
+			}
+			$cols=implode(',',$cols);
+		}
 		$result=Database::get('view_profile',$cols,"acc_no=".$accno);
-                if(isset($result[0]['avatarimage'])) $result[0]['avatarimage']=base64_encode($result[0]['avatarimage']);
+		if(isset($result[0]['avatarimage'])) $result[0]['avatarimage']=base64_encode($result[0]['avatarimage']);
 		return $result[0];
 	}
 }

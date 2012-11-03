@@ -81,17 +81,17 @@ class Frisby {
 		if($this->bootError) return array(false,EventHandler::fetchTrace());
 		
 		chdir('core');
-		ini_set('display_errors', false);
+		//ini_set('display_errors', false);
 		
 		$data=func_get_args();
 		$data=array_slice($data,1);
 		
 		//Encodes data for security reasons.
-		foreach($i=0;$i<count($data);$i++) {
-			if(is_array($d[$i])) {
-				$keys=array_keys($d[$i]);
-				foreach($keys as $k) $d[$i][$k]=mysql_escape_string($d[$i][$k]);
-			} else $d[$i]=mysql_escape_string($d[$i]);
+		for($i=0;$i<count($data);$i++) {
+			if(is_array($data[$i])) {
+				$keys=array_keys($data[$i]);
+				foreach($keys as $k) $data[$i][$k]=mysql_escape_string($data[$i][$k]);
+			} else $data[$i]=mysql_escape_string($data[$i]);
 		}
 		
 		EventHandler::clearErrorTrace();

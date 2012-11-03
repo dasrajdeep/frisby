@@ -85,7 +85,7 @@ class Logger {
          */
 	public static function dump($type,$message) {
                 $event=@self::$sysEvents[$type];
-		fwrite(self::$file,'['.time().']'.$event.':'.$message.'\n');
+		fwrite(self::$file,'['.date('d-m-Y H:i:s').']'.$event.':'.$message.'\n');
 	}
 	
         /**

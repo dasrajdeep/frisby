@@ -50,9 +50,13 @@ class GroupSearch extends ModuleSupport {
 	function searchGroup($querydata) {
 		$keys=array_keys($querydata);
 		$patterns=array();
-		foreach($keys as $k) if($k!='type' && $k!='creationdate') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
-		if(isset($querydata['type'])) array_push($patterns,"type=".$querydata['type']);
-		if(isset($querydata['creationdate'])) array_push($patterns,"creationdate>=".$querydata['creationdate']);
+		foreach($keys as $k) {
+			if($k==='name') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
+			else if($k==='description') array_push($patterns,sprintf("%s like '%%%s%%'",$k,$querydata[$k]));
+			else if($k==='type') array_push($patterns,"type=".$querydata['type']);
+			else if($k==='creationdate') array_push($patterns,sprintf("creationdate>='%s'",$querydata['creationdate']));
+			else EventHandler::fireError('arg','Invalid domain name specified for search.');
+		}
 		$matcher=implode(' and ',$patterns);
 		$set=Database::get('groups','*',$matcher);
 		return $set;

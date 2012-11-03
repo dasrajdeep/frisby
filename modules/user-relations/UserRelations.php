@@ -62,8 +62,9 @@ class UserRelations extends ModuleSupport {
          * @return null 
          */
 	function confirmUserRelation($accno1,$accno2) {
-		Database::update('user_relations',array('status'),array(1),sprintf("(user1=%s and user2=%s) or (user2=%s and user1=%s)",$accno1,$accno2,$accno1,$accno2));
-		EventHandler::fireEvent('acceptedrequest',$accno1,$accno2);
+		Database::update('user_relations',array('status'),array(1),sprintf("user2=%s and user1=%s",$accno1,$accno2));
+		if(mysql_affected_rows()>0) EventHandler::fireEvent('acceptedrequest',$accno1,$accno2);
+		else EventHandler::fireError('arg','Invalid IDs specified for users.');
 		return null;
 	}
 	
@@ -102,9 +103,9 @@ class UserRelations extends ModuleSupport {
 		$pre=Database::getPrefix();
 		$q1=sprintf("select user1 as acc_no from %suser_relations where user2=%s",$pre,$accno);
 		$q2=sprintf("select user2 as acc_no from %suser_relations where user1=%s",$pre,$accno);
-		$ptr=Database::query(sprintf("%s union %s",$q1,$q2));
+		$set=Database::query(sprintf("%s union %s",$q1,$q2));
 		$relatives=array();
-		while($r=mysql_fetch_assoc($ptr)) array_push($relatives,$r['acc_no']);
+		foreach($set as $r) array_push($relatives,$r['acc_no']);
 		return $relatives;
 	}
 }
