@@ -56,8 +56,8 @@ class Publish extends ModuleSupport {
 		$pre=Database::getPrefix();
 		$node=Database::get('nodes','node_id',sprintf("type=%s and ref_id=%s",$nodetype,$nodeid));
 		if($node) $node=$node[0]['node_id'];
-		$values=sprintf("%s,'%s',%s,%s,%s",$accno,$data['text'],$ref,$pre,$node,$thread);
-		Database::query("insert into %sposts (publisher,textdata,mime,node,thread) values (%s)",$pre,$values);
+		$values=sprintf("%s,'%s',%s,%s,%s",$accno,$data['text'],$ref,$node,$thread);
+		Database::query(sprintf("insert into %sposts (publisher,textdata,mime,node,thread) values (%s)",$pre,$values));
 		EventHandler::fireEvent('creatednewpost',$accno,mysql_insert_id());
 		return null;
 	}
@@ -92,7 +92,7 @@ class Publish extends ModuleSupport {
          * @return int 
          */
 	private function handleMIME($type,$datasrc) {
-		if($type==0) return 0;
+		if($type==0) return 1;
 		//Handle image content.
 		else if($type==1) {
 			$iminfo=getimagesize($datasrc);

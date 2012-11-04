@@ -48,9 +48,9 @@ class Read extends ModuleSupport {
          * @param int $limit
          * @return mixed[] 
          */
-	function fetchPosts($nodetype,$node,$limit) {
+	function fetchPosts($nodetype,$node,$age) {
 		$fields='post_id,publisher,textdata,timestamp,thread,mime';
-		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) limit %s",Database::getPrefix(),$nodetype,$node,$limit);
+		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) and timestamp>'%s'",Database::getPrefix(),$nodetype,$node,$age);
 		$set=Database::get(sprintf('posts',Database::getPrefix()),$fields,$criterion);
 		for($i=0;$i<count($set);$i++) {
 			if($set[$i]['mime']>0) $set[$i]['mime']=$this->getMime($set[$i]['mime']);
