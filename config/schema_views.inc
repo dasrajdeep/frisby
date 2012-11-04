@@ -32,7 +32,7 @@ $views=array(
 	'view_posts'=>
 	"create or replace view %sview_posts as
 		select
-		post_id,concat(firstname,' ',middlename,' ',lastname) as publisher,textdata,timestamp,thread,node,avatarimage,imgtype
+		post_id,publisher as pub_id,concat(firstname,' ',middlename,' ',lastname) as publisher,textdata,timestamp,thread,node,avatarimage,imgtype
 		from
 		%sview_profile inner join %sposts
 		on 

@@ -51,6 +51,10 @@ class Profile extends ModuleSupport {
 	function setAvatar($accno,$img) {
 		$iminfo=getimagesize($img);
 		$imgdata=addslashes(file_get_contents($img));
+		if($iminfo===false) {
+			EventHandler::fireError('arg','Invalid image file for avatar.');
+			return null;
+		}
 		Database::add('images',array('type','imgdata','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
 		$newid=mysql_insert_id();
 		$old=Database::get('profile','avatar',"acc_no=".$accno);
@@ -69,18 +73,28 @@ class Profile extends ModuleSupport {
          */
 	function updateProfile($accno,$data) {
 		$valid=array();
+		$accinfo=array('firstname','middlename','lastname','email');
 		$struct=Database::fetchStructure('view_profile');
 		foreach($struct as $s) if($s[0]!=='acc_no') array_push($valid,$s[0]);
 		$keys=array_keys($data);
 		$values=array();
 		$cols=array();
+		$acc_cols=array();
+		$acc_vals=array();
 		foreach($keys as $k) {
 			if(in_array($k,$valid)) {
-				array_push($cols,$k);
-				array_push($values,$data[$k]);
+				if(in_array($k,$accinfo)) {
+					array_push($acc_cols,$k);
+					array_push($acc_vals,$data[$k]);
+				} else {
+					if($k==='dob' && $data[$k]==='') continue;
+					array_push($cols,$k);
+					array_push($values,$data[$k]);
+				}
 			} else EventHandler::fireError('arg','Invalid profile attribute specified for update.');
 		}
 		Database::update('profile',$cols,$values,"acc_no=".$accno);
+		Database::update('accounts',$acc_cols,$acc_vals,"acc_no=".$accno);
 		EventHandler::fireEvent('updatedprofile',$accno);
 		return null;
 	}
