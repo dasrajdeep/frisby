@@ -50,7 +50,7 @@ class Read extends ModuleSupport {
          */
 	function fetchPosts($nodetype,$node,$age) {
 		$fields='post_id,publisher,textdata,timestamp,thread,mime';
-		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) and timestamp>'%s'",Database::getPrefix(),$nodetype,$node,$age);
+		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) and timestamp>'%s' order by timestamp desc",Database::getPrefix(),$nodetype,$node,$age);
 		$set=Database::get(sprintf('posts',Database::getPrefix()),$fields,$criterion);
 		for($i=0;$i<count($set);$i++) {
 			if($set[$i]['mime']>0) $set[$i]['mime']=$this->getMime($set[$i]['mime']);
@@ -58,8 +58,16 @@ class Read extends ModuleSupport {
 		return $set;
 	}
 	
+	/**
+         * Fetches text only publications on a specific node.
+         * 
+         * @param int $nodetype
+         * @param int $node
+         * @param string $age
+         * @return mixed[] 
+         */
 	function fetchTextPosts($nodetype,$node,$age) {
-		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) and timestamp>'%s'",Database::getPrefix(),$nodetype,$node,$age);
+		$criterion=sprintf("node=(select node_id from %snodes where type=%s and ref_id=%s) and timestamp>'%s' order by timestamp desc",Database::getPrefix(),$nodetype,$node,$age);
 		$set=Database::get('view_posts','*',$criterion);
 		return $set;
 	}

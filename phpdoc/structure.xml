@@ -1361,7 +1361,7 @@ Registry::init();
       </method>
     </class>
   </file>
-  <file path="core\Setup.php" hash="19bfc94ccc52ddf5b68363822c3b3844" package="Default">
+  <file path="core\Setup.php" hash="63ca242e3f607cdd26fed5f8bcfc7e18" package="Default">
     <docblock line="2">
       <description><![CDATA[This file contains the Setup class used by the engine.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -1393,10 +1393,10 @@ along with Frisby. If not, see <a href="http://www.gnu.org/licenses/">http://www
     <include line="135" type="Require" package="Default">
       <name>../config/schema_triggers.inc</name>
     </include>
-    <include line="146" type="Require" package="Default">
+    <include line="144" type="Require" package="Default">
       <name>../config/schema_uninstall.inc</name>
     </include>
-    <include line="167" type="Require Once" package="Default">
+    <include line="165" type="Require Once" package="Default">
       <name/>
     </include>
     <class final="false" abstract="false" namespace="global" line="38" package="frisby\core">
@@ -1493,13 +1493,13 @@ $setup=new Setup();
           <long-description><![CDATA[]]></long-description>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="156" package="frisby\core">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="154" package="frisby\core">
         <name>scanModules</name>
         <full_name>scanModules</full_name>
-        <docblock line="151">
+        <docblock line="149">
           <description><![CDATA[Scans the installed modules for API methods.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="151" name="return" description="" type="mixed[]">
+          <tag line="149" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
@@ -3050,7 +3050,7 @@ $prof->createProfile(userid,$data);
       </method>
     </class>
   </file>
-  <file path="modules\pubsub\Publish.php" hash="8795c6f773a6256843c67c9f23d5d96b" package="Frisby">
+  <file path="modules\pubsub\Publish.php" hash="105d97eb6f0f83a071efa399fa1b8898" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Publish class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3188,7 +3188,7 @@ $pub->createPost(userid,array(nodetype,nodeid),threadid,$data);
       </method>
     </class>
   </file>
-  <file path="modules\pubsub\Read.php" hash="3c41c53a59c1af49cc6790d37a38c39c" package="Frisby">
+  <file path="modules\pubsub\Read.php" hash="2c2a62b45de884ae2841f81d031129eb" package="Frisby">
     <docblock line="2">
       <description><![CDATA[This file contains the Read class.]]></description>
       <long-description><![CDATA[<p>PHP version 5.3</p>
@@ -3238,8 +3238,8 @@ $resultset=$read->fetchPosts(0,nodeid,1000);
           <tag line="43" name="param" description="" type="int" variable="$node">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="43" name="param" description="" type="int" variable="$limit">
-            <type by_reference="false">int</type>
+          <tag line="43" name="param" description="" type="string" variable="$age">
+            <type by_reference="false">string</type>
           </tag>
           <tag line="43" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
@@ -3256,44 +3256,79 @@ $resultset=$read->fetchPosts(0,nodeid,1000);
           <type/>
         </argument>
         <argument line="51">
-          <name>$limit</name>
+          <name>$age</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="67" package="frisby\pubsub">
-        <name>getPost</name>
-        <full_name>getPost</full_name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="69" package="frisby\pubsub">
+        <name>fetchTextPosts</name>
+        <full_name>fetchTextPosts</full_name>
         <docblock line="61">
-          <description><![CDATA[Fetches a specific publication.]]></description>
+          <description><![CDATA[Fetches text only publications on a specific node.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="61" name="param" description="" type="int" variable="$postid">
+          <tag line="61" name="param" description="" type="int" variable="$nodetype">
             <type by_reference="false">int</type>
+          </tag>
+          <tag line="61" name="param" description="" type="int" variable="$node">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="61" name="param" description="" type="string" variable="$age">
+            <type by_reference="false">string</type>
           </tag>
           <tag line="61" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="67">
+        <argument line="69">
+          <name>$nodetype</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="69">
+          <name>$node</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="69">
+          <name>$age</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="global" line="81" package="frisby\pubsub">
+        <name>getPost</name>
+        <full_name>getPost</full_name>
+        <docblock line="75">
+          <description><![CDATA[Fetches a specific publication.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="75" name="param" description="" type="int" variable="$postid">
+            <type by_reference="false">int</type>
+          </tag>
+          <tag line="75" name="return" description="" type="mixed[]">
+            <type by_reference="false">mixed[]</type>
+          </tag>
+        </docblock>
+        <argument line="81">
           <name>$postid</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="84" package="frisby\pubsub">
+      <method final="false" abstract="false" static="false" visibility="private" namespace="global" line="98" package="frisby\pubsub">
         <name>getMime</name>
         <full_name>getMime</full_name>
-        <docblock line="78">
+        <docblock line="92">
           <description><![CDATA[Fetches the MIME content associated with a publication.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="78" name="param" description="" type="int" variable="$id">
+          <tag line="92" name="param" description="" type="int" variable="$id">
             <type by_reference="false">int</type>
           </tag>
-          <tag line="78" name="return" description="" type="mixed[]">
+          <tag line="92" name="return" description="" type="mixed[]">
             <type by_reference="false">mixed[]</type>
           </tag>
         </docblock>
-        <argument line="84">
+        <argument line="98">
           <name>$id</name>
           <default><![CDATA[]]></default>
           <type/>

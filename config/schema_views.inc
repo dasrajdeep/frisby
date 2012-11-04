@@ -28,7 +28,15 @@ $views=array(
 		from 
 		%saccounts as a inner join %sprofile as p inner join %simages as i
 		on
-	a.acc_no=p.acc_no and p.avatar=i.img_id"
+	a.acc_no=p.acc_no and p.avatar=i.img_id",
+	'view_posts'=>
+	"create or replace view %sview_posts as
+		select
+		post_id,concat(firstname,' ',middlename,' ',lastname) as publisher,textdata,timestamp,thread,node,avatarimage,imgtype
+		from
+		%sview_profile inner join %sposts
+		on 
+	acc_no=publisher"
 );
 
 ?>

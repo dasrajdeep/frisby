@@ -58,6 +58,7 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method_fetchPosts" title="fetchPosts :: Fetches publications on a specific node."><span class="description">Fetches publications on a specific node.</span><pre>fetchPosts()</pre></a></li>
+<li class="method public "><a href="#method_fetchTextPosts" title="fetchTextPosts :: Fetches text only publications on a specific node."><span class="description">Fetches text only publications on a specific node.</span><pre>fetchTextPosts()</pre></a></li>
 <li class="method public "><a href="#method_getPost" title="getPost :: Fetches a specific publication."><span class="description">Fetches a specific publication.</span><pre>getPost()</pre></a></li>
 <li class="method public inherited"><a href="#method_loadModuleClass" title="loadModuleClass :: Loads a module class and returns an object of the class."><span class="description">Loads a module class and returns an object of the class.</span><pre>loadModuleClass()</pre></a></li>
 <li class="method public inherited"><a href="#method_setModuleName" title="setModuleName :: Sets the module name for this object."><span class="description">Sets the module name for this object.</span><pre>setModuleName()</pre></a></li>
@@ -118,7 +119,7 @@ $resultset=$read->fetchPosts(0,nodeid,1000);
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method_fetchPosts"></a><div class="element clickable method public method_fetchPosts" data-toggle="collapse" data-target=".method_fetchPosts .collapse">
 <h2>Fetches publications on a specific node.</h2>
-<pre>fetchPosts(int $nodetype, int $node, int $limit) : mixed[]</pre>
+<pre>fetchPosts(int $nodetype, int $node, string $age) : mixed[]</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -132,8 +133,31 @@ $resultset=$read->fetchPosts(0,nodeid,1000);
 <code>int</code>
 </div>
 <div class="subelement argument">
-<h4>$limit</h4>
+<h4>$age</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed[]</code></div>
+</div></div>
+</div>
+<a id="method_fetchTextPosts"></a><div class="element clickable method public method_fetchTextPosts" data-toggle="collapse" data-target=".method_fetchTextPosts .collapse">
+<h2>Fetches text only publications on a specific node.</h2>
+<pre>fetchTextPosts(int $nodetype, int $node, string $age) : mixed[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nodetype</h4>
 <code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$node</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$age</h4>
+<code>string</code>
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code>mixed[]</code></div>
@@ -242,7 +266,7 @@ $resultset=$read->fetchPosts(0,nodeid,1000);
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
-            generated on 2012-11-03T17:26:22+05:30.<br></footer></div>
+            generated on 2012-11-04T15:53:08+05:30.<br></footer></div>
 </div>
 </body>
 </html>
