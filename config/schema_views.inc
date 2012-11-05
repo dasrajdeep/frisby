@@ -36,7 +36,15 @@ $views=array(
 		from
 		%sview_profile inner join %sposts
 		on 
-	acc_no=publisher"
+	acc_no=publisher",
+	'view_events'=>
+	"create or replace view %sview_events as
+		select
+		log_id,acc_no,concat(firstname,' ',middlename,' ',lastname) as name,event_name,description,category,timestamp
+		from
+		%sevents inner join %sevent_log inner join %sview_profile
+		on
+	event_id=event and origin=acc_no"
 );
 
 ?>

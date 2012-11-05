@@ -106,13 +106,13 @@ class Event extends ModuleSupport {
          * 
          * @param string $category
          * @param string $age
-         * @param int $status
+		 * @param boolean $verbose
          * @return mixed[] 
          */
-	function fetchEventsByCategory($category,$age,$status=null) {
+	function fetchEventsByCategory($category,$age,$verbose=false) {
 		$pre=Database::getPrefix();
-		if($status) $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s' and status=%s",$pre,$category,$age,$status));
-		else $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s'",$pre,$category,$age));
+		if($verbose) $set=Database::get('view_events','*',sprintf("category='%s' and timestamp>='%s' order by timestamp desc",$category,$age));
+		else $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s' order by timestamp desc",$pre,$category,$age));
 		return $set;
 	}
 	

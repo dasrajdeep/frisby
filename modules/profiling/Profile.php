@@ -59,8 +59,9 @@ class Profile extends ModuleSupport {
 		$newid=mysql_insert_id();
 		$old=Database::get('profile','avatar',"acc_no=".$accno);
 		if($old && $old[0]['avatar']) $old=$old[0]['avatar'];
-		if($old && $old>1) Database::remove('images',"img_id=".$old);
 		Database::update('profile',array('avatar'),array($newid),"acc_no=".$accno);
+		if($old && $old>1) Database::remove('images',"img_id=".$old);
+		EventHandler::fireEvent('updatedprofile',$accno);
 		return null;
 	}
 	

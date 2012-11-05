@@ -141,7 +141,6 @@ $tables=array(
 		timestamp timestamp default CURRENT_TIMESTAMP,
 		origin int not null,
 		target int,
-		status tinyint default 0,
 		primary key (log_id),
 		foreign key (event) references %sevents(event_id) on update cascade on delete cascade,
 		foreign key (origin) references %saccounts(acc_no) on update cascade on delete cascade
