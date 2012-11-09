@@ -45,7 +45,7 @@ class Setup {
 	function checkSetup() {
 		
 		//Check database setup.
-		require('../config/schema_tables.inc');
+		require('../schema/schema_tables.inc');
 		$required=array_keys($tables);
 		
 		$pre=Database::getPrefix();
@@ -102,7 +102,7 @@ class Setup {
          */
 	function installDBSchema() {
 		$pre=Database::getPrefix();
-		require('../config/schema_tables.inc');
+		require('../schema/schema_tables.inc');
 		foreach($tables as $q) Database::query(str_replace('%s',$pre,$q));
 	}
 	
@@ -111,7 +111,7 @@ class Setup {
          */
 	private function installData() {
 		Database::add('mime',array('mime_id','type','ref_id'),array(0,0,0));
-		require('../config/schema_data.inc');
+		require('../schema/schema_data.inc');
 		foreach($events as $e) Database::add('events',array('category','event_name','description'),array($e[1],$e[0],$e[2]));
 		$imgsrc='../data/default_avatar.jpg';
 		$iminfo=getimagesize($imgsrc);
@@ -123,7 +123,7 @@ class Setup {
          * Installs the views of the schema. 
          */
 	private function installViews() {
-		require('../config/schema_views.inc');
+		require('../schema/schema_views.inc');
 		$pre=Database::getPrefix();
 		foreach($views as $v) Database::query(str_replace('%s',$pre,$v));
 	}
@@ -132,7 +132,7 @@ class Setup {
          * Installs the triggers of the schema. 
          */
 	function installDBTriggers() {
-		require('../config/schema_triggers.inc');
+		require('../schema/schema_triggers.inc');
 		$pre=Database::getPrefix();
 		foreach($triggers as $q) Database::query(str_replace('%s',$pre,$q));
 	}
@@ -141,7 +141,7 @@ class Setup {
          * Completely uninstalls the software. 
          */
 	function uninstall() {
-		require('../config/schema_uninstall.inc');
+		require('../schema/schema_uninstall.inc');
 		$pre=Database::getPrefix();
 		foreach($uninstallqueries as $q) Database::query(sprintf($q,$pre));
 	}

@@ -69,20 +69,46 @@ class Database {
      * @return boolean 
      */
     public static function connect() {
-        require_once('../config/database.inc');
-        self::$con = mysql_connect($database["host"], $database["username"], $database["password"]);
+		$database=$GLOBALS['config']['DATABASE'];
+        self::$con = mysql_connect($database["db_host"], $database["db_username"], $database["db_password"]);
         if (!self::$con) {
             EventHandler::fireError('db', 'Unable to connect to database. ' . mysql_error());
             return FALSE;
         }
-        $selected = mysql_select_db($database["name"], self::$con);
+        $selected = mysql_select_db($database["db_name"], self::$con);
         if (!$selected) {
             EventHandler::fireError('db', 'Unable to connect to database. ' . mysql_error());
             return FALSE;
         }
-        self::$prefix = $database['prefix'];
+        self::$prefix = $database['db_prefix'];
         return TRUE;
     }
+	
+	/**
+     * Changes the database.
+     * 
+     * Changes the current database.
+     * 
+     * <code>
+     * Database::changeDB('new_db');
+     * </code> 
+     */
+	public static function changeDB($dbname) {
+		return mysql_select_db($dbname,self::$con);
+	}
+	
+	/**
+     * Restores the database.
+     * 
+     * Restores the default configured database.
+     * 
+     * <code>
+     * Database::restoreDB();
+     * </code> 
+     */
+	public static function restoreDB() {
+		return mysql_select_db($GLOBALS['config']['DATABASE']['db_name'],self::$con);
+	}
     
     /**
      * Disconnects from the database.
@@ -267,13 +293,13 @@ class Database {
         if (!self::$con)
             return false;
         $result = mysql_query($query, self::$con);
-		if(preg_match('/^(select|SELECT)[ ]/',$query)===1) {
+		if (mysql_errno())
+            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
+		if(preg_match('/^(select|SELECT|show|SHOW|describe|DESCRIBE|desc|DESC|explain|EXPLAIN)[ ]/',$query)===1) {
 			$tmp=array();
 			while($r=mysql_fetch_assoc($result)) array_push($tmp,$r);
 			$result=$tmp;
 		}
-        if (mysql_errno())
-            EventHandler::fireError('db', 'MySQL<' . mysql_errno() . '>' . mysql_error() . ' `' . $query . '`');
         return $result;
     }
 	

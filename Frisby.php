@@ -116,7 +116,7 @@ class Frisby {
 		else $result=array(true,$result);
 		
 		chdir('..');
-		ini_set('display_errors', true);
+		//ini_set('display_errors', true);
 		restore_error_handler();
 		
 		return $result;

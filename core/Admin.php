@@ -149,6 +149,16 @@ class Admin {
 		$setup=new Setup();
 		$setup->installRegistry();
 	}
+	
+		/**
+         * Executes a query on the database. 
+         */
+	function dbQuery($query,$dbname=null) {
+		if($dbname) Database::changeDB();
+		$result=Database::query($query);
+		Database::restoreDB();
+		return $result;
+	}
 }
 
 ?>

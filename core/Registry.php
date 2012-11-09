@@ -47,8 +47,7 @@ class Registry {
          * Loads the module mappings from an external file.
          */
 	static function init() {
-		require_once('../config/modules.inc');
-		self::$modules=$modules;
+		self::$modules=$GLOBALS['config']['MODULES'];
 	}
 	
 	/**

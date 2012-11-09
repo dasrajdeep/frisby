@@ -20,7 +20,10 @@
 date_default_timezone_set('Asia/Kolkata');
 
 error_reporting(E_ALL);
-//ini_set('display_errors', false);
+ini_set('display_errors', false);
+
+$config=parse_ini_file('../frisby.ini',true);
+$GLOBALS['config']=$config;
 
 require_once('Logger.php');
 require_once('error-handlers.php');
