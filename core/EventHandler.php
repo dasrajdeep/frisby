@@ -17,6 +17,8 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+ namespace frisby;
+ 
 /**
  * This class can be used to fire events from within the system.
  * 

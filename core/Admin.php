@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
+ 
+namespace frisby;
 
 /**
  * An instance of this class represents a dispatcher for the Administration methods registered in the engine.

@@ -17,6 +17,8 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+ namespace frisby;
+ 
 /**
  * An instance of this class is used to install/uninstall the software.
  * 

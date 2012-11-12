@@ -26,6 +26,8 @@
  * @since      File available since Release 1.0
  */
 
+ namespace frisby;
+ 
 /**
  * An instance of this class is used to carry out a generic search.
  * 

@@ -16,6 +16,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
+namespace frisby;
 
 date_default_timezone_set('Asia/Kolkata');
 
