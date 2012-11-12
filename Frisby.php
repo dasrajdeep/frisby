@@ -102,7 +102,7 @@ class Frisby {
 			$method=substr($method,6);
 			require_once('Admin.php');
 			$admin=new Admin();
-			set_error_handler('adminHandler');
+			set_error_handler('frisby\adminHandler');
 			$result=$admin->invoke($method,$data);
 		}
 		else {
@@ -112,7 +112,7 @@ class Frisby {
 			$result=$api->dispatch($method,$data);
 		}
 		
-		set_error_handler('defaultHandler');
+		set_error_handler('frisby\defaultHandler');
 		
 		if(EventHandler::hasErrors()) $result=array(false,EventHandler::fetchTrace());
 		else $result=array(true,$result);

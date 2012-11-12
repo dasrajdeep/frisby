@@ -26,12 +26,12 @@ error_reporting(E_ALL);
 $config=parse_ini_file('../frisby.ini',true);
 $GLOBALS['config']=$config;
 
-require_once('Logger.php');
-require_once('error-handlers.php');
-require_once('EventHandler.php');
-require_once('Database.php');
-require_once('Registry.php');
-require_once('ModuleSupport.php');
+require_once('./Logger.php');
+require_once('./error-handlers.php');
+require_once('./EventHandler.php');
+require_once('./Database.php');
+require_once('./Registry.php');
+require_once('./ModuleSupport.php');
 
 set_error_handler('frisby\bootHandler');
 
