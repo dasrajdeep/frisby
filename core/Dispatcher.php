@@ -57,7 +57,7 @@ class Dispatcher {
 		$loc=Registry::location($module);
 		chdir('../modules/'.$loc);
 		
-		$class=$route['classname'];
+		$class='frisby\\'.$route['classname'];
 		require_once($class.'.php');
 		$obj=new $class();
 		$obj->setModuleName($module);

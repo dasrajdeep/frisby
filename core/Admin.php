@@ -92,7 +92,7 @@ class Admin {
          */
 	function checkSetup() {
 		require_once('Setup.php');
-		$setup=new Setup();
+		$setup=new frisby\Setup();
 		$condition=$setup->checkSetup();
 		return $condition;
 	}
@@ -102,7 +102,7 @@ class Admin {
          */
 	function cleanInstall() {
 		require_once('Setup.php');
-		$setup=new Setup();
+		$setup=new frisby\Setup();
 		$setup->uninstall();
 		$setup->installAll();
 	}
@@ -112,7 +112,7 @@ class Admin {
          */
 	function install() {
 		require_once('Setup.php');
-		$setup=new Setup();
+		$setup=new frisby\Setup();
 		$setup->installAll();
 	}
 	
@@ -121,7 +121,7 @@ class Admin {
          */
 	function uninstall() {
 		require_once('Setup.php');
-		$setup=new Setup();
+		$setup=new frisby\Setup();
 		$setup->uninstall();
 	}
 	
@@ -148,7 +148,7 @@ class Admin {
          */
 	function updateModules() {
 		require_once('Setup.php');
-		$setup=new Setup();
+		$setup=new frisby\Setup();
 		$setup->installRegistry();
 	}
 	

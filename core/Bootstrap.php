@@ -33,15 +33,15 @@ require_once('Database.php');
 require_once('Registry.php');
 require_once('ModuleSupport.php');
 
-set_error_handler('bootHandler');
+set_error_handler('frisby\bootHandler');
 
 Logger::init();
 Database::connect();
 Registry::init();
 
-register_shutdown_function('shutdown');
+register_shutdown_function('frisby\shutdown');
 
-set_error_handler('defaultHandler');
+set_error_handler('frisby\defaultHandler');
 
 /**
  * Performs housekeeping at script termination. 
