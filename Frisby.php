@@ -17,6 +17,8 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+namespace frisby;
+ 
 /**
  * An instance of this class represents a controller for the engine.
  * 

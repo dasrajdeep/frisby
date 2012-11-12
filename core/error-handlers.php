@@ -17,6 +17,8 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
  
+ namespace frisby;
+ 
 /**
  * Default error handler for the system.
  * 

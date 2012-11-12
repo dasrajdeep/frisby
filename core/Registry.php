@@ -17,6 +17,8 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+ namespace frisby;
+ 
 /**
  * This class is used to access the registry of the engine.
  * 

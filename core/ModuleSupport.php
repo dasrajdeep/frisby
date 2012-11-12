@@ -17,6 +17,8 @@
  * along with Frisby. If not, see <http://www.gnu.org/licenses/>. 
  */
 
+ namespace frisby;
+ 
 /**
  * An instance of this class represents an invoker for module classes.
  * 
