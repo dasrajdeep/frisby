@@ -108,7 +108,7 @@ class Frisby {
 		else {
 			require_once('Dispatcher.php');
 			$api=new Dispatcher();
-			set_error_handler('apiHandler');
+			set_error_handler('frisby\apiHandler');
 			$result=$api->dispatch($method,$data);
 		}
 		
