@@ -100,13 +100,13 @@ class Frisby {
 		
 		if(preg_match('/^(admin_)(.)+/',$method)==1) {
 			$method=substr($method,6);
-			require_once('Admin.php');
+			require_once('./Admin.php');
 			$admin=new Admin();
 			set_error_handler('frisby\adminHandler');
 			$result=$admin->invoke($method,$data);
 		}
 		else {
-			require_once('Dispatcher.php');
+			require_once('./Dispatcher.php');
 			$api=new Dispatcher();
 			set_error_handler('apiHandler');
 			$result=$api->dispatch($method,$data);
