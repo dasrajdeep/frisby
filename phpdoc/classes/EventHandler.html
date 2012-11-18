@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Frisby Social Engine » \EventHandler</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Frisby Social Engine</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/frisby.html"><i class="icon-folder-open"></i> frisby</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_clearErrorTrace" title="clearErrorTrace :: Resets the current error trace."><span class="description">Resets the current error trace.</span><pre>clearErrorTrace()</pre></a></li>
+<li class="method public "><a href="#method_fetchTrace" title="fetchTrace :: Fetches the last recorded trace of the fired error events."><span class="description">Fetches the last recorded trace of the fired error events.</span><pre>fetchTrace()</pre></a></li>
+<li class="method public "><a href="#method_fireError" title="fireError :: Triggers an error event."><span class="description">Triggers an error event.</span><pre>fireError()</pre></a></li>
+<li class="method public "><a href="#method_fireEvent" title="fireEvent :: Fires an event specified by a name and the participants"><span class="description">Fires an event specified by a name and the participants</span><pre>fireEvent()</pre></a></li>
+<li class="method public "><a href="#method_hasErrors" title="hasErrors :: Fetches a flag indicating the occurence of any error."><span class="description">Fetches a flag indicating the occurence of any error.</span><pre>hasErrors()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_error" title="$error :: Flag to check for error occurence."><span class="description">Flag to check for error occurence.</span><pre>$error</pre></a></li>
+<li class="property private "><a href="#property_tracelist" title="$tracelist :: Contains the last trace of errors fired."><span class="description">Contains the last trace of errors fired.</span><pre>$tracelist</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\EventHandler"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/global.html">global</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/EventHandler.html">EventHandler</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">This class can be used to fire events from within the system.</p>
+<div class="details">
+<div class="long_description"><pre><code>require_once('EventHandler.php');
+
+EventHandler::fireEvent('event_name',sourceid,destinationid);
+EventHandler::fireError('error_type','error_message');
+</code></pre></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/frisby.core.html">frisby\core</a></td>
+</tr>
+<tr>
+<th>category</th>
+<td>PHP</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:das.rajdeep97@gmail.com">Rajdeep Das</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>Copyright 2012 Rajdeep Das</td>
+</tr>
+<tr>
+<th>license</th>
+<td><a href="http://www.gnu.org/licenses/gpl.txt">The GNU General Public License</a></td>
+</tr>
+<tr>
+<th>version</th>
+<td>GIT: v1.0</td>
+</tr>
+<tr>
+<th>link</th>
+<td><a href="https://github.com/dasrajdeep/frisby">https://github.com/dasrajdeep/frisby</a></td>
+</tr>
+<tr>
+<th>since</th>
+<td>Class available since Release 1.0</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_clearErrorTrace"></a><div class="element clickable method public method_clearErrorTrace" data-toggle="collapse" data-target=".method_clearErrorTrace .collapse">
+<h2>Resets the current error trace.</h2>
+<pre>clearErrorTrace() </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="method_fetchTrace"></a><div class="element clickable method public method_fetchTrace" data-toggle="collapse" data-target=".method_fetchTrace .collapse">
+<h2>Fetches the last recorded trace of the fired error events.</h2>
+<pre>fetchTrace() : mixed[]</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed[]</code></div>
+</div></div>
+</div>
+<a id="method_fireError"></a><div class="element clickable method public method_fireError" data-toggle="collapse" data-target=".method_fireError .collapse">
+<h2>Triggers an error event.</h2>
+<pre>fireError(string $type, string $message) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_fireEvent"></a><div class="element clickable method public method_fireEvent" data-toggle="collapse" data-target=".method_fireEvent .collapse">
+<h2>Fires an event specified by a name and the participants</h2>
+<pre>fireEvent(string $event, int $source, int $target) </pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$event</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$source</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$target</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="method_hasErrors"></a><div class="element clickable method public method_hasErrors" data-toggle="collapse" data-target=".method_hasErrors .collapse">
+<h2>Fetches a flag indicating the occurence of any error.</h2>
+<pre>hasErrors() : boolean</pre>
+<div class="labels"><span class="label">Static</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_error"> </a><div class="element clickable property private property_error" data-toggle="collapse" data-target=".property_error .collapse">
+<h2>Flag to check for error occurence.</h2>
+<pre>$error : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_tracelist"> </a><div class="element clickable property private property_tracelist" data-toggle="collapse" data-target=".property_tracelist .collapse">
+<h2>Contains the last trace of errors fired.</h2>
+<pre>$tracelist : mixed[]</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-04T15:53:07+05:30.<br></footer></div>
+</div>
+</body>
+</html>

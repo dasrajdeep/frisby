@@ -1,0 +1,419 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>Frisby Social Engine » global</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">Frisby Social Engine</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/frisby.html"><i class="icon-folder-open"></i> frisby</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">0</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Namespaces</li>
+<li>
+<a href="../namespaces/global.html" title="global"><i class="icon-th"></i>global</a><ul class="nav nav-list nav-namespaces"></ul>
+</li>
+</ul>
+</div>
+<div class="span8 namespace-contents">
+<ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-th"></i></a><span class="divider">\</span>
+</li>
+<li class="active"><a href="../namespaces/global.html">global</a></li>
+</ul>
+<div class="namespace-indent">
+<h3>
+<i class="icon-custom icon-function"></i> Functions</h3>
+<a id="function_adminHandler"></a><div class="element clickable function  function_adminHandler" data-toggle="collapse" data-target=".function_adminHandler .collapse">
+<h2>Customly handles errors originating during system boot.</h2>
+<pre>adminHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_apiHandler"></a><div class="element clickable function  function_apiHandler" data-toggle="collapse" data-target=".function_apiHandler .collapse">
+<h2>Customly handles errors originating during API calls.</h2>
+<pre>apiHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_bootHandler"></a><div class="element clickable function  function_bootHandler" data-toggle="collapse" data-target=".function_bootHandler .collapse">
+<h2>Customly handles errors originating during system boot.</h2>
+<pre>bootHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_createMessage"></a><div class="element clickable function  function_createMessage" data-toggle="collapse" data-target=".function_createMessage .collapse">
+<h2>Generates an error message.</h2>
+<pre>createMessage(mixed[] $args) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$args</h4>
+<code>mixed[]</code>
+</div>
+</div></div>
+</div>
+<a id="function_defaultHandler"></a><div class="element clickable function  function_defaultHandler" data-toggle="collapse" data-target=".function_defaultHandler .collapse">
+<h2>Default error handler for the system.</h2>
+<pre>defaultHandler(int $level, string $message, string $filename, int $line) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+<div class="subelement argument">
+<h4>$message</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$filename</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$line</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_fetchLevel"></a><div class="element clickable function  function_fetchLevel" data-toggle="collapse" data-target=".function_fetchLevel .collapse">
+<h2>Returns type of error based on level.</h2>
+<pre>fetchLevel(int $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_postAction"></a><div class="element clickable function  function_postAction" data-toggle="collapse" data-target=".function_postAction .collapse">
+<h2>Performs an action based on the error level.</h2>
+<pre>postAction(int $level) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$level</h4>
+<code>int</code>
+</div>
+</div></div>
+</div>
+<a id="function_shutdown"></a><div class="element clickable function  function_shutdown" data-toggle="collapse" data-target=".function_shutdown .collapse">
+<h2>Performs housekeeping at script termination.</h2>
+<pre>shutdown() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="Account" class="element ajax clickable class">
+<h1>Account<a href="../classes/Account.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage user accounts in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/Account.html" class="more">« More »</a>
+</div>
+<div id="Admin" class="element ajax clickable class">
+<h1>Admin<a href="../classes/Admin.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a dispatcher for the Administration methods registered in the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/Admin.html" class="more">« More »</a>
+</div>
+<div id="Database" class="element ajax clickable class">
+<h1>Database<a href="../classes/Database.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a Database helper to manage database operations.</p>
+<div class="details collapse"></div>
+<a href="../classes/Database.html" class="more">« More »</a>
+</div>
+<div id="Dispatcher" class="element ajax clickable class">
+<h1>Dispatcher<a href="../classes/Dispatcher.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a dispatcher for the API methods registered in the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/Dispatcher.html" class="more">« More »</a>
+</div>
+<div id="Event" class="element ajax clickable class">
+<h1>Event<a href="../classes/Event.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage events explicitly.</p>
+<div class="details collapse"></div>
+<a href="../classes/Event.html" class="more">« More »</a>
+</div>
+<div id="EventHandler" class="element ajax clickable class">
+<h1>EventHandler<a href="../classes/EventHandler.html">¶</a>
+</h1>
+<p class="short_description">This class can be used to fire events from within the system.</p>
+<div class="details collapse"></div>
+<a href="../classes/EventHandler.html" class="more">« More »</a>
+</div>
+<div id="EventRegister" class="element ajax clickable class">
+<h1>EventRegister<a href="../classes/EventRegister.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to register event types.</p>
+<div class="details collapse"></div>
+<a href="../classes/EventRegister.html" class="more">« More »</a>
+</div>
+<div id="ExtendedProfile" class="element ajax clickable class">
+<h1>ExtendedProfile<a href="../classes/ExtendedProfile.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to modify profile attributes.</p>
+<div class="details collapse"></div>
+<a href="../classes/ExtendedProfile.html" class="more">« More »</a>
+</div>
+<div id="Frisby" class="element ajax clickable class">
+<h1>Frisby<a href="../classes/Frisby.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents a controller for the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/Frisby.html" class="more">« More »</a>
+</div>
+<div id="GenericSearch" class="element ajax clickable class">
+<h1>GenericSearch<a href="../classes/GenericSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to carry out a generic search.</p>
+<div class="details collapse"></div>
+<a href="../classes/GenericSearch.html" class="more">« More »</a>
+</div>
+<div id="Group" class="element ajax clickable class">
+<h1>Group<a href="../classes/Group.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage groups in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/Group.html" class="more">« More »</a>
+</div>
+<div id="GroupMembers" class="element ajax clickable class">
+<h1>GroupMembers<a href="../classes/GroupMembers.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage group members.</p>
+<div class="details collapse"></div>
+<a href="../classes/GroupMembers.html" class="more">« More »</a>
+</div>
+<div id="GroupSearch" class="element ajax clickable class">
+<h1>GroupSearch<a href="../classes/GroupSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to search for groups in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/GroupSearch.html" class="more">« More »</a>
+</div>
+<div id="Inbox" class="element ajax clickable class">
+<h1>Inbox<a href="../classes/Inbox.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage message inboxes.</p>
+<div class="details collapse"></div>
+<a href="../classes/Inbox.html" class="more">« More »</a>
+</div>
+<div id="Logger" class="element ajax clickable class">
+<h1>Logger<a href="../classes/Logger.html">¶</a>
+</h1>
+<p class="short_description">This class is used to log engine related events to a log file.</p>
+<div class="details collapse"></div>
+<a href="../classes/Logger.html" class="more">« More »</a>
+</div>
+<div id="Message" class="element ajax clickable class">
+<h1>Message<a href="../classes/Message.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to create and send messages.</p>
+<div class="details collapse"></div>
+<a href="../classes/Message.html" class="more">« More »</a>
+</div>
+<div id="ModuleSupport" class="element ajax clickable class">
+<h1>ModuleSupport<a href="../classes/ModuleSupport.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class represents an invoker for module classes.</p>
+<div class="details collapse"></div>
+<a href="../classes/ModuleSupport.html" class="more">« More »</a>
+</div>
+<div id="Outbox" class="element ajax clickable class">
+<h1>Outbox<a href="../classes/Outbox.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage outboxes.</p>
+<div class="details collapse"></div>
+<a href="../classes/Outbox.html" class="more">« More »</a>
+</div>
+<div id="PeopleSearch" class="element ajax clickable class">
+<h1>PeopleSearch<a href="../classes/PeopleSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to search people within the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/PeopleSearch.html" class="more">« More »</a>
+</div>
+<div id="PostSearch" class="element ajax clickable class">
+<h1>PostSearch<a href="../classes/PostSearch.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to search publications within the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/PostSearch.html" class="more">« More »</a>
+</div>
+<div id="Privacy" class="element ajax clickable class">
+<h1>Privacy<a href="../classes/Privacy.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage privacy settings for a user profile.</p>
+<div class="details collapse"></div>
+<a href="../classes/Privacy.html" class="more">« More »</a>
+</div>
+<div id="Profile" class="element ajax clickable class">
+<h1>Profile<a href="../classes/Profile.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage user profiles in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/Profile.html" class="more">« More »</a>
+</div>
+<div id="Publish" class="element ajax clickable class">
+<h1>Publish<a href="../classes/Publish.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage publications.</p>
+<div class="details collapse"></div>
+<a href="../classes/Publish.html" class="more">« More »</a>
+</div>
+<div id="Read" class="element ajax clickable class">
+<h1>Read<a href="../classes/Read.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to retrieve publications.</p>
+<div class="details collapse"></div>
+<a href="../classes/Read.html" class="more">« More »</a>
+</div>
+<div id="Registry" class="element ajax clickable class">
+<h1>Registry<a href="../classes/Registry.html">¶</a>
+</h1>
+<p class="short_description">This class is used to access the registry of the engine.</p>
+<div class="details collapse"></div>
+<a href="../classes/Registry.html" class="more">« More »</a>
+</div>
+<div id="Setup" class="element ajax clickable class">
+<h1>Setup<a href="../classes/Setup.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to install/uninstall the software.</p>
+<div class="details collapse"></div>
+<a href="../classes/Setup.html" class="more">« More »</a>
+</div>
+<div id="UserRelations" class="element ajax clickable class">
+<h1>UserRelations<a href="../classes/UserRelations.html">¶</a>
+</h1>
+<p class="short_description">An instance of this class is used to manage user relations in the social network.</p>
+<div class="details collapse"></div>
+<a href="../classes/UserRelations.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-11-04T15:53:07+05:30.<br></footer></div>
+</div>
+</body>
+</html>
