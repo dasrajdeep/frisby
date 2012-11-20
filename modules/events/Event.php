@@ -113,7 +113,7 @@ class Event extends ModuleSupport {
          */
 	function fetchEventsByCategory($category,$age,$verbose=false) {
 		$pre=Database::getPrefix();
-		if($verbose) $set=Database::get('view_events','*',sprintf("category='%s' and timestamp>='%s' order by timestamp desc",$category,$age));
+		if($verbose) $set=Database::get('view_events','*',sprintf("category='%s' and timestamp>'%s' order by timestamp desc",$category,$age));
 		else $set=Database::get('event_log','*',sprintf("event in (select event_id from %sevents where category='%s') and timestamp>='%s' order by timestamp desc",$pre,$category,$age));
 		return $set;
 	}
@@ -141,7 +141,7 @@ class Event extends ModuleSupport {
 		$filters=array();
 		if($orig) array_push($filters,"origin=".$orig);
 		if($targ) array_push($filters,"target=".$targ);
-		$set=Database::get('event_log','*',sprintf("%s and timestamp>='%s'",implode(' and ',$filters),$age));
+		$set=Database::get('event_log','*',sprintf("%s and timestamp>'%s'",implode(' and ',$filters),$age));
 		return $set;
 	}
 }
