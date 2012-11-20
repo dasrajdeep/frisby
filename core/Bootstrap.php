@@ -39,8 +39,6 @@ Logger::init();
 Database::connect();
 Registry::init();
 
-register_shutdown_function('frisby\shutdown');
-
 set_error_handler('frisby\defaultHandler');
 
 /**
