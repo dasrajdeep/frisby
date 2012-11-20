@@ -41,13 +41,14 @@ Registry::init();
 
 set_error_handler('frisby\defaultHandler');
 
+register_shutdown_function('frisby\shutdown');
+
 /**
  * Performs housekeeping at script termination. 
  */
 function shutdown() {
 	Database::disconnect();
 	Logger::shutdown();
-	restore_error_handler();
 }
 
 ?>
