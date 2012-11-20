@@ -119,7 +119,7 @@ class Frisby {
 		
 		chdir('..');
 		//ini_set('display_errors', true);
-		restore_error_handler();
+		shutdown();
 		
 		return $result;
 	}
