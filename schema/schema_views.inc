@@ -40,7 +40,7 @@ $views=array(
 	'view_events'=>
 	"create or replace view %sview_events as
 		select
-		log_id,acc_no,concat(firstname,' ',middlename,' ',lastname) as name,event_name,description,category,timestamp
+		log_id,acc_no,concat(firstname,' ',middlename,' ',lastname) as name,event_name,description,category,timestamp,avatarimage,imgtype
 		from
 		%sevents inner join %sevent_log inner join %sview_profile
 		on
