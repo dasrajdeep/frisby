@@ -76,7 +76,7 @@ class Logger {
 		self::$file=file_exists(self::$filename);
 		if(!self::$file) self::$file=fopen(self::$filename,'w');
 		else self::$file=fopen(self::$filename,'a+');
-		chmod(self::$filename,0777);
+		//chmod(self::$filename,0777);
 	}
 	
 	/**
