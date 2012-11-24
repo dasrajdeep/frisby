@@ -96,8 +96,8 @@ class Profile extends ModuleSupport {
 				}
 			} else EventHandler::fireError('arg','Invalid profile attribute specified for update.');
 		}
-		Database::update('profile',$cols,$values,"acc_no=".$accno);
-		Database::update('accounts',$acc_cols,$acc_vals,"acc_no=".$accno);
+		if(count($cols)>0) Database::update('profile',$cols,$values,"acc_no=".$accno);
+		if(count($acc_cols)>0) Database::update('accounts',$acc_cols,$acc_vals,"acc_no=".$accno);
 		EventHandler::fireEvent('updatedprofile',$accno);
 		return null;
 	}
