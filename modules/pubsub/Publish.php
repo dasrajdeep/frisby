@@ -99,7 +99,7 @@ class Publish extends ModuleSupport {
 		else if($type==1) {
 			$iminfo=getimagesize($datasrc);
 			$imgdata=addslashes(file_get_contents($datasrc));
-			Database::add('images',array('type','imgdata','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
+			Database::add('images',array('type','image','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
 			$newid=mysql_insert_id();
 			Database::add('mime',array('type','ref_id'),array($type,$newid));
 			$newid=mysql_insert_id();

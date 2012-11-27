@@ -73,6 +73,12 @@ class Event extends ModuleSupport {
 		return null;
 	}
 	
+	function updateLiveStatus($accno) {
+		$pre=Database::getPrefix();
+		Database::query(sprintf("update %spoll_log set last_hit=CURRENT_TIMESTAMP where acc_no=%s",$pre,$accno));
+		return null;
+	}
+	
 	/**
          * Updates an event status.
          * 

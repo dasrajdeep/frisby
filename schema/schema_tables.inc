@@ -41,14 +41,15 @@ $tables=array(
 		height int,
 		width int,
 		bits tinyint,
-		imgdata longblob not null,
+		image mediumblob not null,
+		thumb blob,
 		primary key (img_id)
 	) engine=INNODB",
 	'profile'=>"create table %sprofile (
 		acc_no int not null,
 		avatar int default 1,
 		alias varchar(50),
-		sex varchar(10),
+		sex enum('male','female'),
 		dob date,
 		location varchar(100),
 		primary key (acc_no),
@@ -60,7 +61,7 @@ $tables=array(
 		infofield varchar(50) not null,
 		restriction tinyint default 0,
 		primary key (acc_no,infofield),
-		foreign key (acc_no) references %sprofile(acc_no) on update cascade on delete cascade
+		foreign key (acc_no) references %saccounts(acc_no) on update cascade on delete cascade
 	) engine=INNODB",
 	'user_relations'=>"create table %suser_relations (
 		user1 int,
@@ -113,8 +114,7 @@ $tables=array(
 		type tinyint default 0,
 		joindate date,
 		primary key (member_id,group_id),
-		foreign key (member_id) references %saccounts(acc_no) on update cascade on delete cascade,
-		foreign key (group_id) references %sgroups(group_id) on update cascade on delete cascade
+		foreign key (member_id) references %saccounts(acc_no) on update cascade on delete cascade
 	) engine=INNODB",
 	'messages'=>"create table %smessages (
 		msg_id int not null auto_increment,
@@ -151,6 +151,13 @@ $tables=array(
 		resource_name text,
 		resource_id varchar(150) not null,
 		primary key (ext_id)
+	) engine=INNODB",
+	'poll_log'=>"create table %spoll_log (
+		acc_no int not null,
+		last_hit timestamp,
+		status tinyint default 0,
+		primary key (acc_no),
+		foreign key (acc_no) references %saccounts(acc_no) on update cascade on delete cascade
 	) engine=INNODB"
 );
 

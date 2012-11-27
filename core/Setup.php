@@ -118,7 +118,25 @@ class Setup {
 		$imgsrc='../data/default_avatar.jpg';
 		$iminfo=getimagesize($imgsrc);
 		$img=addslashes(file_get_contents($imgsrc));
-		Database::query(sprintf("insert into %simages (type,imgdata,width,height,bits) values ('%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],$img,$iminfo[0],$iminfo[1],$iminfo['bits']));
+		
+		$thumb=imagecreatefromstring($img);
+		$image_width=imagesx($thumb);
+		$image_height=imagesy($thumb);
+		
+		$temp=imagecreatetruecolor(150,150);
+		imagecopyresampled($temp,$thumb,0,0,0,0,150,150,$image_width,$image_height);
+		$thumb=imagecreatetruecolor(150,150);
+		imagecopyresampled($thumb,$temp,0,0,0,0,150,150,150,150);
+		
+		ob_start();
+		$type=substr($type,6);
+		if($type==='jpeg') imagejpeg($thumb);
+		else if($type==='gif') imagegif($thumb);
+		else if($type==='png') imagepng($thumb); 
+		$thumb=ob_get_contents();
+		ob_end_clean();
+		
+		Database::query(sprintf("insert into %simages (type,image,thumb,width,height,bits) values ('%s','%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],$img,$thumb,$iminfo[0],$iminfo[1],$iminfo['bits']));
 	}
 	
 	/**

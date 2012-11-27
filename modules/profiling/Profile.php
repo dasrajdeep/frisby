@@ -57,7 +57,25 @@ class Profile extends ModuleSupport {
 			EventHandler::fireError('arg','Invalid image file for avatar.');
 			return null;
 		}
-		Database::add('images',array('type','imgdata','width','height','bits'),array($iminfo['mime'],$imgdata,$iminfo[0],$iminfo[1],$iminfo['bits']));
+		
+		$thumb=imagecreatefromstring($imgdata);
+		$image_width=imagesx($thumb);
+		$image_height=imagesy($thumb);
+		
+		$temp=imagecreatetruecolor(150,150);
+		imagecopyresampled($temp,$thumb,0,0,0,0,150,150,$image_width,$image_height);
+		$thumb=imagecreatetruecolor(150,150);
+		imagecopyresampled($thumb,$temp,0,0,0,0,150,150,150,150);
+		
+		ob_start();
+		$type=substr($type,6);
+		if($type==='jpeg') imagejpeg($thumb);
+		else if($type==='gif') imagegif($thumb);
+		else if($type==='png') imagepng($thumb); 
+		$thumb=ob_get_contents();
+		ob_end_clean();
+		
+		Database::add('images',array('type','image','thumb','width','height','bits'),array($iminfo['mime'],$imgdata,$thumb,$iminfo[0],$iminfo[1],$iminfo['bits']));
 		$newid=mysql_insert_id();
 		$old=Database::get('profile','avatar',"acc_no=".$accno);
 		if($old && $old[0]['avatar']) $old=$old[0]['avatar'];

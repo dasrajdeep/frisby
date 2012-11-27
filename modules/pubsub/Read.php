@@ -101,7 +101,7 @@ class Read extends ModuleSupport {
 		$m=Database::get('mime','type,ref_id',"mime_id=".$id);
 		$m=$m[0];
 		if($m['type']==1) {
-			$set=Database::get('images','imgdata,type',"img_id=".$m['ref_id']);
+			$set=Database::get('images','image,type',"img_id=".$m['ref_id']);
 			if($set) $set=array(base64_encode($set[0]['imgdata']),$set[0]['type']);
 			return array(1,$set);
 		}
