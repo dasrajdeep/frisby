@@ -63,9 +63,12 @@ class Profile extends ModuleSupport {
 		$image_height=imagesy($thumb);
 		
 		$temp=imagecreatetruecolor(150,150);
+		$background=imagecolorallocate($temp,0,0,0);
+		imagecolortransparent($temp,$background);
+		imagealphablending($temp,false);
 		imagecopyresampled($temp,$thumb,0,0,0,0,150,150,$image_width,$image_height);
-		$thumb=imagecreatetruecolor(150,150);
-		imagecopyresampled($thumb,$temp,0,0,0,0,150,150,150,150);
+		imagesavealpha($temp,true);
+		$thumb=$temp;
 		
 		ob_start();
 		$type=substr($iminfo['mime'],6);
