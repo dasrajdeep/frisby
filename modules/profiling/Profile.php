@@ -52,7 +52,7 @@ class Profile extends ModuleSupport {
          */
 	function setAvatar($accno,$img) {
 		$iminfo=getimagesize($img);
-		$imgdata=addslashes(file_get_contents($img));
+		$imgdata=file_get_contents($img);
 		if($iminfo===false) {
 			EventHandler::fireError('arg','Invalid image file for avatar.');
 			return null;
@@ -68,14 +68,14 @@ class Profile extends ModuleSupport {
 		imagecopyresampled($thumb,$temp,0,0,0,0,150,150,150,150);
 		
 		ob_start();
-		$type=substr($type,6);
+		$type=substr($iminfo['mime'],6);
 		if($type==='jpeg') imagejpeg($thumb);
 		else if($type==='gif') imagegif($thumb);
 		else if($type==='png') imagepng($thumb); 
 		$thumb=ob_get_contents();
 		ob_end_clean();
 		
-		Database::add('images',array('type','image','thumb','width','height','bits'),array($iminfo['mime'],$imgdata,$thumb,$iminfo[0],$iminfo[1],$iminfo['bits']));
+		Database::add('images',array('type','image','thumb','width','height','bits'),array($iminfo['mime'],addslashes($imgdata),addslashes($thumb),$iminfo[0],$iminfo[1],$iminfo['bits']));
 		$newid=mysql_insert_id();
 		$old=Database::get('profile','avatar',"acc_no=".$accno);
 		if($old && $old[0]['avatar']) $old=$old[0]['avatar'];
@@ -141,7 +141,7 @@ class Profile extends ModuleSupport {
 			$cols=implode(',',$cols);
 		}
 		$result=Database::get('view_profile',$cols,"acc_no=".$accno);
-		if(isset($result[0]['avatarimage'])) $result[0]['avatarimage']=base64_encode($result[0]['avatarimage']);
+		if(isset($result[0]['avatar_image'])) $result[0]['avatar_image']=base64_encode($result[0]['avatar_image']);
 		return $result[0];
 	}
 }

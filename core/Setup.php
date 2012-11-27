@@ -117,7 +117,7 @@ class Setup {
 		foreach($events as $e) Database::add('events',array('category','event_name','description'),array($e[1],$e[0],$e[2]));
 		$imgsrc='../data/default_avatar.jpg';
 		$iminfo=getimagesize($imgsrc);
-		$img=addslashes(file_get_contents($imgsrc));
+		$img=file_get_contents($imgsrc);
 		
 		$thumb=imagecreatefromstring($img);
 		$image_width=imagesx($thumb);
@@ -129,14 +129,14 @@ class Setup {
 		imagecopyresampled($thumb,$temp,0,0,0,0,150,150,150,150);
 		
 		ob_start();
-		$type=substr($type,6);
+		$type=substr($iminfo['mime'],6);
 		if($type==='jpeg') imagejpeg($thumb);
 		else if($type==='gif') imagegif($thumb);
 		else if($type==='png') imagepng($thumb); 
 		$thumb=ob_get_contents();
 		ob_end_clean();
 		
-		Database::query(sprintf("insert into %simages (type,image,thumb,width,height,bits) values ('%s','%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],$img,$thumb,$iminfo[0],$iminfo[1],$iminfo['bits']));
+		Database::query(sprintf("insert into %simages (type,image,thumb,width,height,bits) values ('%s','%s','%s',%s,%s,%s)",Database::getPrefix(),$iminfo['mime'],addslashes($img),addslashes($thumb),$iminfo[0],$iminfo[1],$iminfo['bits']));
 	}
 	
 	/**
