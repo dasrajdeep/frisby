@@ -41,6 +41,7 @@ $triggers=array(
 	 "create trigger %strg_f after delete on %sprofile
 	  for each row begin
 		delete from %simages where img_id=old.avatar and old.avatar>1;
+		delete from %snodes where type=0 and ref_id=old.acc_no;
 	 end",
 	 "create trigger %strg_g before insert on %smessages
 	  for each row begin
