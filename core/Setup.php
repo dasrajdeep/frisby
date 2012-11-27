@@ -190,7 +190,8 @@ class Setup {
 				require_once(Registry::location($m).DIRECTORY_SEPARATOR.$c);
 				$class=substr($c,0,-4);
 				$methods[$m][$class]=array();
-				$meth=get_class_methods($class);
+				$nsclass='frisby\\'.$class;
+				$meth=get_class_methods($nsclass);
 				foreach($meth as $x) if(!in_array($x,$ignore)) array_push($methods[$m][$class],$x);
 			}
 		}

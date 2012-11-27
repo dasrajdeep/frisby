@@ -73,10 +73,15 @@ class Event extends ModuleSupport {
 		return null;
 	}
 	
-	function updateLiveStatus($accno) {
+	function updateLiveStatus($accno,$status=1) {
 		$pre=Database::getPrefix();
-		Database::query(sprintf("update %spoll_log set last_hit=CURRENT_TIMESTAMP where acc_no=%s",$pre,$accno));
+		Database::query(sprintf("update %spoll_log set last_hit=CURRENT_TIMESTAMP,status=%s where acc_no=%s",$pre,$status,$accno));
 		return null;
+	}
+	
+	function fetchRecentUsers($accno,$relax=10,$status=1) {
+		$users=Database::get('view_poll','acc_no,name,avatar_thumb,avatar_mime',sprintf("status=%s and acc_no<>%s and time_to_sec(timediff(now(),last_hit))<%s",$status,$accno,$relax));
+		return $users;
 	}
 	
 	/**
