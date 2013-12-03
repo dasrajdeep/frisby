@@ -115,7 +115,7 @@ class Setup {
 		Database::add('mime',array('mime_id','type','ref_id'),array(0,0,0));
 		require('../schema/schema_data.inc');
 		foreach($events as $e) Database::add('events',array('category','event_name','description'),array($e[1],$e[0],$e[2]));
-		$imgsrc='../data/default_avatar.jpg';
+		$imgsrc='../_data/default_avatar.jpg';
 		$iminfo=getimagesize($imgsrc);
 		$img=file_get_contents($imgsrc);
 		

@@ -50,7 +50,7 @@ class Logger {
          * 
          * @var string 
          */
-	private static $filename='../data/log.txt';
+	private static $filename='../frisby.log';
 	
 	/**
          * Contains the mappings from the event mnemonics to the event names.

@@ -1,1 +1,6 @@
+*.log
+*.ini
+
 data/log.txt
+test_app/
+

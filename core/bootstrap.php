@@ -23,6 +23,27 @@ date_default_timezone_set('Asia/Kolkata');
 error_reporting(E_ALL);
 //ini_set('display_errors', false);
 
+$config_file="[DATABASE]
+
+db_host=localhost
+db_username=root
+db_password=
+db_name=frisby
+db_prefix=frisby_
+
+[MODULES]
+
+Events=events
+Grouping=grouping
+Messaging=messaging
+Profile=profiling
+PubSub=pubsub
+Search=search
+UserRelations=user-relations
+";
+
+if(!file_exists('../frisby.ini')) file_put_contents('../frisby.ini',$config_file);
+
 $config=parse_ini_file('../frisby.ini',true);
 $GLOBALS['config']=$config;
 
