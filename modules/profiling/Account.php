@@ -108,7 +108,7 @@ class Account extends ModuleSupport {
          * @return mixed[] 
          */
 	function fetchAccountInfo($accno) {
-		$set=Database::get('accounts','email,firstname,middlename,lastname,status',"acc_no=".$accno);
+		$set=Database::get('accounts','email,password,firstname,middlename,lastname,status',"acc_no=".$accno);
 		return $set[0];
 	}
 }

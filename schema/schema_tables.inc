@@ -29,6 +29,7 @@ $tables=array(
 	'accounts'=>"create table %saccounts (
 		acc_no int not null auto_increment,
 		email varchar(150) not null,
+		password varchar(250),
 		firstname varchar(100) not null,
 		middlename varchar(100) default '',
 		lastname varchar(100) default '',
